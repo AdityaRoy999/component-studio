@@ -22,7 +22,6 @@ const Thanks=dynamic(()=>import('@/components/studio/Thanks'));
 const Featured=dynamic(()=>import('@/components/studio/Featured'));
 import { createHistoryEntry, loadHistory, mergeHistory, saveHistory, findHistoryRevision, deleteHistory, readDraft, writeDraft, type WorkspaceDraft, type HistoryEntry } from '@/lib/generation-history';
 import { carryCustomization } from '@/lib/generation-context';
-import { saveTelemetry } from '@/lib/generation-telemetry';
 interface ExportedSource { name:string; componentCode:string; cssCode?:string; filename:string; cssFilename:string; dependencies:string[]; }
 const emptySource:ExportedSource={name:'Component',componentCode:'',filename:'Component.tsx',cssFilename:'Component.css',dependencies:[]};
 const viewFromPath=(path:string):StudioView=>path==='/featured'?'featured':path==='/history'?'history':path==='/thanks'?'thanks':'studio';
@@ -47,6 +46,7 @@ export default function StudioPage() {
   const [exported,setExported]=useState<ExportedSource>(emptySource); const [sourceLoading,setSourceLoading]=useState(false); const [sourceError,setSourceError]=useState('');
   const generation=useRef<AbortController|null>(null);
   const [turns,setTurns]=useState<BuildTurn[]>([]);const [liveSource,setLiveSource]=useState('');
+  const attemptContext=useRef<{id:string;component:ComponentPreset|null;propValues:Record<string,any>}|null>(null);
   const [draft,setDraft]=useState<{code:string;cssCode?:string}|null>(null);
   const [recovery,setRecovery]=useState<WorkspaceDraft|null>(null);const touched=useRef(false);const [draftError,setDraftError]=useState('');
   function changeView(view:StudioView){
@@ -125,12 +125,19 @@ export default function StudioPage() {
       .finally(()=>{if(!controller.signal.aborted)setSourceLoading(false);});
     return ()=>controller.abort();
   },[component,language,styling]);
-  async function generate(prompt:string,images:ImageReference[]=[]) {
+  async function generate(prompt:string,images:ImageReference[]=[],retryId?:string) {
     if(isGenerating||generation.current||!prompt.trim())return false;
+    const retry=retryId?turns.at(-1):undefined;
+    if(retryId&&(!retry||retry.id!==retryId||retry.status==='working'))return false;
+    const priorTurns=retry?turns.slice(0,-1):turns;
+    const previousTurn=priorTurns.filter(turn=>turn.status==='done').at(-1);
+    const previousRevision=retry&&previousTurn?history.find(entry=>entry.turns.at(-1)?.id===previousTurn.id):undefined;
+    const base=retry&&attemptContext.current?.id===retry.id?attemptContext.current:
+      retry?.status==='done'?{component:previousRevision?.component||null,propValues:previousRevision?.propValues||{}}:{component,propValues};
     const controller=new AbortController();generation.current=controller;setGenerating(true);setGenerationError('');
     touched.current=true;
-    const id=crypto.randomUUID();
-    let activeTurn:BuildTurn={id,prompt,images,events:[],status:'working'};const priorTurns=turns;
+    const id=retry?.id||crypto.randomUUID();
+    let activeTurn:BuildTurn={id,prompt:prompt.trim(),images,events:[],status:'working'};
     let paintFrame=0;
     const paintTurn=()=>{
       paintFrame=0;if(controller.signal.aborted)return;
@@ -150,9 +157,10 @@ export default function StudioPage() {
       }
       if(controller.signal.aborted)return false;
       if(provider==='custom'?(!configured.custom&&(!baseUrl.trim()||!model.trim())):(!apiKey.trim()&&!configured[provider])){setSettingsOpen(true);return false;}
-      changeView('studio');setTurns(prev=>[...prev,activeTurn]);setLiveSource('');
+      attemptContext.current={id,...base};
+      changeView('studio');setTurns(prev=>retry?prev.map(turn=>turn.id===id?activeTurn:turn):[...prev,activeTurn]);setLiveSource('');
       setDraft(component?{code:component.code,cssCode:component.cssCode}:null);
-      const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,images,apiKey:apiKey.trim()||undefined,provider,model:model.trim()||undefined,baseUrl:provider==='custom'?baseUrl.trim()||undefined:undefined,styling,theme,stream:true,thinkingEffort,memory:{messages:turns.map(turn=>({prompt:turn.prompt,response:turn.response})),propValues},context:component?{code:component.code,cssCode:component.cssCode,files:component.files}:undefined}),signal:controller.signal});
+      const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,images,apiKey:apiKey.trim()||undefined,provider,model:model.trim()||undefined,baseUrl:provider==='custom'?baseUrl.trim()||undefined:undefined,styling,theme,stream:true,thinkingEffort,memory:{messages:priorTurns.map(turn=>({prompt:turn.prompt,response:turn.response})),propValues:base.propValues},context:base.component?{code:base.component.code,cssCode:base.component.cssCode,files:base.component.files}:undefined}),signal:controller.signal});
       if(!r.ok){const data=await r.json();throw new Error(data.error||'Could not start this build.');}
       if(!r.body)throw new Error('The server returned an empty response. Please retry.');
       const reader=r.body.getReader();const decoder=new TextDecoder();let buffer='';let completed=false;
@@ -162,9 +170,9 @@ export default function StudioPage() {
         else if(value.type==='thinking')updateTurn({thinking:(activeTurn.thinking||'')+value.text});
         else if(value.type==='source')updateTurn({source:value.code});
         else if(value.type==='preview')setDraft({code:value.code,cssCode:value.cssCode});
-        else if(value.type==='metrics'){updateTurn({metrics:value.metrics});saveTelemetry({id,provider,model,createdAt:new Date().toISOString(),metrics:value.metrics});}
+        else if(value.type==='metrics')updateTurn({metrics:value.metrics});
         else if(value.type==='error')throw new Error(value.message);
-        else if(value.type==='done'){completed=true;setComponent(value.component);const defaults=carryCustomization(value.component,component?propValues:{},component?.propsSchema);setPropValues(defaults);setDraft({code:value.component.code,cssCode:value.component.cssCode});if(value.metrics)saveTelemetry({id,provider,model:value.model,createdAt:new Date().toISOString(),metrics:value.metrics});updateTurn({metrics:value.metrics,status:'done',source:value.component.code,fileName:`${value.component.name}.tsx`,response:value.component.completionMessage||value.component.description},true);void keepHistory(createHistoryEntry({component:value.component,turns:[...priorTurns,activeTurn],provider,model:value.model,language,styling,propValues:defaults}));}
+        else if(value.type==='done'){completed=true;setComponent(value.component);const defaults=carryCustomization(value.component,base.component?base.propValues:{},base.component?.propsSchema);setPropValues(defaults);setDraft({code:value.component.code,cssCode:value.component.cssCode});updateTurn({metrics:value.metrics,status:'done',source:value.component.code,fileName:`${value.component.name}.tsx`,response:value.component.completionMessage||value.component.description},true);void keepHistory(createHistoryEntry({component:value.component,turns:[...priorTurns,activeTurn],provider,model:value.model,language,styling,propValues:defaults}));}
       }
       try{while(true){const {value,done}=await reader.read();buffer+=done?decoder.decode():decoder.decode(value,{stream:true});let end;while((end=buffer.indexOf('\n'))>=0){const line=buffer.slice(0,end);buffer=buffer.slice(end+1);if(line.trim())event(JSON.parse(line));}if(done)break;}if(buffer.trim())event(JSON.parse(buffer));}
       finally{await reader.cancel().catch(()=>{});reader.releaseLock();}
@@ -205,7 +213,7 @@ export default function StudioPage() {
     : undefined;
 
   return <StudioIntro enabled={pathname==='/'}><div className={`studio-shell flex flex-col ${currentView==='studio'&&turns.length?'studio-shell-build':currentView==='studio'&&!component?'studio-shell-home':''}`}>
-    {currentView==='studio'&&!component&&!turns.length&&<div className="studio-background" aria-hidden="true"><GradientASCII colors={['#1e3fd8','#f6f8ff','#a5d8ff','#38bdf8']} shape="rise" intro={false} cellSize={18} density={.82} glow={.2} speed={.4} scale={1.1} clickEffect="burst" lightMode={theme==='light'} dpr={1} maxFps={30} paused={settingsOpen||isGenerating||Boolean(reduce)}/></div>}
+    <AnimatePresence initial={false}>{currentView==='studio'&&!component&&!turns.length&&<motion.div key="home-background" className="studio-background" aria-hidden="true" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:reduce?0:.32}}><GradientASCII colors={['#1e3fd8','#f6f8ff','#a5d8ff','#38bdf8']} shape="rise" intro={false} cellSize={18} density={.82} glow={.2} speed={.4} scale={1.1} clickEffect="burst" lightMode={theme==='light'} dpr={1} maxFps={30} paused={settingsOpen||isGenerating||Boolean(reduce)}/></motion.div>}</AnimatePresence>
     <Navbar onOpenApiKeyModal={()=>setSettingsOpen(true)} hasCustomApiKey={Boolean(apiKey||serverProviders[provider]||(provider==='custom'&&baseUrl&&model))} onResetToHome={home} currentView={currentView} onViewChange={changeView} theme={theme} onToggleTheme={toggleTheme} chatTitle={activeChatTitle} isGenerating={isGenerating}/>
     {historyError&&currentView!=='history'&&<p className="history-save-warning" role="alert">{historyError} <button onClick={()=>changeView('history')}>Open history</button></p>}
     {recovery&&<div className="draft-recovery" role="status"><span>A previous workspace is available · {new Date(recovery.savedAt).toLocaleString()}</span><button onClick={restoreDraft}>Restore workspace</button><button onClick={()=>{touched.current=true;setRecovery(null);void writeDraft(null).catch(()=>{});}}>Dismiss</button></div>}
@@ -218,8 +226,8 @@ export default function StudioPage() {
             animate={{opacity:1,filter:'blur(0px)',y:0,transitionEnd:{filter:'none'}}}
             exit={{opacity:0,filter:reduce?'none':'blur(3px)',y:reduce?0:-3,transition:{duration:reduce?0:.14,ease:[.22,1,.36,1]}}}
             transition={{duration:reduce?0:.3,ease:[.22,1,.36,1]}}>
-          <AnimatePresence mode="popLayout" initial={false}><motion.div key={currentView==='studio'?(turns.length?'conversation':component?'component':'home'):currentView} className="flex flex-1 flex-col min-w-0 min-h-0 studio-content" initial={reduce?false:{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:reduce?0:.2,ease:[.22,1,.36,1]}}>
-          {currentView==='featured'?<Featured/>:currentView==='thanks'?<Thanks/>:currentView==='history'?<GenerationHistory onUpdate={entry=>void keepHistory(entry)} onDelete={id=>void removeSaved(id)} onImport={importSaved} entries={history} loading={historyLoading} error={historyError} onOpen={openHistory} onCreate={home} onRetry={()=>void refreshHistory()}/>:currentView==='catalog'?<ComponentsCatalog presets={PRESETS} onSelectComponent={selectComponent} theme={theme}/>:(turns.length?<BuildWorkspace turns={turns} working={isGenerating} source={liveSource} draft={draft} theme={theme} hasComponent={Boolean(component)} onSend={generate} onStop={stop} model={model} provider={provider} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort} componentTitle={component?.title} componentDescription={component?.description}>{<Stage {...stageExtras} onSnapshot={saveSnapshot} component={component} componentCode={exported.componentCode} cssCode={exported.cssCode} sourceName={exported.name} sourceLoading={sourceLoading} sourceError={sourceError} dependencies={exported.dependencies} propValues={propValues} onChangeProp={(name,value)=>setPropValues(prev=>({...prev,[name]:value}))} language={language} onLanguageChange={setLanguage} styling={styling} onStylingChange={setStyling} isGenerating={isGenerating} generationError={generationError} onGeneratePrompt={generate} presets={PRESETS} onSelectPreset={selectComponent} theme={theme} provider={provider} model={model} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort}/>}</BuildWorkspace>:<Stage {...stageExtras} onSnapshot={saveSnapshot} component={component} componentCode={exported.componentCode} cssCode={exported.cssCode} sourceName={exported.name} sourceLoading={sourceLoading} sourceError={sourceError} dependencies={exported.dependencies} propValues={propValues} onChangeProp={(name,value)=>setPropValues(prev=>({...prev,[name]:value}))} language={language} onLanguageChange={setLanguage} styling={styling} onStylingChange={setStyling} isGenerating={isGenerating} generationError={generationError} onGeneratePrompt={generate} presets={PRESETS} onSelectPreset={selectComponent} theme={theme} provider={provider} model={model} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort}/>)}
+          <AnimatePresence mode="wait" initial={false}><motion.div key={currentView==='studio'?(turns.length?'conversation':component?'component':'home'):currentView} className="flex flex-1 flex-col min-w-0 min-h-0 studio-content" initial={reduce?false:{opacity:0,filter:'blur(6px)',y:6}} animate={{opacity:1,filter:'blur(0px)',y:0,transitionEnd:{filter:'none'}}} exit={{opacity:0,filter:reduce?'none':'blur(4px)',y:reduce?0:-4,transition:{duration:reduce?0:.18}}} transition={{duration:reduce?0:.3,ease:[.22,1,.36,1]}}>
+          {currentView==='featured'?<Featured/>:currentView==='thanks'?<Thanks/>:currentView==='history'?<GenerationHistory onUpdate={entry=>void keepHistory(entry)} onDelete={id=>void removeSaved(id)} onImport={importSaved} entries={history} loading={historyLoading} error={historyError} onOpen={openHistory} onCreate={home} onRetry={()=>void refreshHistory()}/>:currentView==='catalog'?<ComponentsCatalog presets={PRESETS} onSelectComponent={selectComponent} theme={theme}/>:(turns.length?<BuildWorkspace turns={turns} working={isGenerating} source={liveSource} draft={draft} theme={theme} hasComponent={Boolean(component)} onSend={generate} onRetry={(id,prompt)=>generate(prompt,turns.at(-1)?.images||[],id)} onStop={stop} model={model} provider={provider} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort} componentTitle={component?.title} componentDescription={component?.description}>{<Stage {...stageExtras} onSnapshot={saveSnapshot} component={component} componentCode={exported.componentCode} cssCode={exported.cssCode} sourceName={exported.name} sourceLoading={sourceLoading} sourceError={sourceError} dependencies={exported.dependencies} propValues={propValues} onChangeProp={(name,value)=>setPropValues(prev=>({...prev,[name]:value}))} language={language} onLanguageChange={setLanguage} styling={styling} onStylingChange={setStyling} isGenerating={isGenerating} generationError={generationError} onGeneratePrompt={generate} presets={PRESETS} onSelectPreset={selectComponent} theme={theme} provider={provider} model={model} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort}/>}</BuildWorkspace>:<Stage {...stageExtras} onSnapshot={saveSnapshot} component={component} componentCode={exported.componentCode} cssCode={exported.cssCode} sourceName={exported.name} sourceLoading={sourceLoading} sourceError={sourceError} dependencies={exported.dependencies} propValues={propValues} onChangeProp={(name,value)=>setPropValues(prev=>({...prev,[name]:value}))} language={language} onLanguageChange={setLanguage} styling={styling} onStylingChange={setStyling} isGenerating={isGenerating} generationError={generationError} onGeneratePrompt={generate} presets={PRESETS} onSelectPreset={selectComponent} theme={theme} provider={provider} model={model} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort}/>)}
           </motion.div></AnimatePresence>
           </motion.div>
         </AnimatePresence>

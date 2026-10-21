@@ -68,8 +68,10 @@ export default function Navbar(props: NavbarProps) {
         </span>
       </button>
 
-      {props.chatTitle ? (
-        <div className="nav-chat-header">
+      <AnimatePresence mode="wait" initial={false}>{props.chatTitle ? (
+        <motion.div key="chat-title" className="nav-chat-header"
+          initial={reduce?false:{opacity:0,filter:'blur(4px)'}} animate={{opacity:1,filter:'blur(0px)'}}
+          exit={{opacity:0,filter:reduce?'none':'blur(3px)'}} transition={{duration:reduce?0:.18}}>
           <h1 className="nav-chat-title" title={props.chatTitle}>
             {props.chatTitle}
           </h1>
@@ -79,9 +81,11 @@ export default function Navbar(props: NavbarProps) {
               Generating
             </span>
           )}
-        </div>
+        </motion.div>
       ) : (
-        <nav aria-label="Main navigation" className="nav-switch">
+        <motion.nav key="main-navigation" aria-label="Main navigation" className="nav-switch"
+          initial={reduce?false:{opacity:0,filter:'blur(4px)'}} animate={{opacity:1,filter:'blur(0px)'}}
+          exit={{opacity:0,filter:reduce?'none':'blur(3px)'}} transition={{duration:reduce?0:.18}}>
           {navigation.map(({view, label}) => (
             <button
               key={view}
@@ -98,8 +102,8 @@ export default function Navbar(props: NavbarProps) {
               <span className="nav-tab-label">{label}</span>
             </button>
           ))}
-        </nav>
-      )}
+        </motion.nav>
+      )}</AnimatePresence>
 
       <div className="nav-actions">
         {props.chatTitle&&<button className="icon-button nav-action-pill nav-desktop-action" aria-label="Open history" title="History" onClick={()=>props.onViewChange('history')}><History size={17}/></button>}

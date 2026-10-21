@@ -27,6 +27,7 @@ interface Props {
   hasComponent: boolean;
   children: ReactNode;
   onSend: (prompt: string,images?:ImageReference[]) => Promise<boolean>;
+  onRetry: (turnId: string, prompt: string) => Promise<boolean>;
   onStop: () => void;
   model: string;
   componentTitle?: string;
@@ -73,12 +74,18 @@ export default function BuildWorkspace(props: Props) {
   const lenis=useLenis();
   const references=useImageReferences(props.provider||'gemini',props.model);
   const [prompt, setPrompt] = useState('');
+  const [editing, setEditing] = useState<{ id: string; prompt: string } | null>(null);
+  const retryTrigger = useRef<HTMLButtonElement>(null);
   const [tab, setTab] = useState<'preview' | 'code'>('preview');
   const reduce = useReducedMotion();
   const log = useRef<HTMLDivElement>(null);
   const follow = useRef(true);
   const autoScrollUntil=useRef(0);
   const latest = props.turns.at(-1);
+  function cancelRetry() {
+    setEditing(null);
+    requestAnimationFrame(()=>retryTrigger.current?.focus({preventScroll:true}));
+  }
   useEffect(()=>{
     lenis?.scrollTo(0,{immediate:true,force:true});lenis?.stop();window.scrollTo(0,0);
     return()=>{lenis?.start();};
@@ -136,7 +143,31 @@ export default function BuildWorkspace(props: Props) {
             const turnSource=turn.source||(turn.id===latest?.id?props.source:'');
             return (
             <motion.div className="build-turn" key={turn.id} initial={reduce?false:{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{duration:.3}}>
-              <div className="build-user-message">{turn.images?.length? <div className="reference-tray reference-sent">{turn.images.map(image=><img key={image.id} src={image.dataUrl} alt={image.name}/>)}</div>:null}{turn.prompt}</div>
+              <div className="build-user-message">{turn.images?.length? <div className="reference-tray reference-sent">{turn.images.map(image=><img key={image.id} src={image.dataUrl} alt={image.name}/>)}</div>:null}
+                <AnimatePresence mode="wait" initial={false}>
+                  {editing?.id === turn.id && turn.id === latest?.id ? <motion.form key="editing" id={`retry-${turn.id}`} className="build-message-editor"
+                    initial={reduce?false:{opacity:0,filter:'blur(3px)'}} animate={{opacity:1,filter:'blur(0px)'}} exit={{opacity:0}}
+                    transition={{duration:reduce?0:.18}}
+                    onSubmit={async event => {
+                      event.preventDefault();
+                      const value = editing.prompt.trim();
+                      if (!value || props.working) return;
+                      const submitted = {id:turn.id,prompt:value};
+                      setEditing(null);follow.current=true;
+                      if (!(await props.onRetry(turn.id,value))) setEditing(submitted);
+                    }}>
+                    <label htmlFor={`retry-prompt-${turn.id}`}>Edit your message</label>
+                    <textarea autoFocus id={`retry-prompt-${turn.id}`} data-lenis-prevent rows={4}
+                      value={editing.prompt} disabled={props.working}
+                      onChange={event=>setEditing({id:turn.id,prompt:event.target.value})}
+                      onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();cancelRetry();}}}/>
+                    <div className="build-message-editor-actions">
+                      <button type="button" className="button button-quiet" onClick={cancelRetry}>Cancel</button>
+                      <button type="submit" className="button button-primary" disabled={props.working||!editing.prompt.trim()}><RotateCcw size={14}/>Retry</button>
+                    </div>
+                  </motion.form> : <motion.div key="message" initial={reduce?false:{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:reduce?0:.15}}>{turn.prompt}</motion.div>}
+                </AnimatePresence>
+              </div>
               <div className="build-assistant-message">
                 <div className="build-agent-timeline">
                 <div className="build-agent-label">
@@ -206,7 +237,7 @@ export default function BuildWorkspace(props: Props) {
                 </div>
 
                 {turn.status === 'done' && (
-                  <><p className="build-result" role="status"><StreamingText text={turn.response||(turn.id===latest?.id?props.componentDescription:'')||'Your component is ready. Preview it, take the code, or keep refining.'} animate={!reduce}/></p>{turn.metrics&&<p className="build-metrics">{(turn.metrics.durationMs/1000).toFixed(1)}s · {turn.metrics.repairs} source repairs{turn.metrics.firstTokenMs!=null?` · first source ${(turn.metrics.firstTokenMs/1000).toFixed(1)}s`:''}{turn.metrics.inputTokens!=null&&turn.metrics.outputTokens!=null?` · ${(turn.metrics.inputTokens+turn.metrics.outputTokens).toLocaleString()} tokens`:''}</p>}</>
+                  <p className="build-result" role="status"><StreamingText text={turn.response||(turn.id===latest?.id?props.componentDescription:'')||'Your component is ready. Preview it, take the code, or keep refining.'} animate={!reduce}/></p>
                 )}
                 {turn.status === 'stopped' && (
                   <p className="build-result">Generation stopped. Your last completed component is kept.</p>
@@ -214,12 +245,11 @@ export default function BuildWorkspace(props: Props) {
                 {turn.error && (
                   <div role="alert">
                     <p className="form-error">{turn.error}</p>
-                    <button className="build-retry" disabled={props.working} onClick={() => void props.onSend(turn.prompt,turn.images)}>
-                      <RotateCcw size={13} />
-                      Retry message
-                    </button>
                   </div>
                 )}
+                {turn.id===latest?.id&&turn.status!=='working'&&editing?.id!==turn.id&&<button ref={retryTrigger} type="button" className="build-retry" disabled={props.working}
+                  aria-label="Edit and retry latest message" aria-expanded={editing?.id===turn.id} aria-controls={`retry-${turn.id}`}
+                  onClick={()=>setEditing({id:turn.id,prompt:turn.prompt})}><RotateCcw size={14}/>Retry</button>}
               </div>
             </motion.div>
           );})}

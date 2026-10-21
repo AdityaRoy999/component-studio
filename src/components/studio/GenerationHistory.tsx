@@ -6,7 +6,6 @@ import ModernSelect from '@/components/ui/ModernSelect';
 import ProviderLogo from './ProviderLogo';
 import { isSnapshot } from '@/lib/image-references';
 import { parseHistoryBackup, type HistoryEntry } from '@/lib/generation-history';
-import GenerationInsights from './GenerationInsights';
 import HistoryActionDialog, { type HistoryAction } from './HistoryActionDialog';
 import HistoryTitle from './HistoryTitle';
 import PulseHeart from '@/components/reactbits/PulseHeart';
@@ -22,7 +21,7 @@ export default function GenerationHistory({entries,loading,error,onOpen,onCreate
     <div className="history-toolbar"><SearchField id="search-history" className="history-search" label="Search history" placeholder="Find a build…" value={query} onChange={setQuery}/><span className="history-count">{entries.length} saved {entries.length===1?'build':'builds'}</span><ModernSelect compact label="Sort history" value={order} onChange={setOrder} options={[{value:'newest',label:'Newest first'},{value:'oldest',label:'Oldest first'}]}/></div>
     <p className="history-storage-note">Saved in this browser. Each completed generation and revision is kept with its source and conversation.</p>
     <div className="source-editor-toolbar history-management-actions"><button className="button button-quiet" aria-pressed={favorites} onClick={()=>setFavorites(!favorites)}>{favorites?'Show all':'Favorites'}</button><button className="button button-quiet" disabled={!entries.length} onClick={backup}>Back up history</button><button className="button button-quiet" onClick={()=>upload.current?.click()}>Import backup</button><input hidden type="file" accept="application/json,.json" ref={upload} onChange={async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;try{if(file.size>30000000)throw Error('Backup exceeds 30 MB.');await onImport(parseHistoryBackup(await file.text()));setFeedback('Backup imported.');}catch(error){setFeedback(error instanceof Error?error.message:'Backup could not import.');}}}/></div>
-    {feedback&&<p role="status">{feedback}</p>}<GenerationInsights/>
+    {feedback&&<p role="status">{feedback}</p>}
     {error&&<div className="history-feedback" role="alert"><p>{error}</p><button className="button button-quiet" onClick={onRetry}>Retry saving and loading</button></div>}
     <AnimatePresence mode="wait" initial={false}><motion.div key={loading?'loading':`${favorites}-${query}-${order}-${visible.map(entry=>entry.id).join(',')}`} className="history-results" initial={reduce?false:{opacity:0,filter:'blur(5px)',y:5}} animate={{opacity:1,filter:'blur(0px)',y:0,transitionEnd:{filter:'none'}}} exit={{opacity:0,filter:reduce?'none':'blur(4px)'}} transition={{duration:reduce?0:.22,ease:[.22,1,.36,1]}}>
     {loading?<div className="history-grid" role="status" aria-label="Loading saved builds">{[0,1,2].map(i=><div className="history-skeleton" key={i}/>)}</div>:visible.length?<div className="history-grid">{visible.map(entry=><motion.article className="history-card" key={entry.id}>
