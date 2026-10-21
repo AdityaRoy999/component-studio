@@ -2117,7 +2117,7 @@ html.light .history-dialog-symbol.is-destructive{color:#aa2222}
 html,body,*{scrollbar-width:none!important;scrollbar-gutter:auto!important}
 *::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
 
-/* Retry edits the current turn in place while keeping the previous result available. */
+/* Message actions sit below the prompt; editing and retrying are separate. */
 .studio-nav { transition: padding .3s cubic-bezier(.22,1,.36,1), min-height .3s cubic-bezier(.22,1,.36,1); }
 .build-user-message:has(.build-message-editor) { width: 100%; max-width: 100%; }
 .build-message-editor { min-width: 0; text-align: left; }
@@ -2127,6 +2127,10 @@ html,body,*{scrollbar-width:none!important;scrollbar-gutter:auto!important}
 .build-message-editor:focus-within { box-shadow: 0 2px 0 var(--secondary-ink); }
 .build-message-editor-actions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 14px; }
 .build-message-editor-actions .button { min-height: 38px; border: 0; }
-.build-retry { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 8px 12px; margin-top: 12px; border-radius: 999px; background: var(--surface); color: var(--secondary-ink); font-size: 12px; transition: background .2s, color .2s; }
-.build-retry:hover { background: var(--surface-raised); color: var(--ink); }
+.build-user-message { margin-bottom: 4px; }
+.build-message-actions { display: flex; justify-content: flex-end; gap: 2px; margin: 0 3px 19px 0; }
+.build-message-actions button { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: var(--secondary-ink); cursor: pointer; transition: background .2s, color .2s; }
+.build-message-actions button:hover { background: var(--surface); color: var(--ink); }
+.build-message-actions button:focus-visible { outline: 2px solid var(--secondary-ink); outline-offset: 2px; }
+.build-message-actions button:disabled { opacity: .35; cursor: default; }
 .build-message-editor-actions .button-primary { background: var(--ink); color: var(--page); }

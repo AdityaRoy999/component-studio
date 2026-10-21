@@ -2,7 +2,7 @@
 import { useImageReferences, ImageReferenceButton, ImageReferenceTray } from './ImageReferences';
 import type { ImageReference } from '@/lib/image-references';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { ArrowUp, Check, Code2, Eye, RotateCcw, Sparkles, Square } from 'lucide-react';
+import { ArrowUp, Check, Code2, Copy, Eye, Pencil, RotateCcw, Sparkles, Square } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import BuildOrb from './BuildOrb';
@@ -75,7 +75,9 @@ export default function BuildWorkspace(props: Props) {
   const references=useImageReferences(props.provider||'gemini',props.model);
   const [prompt, setPrompt] = useState('');
   const [editing, setEditing] = useState<{ id: string; prompt: string } | null>(null);
-  const retryTrigger = useRef<HTMLButtonElement>(null);
+  const editTrigger = useRef<HTMLButtonElement>(null);
+  const [copied, setCopied] = useState<string | null>(null);
+  const [copyError, setCopyError] = useState('');
   const [tab, setTab] = useState<'preview' | 'code'>('preview');
   const reduce = useReducedMotion();
   const log = useRef<HTMLDivElement>(null);
@@ -84,7 +86,18 @@ export default function BuildWorkspace(props: Props) {
   const latest = props.turns.at(-1);
   function cancelRetry() {
     setEditing(null);
-    requestAnimationFrame(()=>retryTrigger.current?.focus({preventScroll:true}));
+    requestAnimationFrame(()=>editTrigger.current?.focus({preventScroll:true}));
+  }
+  useEffect(() => {
+    if (!copied) return;
+    const timeout = window.setTimeout(() => setCopied(null), 2000);
+    return () => window.clearTimeout(timeout);
+  }, [copied]);
+  async function copyMessage(turn: BuildTurn) {
+    try {
+      await navigator.clipboard.writeText(turn.prompt);
+      setCopied(turn.id);setCopyError('');
+    } catch { setCopyError('Could not copy. Select the message text to copy it.'); }
   }
   useEffect(()=>{
     lenis?.scrollTo(0,{immediate:true,force:true});lenis?.stop();window.scrollTo(0,0);
@@ -163,11 +176,20 @@ export default function BuildWorkspace(props: Props) {
                       onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();cancelRetry();}}}/>
                     <div className="build-message-editor-actions">
                       <button type="button" className="button button-quiet" onClick={cancelRetry}>Cancel</button>
-                      <button type="submit" className="button button-primary" disabled={props.working||!editing.prompt.trim()}><RotateCcw size={14}/>Retry</button>
+                      <button type="submit" className="button button-primary" disabled={props.working||!editing.prompt.trim()}><ArrowUp size={14}/>Save & resend</button>
                     </div>
                   </motion.form> : <motion.div key="message" initial={reduce?false:{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:reduce?0:.15}}>{turn.prompt}</motion.div>}
                 </AnimatePresence>
               </div>
+              {editing?.id!==turn.id&&<div className="build-message-actions" aria-label="Message actions">
+                <button type="button" title={copied===turn.id?'Copied':'Copy message'} aria-label={copied===turn.id?'Message copied':'Copy message'} onClick={()=>void copyMessage(turn)}>{copied===turn.id?<Check size={16}/>:<Copy size={16}/>}</button>
+                {turn.id===latest?.id&&<>
+                  <button ref={editTrigger} type="button" title="Edit message" aria-label="Edit latest message" aria-expanded={false} aria-controls={`retry-${turn.id}`} disabled={props.working} onClick={()=>setEditing({id:turn.id,prompt:turn.prompt})}><Pencil size={16}/></button>
+                  <button type="button" title="Retry message" aria-label="Retry latest message" disabled={props.working} onClick={()=>{follow.current=true;void props.onRetry(turn.id,turn.prompt);}}><RotateCcw size={16}/></button>
+                </>}
+                <span className="sr-only" role="status">{copied===turn.id?'Message copied':null}</span>
+              </div>}
+              {copyError&&turn.id===latest?.id&&<p className="form-error" role="status">{copyError}</p>}
               <div className="build-assistant-message">
                 <div className="build-agent-timeline">
                 <div className="build-agent-label">
@@ -247,9 +269,6 @@ export default function BuildWorkspace(props: Props) {
                     <p className="form-error">{turn.error}</p>
                   </div>
                 )}
-                {turn.id===latest?.id&&turn.status!=='working'&&editing?.id!==turn.id&&<button ref={retryTrigger} type="button" className="build-retry" disabled={props.working}
-                  aria-label="Edit and retry latest message" aria-expanded={editing?.id===turn.id} aria-controls={`retry-${turn.id}`}
-                  onClick={()=>setEditing({id:turn.id,prompt:turn.prompt})}><RotateCcw size={14}/>Retry</button>}
               </div>
             </motion.div>
           );})}

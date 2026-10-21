@@ -36,6 +36,10 @@
 
 ## The workbench
 
+Browse **313 agent skills across 9 categories** in the new **Skills** section,
+with search, topic filters, and links to the original Skill Issue listings.
+See [catalog provenance](docs/skills-catalog.md) for sources and snapshot details.
+
 Start with a prompt, an image reference, or a component from the built-in library. Watch the result take shape, adjust its properties, and refine it through conversation or direct source edits.
 
 <p align="center">

@@ -10,6 +10,7 @@ const navigation = [
   { view: 'studio', label: 'Studio', description: 'Bring an idea to life' },
   { view: 'catalog', label: 'Components', description: 'Find your starting point' },
   { view: 'featured', label: 'Featured', description: 'Explore the component community' },
+  { view: 'skills', label: 'Skills', description: 'Find skills for your coding agent' },
   { view: 'history', label: 'History', description: 'Pick up where you left off' },
   { view: 'thanks', label: 'Thanks', description: 'The people behind the details' },
 ] as const;
