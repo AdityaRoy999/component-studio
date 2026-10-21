@@ -6,12 +6,13 @@ export interface AgentSkill {
   description: string;
   category: string;
   subcategory: string;
-  catalogUrl: string;
+  sourceUrl: string;
+  installCommand: string;
+  creator: string;
   unverified: boolean;
 }
 
 export const SKILLS: readonly AgentSkill[] = snapshot;
-export const SKILLS_SNAPSHOT_DATE = '2026-10-21';
 export const SKILL_CATEGORIES = ['Design', 'Frontend', 'Backend', 'Motion Graphics', 'Game Dev', 'Finance', 'Research', 'Social Media', 'Automation Tools'] as const;
 
 export function filterSkills(query: string, category = 'all', subcategory = 'all') {

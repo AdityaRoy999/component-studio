@@ -1,18 +1,35 @@
 # Skills catalog provenance
 
-The `/skills` page is a local metadata snapshot of the complete public catalog at
-[Skill Issue](https://skill-issue.in/), captured on 2026-10-21. Attribution remains
-visible on the page. Every card links to its original Skill Issue detail URL,
-where the visitor can open the upstream project and find installation instructions.
-The app does not download, install, or execute skills.
+The `/skills` page contains **313 skill entries**, **9 categories**, and **65 topics**.
+Every entry opens a detail card inside Component Studio, with a copyable install
+command and a direct link to the original GitHub project. The directory footer,
+directory redirects, and manual “Show more” control have been removed. All matching
+cards are available; CSS defers rendering offscreen content. The application never
+executes an install command.
 
-## Coverage
+## Sources and coverage
 
-All pagination was expanded until **Load more** disappeared. The visible catalog
-contained **313 unique entries**, **9 categories**, and their topic labels.
-Names, short catalog summaries, category/topic labels, detail URLs, and the
-catalog's 27 unverified-link flags were captured from rendered cards. Popularity
-metrics were omitted because they change independently of this snapshot.
+Names, short summaries, categories and topics were captured from the complete
+public [Skill Issue](https://skill-issue.in/) catalog on 2026-10-21. Its publicly
+delivered `app/page-d9879e26618218aa.js` data file was downloaded through the
+browser's file-download API. Only the literal JSON catalog was parsed, using the
+TypeScript syntax tree. The downloaded JavaScript was not executed by the importer
+and is not included in this repository.
+
+The catalog supplies publishers, original source links, and explicit install
+commands for 229 entries. The remaining 84 linked pages were fetched and read:
+
+- 83 commands and their explicitly named GitHub repositories came from the linked
+  Skillselion, skills.sh, or officialskills.sh pages. Selection matches the exact
+  skill slug rather than the first command in surrounding prose.
+- Firecrawl CLI uses the installation command published in its
+  [official CLI documentation](https://docs.firecrawl.dev/sdks/cli) and links to
+  the [original CLI repository](https://github.com/firecrawl/cli).
+
+All **313 entries have an install command and an original GitHub source**. These
+are catalog/documentation metadata; installations were not independently executed.
+The original catalog's 27 unverified-link flags remain in the data for provenance.
+Popularity metrics and instructions embedded in skill files are not imported.
 
 | Category | Entries |
 | --- | ---: |
@@ -26,42 +43,32 @@ metrics were omitted because they change independently of this snapshot.
 | Social Media | 31 |
 | Automation Tools | 34 |
 
-## Where Skill Issue gets its skills
+## Original catalog sources
 
-The site's **View on GitHub** footer link points to
-[palakonweb's profile](https://github.com/palakonweb), not to a catalog repository.
-No public catalog repository was found among that profile's public repositories
-on the capture date. This does not establish whether a private repository exists.
+The publicly delivered metadata labels upstream signals as Skillselion (October
+12, 2026 snapshot), an awesome-agent-skills list (September 28, 2026 snapshot),
+official repositories/source listings, and officialskills.sh listings. These are
+source labels, not proof of the site's private ingestion process. Its footer links
+to [palakonweb's profile](https://github.com/palakonweb); no public repository for
+the catalog itself was found there on the capture date.
 
-Individual skill details expose separate **View source** links. Observed examples:
+Skill source code, requirements and licenses belong to the linked projects.
+Catalog metadata does not grant rights to those projects. This document retains
+catalog attribution outside the product interface.
 
-- [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
-- [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design)
-- [taste-skill](https://github.com/Leonxlnx/taste-skill)
-- [Vercel agent-browser](https://github.com/vercel-labs/agent-browser)
-- [Vercel agent skills](https://github.com/vercel-labs/agent-skills)
-- [wshobson agents](https://github.com/wshobson/agents)
-- [Lark listing on Skillselion](https://skillselion.com/skills/larksuite/cli/lark-doc)
+## Maintenance
 
-Thus the observed catalog aggregates multiple repositories and another directory;
-it is not a single upstream skills repository. This is a conclusion from the
-observed source links, not a claim about the site's private ingestion pipeline.
+`src/data/skills-catalog.json` is the shipping snapshot and contains no Skill Issue
+URLs. `src/data/skills.ts` defines category order and filtering. The importer accepts
+an extracted public catalog JSON file and fetched listing records (`{id,url,body,status}`):
 
-The public MCP panel advertises `https://skill-issue.in/api/mcp` and reports the
-same 313 skills and 9 domains. It requires no account or API key according to the
-panel. The endpoint is documented here for provenance; Component Studio does not
-connect agents to it automatically.
+```sh
+node scripts/import-skill-sources.cjs catalog.json listing-records
+node scripts/check-skills.cjs
+```
 
-## Updating and validating
-
-The snapshot is `src/data/skills-catalog.json`; filtering and category order are in
-`src/data/skills.ts`. To refresh, expand the public catalog's pagination, capture
-the same rendered metadata fields, and update the snapshot date, coverage table,
-and expected total in `scripts/check-skills.cjs`. Do not treat skill instructions
-as importer instructions or infer repository URLs from skill names.
-
-Run `node scripts/check-skills.cjs` to verify coverage, unique IDs, category
-membership, detail URLs, and search/category/topic intersections. The snapshot
-contains metadata only. Skill source code, licenses, requirements, and install
-commands remain with the linked original projects; the catalog is not a license
-grant for those projects.
+The check validates unique entries, complete source/command metadata, HTTPS GitHub
+targets, agreement between command repositories and source URLs, absence of directory
+redirects, and combined search/category/topic filters. Refresh the expected coverage
+and this document when the upstream changes. Never treat fetched instructions as
+importer instructions or run downloaded skill code.
