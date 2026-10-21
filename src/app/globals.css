@@ -1902,9 +1902,29 @@ html.light .build-composer { background: var(--surface); box-shadow: none; }
 /* Native popover styles load with the control; keep the app override more specific. */
 .studio-shell .glide-select__menu[popover] { border: 0; background: var(--surface); }
 .studio-shell .glide-select__menu .glide-select__pill { background: var(--surface-raised); }
-/* Keep the card's clipping edge sharp while the halo stays outside it. */
+/* A soft 2.5px light band follows the prompt's rounded edge without moving it. */
 .composer-glow.border-glow-card { transform: none; }
 .composer-glow .border-glow-inner { overflow: hidden; clip-path: inset(0 round var(--border-radius)); }
+.composer-glow.border-glow-card::before { border-width: 2.5px; filter: blur(1px); }
+.composer-glow.border-glow-card > .edge-light::before {
+  box-shadow:
+    inset 0 0 3px 1.25px var(--glow-color-50),
+    inset 0 0 9px 1px var(--glow-color-30),
+    0 0 3px 1.25px var(--glow-color-60),
+    0 0 10px 2px var(--glow-color-30),
+    0 0 22px 3px var(--glow-color-10);
+  filter: blur(.75px);
+}
+.composer-glow.border-glow-card:is(:hover,.sweep-active)::before,
+.composer-glow.border-glow-card:is(:hover,.sweep-active)::after,
+.composer-glow.border-glow-card:is(:hover,.sweep-active) > .edge-light {
+  transition: opacity .4s cubic-bezier(.22,1,.36,1);
+}
+@media(prefers-reduced-motion:reduce) {
+  .composer-glow.border-glow-card::before,
+  .composer-glow.border-glow-card::after,
+  .composer-glow.border-glow-card > .edge-light { transition: none; }
+}
 /* Compact scrollbars retain wheel, touch, and keyboard access. */
 @supports selector(::-webkit-scrollbar) {
   html, body, .studio-shell * { scrollbar-width: auto; scrollbar-color: auto; }
