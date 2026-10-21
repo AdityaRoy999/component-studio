@@ -1,0 +1,10 @@
+.dot-slider { position:relative;width:100%;height:44px;min-width:0; }
+.dot-slider-dots { position:absolute;inset:0 2px;display:flex;justify-content:space-between;align-items:center;pointer-events:none; }
+.dot-slider-dots > span { display:block;flex:0 0 4px;width:4px;height:4px;border-radius:50%;background:var(--line-strong); }
+.dot-slider-dots > span[data-filled='true'] { background:var(--secondary-ink); }
+.dot-slider input[type='range'] { position:absolute;inset:0;width:100%;height:44px;margin:0;padding:0;appearance:none;-webkit-appearance:none;background:transparent;cursor:ew-resize;touch-action:pan-y; }
+.dot-slider input[type='range']::-webkit-slider-runnable-track { height:44px;background:transparent;border:0; }
+.dot-slider input[type='range']::-webkit-slider-thumb { appearance:none;-webkit-appearance:none;width:1px;height:44px;background:transparent;border:0; }
+.dot-slider input[type='range']::-moz-range-track { height:44px;background:transparent;border:0; }
+.dot-slider input[type='range']::-moz-range-thumb { width:1px;height:44px;background:transparent;border:0; }
+.dot-slider:has(input:focus-visible) { outline:2px solid var(--secondary-ink);outline-offset:2px;border-radius:8px; }

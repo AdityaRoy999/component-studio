@@ -1,0 +1,35 @@
+.preview-device-presets { display:flex; gap:2px; padding:4px; background:var(--surface); border-radius:999px; }
+.preview-device-presets .icon-button { width:36px; height:36px; border-radius:50%; }
+.preview-device-presets .icon-button.selected { background:var(--surface-raised); color:var(--ink); }
+.preview-device-controls { flex-wrap:wrap; }
+/* The unused space is a flat tonal surface in both themes. */
+.responsive-preview { position:relative; width:100%; min-width:0; min-height:510px; flex:1; overflow:hidden; background:var(--surface-raised); }
+.responsive-viewport { position:relative; isolation:isolate; min-height:inherit; height:100%; max-width:100%; border-radius:22px; overflow:hidden; background:var(--preview); }
+.responsive-preview-content { position:absolute; inset:0; display:flex; flex-direction:column; min-width:0; min-height:0; overflow:auto; }
+.responsive-preview-content > .generated-frame { display:block; min-height:0; width:100%; height:100%; flex:1; }
+.responsive-preview-content > .native-renderer { min-height:100%; flex:1; }
+.preview-width-handle { position:absolute; z-index:5; top:50%; width:24px; height:88px; transform:translateY(-50%); display:flex; align-items:center; justify-content:center; cursor:ew-resize; touch-action:none; user-select:none; border-radius:12px; }
+.preview-width-handle span { width:5px; height:56px; border-radius:8px; background:var(--secondary-ink); opacity:.4; transition:opacity 160ms,background 160ms; }
+.preview-width-handle:hover span,.preview-width-handle:focus-visible span,.responsive-preview[data-resizing='true'] .preview-width-handle span { opacity:1; background:var(--ink); }
+.responsive-preview[data-resizing='true'] .responsive-preview-content { pointer-events:none; }
+.build-artifact .responsive-preview,.preview-expanded .responsive-preview { min-height:0; height:100%; }
+@media(max-width:700px){.responsive-preview{min-height:430px}.build-artifact .responsive-preview,.preview-expanded .responsive-preview{min-height:0}.preview-device-presets{padding:3px;gap:0}.preview-device-presets .icon-button{width:32px;height:32px}}
+@media(prefers-reduced-motion:reduce){.preview-width-handle span{transition:none}}
+
+.preview-device-controls > .icon-button { border-radius:50%; }
+/* Each related set shares one quiet outer bubble. */
+.workspace-toolbar .preview-device-controls{padding:4px;background:var(--surface);border-radius:999px;gap:3px;flex-wrap:nowrap}
+.workspace-toolbar .preview-device-presets{padding:0;background:transparent}
+.workspace-toolbar .workspace-view-actions{padding:4px;background:var(--surface);border-radius:999px;gap:0;flex-shrink:0}
+.workspace-view-actions .view-tabs{padding:0;gap:2px}
+.workspace-view-actions .icon-button{border-radius:50%;width:36px;height:36px}
+.workspace-toolbar{flex-wrap:wrap;row-gap:10px}
+.workspace-preview-actions{display:flex;align-items:center;gap:0}
+.workspace-preview-actions .workspace-download{width:44px;height:44px;border-radius:50%;background:var(--surface)}
+.workspace-preview-actions .workspace-download:hover{background:var(--surface-hover)}
+.toolbar-device-slot,.toolbar-optional-control{overflow:hidden;flex-shrink:0}
+.toolbar-device-content{width:max-content;padding-right:12px}
+.toolbar-device-content>.preview-device-controls{width:max-content}
+.toolbar-optional-control{display:flex;align-items:center}
+.workspace-toolbar .workspace-view-actions>.icon-button,.toolbar-optional-control>.icon-button{margin-left:2px}
+@media(max-width:700px){.workspace-toolbar .preview-device-controls{gap:1px}.workspace-view-actions .icon-button{width:32px;height:32px}.workspace-view-actions .view-tabs button{padding:8px 10px}.workspace-toolbar .preview-device-controls>.icon-button{width:32px;height:32px}}

@@ -1,0 +1,77 @@
+[
+  {
+    "file": "gsap.svg",
+    "source": "https://gsap.com/",
+    "element": 0
+  },
+  {
+    "file": "lenis.svg",
+    "source": "https://lenis.dev/",
+    "element": 0
+  },
+  {
+    "file": "react.svg",
+    "source": "https://react.dev/",
+    "element": 1
+  },
+  {
+    "file": "lucide-light.svg",
+    "source": "https://lucide.dev/logo.light.svg"
+  },
+  {
+    "file": "lucide-dark.svg",
+    "source": "https://lucide.dev/logo.dark.svg"
+  },
+  {
+    "file": "motion.svg",
+    "source": "https://motion.dev/favicon.svg"
+  },
+  {
+    "file": "nextjs-light.svg",
+    "source": "https://nextjs.org/_next/static/immutable/media/nextjs-logotype-light.00-_80jv8_dct.svg"
+  },
+  {
+    "file": "nextjs-dark.svg",
+    "source": "https://nextjs.org/_next/static/immutable/media/nextjs-logotype-dark.3h4a2z2v_dkod.svg"
+  },
+  {
+    "file": "thinking-orbs.svg",
+    "source": "https://www.thinkingorbs.com/icon.svg?icon.3zf90kq9isb_7.svg"
+  },
+  {
+    "file": "react-bits-light.svg",
+    "source": "https://raw.githubusercontent.com/DavidHDev/react-bits/310fc737fadcaa149a4e06fb088fc95332dc8bfb/src/assets/logos/react-bits-logo-small-black.svg"
+  },
+  {
+    "file": "ponytail.svg",
+    "source": "https://ponytail.dev/assets/logo-dark.svg"
+  },
+  {
+    "file": "react-bits-dark.svg",
+    "source": "https://raw.githubusercontent.com/DavidHDev/react-bits/310fc737fadcaa149a4e06fb088fc95332dc8bfb/src/assets/logos/react-bits-logo-small.svg"
+  },
+  {
+    "files": [
+      "gsap-dark.svg",
+      "gsap-light.svg"
+    ],
+    "source": "https://gsap.com/",
+    "note": "Four original header wordmark paths combined on their shared viewBox; light/dark monochrome variants."
+  },
+  {
+    "files": [
+      "lenis-dark.svg",
+      "lenis-light.svg"
+    ],
+    "source": "https://lenis.dev/",
+    "note": "Original inline wordmark paths; resolve site CSS color variable for standalone SVG use."
+  },
+  {
+    "files": [
+      "react-dark.svg",
+      "react-light.svg"
+    ],
+    "source": "https://react.dev/",
+    "note": "Original React mark paths; website light/dark brand colors."
+  }
+]

@@ -1,0 +1,24 @@
+.studio-entrance,.studio-entry-shell{min-height:100svh}
+.studio-entrance[data-phase=writing] .studio-entry-shell{visibility:hidden}
+.studio-intro{position:fixed;inset:0;z-index:3000;display:grid;place-items:center;background:var(--page);color:var(--ink);overflow:hidden}
+.studio-intro-wordmark{width:min(640px,82vw);transform:translateY(-8px)}
+.studio-intro-wordmark svg{width:100%;height:auto;overflow:visible}
+.studio-intro-wordmark path{stroke:currentColor;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+.studio-intro-skip{position:absolute;bottom:max(28px,env(safe-area-inset-bottom));right:max(28px,env(safe-area-inset-right));width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:var(--surface);color:var(--secondary-ink);transition:background .18s,color .18s}
+.studio-intro-skip:hover{background:var(--surface-hover);color:var(--ink)}
+.studio-intro-skip:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.studio-entrance[data-phase=reveal] .studio-intro{pointer-events:none;animation:studio-curtain .85s cubic-bezier(.22,1,.36,1) both}
+.studio-entrance[data-phase=reveal] .studio-intro-wordmark{animation:studio-signoff .65s cubic-bezier(.22,1,.36,1) both}
+.studio-entrance[data-phase=reveal] .studio-background{animation:studio-blue-rise 1.4s cubic-bezier(.16,1,.3,1) both}
+.studio-entrance[data-phase=reveal] .studio-nav{animation:studio-ui-arrive .85s .35s cubic-bezier(.16,1,.3,1) both}
+.studio-entrance[data-phase=reveal] .hero-content{animation:none}
+.studio-entrance[data-phase=reveal] .hero-content>h1{animation:studio-ui-arrive .85s .25s cubic-bezier(.16,1,.3,1) both}
+.studio-entrance[data-phase=reveal] .hero-description{animation:studio-ui-arrive .85s .34s cubic-bezier(.16,1,.3,1) both}
+.studio-entrance[data-phase=reveal] .hero-composer-shell{animation:studio-ui-arrive .9s .43s cubic-bezier(.16,1,.3,1) both}
+.studio-entrance[data-phase=reveal] .prompt-suggestions{animation:studio-ui-arrive .85s .54s cubic-bezier(.16,1,.3,1) both}
+@keyframes studio-curtain{from{opacity:1}to{opacity:0;visibility:hidden}}
+@keyframes studio-signoff{from{opacity:1;filter:blur(0);transform:translateY(-8px)}to{opacity:0;filter:blur(10px);transform:translateY(-24px)}}
+@keyframes studio-blue-rise{from{opacity:0;transform:translateY(66%);filter:blur(16px) brightness(1.3)}to{opacity:1;transform:translateY(0);filter:blur(0) brightness(1)}}
+@keyframes studio-ui-arrive{from{opacity:0;transform:translateY(28px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:600px){.studio-intro-wordmark{width:90vw}.studio-intro-wordmark path{stroke-width:8.5}.studio-intro-skip{right:20px;bottom:24px}}
+@media(prefers-reduced-motion:reduce){.studio-intro{display:none}.studio-entrance[data-phase=writing] .studio-entry-shell{visibility:visible}.studio-entrance [style],.studio-entrance .studio-background{animation-duration:.01ms!important;animation-delay:0ms!important}}

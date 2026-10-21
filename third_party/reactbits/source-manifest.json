@@ -1,0 +1,377 @@
+{
+  "repository": "https://github.com/DavidHDev/react-bits",
+  "revision": "e12c22192ac7b4b452c5e2feb9b586d74765d696",
+  "files": [
+    {
+      "name": "BlurText.tsx",
+      "registry": "https://reactbits.dev/r/BlurText-TS-CSS.json",
+      "upstreamSha256": "ff976389990b9f25376ad491dabd66262913cc574151d54f205fcd4ca05d7ed6",
+      "integratedSha256": "03d6d69ff6c10231a1a0011fb0e3af0d7f5dcaf7af37d3bf68f95fe67ddb57c1",
+      "patches": []
+    },
+    {
+      "name": "CircularText.css",
+      "registry": "https://reactbits.dev/r/CircularText-TS-CSS.json",
+      "upstreamSha256": "12ba80258e1925a4f927c5291d7e40ee43706895625ba84f84a12f08c46d1823",
+      "integratedSha256": "12ba80258e1925a4f927c5291d7e40ee43706895625ba84f84a12f08c46d1823",
+      "patches": []
+    },
+    {
+      "name": "CircularText.tsx",
+      "registry": "https://reactbits.dev/r/CircularText-TS-CSS.json",
+      "upstreamSha256": "8ee3f554e6e4bb93d4d89d28c122976e410f79af164697f0b1abb97a82616eea",
+      "integratedSha256": "08ddfc63b54a843cf6fcf8846d4f970915306f5eef7665912f8c1ff1be4efb3e",
+      "patches": []
+    },
+    {
+      "name": "ClickSpark.tsx",
+      "registry": "https://reactbits.dev/r/ClickSpark-TS-CSS.json",
+      "upstreamSha256": "186b0d4d5820311046b689c12d762be74fa0f380bf81b9b160386a4e178563f0",
+      "integratedSha256": "e2dd8fe2e9bc6d4323b36ea9c7960aa0b0daa36790e28dd6125175ecf8a72b60",
+      "patches": []
+    },
+    {
+      "name": "Counter.css",
+      "registry": "https://reactbits.dev/r/Counter-TS-CSS.json",
+      "upstreamSha256": "9f224c728e16bb2b4137cd0e5a3ff370043bc9c838450fa8aaed89e190a8a6f8",
+      "integratedSha256": "9f224c728e16bb2b4137cd0e5a3ff370043bc9c838450fa8aaed89e190a8a6f8",
+      "patches": []
+    },
+    {
+      "name": "Counter.tsx",
+      "registry": "https://reactbits.dev/r/Counter-TS-CSS.json",
+      "upstreamSha256": "26576e940720dde4069c8283fcb634449d4765505889af2edbda32f2e1bd2809",
+      "integratedSha256": "364982efed42e4f1f462e6c1dd78291b4199be146ef836a499f0f72077921db5",
+      "patches": []
+    },
+    {
+      "name": "CountUp.tsx",
+      "registry": "https://reactbits.dev/r/CountUp-TS-CSS.json",
+      "upstreamSha256": "d93f64b067bad014211427f8be17efb3f1a9574cf27d53adf0f4b611399b5963",
+      "integratedSha256": "b8c5086106c81c86e5dc4b56e56e795a7063d1c69dc0d3e6950b7161ee6c15da",
+      "patches": []
+    },
+    {
+      "name": "CurvedLoop.css",
+      "registry": "https://reactbits.dev/r/CurvedLoop-TS-CSS.json",
+      "upstreamSha256": "5fc512cf43fe668b5e550256aa66554fbd1d762904cb34a0af068c02104bd865",
+      "integratedSha256": "5fc512cf43fe668b5e550256aa66554fbd1d762904cb34a0af068c02104bd865",
+      "patches": []
+    },
+    {
+      "name": "CurvedLoop.tsx",
+      "registry": "https://reactbits.dev/r/CurvedLoop-TS-CSS.json",
+      "upstreamSha256": "37428b780eda415536b4c198e2ce65b64f5889badd37087bc9f515284d561207",
+      "integratedSha256": "13010fb7e4e9afa1126719c28f1d425ef01855ff80c046f42660f5cfff6e080b",
+      "patches": []
+    },
+    {
+      "name": "DecryptedText.tsx",
+      "registry": "https://reactbits.dev/r/DecryptedText-TS-CSS.json",
+      "upstreamSha256": "346c2e4a27404ec6efc5c52fc2fbcaeb38e7e32d1d7c46247b53907632c86804",
+      "integratedSha256": "a2300ca199669b4cf4e8ffdeacbdb4206be2ad12fda50ac3bfce88958ab96898",
+      "patches": []
+    },
+    {
+      "name": "Dock.css",
+      "registry": "https://reactbits.dev/r/Dock-TS-CSS.json",
+      "upstreamSha256": "68914a58df742acacbe82341d930f6ae6d2e0720176e9428f5edcad4353f53e6",
+      "integratedSha256": "68914a58df742acacbe82341d930f6ae6d2e0720176e9428f5edcad4353f53e6",
+      "patches": []
+    },
+    {
+      "name": "Dock.tsx",
+      "registry": "https://reactbits.dev/r/Dock-TS-CSS.json",
+      "upstreamSha256": "c22727d1dbf6f08f0c2f8ec2e296c98b3ce7027a426c69a714a2f2466ac4f9c5",
+      "integratedSha256": "43bfc3c4e2188119ddbb701bc29c0105804eff696d1c304e472060c75737e3b2",
+      "patches": []
+    },
+    {
+      "name": "ElasticSlider.css",
+      "registry": "https://reactbits.dev/r/ElasticSlider-TS-CSS.json",
+      "upstreamSha256": "d8100920e206730135f681eaca4512b468def2249f0126bd99de1e774be18ac8",
+      "integratedSha256": "d8100920e206730135f681eaca4512b468def2249f0126bd99de1e774be18ac8",
+      "patches": []
+    },
+    {
+      "name": "ElasticSlider.tsx",
+      "registry": "https://reactbits.dev/r/ElasticSlider-TS-CSS.json",
+      "upstreamSha256": "1488a72d85b292fc9c20152351c3e7a9065370586b5afa1006c6a744dc175acc",
+      "integratedSha256": "efe1a8f4f03425d8419161e1d0915d0127c6b30f807fcf6c5fc45661f00e57f6",
+      "patches": []
+    },
+    {
+      "name": "FadeContent.tsx",
+      "registry": "https://reactbits.dev/r/FadeContent-TS-CSS.json",
+      "upstreamSha256": "c69fd8ee01ee6a92d4f3656a7add3ba3f374e70027ecd46e1ad58e874f0389d5",
+      "integratedSha256": "2b24f393a82afee951d9bd80f38498c0011d5823ca2e74d32cab9ca3f9cfba7d",
+      "patches": []
+    },
+    {
+      "name": "Folder.css",
+      "registry": "https://reactbits.dev/r/Folder-TS-CSS.json",
+      "upstreamSha256": "74a8f213ad51cb946ffa66c48b9c157ad96f9e6e8a8ae78dc9b0056576fc44d6",
+      "integratedSha256": "74a8f213ad51cb946ffa66c48b9c157ad96f9e6e8a8ae78dc9b0056576fc44d6",
+      "patches": []
+    },
+    {
+      "name": "Folder.tsx",
+      "registry": "https://reactbits.dev/r/Folder-TS-CSS.json",
+      "upstreamSha256": "6a70c34634ba8be2fa4a5c6abdda10072a4f67ed05d5d13733c07614eec19fa0",
+      "integratedSha256": "88aa42e3c66f5178e2d061aecf7887f6c8f919011301aa73962daae44e14ca7b",
+      "patches": [
+        "Narrow FolderEntry for the project React 18 TypeScript definitions."
+      ]
+    },
+    {
+      "name": "FuzzyText.tsx",
+      "registry": "https://reactbits.dev/r/FuzzyText-TS-CSS.json",
+      "upstreamSha256": "cd6d50c2d9a814cbacafb11bfb8b7ce9bb7925c8b65189a854bdf65599f27483",
+      "integratedSha256": "1465e305acd5e870ad96fbce0e649231674e80182ea116cecd8979577f775503",
+      "patches": []
+    },
+    {
+      "name": "GlareHover.css",
+      "registry": "https://reactbits.dev/r/GlareHover-TS-CSS.json",
+      "upstreamSha256": "556debf36792dd1a774b27f96c120494b7d2a1ed19c188f2b30faf5df31f2b35",
+      "integratedSha256": "556debf36792dd1a774b27f96c120494b7d2a1ed19c188f2b30faf5df31f2b35",
+      "patches": []
+    },
+    {
+      "name": "GlareHover.tsx",
+      "registry": "https://reactbits.dev/r/GlareHover-TS-CSS.json",
+      "upstreamSha256": "0d9acea382c7a56cebcea377749e2a2fd902088b1a1147e79d87859f225acd51",
+      "integratedSha256": "9db23fea303b162e14e47d8cad065994466272eac4ca6899b3c1abdd6cb84f02",
+      "patches": []
+    },
+    {
+      "name": "GlassIcons.css",
+      "registry": "https://reactbits.dev/r/GlassIcons-TS-CSS.json",
+      "upstreamSha256": "c85801f8d4e5cefbccf564c40603ccf1ddb4f6109f65b5ca96e51f85663f16bb",
+      "integratedSha256": "c85801f8d4e5cefbccf564c40603ccf1ddb4f6109f65b5ca96e51f85663f16bb",
+      "patches": []
+    },
+    {
+      "name": "GlassIcons.tsx",
+      "registry": "https://reactbits.dev/r/GlassIcons-TS-CSS.json",
+      "upstreamSha256": "a762319f5f78c4dc9348aaea6ba8bf957faf97a65ff5dda5466aa6e2a6b89176",
+      "integratedSha256": "77dd50da64029ff5e4f27e6f895e5477c181bb478d06cb04511fb7bd44285a94",
+      "patches": []
+    },
+    {
+      "name": "GlitchText.css",
+      "registry": "https://reactbits.dev/r/GlitchText-TS-CSS.json",
+      "upstreamSha256": "c20407e3d981b0dbde3a286f599c55222207895bf5b343520f1cfe53963fccc9",
+      "integratedSha256": "c20407e3d981b0dbde3a286f599c55222207895bf5b343520f1cfe53963fccc9",
+      "patches": []
+    },
+    {
+      "name": "GlitchText.tsx",
+      "registry": "https://reactbits.dev/r/GlitchText-TS-CSS.json",
+      "upstreamSha256": "2ce724dc9f6f998508f4d5c743f692c75216d6dab0993350e23a73f6689eb3a3",
+      "integratedSha256": "2a9dee2de1e1a057a7cd31d962d6b7506d2cd7eb9dc546e881c9eaf6043f8e83",
+      "patches": []
+    },
+    {
+      "name": "GradientText.css",
+      "registry": "https://reactbits.dev/r/GradientText-TS-CSS.json",
+      "upstreamSha256": "9ff55e744f20f542c810577403c3fd3d1baba0210e4ab1fa5fa0bb1e28fb0c89",
+      "integratedSha256": "9ff55e744f20f542c810577403c3fd3d1baba0210e4ab1fa5fa0bb1e28fb0c89",
+      "patches": []
+    },
+    {
+      "name": "GradientText.tsx",
+      "registry": "https://reactbits.dev/r/GradientText-TS-CSS.json",
+      "upstreamSha256": "eba84cb82b1d2a9239a8b3c4aba84d07ef6135704d51de8d142854edf76097ab",
+      "integratedSha256": "90bec991feb052ddf056e585a19198c77267b503ea6e9b69a1e411023cc947ea",
+      "patches": []
+    },
+    {
+      "name": "LetterGlitch.css",
+      "registry": "https://reactbits.dev/r/LetterGlitch-TS-CSS.json",
+      "upstreamSha256": "0767ab47da781aff920efee2a7b77af560b8b25a6ba9558bf232d16acf08fd71",
+      "integratedSha256": "0767ab47da781aff920efee2a7b77af560b8b25a6ba9558bf232d16acf08fd71",
+      "patches": []
+    },
+    {
+      "name": "LetterGlitch.tsx",
+      "registry": "https://reactbits.dev/r/LetterGlitch-TS-CSS.json",
+      "upstreamSha256": "5c0a7880f439483dd480a9352afbd9919352113c4b0afb2cfadcb07fb195fd62",
+      "integratedSha256": "6151dddad1e1ee2e7bb13addb123bb3f5d4decd4aceacb9314f266e156246866",
+      "patches": [
+        "Keep attached WebGL contexts alive during React Strict Mode effect replay.",
+        "Composite backgroundColor in CSS so transparency works in both themes."
+      ]
+    },
+    {
+      "name": "LogoLoop.css",
+      "registry": "https://reactbits.dev/r/LogoLoop-TS-CSS.json",
+      "upstreamSha256": "f6fa424e4c054e7418043edaa59e3204daf241587a8db557216d34d2abfa5cac",
+      "integratedSha256": "f6fa424e4c054e7418043edaa59e3204daf241587a8db557216d34d2abfa5cac",
+      "patches": []
+    },
+    {
+      "name": "LogoLoop.tsx",
+      "registry": "https://reactbits.dev/r/LogoLoop-TS-CSS.json",
+      "upstreamSha256": "037292e61ff28d078b918ecc6a085df4a414025ae4855094a45a2c8739dac44e",
+      "integratedSha256": "967701a500ff7a7d8b3f202eba794983443cfbe3c280cbcac33ab02e4ee23248",
+      "patches": []
+    },
+    {
+      "name": "Magnet.tsx",
+      "registry": "https://reactbits.dev/r/Magnet-TS-CSS.json",
+      "upstreamSha256": "f2f4dcbb666b0323f8ad0c42e8d10cdb954fb69a1c39f9de2a9278b3651f1ab7",
+      "integratedSha256": "150ec6700633eb78c85e0d8aff2bdfae34c2a49e8c30dffffd6cc28b873ccac7",
+      "patches": []
+    },
+    {
+      "name": "MagnetLines.css",
+      "registry": "https://reactbits.dev/r/MagnetLines-TS-CSS.json",
+      "upstreamSha256": "eb901406c543534e56d2c67368a824ecda76ec1b1db8e8d497bb244f5e25579c",
+      "integratedSha256": "eb901406c543534e56d2c67368a824ecda76ec1b1db8e8d497bb244f5e25579c",
+      "patches": []
+    },
+    {
+      "name": "MagnetLines.tsx",
+      "registry": "https://reactbits.dev/r/MagnetLines-TS-CSS.json",
+      "upstreamSha256": "976e402ea2ad621e2d1e57a3a3a68f887444c3b710091f0bb5d19eb4c9b428f9",
+      "integratedSha256": "360c69327f4206ed58add1920e3e6d48a98355b4d7fe786dcf1b84a64b5a42f8",
+      "patches": []
+    },
+    {
+      "name": "Noise.css",
+      "registry": "https://reactbits.dev/r/Noise-TS-CSS.json",
+      "upstreamSha256": "6152752fff23854636b48d893ee74463229b1092f0183b8f3d62b584538fcddc",
+      "integratedSha256": "6152752fff23854636b48d893ee74463229b1092f0183b8f3d62b584538fcddc",
+      "patches": []
+    },
+    {
+      "name": "Noise.tsx",
+      "registry": "https://reactbits.dev/r/Noise-TS-CSS.json",
+      "upstreamSha256": "057832d28e5c6be22b9808813bc5e567cce39544fb70669064871bdb0b78b2d5",
+      "integratedSha256": "21ef81b8f98970276636053e7fb1b56657da4f02ac9b5781983ee24a87159e8b",
+      "patches": []
+    },
+    {
+      "name": "RotatingText.css",
+      "registry": "https://reactbits.dev/r/RotatingText-TS-CSS.json",
+      "upstreamSha256": "9d77b26466ede85569dc01da9e44b60fb3337023c850c309a6efe9e231183f83",
+      "integratedSha256": "9d77b26466ede85569dc01da9e44b60fb3337023c850c309a6efe9e231183f83",
+      "patches": []
+    },
+    {
+      "name": "RotatingText.tsx",
+      "registry": "https://reactbits.dev/r/RotatingText-TS-CSS.json",
+      "upstreamSha256": "0e600d84f677dad2bade6366a328d64fdbc2fbabee6af2749311c0fdbc4492a9",
+      "integratedSha256": "9f2fe41d01599046d4d37e03dce42905a3fd6d70ebb77940fb2f81144d9f0eb5",
+      "patches": []
+    },
+    {
+      "name": "ShinyText.css",
+      "registry": "https://reactbits.dev/r/ShinyText-TS-CSS.json",
+      "upstreamSha256": "6030200a8885aba91536e2e367a0ed316989f10122f9d91a20f09caf1b5f46ab",
+      "integratedSha256": "6030200a8885aba91536e2e367a0ed316989f10122f9d91a20f09caf1b5f46ab",
+      "patches": []
+    },
+    {
+      "name": "ShinyText.tsx",
+      "registry": "https://reactbits.dev/r/ShinyText-TS-CSS.json",
+      "upstreamSha256": "4748b686d55e8fc2b09cb69843c1417e2bf78d0eaac0db368442ea1c258b00b3",
+      "integratedSha256": "cbe93319fba910d874b420e36d1255ae3de4927d3c136115883cf2a304c9de98",
+      "patches": []
+    },
+    {
+      "name": "SpotlightCard.css",
+      "registry": "https://reactbits.dev/r/SpotlightCard-TS-CSS.json",
+      "upstreamSha256": "b646b7da4bb46f0a4d819d0af275804c49a845a5c2dc848700aaf9282db13a92",
+      "integratedSha256": "b646b7da4bb46f0a4d819d0af275804c49a845a5c2dc848700aaf9282db13a92",
+      "patches": []
+    },
+    {
+      "name": "SpotlightCard.tsx",
+      "registry": "https://reactbits.dev/r/SpotlightCard-TS-CSS.json",
+      "upstreamSha256": "581d8859b8b780a61f3710b5d39b9e37a365742626cf30858a5fdbfbfb4d8807",
+      "integratedSha256": "1006bde748017bf06eae0fb8585ece735f5c16ae9d3643a8e75c64181171c920",
+      "patches": []
+    },
+    {
+      "name": "StarBorder.css",
+      "registry": "https://reactbits.dev/r/StarBorder-TS-CSS.json",
+      "upstreamSha256": "128fe0068b2d7964c28488d24465626ff34f3143a66082a6548a1a1f57c987d2",
+      "integratedSha256": "128fe0068b2d7964c28488d24465626ff34f3143a66082a6548a1a1f57c987d2",
+      "patches": []
+    },
+    {
+      "name": "StarBorder.tsx",
+      "registry": "https://reactbits.dev/r/StarBorder-TS-CSS.json",
+      "upstreamSha256": "3da1c1856f3b41fbc9f9a7ecf945e6248de44464f763cd5162bb73fee0f30f17",
+      "integratedSha256": "66a93ce92fa6df64c1dc34b9aadde97ca43190294199c882b969bd1fcb603ff6",
+      "patches": []
+    },
+    {
+      "name": "Stepper.css",
+      "registry": "https://reactbits.dev/r/Stepper-TS-CSS.json",
+      "upstreamSha256": "417223c9c56157b27bae7d7214e3fb3a3c8da65e69c6935c6a199fc22b151436",
+      "integratedSha256": "417223c9c56157b27bae7d7214e3fb3a3c8da65e69c6935c6a199fc22b151436",
+      "patches": []
+    },
+    {
+      "name": "Stepper.tsx",
+      "registry": "https://reactbits.dev/r/Stepper-TS-CSS.json",
+      "upstreamSha256": "d61797e7565611157ba912d9dda26d43937698f2fe2701d2271aa2380a00a2f0",
+      "integratedSha256": "1dc0b2b2312a68db3a6157cd26ddd4b57119c266ec6d1d57b515e3de73c88f37",
+      "patches": []
+    },
+    {
+      "name": "TextPressure.tsx",
+      "registry": "https://reactbits.dev/r/TextPressure-TS-CSS.json",
+      "upstreamSha256": "684ba27ca363af5ab87a12476e4ab4a9155b0aaff8f61d83414129f214cbf8f1",
+      "integratedSha256": "0b7355ba05d83c29a7a441b04091e5b27880de50a73863a878bf885dca1b7842",
+      "patches": []
+    },
+    {
+      "name": "TiltedCard.css",
+      "registry": "https://reactbits.dev/r/TiltedCard-TS-CSS.json",
+      "upstreamSha256": "6214acb092fd97b67af30712ae7d53590bd65ee695c79867410dbed68a042904",
+      "integratedSha256": "6214acb092fd97b67af30712ae7d53590bd65ee695c79867410dbed68a042904",
+      "patches": []
+    },
+    {
+      "name": "TiltedCard.tsx",
+      "registry": "https://reactbits.dev/r/TiltedCard-TS-CSS.json",
+      "upstreamSha256": "ca6b76a91a87659987c872b8a000e8776bc885d70aeeded46da9b9645554e07e",
+      "integratedSha256": "624939d370e602ffbd2a81c62c4dd5418d5e1a99f7a14a46c29fbbf25debfc5c",
+      "patches": []
+    },
+    {
+      "name": "TrueFocus.css",
+      "registry": "https://reactbits.dev/r/TrueFocus-TS-CSS.json",
+      "upstreamSha256": "711bebdd35d0c3c24153e9d926adbccac9dce044982b867371115f146dfabba1",
+      "integratedSha256": "711bebdd35d0c3c24153e9d926adbccac9dce044982b867371115f146dfabba1",
+      "patches": []
+    },
+    {
+      "name": "TrueFocus.tsx",
+      "registry": "https://reactbits.dev/r/TrueFocus-TS-CSS.json",
+      "upstreamSha256": "11d8d2e4201509f52eba40ca97bdda8dedb646457969ce70408ab0c6d6d2dc08",
+      "integratedSha256": "3e2981f1c7739742bca11030b3ed23c27d2aeb069e0f3ffb8fadda4fe131d068",
+      "patches": []
+    },
+    {
+      "name": "Waves.css",
+      "registry": "https://reactbits.dev/r/Waves-TS-CSS.json",
+      "upstreamSha256": "7341b669eb2fe3c80595255c5aab772da6033a816914975f997a8aa1f7506266",
+      "integratedSha256": "7341b669eb2fe3c80595255c5aab772da6033a816914975f997a8aa1f7506266",
+      "patches": []
+    },
+    {
+      "name": "Waves.tsx",
+      "registry": "https://reactbits.dev/r/Waves-TS-CSS.json",
+      "upstreamSha256": "eb2d95ad72a82856247ba07a419f0113cc1099198a3e59a136ae43638b7f7400",
+      "integratedSha256": "fa325cb2f013d149724f3539832dc414bf48e7bcabe8fcee782f067c6600a975",
+      "patches": [
+        "Keep attached WebGL contexts alive during React Strict Mode effect replay."
+      ]
+    }
+  ]
+}

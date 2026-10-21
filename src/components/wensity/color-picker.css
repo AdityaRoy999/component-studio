@@ -1,0 +1,19 @@
+/* Wensity chrome follows the host tokens; the color selection surfaces retain
+   their true spectrum. Scoped for the existing Tailwind 3 preview pipeline. */
+[data-wensity-primitive],.wensity-color-positioner,.studio-color-trigger{
+  --background:var(--surface);--foreground:var(--ink);--border:var(--line-strong);
+  --primitive-surface-overlay:var(--surface);--primitive-surface-hover:var(--surface-hover);
+  --primitive-text-secondary:var(--secondary-ink);--primitive-text-placeholder:var(--quiet-ink);
+  --primitive-ring:var(--ink);--primitive-radius-control:14px;--primitive-radius-control-sm:10px;
+  --primitive-radius-surface:22px;--primitive-control-height-md:44px;--primitive-z-popover:1200;
+  --primitive-shadow-overlay:0 12px 48px #0003;--primitive-ease:cubic-bezier(.22,1,.36,1);
+}
+.wensity-color-positioner{z-index:1200;max-width:calc(100vw - 24px)}
+[data-slot=wensity-color-picker-panel]{max-width:calc(100vw - 24px);border-color:var(--line);font-family:inherit}
+[data-slot=wensity-color-picker-panel] input{min-width:0}
+[data-slot=wensity-color-picker-panel] button{min-width:32px;min-height:32px}
+[data-slot=wensity-color-picker-panel] [role=slider]{touch-action:none}
+.studio-color-trigger{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:8px 12px;background:var(--surface-raised);color:var(--ink);border-radius:999px;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.studio-color-trigger:hover{background:var(--surface-hover)}
+.studio-color-swatch{height:23px;width:23px;flex-shrink:0;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line-strong)}
+.studio-color-example{display:grid;gap:20px;place-items:center;padding:24px;border-radius:24px;background:var(--surface);color:var(--ink)}

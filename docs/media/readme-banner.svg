@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="60" y1="0" x2="1200" y2="440" gradientUnits="userSpaceOnUse"><stop stop-color="#1c1c1c"/><stop offset=".55" stop-color="#101010"/><stop offset="1" stop-color="#181818"/></linearGradient>
+    <linearGradient id="card" x1="820" y1="100" x2="1130" y2="350" gradientUnits="userSpaceOnUse"><stop stop-color="#262626"/><stop offset="1" stop-color="#181818"/></linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(1000 220) rotate(90) scale(205 320)" gradientUnits="userSpaceOnUse"><stop stop-color="#444" stop-opacity=".35"/><stop offset="1" stop-color="#333" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1280" height="440" rx="28" fill="url(#bg)"/>
+  <rect x=".5" y=".5" width="1279" height="439" rx="27.5" stroke="#303030"/>
+  <rect x="650" y="30" width="590" height="370" fill="url(#glow)"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="66" y="54" width="38" height="38" rx="12" fill="#242424" stroke="#3b3b3b"/>
+    <g stroke="#ededed" stroke-width="1.5" stroke-linecap="round"><path d="M79 69h12v12H79z"/><path d="M79 69c-7 0-7-7-3.5-7S79 65.5 79 69Zm12 0c0-7 7-7 7-3.5S94.5 69 91 69Zm0 12c7 0 7 7 3.5 7S91 84.5 91 81Zm-12 0c0 7-7 7-7 3.5S75.5 81 79 81Z"/></g>
+    <text x="118" y="79" font-size="20" letter-spacing="-.7" fill="#f2f2f2" font-weight="700">component<tspan fill="#858585" font-weight="400">/studio</tspan></text>
+    <text x="68" y="140" font-size="10" letter-spacing="2.6" fill="#959595">A COMPONENT WORKBENCH FOR THE WEB</text>
+    <text x="64" y="205" font-size="51" letter-spacing="-2.3" fill="#f1f1ed" font-weight="700">From a thought.</text>
+    <text x="64" y="264" font-size="51" letter-spacing="-2.3" fill="#f1f1ed" font-weight="700">To a working component.</text>
+    <text x="68" y="310" font-size="16" fill="#a3a3a3">Describe. Generate. Refine. Make it yours.</text>
+    <g transform="translate(840 76) rotate(-4 160 125)">
+      <rect x="14" y="17" width="304" height="248" rx="23" fill="#080808" fill-opacity=".4"/>
+      <rect width="304" height="248" rx="23" fill="url(#card)" stroke="#424242"/>
+      <path d="M0 49h304" stroke="#363636"/>
+      <circle cx="22" cy="25" r="3" fill="#686868"/><circle cx="34" cy="25" r="3" fill="#4c4c4c"/><circle cx="46" cy="25" r="3" fill="#3d3d3d"/>
+      <rect x="167" y="12" width="122" height="26" rx="13" fill="#161616"/><rect x="170" y="15" width="64" height="20" rx="10" fill="#353535"/>
+      <text x="181" y="29" fill="#e4e4e4" font-size="10">Preview</text><text x="249" y="29" fill="#868686" font-size="10">Code</text>
+      <g transform="translate(28 76)" stroke="#d9d9d9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"><path d="m0 8 14-8 14 8-14 8Z"/><path d="m0 15 14 8 14-8M0 22l14 8 14-8"/></g>
+      <text x="28" y="139" fill="#eeeeea" font-size="23" letter-spacing="-.7" font-weight="700">A little possibility.</text>
+      <text x="28" y="165" fill="#9a9a9a" font-size="12">Small details. Room for your next idea.</text>
+      <rect x="28" y="190" width="118" height="32" rx="16" fill="#e5e5e2"/><text x="44" y="210" fill="#232323" font-size="11" font-weight="700">Make it yours</text><path d="M126 206h8m-3-3 3 3-3 3" stroke="#232323" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <path d="M68 366h1144" stroke="#353535"/>
+    <g font-size="11" letter-spacing=".3" fill="#929292"><text x="68" y="402"><tspan fill="#e6e6e6" font-weight="700">30</tspan> interactive components</text><text x="325" y="402"><tspan fill="#e6e6e6" font-weight="700">320</tspan> featured libraries</text><text x="554" y="402"><tspan fill="#e6e6e6" font-weight="700">21</tspan> categories to explore</text><text x="1044" y="402">LOCAL-FIRST. YOURS.</text></g>
+  </g>
+</svg>

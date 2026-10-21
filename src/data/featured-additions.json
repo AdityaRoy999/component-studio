@@ -1,0 +1,1097 @@
+{
+  "animation": [
+    [
+      "Motion",
+      "https://motion.dev/",
+      "Production animation, gestures, and layout transitions for the web."
+    ],
+    [
+      "React Spring",
+      "https://www.react-spring.dev/",
+      "Spring physics animation primitives for React interfaces."
+    ],
+    [
+      "Anime.js",
+      "https://animejs.com/",
+      "JavaScript animation for CSS, SVG, DOM attributes, and objects."
+    ],
+    [
+      "AutoAnimate",
+      "https://auto-animate.formkit.com/",
+      "Automatic enter, leave, and rearrangement animations."
+    ],
+    [
+      "React Transition Group",
+      "https://reactcommunity.org/react-transition-group/",
+      "Lifecycle components for coordinating React transitions."
+    ],
+    [
+      "VueUse Motion",
+      "https://motion.vueuse.org/",
+      "Composable animation utilities and directives for Vue."
+    ],
+    [
+      "React Scroll Parallax",
+      "https://react-scroll-parallax.damnthat.tv/",
+      "Scroll-driven parallax components and hooks for React."
+    ],
+    [
+      "Parallax.js",
+      "https://matthew.wagerfield.com/parallax/",
+      "Device orientation and pointer-driven parallax scenes."
+    ],
+    [
+      "Sal.js",
+      "https://mciastek.github.io/sal/",
+      "Small scroll animation library powered by Intersection Observer."
+    ],
+    [
+      "Locomotive Scroll",
+      "https://scroll.locomotive.ca/",
+      "Smooth scrolling, scroll detection, and parallax effects."
+    ],
+    [
+      "Lenis",
+      "https://lenis.dev/",
+      "Smooth scrolling with accessible native browser behavior."
+    ],
+    [
+      "Granim.js",
+      "https://sarcadass.github.io/granim.js/",
+      "Animated canvas gradients with interactive states."
+    ],
+    [
+      "KUTE.js",
+      "https://thednp.github.io/kute.js/",
+      "Tweening and SVG morphing for expressive web animation."
+    ],
+    [
+      "Lottie React",
+      "https://lottiereact.com/",
+      "React components and hooks for interactive Lottie playback."
+    ],
+    [
+      "DotLottie Web",
+      "https://developers.lottiefiles.com/docs/dotlottie-player/dotlottie-web/",
+      "A web player for the compact dotLottie animation format."
+    ],
+    [
+      "Number Flow",
+      "https://number-flow.barvian.me/",
+      "Smooth animated number transitions for reactive interfaces."
+    ],
+    [
+      "React Intersection Observer",
+      "https://react-intersection-observer.thebuilder.dk/",
+      "React hooks and components for viewport visibility detection."
+    ]
+  ],
+  "charts": [
+    [
+      "D3",
+      "https://d3js.org/",
+      "Data-driven visualization primitives for SVG, canvas, and the DOM."
+    ],
+    [
+      "Chart.js",
+      "https://www.chartjs.org/",
+      "Responsive canvas charts with plugins and animation."
+    ],
+    [
+      "Apache ECharts",
+      "https://echarts.apache.org/",
+      "Interactive charts, dashboards, and large-scale data visualization."
+    ],
+    [
+      "Recharts",
+      "https://recharts.org/",
+      "Composable React chart components built on SVG."
+    ],
+    [
+      "Nivo",
+      "https://nivo.rocks/",
+      "Responsive React charts with SVG and canvas renderers."
+    ],
+    [
+      "Visx",
+      "https://visx.airbnb.tech/",
+      "Low-level React visualization components powered by D3."
+    ],
+    [
+      "Victory",
+      "https://commerce.nearform.com/open-source/victory/",
+      "Composable chart components for React applications."
+    ],
+    [
+      "Plotly.js",
+      "https://plotly.com/javascript/",
+      "Interactive scientific, statistical, and business charts."
+    ],
+    [
+      "uPlot",
+      "https://leeoniya.github.io/uPlot/",
+      "Compact, fast canvas charts for time series and large datasets."
+    ],
+    [
+      "Chartist",
+      "https://chartist.dev/",
+      "Responsive SVG charts with flexible styling."
+    ],
+    [
+      "Billboard.js",
+      "https://naver.github.io/billboard.js/",
+      "Reusable D3 charts with a simple configuration API."
+    ],
+    [
+      "C3.js",
+      "https://c3js.org/",
+      "D3-based chart components with an accessible configuration layer."
+    ],
+    [
+      "Vega",
+      "https://vega.github.io/vega/",
+      "A declarative visualization grammar for interactive graphics."
+    ],
+    [
+      "Vega-Lite",
+      "https://vega.github.io/vega-lite/",
+      "Concise specifications for layered and interactive visualizations."
+    ],
+    [
+      "Unovis",
+      "https://unovis.dev/",
+      "Modular charts, maps, and network diagrams for multiple frameworks."
+    ],
+    [
+      "AntV G2",
+      "https://g2.antv.antgroup.com/",
+      "A visualization grammar for interactive statistical graphics."
+    ],
+    [
+      "AntV G6",
+      "https://g6.antv.antgroup.com/",
+      "Graph visualization and exploration with configurable layouts."
+    ],
+    [
+      "AntV F2",
+      "https://f2.antv.antgroup.com/",
+      "Compact charts designed for mobile interfaces."
+    ],
+    [
+      "Semiotic",
+      "https://semiotic.nteract.io/",
+      "React visualization frameworks for networks, XY plots, and ordinal data."
+    ],
+    [
+      "RoughViz",
+      "https://github.com/jwilber/roughViz",
+      "Hand-drawn chart components for playful data visualization."
+    ],
+    [
+      "VChart",
+      "https://www.visactor.io/vchart",
+      "Cross-platform charting with storytelling and animation features."
+    ]
+  ],
+  "tables": [
+    [
+      "TanStack Table",
+      "https://tanstack.com/table/latest",
+      "Headless table logic for sorting, filtering, grouping, and pagination."
+    ],
+    [
+      "Glide Data Grid",
+      "https://grid.glideapps.com/",
+      "A canvas-based React grid for large, editable datasets."
+    ],
+    [
+      "Material React Table",
+      "https://www.material-react-table.com/",
+      "Material UI tables with integrated sorting, filtering, and editing."
+    ],
+    [
+      "Mantine React Table",
+      "https://www.mantine-react-table.com/",
+      "Mantine data tables powered by TanStack Table."
+    ],
+    [
+      "Mantine DataTable",
+      "https://icflorescu.github.io/mantine-datatable/",
+      "Composable Mantine tables with pagination, selection, and expansion."
+    ],
+    [
+      "Tabulator",
+      "https://tabulator.info/",
+      "Interactive tables with editing, filtering, and data import."
+    ],
+    [
+      "Grid.js",
+      "https://gridjs.io/",
+      "Small framework-independent tables with search and pagination."
+    ],
+    [
+      "VTable",
+      "https://www.visactor.io/vtable",
+      "Canvas-rendered tables and pivot tables for dense datasets."
+    ],
+    [
+      "React Data Table Component",
+      "https://react-data-table-component.netlify.app/",
+      "Declarative React tables with selection, expansion, and pagination."
+    ],
+    [
+      "React Virtualized",
+      "https://bvaughn.github.io/react-virtualized/",
+      "Virtualized lists, tables, and grids for large collections."
+    ],
+    [
+      "React Window",
+      "https://react-window.vercel.app/",
+      "Efficient React rendering for long lists and grids."
+    ],
+    [
+      "TanStack Virtual",
+      "https://tanstack.com/virtual/latest",
+      "Headless virtualization for scrollable lists and grids."
+    ]
+  ],
+  "forms": [
+    [
+      "React Hook Form",
+      "https://react-hook-form.com/",
+      "Performant React forms with validation and minimal rerenders."
+    ],
+    [
+      "Formik",
+      "https://formik.org/",
+      "React form state, validation, and submission helpers."
+    ],
+    [
+      "TanStack Form",
+      "https://tanstack.com/form/latest",
+      "Type-safe form state and validation across multiple frameworks."
+    ],
+    [
+      "Final Form",
+      "https://final-form.org/",
+      "Subscription-based form state with framework adapters."
+    ],
+    [
+      "FormKit",
+      "https://formkit.com/",
+      "Vue form inputs, validation, and schema-driven form generation."
+    ],
+    [
+      "Formily",
+      "https://formilyjs.org/",
+      "Schema-driven form building with reactive field management."
+    ],
+    [
+      "React JSON Schema Form",
+      "https://rjsf-team.github.io/react-jsonschema-form/",
+      "Generate customizable React forms from JSON Schema."
+    ],
+    [
+      "Uniforms",
+      "https://uniforms.tools/",
+      "Schema-driven React forms with multiple design-system integrations."
+    ],
+    [
+      "VeeValidate",
+      "https://vee-validate.logaretm.com/",
+      "Vue form validation with composable fields and schema support."
+    ],
+    [
+      "Vuelidate",
+      "https://vuelidate-next.netlify.app/",
+      "Model-based validation for Vue form interfaces."
+    ],
+    [
+      "Svelte Superforms",
+      "https://superforms.rocks/",
+      "Type-safe SvelteKit forms with validation and progressive enhancement."
+    ],
+    [
+      "Felte",
+      "https://felte.dev/",
+      "Extensible form management for Svelte, Solid, and React."
+    ],
+    [
+      "Modular Forms",
+      "https://modularforms.dev/",
+      "Typed, modular forms with framework-specific reactive bindings."
+    ],
+    [
+      "React Select",
+      "https://react-select.com/",
+      "Accessible select controls with search, async options, and multiselect."
+    ],
+    [
+      "Downshift",
+      "https://www.downshift-js.com/",
+      "Headless autocomplete, combobox, and select building blocks."
+    ],
+    [
+      "Choices.js",
+      "https://choices-js.github.io/Choices/",
+      "Customizable select boxes and text inputs without jQuery."
+    ],
+    [
+      "Tagify",
+      "https://yaireo.github.io/tagify/",
+      "Tag inputs with suggestions, validation, and mixed text support."
+    ]
+  ],
+  "editors": [
+    [
+      "Tiptap",
+      "https://tiptap.dev/",
+      "A headless rich-text editor with an extensible open-source core."
+    ],
+    [
+      "Lexical",
+      "https://lexical.dev/",
+      "An extensible text editor framework with accessible interactions."
+    ],
+    [
+      "Quill",
+      "https://quilljs.com/",
+      "A modular rich-text editor with a document change API."
+    ],
+    [
+      "ProseMirror",
+      "https://prosemirror.net/",
+      "A toolkit for structured rich-text editing and custom document models."
+    ],
+    [
+      "CodeMirror",
+      "https://codemirror.net/",
+      "An extensible browser code editor with language and theme support."
+    ],
+    [
+      "Ace",
+      "https://ace.c9.io/",
+      "An embeddable code editor with syntax highlighting and language tools."
+    ],
+    [
+      "Editor.js",
+      "https://editorjs.io/",
+      "Block-style editing with structured JSON output."
+    ],
+    [
+      "BlockNote",
+      "https://www.blocknotejs.org/",
+      "A React block editor with collaboration and rich content support."
+    ],
+    [
+      "Plate",
+      "https://platejs.org/",
+      "Composable plugins and components for Slate-based React editors."
+    ],
+    [
+      "Milkdown",
+      "https://milkdown.dev/",
+      "A plugin-driven Markdown editor built on ProseMirror."
+    ],
+    [
+      "MDXEditor",
+      "https://mdxeditor.dev/",
+      "A React editor for Markdown, JSX, and rich content blocks."
+    ],
+    [
+      "TOAST UI Editor",
+      "https://ui.toast.com/tui-editor",
+      "Markdown and WYSIWYG editing with preview and extensions."
+    ],
+    [
+      "wangEditor",
+      "https://www.wangeditor.com/",
+      "A configurable rich-text editor with Vue and React integrations."
+    ],
+    [
+      "Jodit",
+      "https://xdsoft.net/jodit/",
+      "A WYSIWYG editor with a configurable toolbar and plugins."
+    ],
+    [
+      "Craft.js",
+      "https://craft.js.org/",
+      "React primitives for creating drag-and-drop page editors."
+    ],
+    [
+      "Puck",
+      "https://puckeditor.com/",
+      "A visual editor for assembling pages from your React components."
+    ]
+  ],
+  "media": [
+    [
+      "Swiper",
+      "https://swiperjs.com/",
+      "Touch sliders and carousels with framework components."
+    ],
+    [
+      "Embla Carousel",
+      "https://www.embla-carousel.com/",
+      "Lightweight carousels with precise motion and plugin support."
+    ],
+    [
+      "Keen Slider",
+      "https://keen-slider.io/",
+      "Responsive touch sliders with extensible movement behavior."
+    ],
+    [
+      "Splide",
+      "https://splidejs.com/",
+      "Accessible sliders with autoplay, synchronization, and responsive options."
+    ],
+    [
+      "Glide.js",
+      "https://glidejs.com/",
+      "A dependency-free slider and carousel with modular extensions."
+    ],
+    [
+      "Flicking",
+      "https://naver.github.io/egjs-flicking/",
+      "Flexible flickable carousels with circular and free scrolling."
+    ],
+    [
+      "PhotoSwipe",
+      "https://photoswipe.com/",
+      "Touch-friendly image galleries with zoom and animated transitions."
+    ],
+    [
+      "Yet Another React Lightbox",
+      "https://yet-another-react-lightbox.com/",
+      "React lightboxes with zoom, captions, and thumbnail plugins."
+    ],
+    [
+      "React Photo Album",
+      "https://react-photo-album.com/",
+      "Responsive photo layouts in rows, columns, and masonry."
+    ],
+    [
+      "Video.js",
+      "https://videojs.com/",
+      "An accessible HTML video player with a plugin ecosystem."
+    ],
+    [
+      "Plyr",
+      "https://plyr.io/",
+      "Customizable controls for HTML video, audio, YouTube, and Vimeo."
+    ],
+    [
+      "Media Chrome",
+      "https://www.media-chrome.org/",
+      "Composable web components for custom media player controls."
+    ],
+    [
+      "Wavesurfer.js",
+      "https://wavesurfer.xyz/",
+      "Interactive audio waveforms with regions and playback controls."
+    ],
+    [
+      "Uppy",
+      "https://uppy.io/",
+      "Modular file upload interfaces with previews and progress tracking."
+    ],
+    [
+      "FilePond",
+      "https://pqina.nl/filepond/",
+      "Polished file uploads with previews, validation, and plugins."
+    ],
+    [
+      "React Dropzone",
+      "https://react-dropzone.js.org/",
+      "React hooks for accessible drag-and-drop file uploads."
+    ]
+  ],
+  "icons": [
+    [
+      "Lucide",
+      "https://lucide.dev/",
+      "Consistent line icons with packages for popular frameworks."
+    ],
+    [
+      "Tabler Icons",
+      "https://tabler.io/icons",
+      "A large collection of editable SVG outline icons."
+    ],
+    [
+      "Heroicons",
+      "https://heroicons.com/",
+      "Handcrafted outline and solid icons from the Tailwind team."
+    ],
+    [
+      "Phosphor Icons",
+      "https://phosphoricons.com/",
+      "Flexible icons in multiple weights for interfaces and diagrams."
+    ],
+    [
+      "Bootstrap Icons",
+      "https://icons.getbootstrap.com/",
+      "SVG icons usable with Bootstrap or any frontend stack."
+    ],
+    [
+      "Octicons",
+      "https://primer.style/octicons/",
+      "GitHub's interface icons with SVG and React packages."
+    ],
+    [
+      "Ionicons",
+      "https://ionic.io/ionicons",
+      "Interface icons designed for web and mobile applications."
+    ],
+    [
+      "Iconoir",
+      "https://iconoir.com/",
+      "A broad collection of fine-line SVG interface icons."
+    ],
+    [
+      "Radix Icons",
+      "https://www.radix-ui.com/icons",
+      "A crisp 15-pixel icon set for compact interface layouts."
+    ],
+    [
+      "Flag Icons",
+      "https://flagicons.lipis.dev/",
+      "Country flag SVGs and CSS utilities for interfaces."
+    ],
+    [
+      "DiceBear",
+      "https://www.dicebear.com/",
+      "Procedural avatar generation with configurable visual styles."
+    ]
+  ],
+  "layout": [
+    [
+      "dnd-kit",
+      "https://dndkit.com/",
+      "Accessible drag-and-drop primitives and sortable interactions for React."
+    ],
+    [
+      "Pragmatic Drag and Drop",
+      "https://atlassian.design/components/pragmatic-drag-and-drop/",
+      "Flexible drag-and-drop building blocks from Atlassian."
+    ],
+    [
+      "SortableJS",
+      "https://sortablejs.github.io/Sortable/",
+      "Reorderable lists with touch support and framework integrations."
+    ],
+    [
+      "React DnD",
+      "https://react-dnd.github.io/react-dnd/",
+      "React drag-and-drop interfaces with pluggable input backends."
+    ],
+    [
+      "GridStack",
+      "https://gridstackjs.com/",
+      "Interactive dashboard grids with dragging, resizing, and nesting."
+    ],
+    [
+      "Moveable",
+      "https://daybrush.com/moveable/",
+      "Drag, resize, rotate, and warp elements with interactive handles."
+    ],
+    [
+      "Interact.js",
+      "https://interactjs.io/",
+      "Drag, resize, multitouch gestures, and snapping for DOM elements."
+    ],
+    [
+      "React Resizable Panels",
+      "https://react-resizable-panels.vercel.app/",
+      "Accessible resizable panel groups for React application layouts."
+    ],
+    [
+      "Split.js",
+      "https://split.js.org/",
+      "Lightweight split views with draggable resizing gutters."
+    ],
+    [
+      "Allotment",
+      "https://allotment.mulberryhousesoftware.com/",
+      "Resizable split panes for React workspaces."
+    ],
+    [
+      "React Flow",
+      "https://reactflow.dev/",
+      "Interactive node editors, workflow diagrams, and graph interfaces."
+    ],
+    [
+      "Svelte Flow",
+      "https://svelteflow.dev/",
+      "Node-based editors and interactive diagrams for Svelte."
+    ],
+    [
+      "Rete.js",
+      "https://retejs.org/",
+      "A framework for visual programming and node-based editors."
+    ]
+  ],
+  "dates": [
+    [
+      "FullCalendar",
+      "https://fullcalendar.io/",
+      "Interactive event calendars with views, dragging, and framework adapters."
+    ],
+    [
+      "DayPicker",
+      "https://daypicker.dev/",
+      "Customizable React calendars for single dates and date ranges."
+    ],
+    [
+      "React Datepicker",
+      "https://reactdatepicker.com/",
+      "React date and time inputs with keyboard navigation."
+    ],
+    [
+      "Flatpickr",
+      "https://flatpickr.js.org/",
+      "Lightweight date and time pickers with localization and plugins."
+    ],
+    [
+      "Air Datepicker",
+      "https://air-datepicker.com/",
+      "Configurable date and time pickers with range selection."
+    ],
+    [
+      "Vanilla Calendar Pro",
+      "https://vanilla-calendar.pro/",
+      "Dependency-free calendar widgets with date and time selection."
+    ],
+    [
+      "Schedule-X",
+      "https://schedule-x.dev/",
+      "Modern event calendars with framework integrations and plugins."
+    ],
+    [
+      "TOAST UI Calendar",
+      "https://ui.toast.com/tui-calendar",
+      "JavaScript calendars with schedule management and multiple views."
+    ],
+    [
+      "VCalendar",
+      "https://vcalendar.io/",
+      "Vue calendars and date pickers with flexible date attributes."
+    ],
+    [
+      "Vue Datepicker",
+      "https://vue3datepicker.com/",
+      "Vue date and time pickers with ranges and custom slots."
+    ]
+  ],
+  "maps": [
+    [
+      "Leaflet",
+      "https://leafletjs.com/",
+      "Lightweight interactive maps with markers, tiles, and plugins."
+    ],
+    [
+      "MapLibre GL JS",
+      "https://maplibre.org/maplibre-gl-js/docs/",
+      "GPU-rendered vector maps with an open-source web renderer."
+    ],
+    [
+      "OpenLayers",
+      "https://openlayers.org/",
+      "Maps with raster tiles, vector layers, projections, and interactions."
+    ],
+    [
+      "React Map GL",
+      "https://visgl.github.io/react-map-gl/",
+      "React bindings for MapLibre and Mapbox map renderers."
+    ],
+    [
+      "deck.gl",
+      "https://deck.gl/",
+      "GPU-powered layers for large-scale geospatial visualization."
+    ],
+    [
+      "CesiumJS",
+      "https://cesium.com/platform/cesiumjs/",
+      "Interactive 3D globes and geospatial scenes in the browser."
+    ],
+    [
+      "Pigeon Maps",
+      "https://pigeon-maps.js.org/",
+      "Lightweight React maps with custom markers and overlays."
+    ]
+  ],
+  "canvas": [
+    [
+      "Three.js",
+      "https://threejs.org/",
+      "A JavaScript 3D engine for interactive WebGL scenes."
+    ],
+    [
+      "React Three Fiber",
+      "https://r3f.docs.pmnd.rs/",
+      "A React renderer for composing Three.js scenes."
+    ],
+    [
+      "Drei",
+      "https://drei.docs.pmnd.rs/",
+      "Reusable helpers, controls, and abstractions for React Three Fiber."
+    ],
+    [
+      "Babylon.js",
+      "https://www.babylonjs.com/",
+      "A 3D engine with scene tools, materials, and WebXR support."
+    ],
+    [
+      "PixiJS",
+      "https://pixijs.com/",
+      "Fast 2D rendering for interactive graphics and visual interfaces."
+    ],
+    [
+      "Konva",
+      "https://konvajs.org/",
+      "Interactive canvas shapes, layers, and event handling."
+    ],
+    [
+      "Fabric.js",
+      "https://fabricjs.com/",
+      "An object model for editable canvas graphics and SVG import."
+    ],
+    [
+      "Paper.js",
+      "https://paperjs.org/",
+      "Vector graphics scripting with paths, geometry, and canvas rendering."
+    ],
+    [
+      "Two.js",
+      "https://two.js.org/",
+      "A 2D drawing API with SVG, canvas, and WebGL renderers."
+    ],
+    [
+      "TresJS",
+      "https://tresjs.org/",
+      "Declarative Three.js scenes built with Vue components."
+    ],
+    [
+      "Threlte",
+      "https://threlte.xyz/",
+      "Declarative 3D scenes and interactions for Svelte."
+    ],
+    [
+      "model-viewer",
+      "https://modelviewer.dev/",
+      "A web component for interactive 3D models and augmented reality."
+    ],
+    [
+      "Excalidraw",
+      "https://docs.excalidraw.com/",
+      "An embeddable React whiteboard with a hand-drawn visual style."
+    ]
+  ],
+  "mobile": [
+    [
+      "React Native Paper",
+      "https://reactnativepaper.com/",
+      "Material Design components for React Native applications."
+    ],
+    [
+      "React Native Elements",
+      "https://reactnativeelements.com/",
+      "Customizable cross-platform React Native interface components."
+    ],
+    [
+      "UI Kitten",
+      "https://akveo.github.io/react-native-ui-kitten/",
+      "Themeable mobile components based on the Eva design system."
+    ],
+    [
+      "React Native UI Lib",
+      "https://wix.github.io/react-native-ui-lib/",
+      "Mobile UI components, typography, layouts, and design tokens."
+    ],
+    [
+      "Magnus UI",
+      "https://magnus-ui.com/",
+      "Utility-driven React Native components for rapid mobile layouts."
+    ],
+    [
+      "NativeWind",
+      "https://www.nativewind.dev/",
+      "Tailwind-style styling for native and web React interfaces."
+    ],
+    [
+      "Restyle",
+      "https://shopify.github.io/restyle/",
+      "Type-safe themed building blocks for React Native."
+    ],
+    [
+      "Dripsy",
+      "https://www.dripsy.xyz/",
+      "Responsive, themeable styling primitives for React Native and web."
+    ],
+    [
+      "Moti",
+      "https://moti.fyi/",
+      "Declarative React Native animations powered by Reanimated."
+    ],
+    [
+      "React Native Reanimated",
+      "https://docs.swmansion.com/react-native-reanimated/",
+      "Smooth native animations and gesture-driven interactions."
+    ],
+    [
+      "React Native Gesture Handler",
+      "https://docs.swmansion.com/react-native-gesture-handler/",
+      "Native gesture recognition for touch-driven mobile interfaces."
+    ],
+    [
+      "React Native Bottom Sheet",
+      "https://gorhom.dev/react-native-bottom-sheet/",
+      "Gesture-driven bottom sheets with snapping and scroll integration."
+    ],
+    [
+      "React Native Calendars",
+      "https://wix.github.io/react-native-calendars/",
+      "Calendar, agenda, and date-selection components for React Native."
+    ],
+    [
+      "React Native Gifted Charts",
+      "https://gifted-charts.web.app/",
+      "Animated charts for React Native dashboards and mobile interfaces."
+    ],
+    [
+      "FlashList",
+      "https://shopify.github.io/flash-list/",
+      "High-performance recycling lists for React Native collections."
+    ]
+  ],
+  "solid": [
+    [
+      "Kobalte",
+      "https://kobalte.dev/",
+      "Accessible unstyled primitives for Solid applications."
+    ],
+    [
+      "Corvu",
+      "https://corvu.dev/",
+      "Accessible Solid primitives for complex interactive components."
+    ],
+    [
+      "Solid UI",
+      "https://www.solid-ui.com/",
+      "Composable Solid components inspired by shadcn/ui."
+    ],
+    [
+      "Solid Bootstrap",
+      "https://solid-libs.github.io/solid-bootstrap/",
+      "Bootstrap components implemented with Solid reactivity."
+    ],
+    [
+      "Solid Toast",
+      "https://solid-toast.com/",
+      "Configurable toast notifications for Solid applications."
+    ]
+  ],
+  "react": [
+    [
+      "Cloudscape",
+      "https://cloudscape.design/",
+      "AWS's open-source design system for cloud applications."
+    ],
+    [
+      "Polaris",
+      "https://polaris.shopify.com/",
+      "Shopify's design system and interface components for commerce tools."
+    ],
+    [
+      "Semi Design",
+      "https://semi.design/",
+      "A broad React component system for application interfaces."
+    ],
+    [
+      "Arco Design React",
+      "https://arco.design/",
+      "React components and design resources for enterprise applications."
+    ],
+    [
+      "TDesign React",
+      "https://tdesign.tencent.com/react/",
+      "Tencent's React component library and enterprise design system."
+    ]
+  ],
+  "html": [
+    [
+      "Pico CSS",
+      "https://picocss.com/",
+      "Minimal semantic HTML styling with responsive defaults."
+    ],
+    [
+      "Open Props",
+      "https://open-props.style/",
+      "CSS custom properties for colors, spacing, shadows, and motion."
+    ],
+    [
+      "Pure.css",
+      "https://pure-css.github.io/",
+      "Small responsive CSS modules for grids, forms, and navigation."
+    ],
+    [
+      "Milligram",
+      "https://milligram.io/",
+      "A minimal CSS framework with typography, forms, and layout styles."
+    ],
+    [
+      "Water.css",
+      "https://watercss.kognise.dev/",
+      "Classless CSS themes for semantic HTML pages."
+    ],
+    [
+      "Simple.css",
+      "https://simplecss.org/",
+      "A lightweight classless stylesheet for readable websites."
+    ],
+    [
+      "MVP.css",
+      "https://andybrewer.github.io/mvp/",
+      "Classless styles for building polished HTML prototypes quickly."
+    ]
+  ],
+  "vue": [
+    [
+      "PrimeVue",
+      "https://primevue.dev/",
+      "A broad suite of Vue components with styled and unstyled modes."
+    ],
+    [
+      "BootstrapVueNext",
+      "https://bootstrap-vue-next.github.io/bootstrap-vue-next/",
+      "Bootstrap 5 components for Vue 3 applications."
+    ],
+    [
+      "Buefy",
+      "https://buefy.org/",
+      "Lightweight Vue components styled with Bulma."
+    ],
+    [
+      "Vue Material",
+      "https://vuematerial.io/",
+      "Material Design components for Vue application interfaces."
+    ]
+  ],
+  "svelte": [
+    [
+      "Svelte UX",
+      "https://svelte-ux.techniq.dev/",
+      "Svelte components and actions for building application interfaces."
+    ],
+    [
+      "Svelte Headless UI",
+      "https://svelte-headlessui.goss.io/",
+      "Unstyled, accessible component patterns for Svelte."
+    ],
+    [
+      "Svelte Sonner",
+      "https://svelte-sonner.vercel.app/",
+      "Animated toast notifications for Svelte applications."
+    ]
+  ],
+  "angular": [
+    [
+      "PrimeNG",
+      "https://primeng.dev/",
+      "Angular application components with customizable themes."
+    ],
+    [
+      "NG Alain",
+      "https://ng-alain.com/",
+      "Angular enterprise application components and dashboard patterns."
+    ]
+  ],
+  "web": [
+    [
+      "Ionic Framework",
+      "https://ionicframework.com/",
+      "Cross-platform mobile UI components built with web technologies."
+    ],
+    [
+      "UI5 Web Components",
+      "https://ui5.github.io/webcomponents/",
+      "Enterprise interface components built on web standards."
+    ],
+    [
+      "Wired Elements",
+      "https://wiredjs.com/",
+      "Hand-drawn web components rendered with sketch-style outlines."
+    ],
+    [
+      "Elix",
+      "https://component.kitchen/elix",
+      "Customizable web components for common interface patterns."
+    ],
+    [
+      "Duet Date Picker",
+      "https://github.com/duetds/date-picker",
+      "An accessible date-picker web component for forms."
+    ],
+    [
+      "PatternFly Elements",
+      "https://patternflyelements.org/",
+      "Framework-independent web components from the PatternFly ecosystem."
+    ]
+  ],
+  "feedback": [
+    [
+      "Sonner",
+      "https://sonner.emilkowal.ski/",
+      "Stacked toast notifications with gestures and smooth motion."
+    ],
+    [
+      "Vaul",
+      "https://vaul.emilkowal.ski/",
+      "A drawer component for React with gesture-driven interactions."
+    ],
+    [
+      "React Hot Toast",
+      "https://react-hot-toast.com/",
+      "Lightweight React notifications with promise and custom rendering APIs."
+    ],
+    [
+      "Notistack",
+      "https://notistack.com/",
+      "Stacked snackbars for React with flexible queue management."
+    ],
+    [
+      "React Toastify",
+      "https://fkhadra.github.io/react-toastify/",
+      "Configurable React toast notifications with themes and transitions."
+    ],
+    [
+      "React Tooltip",
+      "https://react-tooltip.com/",
+      "Configurable tooltips with positioning and interaction options."
+    ],
+    [
+      "Floating UI",
+      "https://floating-ui.com/",
+      "Positioning primitives for tooltips, popovers, menus, and floating elements."
+    ],
+    [
+      "React Joyride",
+      "https://react-joyride.com/",
+      "Interactive guided tours for React product interfaces."
+    ],
+    [
+      "Tippy.js",
+      "https://atomiks.github.io/tippyjs/",
+      "Configurable tooltips, popovers, and interactive floating content."
+    ],
+    [
+      "Micromodal",
+      "https://micromodal.vercel.app/",
+      "Small accessible modal dialogs with focus and keyboard handling."
+    ],
+    [
+      "SweetAlert2",
+      "https://sweetalert2.github.io/",
+      "Customizable alert dialogs, confirmations, and input prompts."
+    ]
+  ]
+}

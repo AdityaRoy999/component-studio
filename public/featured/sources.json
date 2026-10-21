@@ -1,0 +1,3509 @@
+[
+  {
+    "id": "magic-ui",
+    "name": "Magic UI",
+    "src": "/featured/magic-ui.png",
+    "source": "https://magicui.design/favicon.ico",
+    "sourceSha256": "e4602d5e37585cbffb0f64acd7ec1972789cc745eb9047a0946d74fe3cbe7060",
+    "sha256": "0d1dce96238354652c0539a8c00056155dc388f9402859fc6f8fc75a8ff90740",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "motion-primitives",
+    "name": "Motion Primitives",
+    "src": "/featured/motion-primitives.png",
+    "source": "https://motion-primitives.com/icon.ico?71bbcdb60d31e7d3",
+    "sourceSha256": "f1a58f48897ed1a63debd07785b86b9a2835c6127770dca164ee7caf8aad25af",
+    "sha256": "5eb17b6d36d31f9887f480aa5ac80d03e2b1b26477f6b6f0c912dbe99f51125e",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "kokonut-ui",
+    "name": "Kokonut UI",
+    "src": "/featured/kokonut-ui.png",
+    "source": "https://kokonutui.com/icon.png?icon.2ek27zfaz6hz0.png",
+    "sourceSha256": "e58d988a7afc5be86de2e8a58686f64c0bfe91cd2e72695020bb7b9208682833",
+    "sha256": "d56a1407c109c5eddf9df10cca2c309766056abbaf5ca28f4bf86fed45b33fc8",
+    "width": 253,
+    "height": 253
+  },
+  {
+    "id": "cult-ui",
+    "name": "Cult UI",
+    "src": "/featured/cult-ui.png",
+    "source": "https://www.cult-ui.com/apple-touch-icon.png",
+    "sourceSha256": "f493d2b82804a2461d0446c0b8ed3934aca7eaa80f74fd50b48937d4c0c2e0e8",
+    "sha256": "8fa1cfab269ed1d198c2ac8b3eac997e8a2af3b80824c94a5a29970ffc824b93",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "fancy-components",
+    "name": "Fancy Components",
+    "src": "/featured/fancy-components.png",
+    "source": "https://www.fancycomponents.dev/apple-touch-icon.png",
+    "sourceSha256": "ee514fc7853ac42a296cc424fa63ce90ae04285305113ce33840ed95ccea279f",
+    "sha256": "ff813f3bd4888e17aeb12dd1023c27ebf4e11de1f5cf62cd34636b2bae3357ca",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "animata",
+    "name": "Animata",
+    "src": "/featured/animata.png",
+    "source": "https://animata.design/apple-touch-icon.png",
+    "sourceSha256": "7698a64695da7c061c9b5395df1cfb735d427e10f71eceb352576ffe761fa1fd",
+    "sha256": "d5ab9366e4b007971c587e58cee8e3214096a06027a04284ab1a5e797dd486ef",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "eldora-ui",
+    "name": "Eldora UI",
+    "src": "/featured/eldora-ui.png",
+    "source": "https://www.eldoraui.site/favicon.ico",
+    "sourceSha256": "269f246adc14d33b713a036560a7a0802fb5fb629e7d48c1f4bdade7f685f19d",
+    "sha256": "fe3c653eae2cf9704b3660f2dd0ce8eec73f18f3c6384ccf33688a839843f398",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "ui-layouts",
+    "name": "UI Layouts",
+    "src": "/featured/ui-layouts.png",
+    "source": "https://www.ui-layouts.com/apple-touch-icon.png",
+    "sourceSha256": "8018a0514b8fd70f620f790eb9f1360cbe597747af793827b4375173225ae887",
+    "sha256": "a41669984ad1a0d88b5c28c5c7e108f9ea747943a6ba10f80250876d64dd154a",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "syntax-ui",
+    "name": "Syntax UI",
+    "src": "/featured/syntax-ui.png",
+    "source": "https://syntaxui.com/favicon.ico",
+    "sourceSha256": "43f53ffa5bc78e70df922a08abda5729ebf1e553b17212c695a9d04b02f0cb44",
+    "sha256": "14c1d8b82b679d79070942ff0bf8ae6688e0d807cbb6e10c781b3e3ec734e97d",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "smoothui",
+    "name": "SmoothUI",
+    "src": "/featured/smoothui.png",
+    "source": "https://smoothui.dev/web-app-manifest-512x512.png",
+    "sourceSha256": "e8a730f25ab3cb7709317c61c6b5cf2195b76e86d810efcbb7f0c0ed34e79c94",
+    "sha256": "d502fd1d03e6a685426a1c489973b8d3583f928c1a7550180b1c61d5e325ed6c",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "origin-ui",
+    "name": "Origin UI",
+    "src": "/featured/origin-ui.svg",
+    "source": "https://raw.githubusercontent.com/shadcn/originui/HEAD/public/logo.svg",
+    "sourceSha256": "cf7d1e197f582c45b47d7b31142d05424b3ef6159d3839777dbaa0da3160c7c6",
+    "sha256": "cf7d1e197f582c45b47d7b31142d05424b3ef6159d3839777dbaa0da3160c7c6",
+    "viewBox": ""
+  },
+  {
+    "id": "kibo-ui",
+    "name": "Kibo UI",
+    "src": "/featured/kibo-ui.png",
+    "source": "https://www.kibo-ui.com/apple-icon.png?apple-icon.78308315.png",
+    "sourceSha256": "6a1386a9db3f5f27b025c064c6e41c76ed8cbe072e3508a6cb591ec7f89d4c7f",
+    "sha256": "5d3a28b096e201b7875f069d4e9b52110f8559d7dd0ff36e1e1e7f01b749a17a",
+    "width": 192,
+    "height": 192
+  },
+  {
+    "id": "dice-ui",
+    "name": "Dice UI",
+    "src": "/featured/dice-ui.png",
+    "source": "https://raw.githubusercontent.com/sadmann7/diceui/HEAD/docs/app/icon.png",
+    "sourceSha256": "637d3068d495dc9cee9978aa7fd7a65b5186a521761f050adc8e709758021f3f",
+    "sha256": "958f5ea29cc344f98edc2fd1a8eec148306b1ecc70a933985b74899d8ce027c7",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "prompt-kit",
+    "name": "Prompt Kit",
+    "src": "/featured/prompt-kit.png",
+    "source": "https://www.prompt-kit.com/favicon.ico",
+    "sourceSha256": "3cfd32608b5f483ec18cf0e9cc709f4c78275efc08aa00cc23c82ad35ca1800f",
+    "sha256": "b875792ca69fb2b716a1f30277f74335b148d0da307eb60ff156605b7cd6ad05",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "assistant-ui",
+    "name": "assistant-ui",
+    "src": "/featured/assistant-ui.svg",
+    "source": "https://www.assistant-ui.com/icon0.svg?icon0.2ah707qzo6vsu.svg",
+    "sourceSha256": "8d2aed047fd8dd3487c9ecb1ddd073b8edec6137ad4baa0fa6f720bf54a94893",
+    "sha256": "8d2aed047fd8dd3487c9ecb1ddd073b8edec6137ad4baa0fa6f720bf54a94893",
+    "viewBox": "0 0 24 24"
+  },
+  {
+    "id": "shadcn-ui",
+    "name": "shadcn/ui",
+    "src": "/featured/shadcn-ui.png",
+    "source": "https://ui.shadcn.com/apple-touch-icon.png",
+    "sourceSha256": "87fe38764da1304f7238c3b2bcf24bc768008dcbd2b127ee44cddc6d26d070ed",
+    "sha256": "4f1d07ed5e48219dda6bd683160a87f2511e330c907c5870e95f561deb4d0bc2",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "base-ui",
+    "name": "Base UI",
+    "src": "/featured/base-ui.svg",
+    "source": "https://base-ui.com/static/favicon.svg",
+    "sourceSha256": "bef5b7efbdca4df1fbfabfec1583423637adf909f9a2ac93b0d54399795a8dd0",
+    "sha256": "bef5b7efbdca4df1fbfabfec1583423637adf909f9a2ac93b0d54399795a8dd0",
+    "viewBox": "0 0 32 32"
+  },
+  {
+    "id": "radix-ui",
+    "name": "Radix UI",
+    "src": "/featured/radix-ui.svg",
+    "source": "https://www.radix-ui.com/favicon-black.svg",
+    "sourceSha256": "3668c9b8c3326e57de33eccd00366d935c132351e63d927ca77cfdfd80a88c05",
+    "sha256": "3668c9b8c3326e57de33eccd00366d935c132351e63d927ca77cfdfd80a88c05",
+    "viewBox": "0 0 35 35"
+  },
+  {
+    "id": "react-aria",
+    "name": "React Aria",
+    "src": "/featured/react-aria.svg",
+    "source": "https://react-aria.adobe.com/server/react-aria-favicon.0d52b4c6.svg",
+    "sourceSha256": "eaa53daea253f741d25731d541611523b4dab247a50dae2a6420cdb2f4d15d96",
+    "sha256": "eaa53daea253f741d25731d541611523b4dab247a50dae2a6420cdb2f4d15d96",
+    "viewBox": "200 206 800 790"
+  },
+  {
+    "id": "headless-ui",
+    "name": "Headless UI",
+    "src": "/featured/headless-ui.svg",
+    "source": "https://headlessui.com/safari-pinned-tab.svg",
+    "sourceSha256": "8ef21906d2c8c1d165622180af0adcb3f652ef952bce65f476789c45a509de59",
+    "sha256": "8ef21906d2c8c1d165622180af0adcb3f652ef952bce65f476789c45a509de59",
+    "viewBox": "0 0 440.000000 440.000000"
+  },
+  {
+    "id": "ariakit",
+    "name": "Ariakit",
+    "src": "/featured/ariakit.svg",
+    "source": "https://ariakit.com/icon.svg",
+    "sourceSha256": "4da1ad34f07f84a431e5aef4615e7768b5e6bbbae2f57126ce39b195df48ff93",
+    "sha256": "4da1ad34f07f84a431e5aef4615e7768b5e6bbbae2f57126ce39b195df48ff93",
+    "viewBox": "0 0 40 40"
+  },
+  {
+    "id": "ark-ui",
+    "name": "Ark UI",
+    "src": "/featured/ark-ui.svg",
+    "source": "https://ark-ui.com/icon.svg?3e91f991fe6d39a3",
+    "sourceSha256": "f1e3b7f8facd5d013b8e1204625535a0c2808e6824c2ad897490b5b9ee8dc604",
+    "sha256": "f1e3b7f8facd5d013b8e1204625535a0c2808e6824c2ad897490b5b9ee8dc604",
+    "viewBox": "0 0 512 512"
+  },
+  {
+    "id": "park-ui",
+    "name": "Park UI",
+    "src": "/featured/park-ui.svg",
+    "source": "https://park-ui.com/icon.svg?icon.cf09a1df.svg",
+    "sourceSha256": "a8e2ce8ef03c69b7082c7f99a9ebcb8f90224b20ab74d75a1fc4483baf38fb64",
+    "sha256": "a8e2ce8ef03c69b7082c7f99a9ebcb8f90224b20ab74d75a1fc4483baf38fb64",
+    "viewBox": "0 0 512 512"
+  },
+  {
+    "id": "material-ui",
+    "name": "Material UI",
+    "src": "/featured/material-ui.svg",
+    "source": "https://mui.com/static/favicon.svg",
+    "sourceSha256": "65239f82ed9f42bcd9cef3a9db6c6ea77e59ccecfcc88014d2ded661f6b35a1e",
+    "sha256": "65239f82ed9f42bcd9cef3a9db6c6ea77e59ccecfcc88014d2ded661f6b35a1e",
+    "viewBox": "0 0 36 36"
+  },
+  {
+    "id": "chakra-ui",
+    "name": "Chakra UI",
+    "src": "/featured/chakra-ui.png",
+    "source": "https://chakra-ui.com/favicon.ico",
+    "sourceSha256": "16efe3457b4288e266c66c5c66ad872954ea0bb3355ad33ebcf6955205dd62b8",
+    "sha256": "bdea5563d12d37730e3a9b7104552b712a2c111e315d448e39d85e144e51b564",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "mantine",
+    "name": "Mantine",
+    "src": "/featured/mantine.svg",
+    "source": "https://mantine.dev/favicon.svg",
+    "sourceSha256": "903c53a611e4be10b06eda72aac15789fd1ae574f195f17a65dd4fda1c8b02c5",
+    "sha256": "903c53a611e4be10b06eda72aac15789fd1ae574f195f17a65dd4fda1c8b02c5",
+    "viewBox": "0 0 500 500"
+  },
+  {
+    "id": "ant-design",
+    "name": "Ant Design",
+    "src": "/featured/ant-design.png",
+    "source": "https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png",
+    "sourceSha256": "e06e25bfc964316a250284bb7f0d839aaea665b0ff5f20be75f86aafe00c60a5",
+    "sha256": "a2452ba9f190ac683cc2ae8623f3c4d839aa100b782b64adbadc70d460f935fb",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "id": "heroui",
+    "name": "HeroUI",
+    "src": "/featured/heroui.svg",
+    "source": "https://heroui.com/icons/favicon.svg",
+    "sourceSha256": "13bd0e1ac1d3b88e6723e8a359c64982f35f5b4ae612c3ff1ac1bcbbe904b6c5",
+    "sha256": "13bd0e1ac1d3b88e6723e8a359c64982f35f5b4ae612c3ff1ac1bcbbe904b6c5",
+    "viewBox": "0 0 544 544"
+  },
+  {
+    "id": "fluent-ui",
+    "name": "Fluent UI",
+    "src": "/featured/fluent-ui.png",
+    "source": "https://storybooks.fluentui.dev/react/favicon.ico",
+    "sourceSha256": "90cdaf487716184e4034000935c605d1633926d348116d198f355a98b8c6cd21",
+    "sha256": "6002cc3d86dffd229dd4995352d55c66a58619762ce438f027644e895744e00e",
+    "width": 128,
+    "height": 128
+  },
+  {
+    "id": "carbon-design-system",
+    "name": "Carbon Design System",
+    "src": "/featured/carbon-design-system.svg",
+    "source": "https://www.carbondesignsystem.com/favicon.svg",
+    "sourceSha256": "d23bea1a9d6a78875a9731d9d01b7dc46dbc6f297201570b084ed85c07686b4a",
+    "sha256": "d23bea1a9d6a78875a9731d9d01b7dc46dbc6f297201570b084ed85c07686b4a",
+    "viewBox": "0 0 512 512"
+  },
+  {
+    "id": "primer",
+    "name": "Primer",
+    "src": "/featured/primer.svg",
+    "source": "https://primer.style/icon.svg?icon.1ohssj3nq107e.svg",
+    "sourceSha256": "763d33b88a5a619417d137687520cb7a3d8c044c546e3d5678ccf650c3e236ce",
+    "sha256": "763d33b88a5a619417d137687520cb7a3d8c044c546e3d5678ccf650c3e236ce",
+    "viewBox": "0 0 32 32"
+  },
+  {
+    "id": "patternfly",
+    "name": "PatternFly",
+    "src": "/featured/patternfly.png",
+    "source": "https://www.patternfly.org/assets/android-chrome-96x96.png",
+    "sourceSha256": "e3530dffc13f2455e4f8bca39c72cc47b556b9913ba1369b5dbc5127ebb87db6",
+    "sha256": "fcfa4f5b67b03893d37bbe5a25be220538b492af1f35c74fa19cb8b3d26adbc1",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "gestalt",
+    "name": "Gestalt",
+    "src": "/featured/gestalt.png",
+    "source": "https://gestalt.pinterest.systems/gestalt-logo.png",
+    "sourceSha256": "bf0d5353bf54869ebba6f164fabd79772cd3c35809da22b434abd42e777351fa",
+    "sha256": "898fd586fc4d5e0906061a9fbd9ee47c92c671630fcba5e8f743c2c80a73b99c",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "grommet",
+    "name": "Grommet",
+    "src": "/featured/grommet.png",
+    "source": "https://raw.githubusercontent.com/grommet/grommet-site/HEAD/public/img/icons/grommet-192x192.png",
+    "sourceSha256": "b6cfea631dde969b67373666335f2bc3e2f97990c2227a2ad02d31146100afbd",
+    "sha256": "69758a936814f84e2c49165ed0cbe0353ca5ad371e4425356303c3c69dc53c46",
+    "width": 192,
+    "height": 192
+  },
+  {
+    "id": "evergreen",
+    "name": "Evergreen",
+    "src": "/featured/evergreen.png",
+    "source": "https://evergreen.segment.com/favicon-32x32.png",
+    "sourceSha256": "5b52fe1c37b9381cc284e1296eb67e9918aab2612d5011a9099d82ebe3c361e3",
+    "sha256": "736c45609190b420381a5ad2aa35bcfb449654b6b0c08b4df16ed208d184213e",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "wedges",
+    "name": "Wedges",
+    "src": "/featured/wedges.png",
+    "source": "https://cdn.prod.website-files.com/6347244ba8d63489ba51c08e/6358e75cbf1bca262b2b2edc_webclip.jpg",
+    "sourceSha256": "fed4e7aceb65a6b5c226452bba74cc302f697e479ff55b6f4195e862a6b44c70",
+    "sha256": "db6a51814543159e5601ef7fcfec1016a18b3709714f3b629aad882ad5ebfafe",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "theme-ui",
+    "name": "Theme UI",
+    "src": "/featured/theme-ui.png",
+    "source": "https://theme-ui.com/icon.png",
+    "sourceSha256": "f6d38174383e8fb006f47e304898164b0fd1cb8aeaa32605eebbdd222ceb8ead",
+    "sha256": "46737da99d4ebda1e11662cacb561787197b7f4e90754abd025cd130d4caf4bb",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "blueprint",
+    "name": "Blueprint",
+    "src": "/featured/blueprint.png",
+    "source": "https://blueprintjs.com/assets/favicon.png",
+    "sourceSha256": "a93eff5536fe7a788947da5bf28c565c0945aa3edb69720cdb8df1ea3485202b",
+    "sha256": "54a094e97e1521e4a3cf12a32349909332e515dbb23b53623f01735374ec9351",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "react-suite",
+    "name": "React Suite",
+    "src": "/featured/react-suite.png",
+    "source": "https://www.rsuitejs.com/favicon.ico",
+    "sourceSha256": "695ce8b6469371fd4018306f3aea6a17d3cdda71e50bfd6374fef243d74b98cb",
+    "sha256": "784c5448c5deda7af24502efcb5c1c71c1680c5150f8f76eeb0f6ec6967d2b11",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "semantic-ui-react",
+    "name": "Semantic UI React",
+    "src": "/featured/semantic-ui-react.png",
+    "source": "https://react.semantic-ui.com/logo.png",
+    "sourceSha256": "d38dce51ca724c4d9264bbb44f104df0d5ea5e5bef7b27d45dded2e85243196d",
+    "sha256": "12176c747a0b4e7c2be3d03938d31981f49b6d1b4d8dd50aaca291372af15422",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "react-bootstrap",
+    "name": "React Bootstrap",
+    "src": "/featured/react-bootstrap.svg",
+    "source": "https://react-bootstrap.github.io/img/logo.svg",
+    "sourceSha256": "002b3f005b17ff6e718cc347e747e02e9c307195384af803b50b6eba6cba6cba",
+    "sha256": "002b3f005b17ff6e718cc347e747e02e9c307195384af803b50b6eba6cba6cba",
+    "viewBox": "0 0 2127.98 2016.87"
+  },
+  {
+    "id": "reactstrap",
+    "name": "Reactstrap",
+    "src": "/featured/reactstrap.svg",
+    "source": "https://reactstrap.github.io/logo-white.svg",
+    "sourceSha256": "4c8a9551a45479d9367acab9cd005bdbd17f537660321c138db0b4366dadbda1",
+    "sha256": "4c8a9551a45479d9367acab9cd005bdbd17f537660321c138db0b4366dadbda1",
+    "viewBox": "0 0 40 40"
+  },
+  {
+    "id": "reui",
+    "name": "ReUI",
+    "src": "/featured/reui.png",
+    "source": "https://reui.io/favicon.ico",
+    "sourceSha256": "6f3253fc2dfbbbd589039d1b818f4bf45b3cd999cdccf68ec99e11cf15fea23c",
+    "sha256": "31c5c844eac8f5681036a1e14091615486bd89fec750d4cd36d4f5468231842f",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "react-spectrum",
+    "name": "React Spectrum",
+    "src": "/featured/react-spectrum.svg",
+    "source": "https://raw.githubusercontent.com/adobe/react-spectrum/HEAD/packages/dev/s2-docs/assets/rsp-favicon.svg",
+    "sourceSha256": "614535ef5b3370c2858543a6bc4ff086579c7ec71d9fb4830eafc680d689d91f",
+    "sha256": "614535ef5b3370c2858543a6bc4ff086579c7ec71d9fb4830eafc680d689d91f",
+    "viewBox": "0 0 501.71 444.05"
+  },
+  {
+    "id": "tremor",
+    "name": "Tremor",
+    "src": "/featured/tremor.png",
+    "source": "https://www.tremor.so/favicon.ico",
+    "sourceSha256": "f39a6cc148361b4bcafd4eb79360410106f79e99ce973d0c2bbe21c2129b4495",
+    "sha256": "cc8ab1e9f784fbbe29b0683b62ec1332277c74801852ea6badeee6ff50146e83",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "tamagui",
+    "name": "Tamagui",
+    "src": "/featured/tamagui.svg",
+    "source": "https://tamagui.dev/favicon.svg",
+    "sourceSha256": "ef47bcea2b74e89e7511e20ee01ef2344a48ade67fbfdd4dde49cfa5a8c53de8",
+    "sha256": "ef47bcea2b74e89e7511e20ee01ef2344a48ade67fbfdd4dde49cfa5a8c53de8",
+    "viewBox": "0 0 32 32"
+  },
+  {
+    "id": "gluestack-ui",
+    "name": "gluestack UI",
+    "src": "/featured/gluestack-ui.png",
+    "source": "https://gluestack.io/favicon.ico",
+    "sourceSha256": "946eccce490a3b64ee4eaa768795777467b10a4e990c5c906e75a44bf259e08c",
+    "sha256": "ccfdaffaf39ad72cd9d01b6227116a1ea4aa0989ef81bcc33ba0f98d78de71c0",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "cloudscape",
+    "name": "Cloudscape",
+    "src": "/featured/cloudscape.png",
+    "source": "https://cloudscape.design/favicon.ico",
+    "sourceSha256": "19ad9fb33285aaa92757ce2bfe28129276210e4b762101f4d644a79c50c04437",
+    "sha256": "dd6d9e4fd012841dbebb1d66a2788b00f34cb7eb1ed725b7879952def230bd8e",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "polaris",
+    "name": "Polaris",
+    "src": "/featured/polaris.png",
+    "source": "https://shopify.dev/favicon.ico",
+    "sourceSha256": "dc657d1d1ecdacb26a6f6d25c0bf0ad3b60bbdb4451d1cd9a030a8339b55c249",
+    "sha256": "9e3276d6c06e132d392ede1e69d0663e9a84028531b7f932042461113f23f375",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "paste",
+    "name": "Paste",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  },
+  {
+    "id": "horizon-ui",
+    "name": "Horizon UI",
+    "error": [
+      "402 Client Error: Payment Required for url: https://horizon-ui.com/favicon.svg",
+      "402 Client Error: Payment Required for url: https://horizon-ui.com/favicon.ico",
+      "402 Client Error: Payment Required for url: https://horizon-ui.com/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "semi-design",
+    "name": "Semi Design",
+    "src": "/featured/semi-design.png",
+    "source": "https://lf9-static.semi.design/obj/semi-tos/images/favicon.ico",
+    "sourceSha256": "eff308e561a761480d814f796a5262422e4b192b89b7a5c5ba1f94a3837f17a3",
+    "sha256": "28f86f7f032f195fc34c14c31ae42a25e5cd7acc8736ed15b44055729ba9ea21",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "arco-design-react",
+    "name": "Arco Design React",
+    "src": "/featured/arco-design-react.png",
+    "source": "https://unpkg.byted-static.com/latest/byted/arco-config/assets/favicon.ico",
+    "sourceSha256": "01719bfc064631ff1b1e66a1d77af9435a9af6c16476260dc4da6a7c1beea0a4",
+    "sha256": "8e406276b43dcba2964e51ab8f2dea4a94a129e9342868c9342d0667f93c400d",
+    "width": 150,
+    "height": 150
+  },
+  {
+    "id": "tdesign-react",
+    "name": "TDesign React",
+    "src": "/featured/tdesign-react.png",
+    "source": "https://static.tdesign.tencent.com/react/apple-touch-icon.png",
+    "sourceSha256": "8a3fc6943029d8a7fe23827fbd98e1aafc34d3c4326f1ee5541a9abf813f0496",
+    "sha256": "11da886a56995260592c319d7283a365a6a3339d4b04084fe80fa366de80b213",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "ring-ui",
+    "name": "Ring UI",
+    "error": [
+      "404 Client Error: Not Found for url: https://jetbrains.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://jetbrains.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://jetbrains.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "pluralsight-design-system",
+    "name": "Pluralsight Design System",
+    "src": "/featured/pluralsight-design-system.png",
+    "source": "https://pando.zeroheight.com/favicon.ico",
+    "sourceSha256": "c33a81f49f012dc00ab9d8bbb9605f16fc05b29d761d9739b33acfcffcf6f2c8",
+    "sha256": "3f658f92548bfc94390f3ab09d574a0e10de6a0d6b29ef57e25f266f069ad5ba",
+    "width": 75,
+    "height": 75
+  },
+  {
+    "id": "daisyui",
+    "name": "daisyUI",
+    "src": "/featured/daisyui.svg",
+    "source": "https://img.daisyui.com/images/daisyui/mark.svg",
+    "sourceSha256": "94efc2525731dcbbdfed221e6fcd93ba68247455768df147afa4fa39883e21e1",
+    "sha256": "94efc2525731dcbbdfed221e6fcd93ba68247455768df147afa4fa39883e21e1",
+    "viewBox": "0 0 450 450"
+  },
+  {
+    "id": "flowbite",
+    "name": "Flowbite",
+    "src": "/featured/flowbite.png",
+    "source": "https://flowbite.com/favicon.ico",
+    "sourceSha256": "33103505e8cb6772b73053a0dd36dc9cbd1909b7fdc149f02ed0ae9d3d931627",
+    "sha256": "f00695f5708922dac5dcd3edb5829eb11fbe03875c4018b62fabe5a14059d09e",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "hyperui",
+    "name": "HyperUI",
+    "src": "/featured/hyperui.png",
+    "source": "https://www.hyperui.dev/favicon.ico",
+    "sourceSha256": "a3ed3b1d519902d8fd688fb37e91b89161d83e4a0464199e483c6de00628f70f",
+    "sha256": "54a69fd2b9f44bdd10db76d17e6a65563233f3447344314f7e3c9c9fec78370d",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "id": "meraki-ui",
+    "name": "Meraki UI",
+    "src": "/featured/meraki-ui.svg",
+    "source": "https://merakiui.com/images/logo.svg",
+    "sourceSha256": "7aa674fb094f6f1582479414f516084a81b6147dded2971166747cdc7d1ffadf",
+    "sha256": "7aa674fb094f6f1582479414f516084a81b6147dded2971166747cdc7d1ffadf",
+    "viewBox": "0 0 106 85"
+  },
+  {
+    "id": "sailboat-ui",
+    "name": "Sailboat UI",
+    "src": "/featured/sailboat-ui.png",
+    "source": "https://sailboatui.com/apple-touch-icon.png",
+    "sourceSha256": "2859401f58d2eeb7fd74bec148eded20bea96d5c934309499515d89ecaea3a3d",
+    "sha256": "f9cd8c1132b85003e5aabdc7dfe31a3bf98bfdf0b0dfea47ffbf566b64fb4b97",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "float-ui",
+    "name": "Float UI",
+    "src": "/featured/float-ui.png",
+    "source": "https://floatui.com/favicon.ico",
+    "sourceSha256": "f9a52b832897625efc4cb85054f4275fc681c05be23a89aa8bfcdb55490afaff",
+    "sha256": "ce6778e17faee4c45937772d61db3fdf5fb61c552e15bcf57a2b31f84665979b",
+    "width": 31,
+    "height": 27
+  },
+  {
+    "id": "wind-ui",
+    "name": "Wind UI",
+    "src": "/featured/wind-ui.svg",
+    "source": "https://wind-ui.com/favicon.svg",
+    "sourceSha256": "b3a62407351e387921a095eb0afcef602656f9dc00bef44bed50742feab1938a",
+    "sha256": "b3a62407351e387921a095eb0afcef602656f9dc00bef44bed50742feab1938a",
+    "viewBox": "0 0 48 49"
+  },
+  {
+    "id": "flyonui",
+    "name": "FlyonUI",
+    "src": "/featured/flyonui.png",
+    "source": "https://cdn.flyonui.com/fy-assets/favicon/apple-touch-icon.png",
+    "sourceSha256": "a64be52cd126a76c652def14d0c1378401ceb6c86a915737b6783ec83be0895f",
+    "sha256": "be26c1a1e75005af1138cda9242a4f1fd4d92921d5728781481391c02cf25dda",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "ripple-ui",
+    "name": "Ripple UI",
+    "src": "/featured/ripple-ui.png",
+    "source": "https://www.ripple-ui.com/apple-touch-icon.png",
+    "sourceSha256": "d31d7e9346c82fc33234548a5924960b7fb3b570b72f2c7adca8e1091c288f63",
+    "sha256": "498c2a49c787a9797289294528cc537d20096ab9d66bd266d4fda02f39211589",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "tw-elements",
+    "name": "TW Elements",
+    "src": "/featured/tw-elements.png",
+    "source": "https://tecdn.b-cdn.net/img/Marketing/general/logo/small/te.ico",
+    "sourceSha256": "faff624bd2b705ca2b8676b5f68361349e13db91842daf6c6bc2df658f0f9b44",
+    "sha256": "fd887f7c69a7bdd3078a2c072f9d9018dcb22b17e8bbe68e8665f102b3ef5758",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "franken-ui",
+    "name": "Franken UI",
+    "src": "/featured/franken-ui.svg",
+    "source": "https://franken-ui.dev/images/monster.svg",
+    "sourceSha256": "2deeef7a4e8ee25c0c469460b7aa1c750475f8e9390ba72361121f0c988891a7",
+    "sha256": "2deeef7a4e8ee25c0c469460b7aa1c750475f8e9390ba72361121f0c988891a7",
+    "viewBox": "0 0 741.81 674.55"
+  },
+  {
+    "id": "penguin-ui",
+    "name": "Penguin UI",
+    "src": "/featured/penguin-ui.png",
+    "source": "https://www.penguinui.com/favicon.ico",
+    "sourceSha256": "67aead454bfae74c3124cadaef08c5f1d8574a6845b7bf6b7afcbc74b340ed3c",
+    "sha256": "2335acd7e87d1cdb90f562cf6d501a0ffc9d2405f798a6e642b95d8fbf639abe",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "bootstrap",
+    "name": "Bootstrap",
+    "src": "/featured/bootstrap.svg",
+    "source": "https://getbootstrap.com/docs/6.0/assets/img/favicons/safari-pinned-tab.svg",
+    "sourceSha256": "03b4de77db0f741ff46efc34ea950a960b16a3c4cff1d74728789a60e35b34da",
+    "sha256": "03b4de77db0f741ff46efc34ea950a960b16a3c4cff1d74728789a60e35b34da",
+    "viewBox": ""
+  },
+  {
+    "id": "bulma",
+    "name": "Bulma",
+    "src": "/featured/bulma.svg",
+    "source": "https://bulma.io/favicons/safari-pinned-tab.svg?v=201701041855",
+    "sourceSha256": "56dfe945672c688554c9cd0c28520d4dd222c6c06806e30f3cdbb429f1c2dd1b",
+    "sha256": "56dfe945672c688554c9cd0c28520d4dd222c6c06806e30f3cdbb429f1c2dd1b",
+    "viewBox": "0 0 480.000000 480.000000"
+  },
+  {
+    "id": "foundation",
+    "name": "Foundation",
+    "src": "/featured/foundation.png",
+    "source": "https://get.foundation/assets/img/icons/foundation-favicon.ico",
+    "sourceSha256": "6c9c197e0e9ce0f08d5b8f1d652c72c4b43ccffec91375f15ed24d0c94661d7d",
+    "sha256": "e408929460fd75a0b3c0981b955caf0ac34c9c7ce1ecb2c6c838e0fb3d328387",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "uikit",
+    "name": "UIkit",
+    "src": "/featured/uikit.png",
+    "source": "https://getuikit.com/images/apple-touch-icon.png",
+    "sourceSha256": "709d6e974af20f6d7bcd55d5ffbcaf4eec1522ca17fdcfcf8c4ea6de9de5c929",
+    "sha256": "b0a91dd4df3d30e4778ab881674a8713f119457077fa1ad1595296477caa19f2",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "fomantic-ui",
+    "name": "Fomantic UI",
+    "src": "/featured/fomantic-ui.png",
+    "source": "https://fomantic-ui.com/favicon.ico",
+    "sourceSha256": "6c8db6ce97ffc65f653a5d76aefea5edec426df8e7fc118ccbdf071318a696f6",
+    "sha256": "4f4e459765e921f6472dbed5f31c334594f976a6d786c25c031912063fdfe926",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "materialize",
+    "name": "Materialize",
+    "src": "/featured/materialize.png",
+    "source": "https://materializecss.com/images/favicon/apple-touch-icon-152x152.png",
+    "sourceSha256": "0a295eeb52b1143be0d2c8e301ccd8e3345eef1e85f4fe79f2781ee2d20755a0",
+    "sha256": "adcc7aad7c8005e7c9e88c061274559ffa084f51d80ab26f24cd735bfcab6d48",
+    "width": 152,
+    "height": 152
+  },
+  {
+    "id": "beer-css",
+    "name": "Beer CSS",
+    "src": "/featured/beer-css.png",
+    "source": "https://www.beercss.com/favicon.png",
+    "sourceSha256": "2cac70dff871a4408c2dc8288d6932f99f040a8e117a8a1eebeff8566a103af6",
+    "sha256": "426cf35198847dcb6878fb6b784ad7cb8aebc386e16e087523ae1372aeac25bb",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "spectre-css",
+    "name": "Spectre.css",
+    "src": "/featured/spectre-css.png",
+    "source": "https://picturepan2.github.io/spectre/img/favicons/favicon.png",
+    "sourceSha256": "434e4d41b7c88578ed0c81ab1d31c56434d4889695a86a27a21188cb38072994",
+    "sha256": "93a92b95dd2b6416e1d7e611b93c35f804935f29766db87204dedef5613f911c",
+    "width": 128,
+    "height": 128
+  },
+  {
+    "id": "chota",
+    "name": "Chota",
+    "src": "/featured/chota.png",
+    "source": "https://jenil.github.io/chota/favicon.png",
+    "sourceSha256": "18e3026549926a53fb6adadfae77ab1d5ac2b2f94797e32af9ff972d36b445a0",
+    "sha256": "55ccbbac4856b90223c5fa8f8a18a2592d9f0ab8a2dab4a87a8a62d372c31dbd",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "cirrus",
+    "name": "Cirrus",
+    "src": "/featured/cirrus.png",
+    "source": "https://raw.githubusercontent.com/Spiderpig86/Cirrus/HEAD/img/CirrusLogo.png",
+    "sourceSha256": "4640c09787932b08c12f2a7f0d64feec6f108c15ffc2217a165761a651ccb05a",
+    "sha256": "cd545892fcb2d5f886c51b94adbd5517c00748ea54a694186b18ca2f23173676",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "pico-css",
+    "name": "Pico CSS",
+    "src": "/featured/pico-css.svg",
+    "source": "https://picocss.com/favicon.svg",
+    "sourceSha256": "cdcf0842ca67e687ee00dacd9e856e2738aeadb5c89903e0c17c206d2eedcb6f",
+    "sha256": "cdcf0842ca67e687ee00dacd9e856e2738aeadb5c89903e0c17c206d2eedcb6f",
+    "viewBox": "0 0 1024 1024"
+  },
+  {
+    "id": "open-props",
+    "name": "Open Props",
+    "src": "/featured/open-props.svg",
+    "source": "https://open-props.style/favicon.svg",
+    "sourceSha256": "56ced8300880f6be7c0af85497c9ac20a3fcce980a4ed6fab2f3720cc690e30f",
+    "sha256": "56ced8300880f6be7c0af85497c9ac20a3fcce980a4ed6fab2f3720cc690e30f",
+    "viewBox": "0 0 200 200"
+  },
+  {
+    "id": "pure-css",
+    "name": "Pure.css",
+    "src": "/featured/pure-css.png",
+    "source": "https://pure-css.github.io/img/favicon.ico",
+    "sourceSha256": "9dfab645fcf7b91bc5b941be0aea058afd1faba8968d3dcd7a872fd5449667ec",
+    "sha256": "ea12e8796a0da60fd97c1e87a01b5d1c83a3a28ab4ec8976c2f4fbcd2c294647",
+    "width": 64,
+    "height": 64
+  },
+  {
+    "id": "milligram",
+    "name": "Milligram",
+    "src": "/featured/milligram.png",
+    "source": "https://milligram.io/images/apple-touch-icon.png",
+    "sourceSha256": "6aecb23c3470fb00872ac47e4260037053c6c9ff4da81a36491cf596409edff2",
+    "sha256": "718c661809ffe55b8977b8e9e43e7d035ac92c9d53d0ff6ccc77598b409d90b6",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "water-css",
+    "name": "Water.css",
+    "src": "/featured/water-css.svg",
+    "source": "https://watercss.kognise.dev/icons/safari-pinned-tab.svg",
+    "sourceSha256": "805fcbfca305a61e4ad81dfce50ac544fd748e91683242e01d29b639068494ac",
+    "sha256": "805fcbfca305a61e4ad81dfce50ac544fd748e91683242e01d29b639068494ac",
+    "viewBox": "0 0 512.000000 512.000000"
+  },
+  {
+    "id": "simple-css",
+    "name": "Simple.css",
+    "src": "/featured/simple-css.png",
+    "source": "https://simplecss.org/assets/images/favicon.png",
+    "sourceSha256": "3806a538c9b5e04679bbec79760d851aca952be1161a8f4e6597a3b711e7ec85",
+    "sha256": "fac00957a84834f476c9326e02085a42ed784d7e7f9e8d7e6ab646f17076919d",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "mvp-css",
+    "name": "MVP.css",
+    "src": "/featured/mvp-css.png",
+    "source": "https://andybrewer.github.io/mvp/img/brand.png",
+    "sourceSha256": "c1486d47e9fb7cd5665b67960d8196f1cac894ce3b99010ebe1a13624f6d608f",
+    "sha256": "a3642e77b9a4e79752b2fc3dc884823580c74ac2c8a0bd5b69524780a26da213",
+    "width": 80,
+    "height": 80
+  },
+  {
+    "id": "inspira-ui",
+    "name": "Inspira UI",
+    "src": "/featured/inspira-ui.png",
+    "source": "https://inspira-ui.com/favicon.ico",
+    "sourceSha256": "0a9f92a2637dc7492b24be8a4dec0f2a21633b72a457ce9b493140bbc7ba52c0",
+    "sha256": "69143f5c9ec48eee18d16060785e6ce62d2545e0f41f390a2671ad549a74c5ab",
+    "width": 128,
+    "height": 128
+  },
+  {
+    "id": "shadcn-vue",
+    "name": "shadcn-vue",
+    "src": "/featured/shadcn-vue.png",
+    "source": "https://www.shadcn-vue.com/apple-touch-icon.png",
+    "sourceSha256": "3bb025e8bc8793dd2561771d353c5d3095a3074a9d33f318dd13268e438eaaa8",
+    "sha256": "cc2a66a4c1e957e4fe460a55733f3b80bfd5b10771a727076af1e5acf53d8c9e",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "reka-ui",
+    "name": "Reka UI",
+    "src": "/featured/reka-ui.svg",
+    "source": "https://reka-ui.com/logo.svg",
+    "sourceSha256": "4e0d3ea2af06ad124b5ceb502a8e16538b4a29ad91dfc4da321dd08836efb92c",
+    "sha256": "4e0d3ea2af06ad124b5ceb502a8e16538b4a29ad91dfc4da321dd08836efb92c",
+    "viewBox": "0 0 290 290"
+  },
+  {
+    "id": "nuxt-ui",
+    "name": "Nuxt UI",
+    "src": "/featured/nuxt-ui.png",
+    "source": "https://ui.nuxt.com/favicon.ico",
+    "sourceSha256": "1057b17aec08a7191d134000203947f195a8aa7c84c39f1164cee8d01279762a",
+    "sha256": "4d7cee9a034584c258d0a42ffaeb27e637289b7150f72916a7280bf3a64ae4fc",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "vuetify",
+    "name": "Vuetify",
+    "src": "/featured/vuetify.png",
+    "source": "https://vuetifyjs.com/img/icons/android-chrome-512x512.png",
+    "sourceSha256": "ee8f37abda82e709510ebae58c36bf6a187a1bdaa708fa14b2d3fe9dff26957c",
+    "sha256": "f5c2aa258ade61906a6e4e76bc1a54261d6159a1d07cc52f7ba34877069964da",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "quasar",
+    "name": "Quasar",
+    "src": "/featured/quasar.svg",
+    "source": "https://cdn.quasar.dev/logo-v2/favicon/safari-pinned-tab.svg",
+    "sourceSha256": "be59a7983918d1464f7f72cd2849a1ab016a2ac2c65e81f2783e4a526de955a9",
+    "sha256": "be59a7983918d1464f7f72cd2849a1ab016a2ac2c65e81f2783e4a526de955a9",
+    "viewBox": ""
+  },
+  {
+    "id": "element-plus",
+    "name": "Element Plus",
+    "src": "/featured/element-plus.svg",
+    "source": "https://element-plus.org/images/element-plus-logo-small.svg",
+    "sourceSha256": "14a55fbf36d4157945b9312abebe07e2942d4f1e2752a39551e943ee390f5831",
+    "sha256": "14a55fbf36d4157945b9312abebe07e2942d4f1e2752a39551e943ee390f5831",
+    "viewBox": "0 0 44 44"
+  },
+  {
+    "id": "naive-ui",
+    "name": "Naive UI",
+    "src": "/featured/naive-ui.svg",
+    "source": "https://www.naiveui.com/assets/naivelogo-BdDVTUmz.svg",
+    "sourceSha256": "93278402a89cf7cb11c300dee6e96f7abf444fc17b92719eafc1cb2429076f14",
+    "sha256": "93278402a89cf7cb11c300dee6e96f7abf444fc17b92719eafc1cb2429076f14",
+    "viewBox": "0 0 207.74 252.58"
+  },
+  {
+    "id": "ant-design-vue",
+    "name": "Ant Design Vue",
+    "src": "/featured/ant-design-vue.png",
+    "source": "https://www.antdv.com/favicon.ico",
+    "sourceSha256": "e1b7e2744cf47297438a90829f04820fcc63f4705fa032edd8a603d372f03096",
+    "sha256": "49b8d9541f60645e894d0ac329fd080c00fe59e8636abf6f70913ed1bc583bd5",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "arco-design-vue",
+    "name": "Arco Design Vue",
+    "src": "/featured/arco-design-vue.png",
+    "source": "https://unpkg.byted-static.com/latest/byted/arco-config/assets/favicon.ico",
+    "sourceSha256": "01719bfc064631ff1b1e66a1d77af9435a9af6c16476260dc4da6a7c1beea0a4",
+    "sha256": "8e406276b43dcba2964e51ab8f2dea4a94a129e9342868c9342d0667f93c400d",
+    "width": 150,
+    "height": 150
+  },
+  {
+    "id": "tdesign-vue",
+    "name": "TDesign Vue",
+    "src": "/featured/tdesign-vue.png",
+    "source": "https://static.tdesign.tencent.com/vue-next/apple-touch-icon.png",
+    "sourceSha256": "8a3fc6943029d8a7fe23827fbd98e1aafc34d3c4326f1ee5541a9abf813f0496",
+    "sha256": "11da886a56995260592c319d7283a365a6a3339d4b04084fe80fa366de80b213",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "vant",
+    "name": "Vant",
+    "src": "/featured/vant.png",
+    "source": "https://fastly.jsdelivr.net/npm/@vant/assets/logo.png",
+    "sourceSha256": "30f226604a934cd1ea73d40815ff075fd67e1a2f11c658d5c27bffa391efd4e8",
+    "sha256": "779640b0185d2f544aa21dda236b52d182d43336546fbff3ced0a7e4b293b617",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "varlet",
+    "name": "Varlet",
+    "src": "/featured/varlet.png",
+    "source": "https://varletjs.org/varlet_icon.png",
+    "sourceSha256": "6523cc79f0540e565de84545ace58d1c17ea21f887b0be10a85cc7ffceba7dbf",
+    "sha256": "9ab4b1d712e2c6cfff3222b8458cbd73e58f1075f832819ae84e798f92d9adde",
+    "width": 138,
+    "height": 146
+  },
+  {
+    "id": "oruga",
+    "name": "Oruga",
+    "src": "/featured/oruga.png",
+    "source": "https://oruga-ui.com/favicon.ico",
+    "sourceSha256": "b4ff9b19eac34a578b020759e29303b1c8cc9cd43d5eb277be2da3167de5634d",
+    "sha256": "fe517bf0d835fae5736ddb8052596a635989fb890e56effa4759c262fc6e5381",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "vuestic-ui",
+    "name": "Vuestic UI",
+    "src": "/featured/vuestic-ui.png",
+    "source": "https://ui.vuestic.dev/favicon.ico",
+    "sourceSha256": "2c0ddae8c98cf45b761041609a9d9f80bf2d7c98f026ea375f071011fd852d91",
+    "sha256": "db006eb47a2903518aae54fb67c78f5f8fa87c6821c27e1dbd2e846cd86614b8",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "balmui",
+    "name": "BalmUI",
+    "src": "/featured/balmui.png",
+    "source": "https://material.balmjs.com/img/icons/apple-touch-icon.9d3029fa.png",
+    "sourceSha256": "1d9bb848cd8b2151fae169a81f9605f0645d13e77191f88e868f5120b47d6b79",
+    "sha256": "e5e88a983271224fa53dbe4add2ff361cca77cb5b2b16b26033ca1ce1ed2e992",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "primevue",
+    "name": "PrimeVue",
+    "src": "/featured/primevue.svg",
+    "source": "https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/website.images/favicon/favicon.svg",
+    "sourceSha256": "567973fc4ef87c241deb3107e22f9b94f5b0b993994f0c80d2b969f8d5e0918c",
+    "sha256": "567973fc4ef87c241deb3107e22f9b94f5b0b993994f0c80d2b969f8d5e0918c",
+    "viewBox": "0 0 16 16"
+  },
+  {
+    "id": "bootstrapvuenext",
+    "name": "BootstrapVueNext",
+    "src": "/featured/bootstrapvuenext.png",
+    "source": "https://bootstrap-vue-next.github.io/bootstrap-vue-next/favicon.ico",
+    "sourceSha256": "8c7998a304aaf6d7b1ac4883067ce2a8a3c04f767a454f41de4747277346291e",
+    "sha256": "d69f2688eb36711e12bfdf0136b36f13dced020370893459e0a326149ad00d9d",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "buefy",
+    "name": "Buefy",
+    "src": "/featured/buefy.svg",
+    "source": "https://buefy.org/static/img/icons/safari-pinned-tab.svg",
+    "sourceSha256": "3552169fc69947d4af0206c038e3785395b8e6e6f2f523f3932441c9ba2d7668",
+    "sha256": "3552169fc69947d4af0206c038e3785395b8e6e6f2f523f3932441c9ba2d7668",
+    "viewBox": "0 0 730.000000 730.000000"
+  },
+  {
+    "id": "vue-material",
+    "name": "Vue Material",
+    "src": "/featured/vue-material.svg",
+    "source": "https://www.creative-tim.com/vuematerial/assets/favicon/safari-pinned-tab.svg",
+    "sourceSha256": "163154cbd90d5a092c0779c68c591a332504ab7e09c7119d60df48d7e3b0a42d",
+    "sha256": "163154cbd90d5a092c0779c68c591a332504ab7e09c7119d60df48d7e3b0a42d",
+    "viewBox": "0 0 330 330"
+  },
+  {
+    "id": "shadcn-svelte",
+    "name": "shadcn-svelte",
+    "src": "/featured/shadcn-svelte.png",
+    "source": "https://www.shadcn-svelte.com/apple-touch-icon.png",
+    "sourceSha256": "bcfb4509bf9dcc11e050a8cea482b4e28f8d949d2c5ed20bb70b890ab39a2a2d",
+    "sha256": "44a8cd63b4fc6e1d08079df9c6ef9c7ccf7d0401f35e8efc611835fd87f9d442",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "bits-ui",
+    "name": "Bits UI",
+    "src": "/featured/bits-ui.svg",
+    "source": "https://bits-ui.com/favicon-light.svg",
+    "sourceSha256": "90b045651106fe32f01fe7fefe3132ec28ed97b799efc04e102ac454da7a4618",
+    "sha256": "90b045651106fe32f01fe7fefe3132ec28ed97b799efc04e102ac454da7a4618",
+    "viewBox": "0 0 11 11"
+  },
+  {
+    "id": "melt-ui",
+    "name": "Melt UI",
+    "src": "/featured/melt-ui.png",
+    "source": "https://melt-ui.com/favicon.png",
+    "sourceSha256": "eb6be6ab3fba8510a4373d1d12ed815f8c39c1d0ac7463db927207b2dd811cf3",
+    "sha256": "cb5b88aa66cac3bdc64ebdf794a771eec92c46818be1081c626bad5b1e4308a7",
+    "width": 128,
+    "height": 128
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "src": "/featured/skeleton.png",
+    "source": "https://www.skeleton.dev/_astro/favicon.oeNx7Nna.png",
+    "sourceSha256": "1099c64e2f7dd6c36a412628e3292eeee8bc43c121fba74de11cf9f7b0490720",
+    "sha256": "2c4744e9d5ce3acc39925e5f6166338406fb1596787f880ac1662b4da756d87a",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "flowbite-svelte",
+    "name": "Flowbite Svelte",
+    "src": "/featured/flowbite-svelte.svg",
+    "source": "https://raw.githubusercontent.com/themesberg/flowbite-svelte/HEAD/static/images/flowbite-svelte-icon-logo.svg",
+    "sourceSha256": "5522f59c31957377c31337787602e78d52d2362fafc9b3a3dde064afbe03e3e4",
+    "sha256": "5522f59c31957377c31337787602e78d52d2362fafc9b3a3dde064afbe03e3e4",
+    "viewBox": "0 0 96 96"
+  },
+  {
+    "id": "svelte-material-ui",
+    "name": "Svelte Material UI",
+    "src": "/featured/svelte-material-ui.png",
+    "source": "https://sveltematerialui.com/icons/apple-icon-76x76.png",
+    "sourceSha256": "08373c0cb36de9f6bf0c75b687bcc060bf338ea11826994a73c7ac72b33e2b3f",
+    "sha256": "6feaa957ac359c977a084e11ff9e0c55e94281724a3a88b58ae611d9808c9db5",
+    "width": 76,
+    "height": 76
+  },
+  {
+    "id": "svelteui",
+    "name": "SvelteUI",
+    "src": "/featured/svelteui.png",
+    "source": "https://svelteui.org/static/favicon.png",
+    "sourceSha256": "bc11c12df5e041ab07db27a84012562973266871597ceb491e99266d52998928",
+    "sha256": "53b1c2511180d28be20ec8ff678cca54dfc4b601ed5d9b893d628350e998bc74",
+    "width": 110,
+    "height": 110
+  },
+  {
+    "id": "sveltestrap",
+    "name": "Sveltestrap",
+    "src": "/featured/sveltestrap.svg",
+    "source": "https://sveltestrap.js.org/favicon.svg",
+    "sourceSha256": "3ed1eedfebfdcd592e10553aa28404e7625e87a0db89f6ada4c9df47adb2f81a",
+    "sha256": "3ed1eedfebfdcd592e10553aa28404e7625e87a0db89f6ada4c9df47adb2f81a",
+    "viewBox": "0 0 226 226"
+  },
+  {
+    "id": "stdf",
+    "name": "STDF",
+    "src": "/featured/stdf.png",
+    "source": "https://stdf.dev/favicon.ico",
+    "sourceSha256": "ffae7d807f37b65d6b4bcaa7ec0caf16a265607c4145dde318b5d1786b4b35c5",
+    "sha256": "1f8330709ddd92201d9cbfc43c83624371cf5fa9a80f27823f4eb1fbd0b20474",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "carbon-components-svelte",
+    "name": "Carbon Components Svelte",
+    "src": "/featured/carbon-components-svelte.png",
+    "source": "https://carbon-components-svelte.onrender.com/favicon.ico",
+    "sourceSha256": "302aeec0f25cd17833aa773d5986ea57d288bea78a416e4121d3f6a472f033bd",
+    "sha256": "c236a05624737e5499c0ae2d5741a48b9ca4f01f625ec8c3b1fff987ba521311",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "svelte-ux",
+    "name": "Svelte UX",
+    "src": "/featured/svelte-ux.png",
+    "source": "https://svelte-ux.techniq.dev/favicon.jpg",
+    "sourceSha256": "ac03a14ba47609cef44fdc80578654ab69875b723bf2435f04bf8bbbd315c3fa",
+    "sha256": "55d44004cc69419bda4f1f0cb334be16b924c96317d13071cb5b0befc699e32a",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "svelte-headless-ui",
+    "name": "Svelte Headless UI",
+    "src": "/featured/svelte-headless-ui.svg",
+    "source": "https://svelte-headlessui.goss.io/favicon.svg",
+    "sourceSha256": "1f5c978d8fa86370510a4a6283408b7903a734b4249180b03a9073aef0c4fd60",
+    "sha256": "1f5c978d8fa86370510a4a6283408b7903a734b4249180b03a9073aef0c4fd60",
+    "viewBox": "0 0"
+  },
+  {
+    "id": "svelte-sonner",
+    "name": "Svelte Sonner",
+    "src": "/featured/svelte-sonner.png",
+    "source": "https://svelte-sonner.vercel.app/favicon.png",
+    "sourceSha256": "5146ed79b486cb9e1cdcdd7814cd22ae78e70ceb30fa06b4cd9a16cf121bc9e6",
+    "sha256": "dddfc25b38340cf551450edfe5649f5a3b0cb2a0f40baae0eabf43f7ee993980",
+    "width": 128,
+    "height": 128
+  },
+  {
+    "id": "angular-material",
+    "name": "Angular Material",
+    "src": "/featured/angular-material.svg",
+    "source": "https://material.angular.dev/assets/img/safari-pinned-tab.svg",
+    "sourceSha256": "cdfa67116560fbb9423901068272ff322a2add3a7dbc4ec2e78d4f6e2a4fd183",
+    "sha256": "cdfa67116560fbb9423901068272ff322a2add3a7dbc4ec2e78d4f6e2a4fd183",
+    "viewBox": "0 0 700 700"
+  },
+  {
+    "id": "ng-zorro",
+    "name": "NG-ZORRO",
+    "src": "/featured/ng-zorro.png",
+    "source": "https://ng.ant.design/assets/icons/apple-icon-180.png",
+    "sourceSha256": "a03bf109e7adae4eeee8eb6cc60be56cc2ac64bccd76eba507890ce99dcf646b",
+    "sha256": "c1e894f7864efb2e40ec47eccc04ab99549938b6902b17c2112e5a17107ff90b",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "ng-bootstrap",
+    "name": "ng-bootstrap",
+    "src": "/featured/ng-bootstrap.png",
+    "source": "https://ng-bootstrap.github.io/img/favicon.ico",
+    "sourceSha256": "6779cbef8dbe6a7bceb62b47d768d39d23cc0e792b422ec217f41df8da3fe60b",
+    "sha256": "0e9771c4a222a437c587264ebcbf862a1aa372bab6f62b35770385a44e6c2560",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "ngx-bootstrap",
+    "name": "ngx-bootstrap",
+    "src": "/featured/ngx-bootstrap.png",
+    "source": "https://valor-software.com/favicon.ico",
+    "sourceSha256": "0e69f1af6b6ac096fda56087d861a6cdaee2a00cb89ba9b2429147913cc3abcb",
+    "sha256": "c98c879410445edb9cb43bb672a42e14739be3811fc126aea8aeddea8efdc814",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "taiga-ui",
+    "name": "Taiga UI",
+    "src": "/featured/taiga-ui.svg",
+    "source": "https://taiga-ui.dev/assets/safari-pinned-tab.svg",
+    "sourceSha256": "6176711687aac4edeb3af5395719a6d7d4034e3cbbb6cbfee3e7dd8c509602b2",
+    "sha256": "6176711687aac4edeb3af5395719a6d7d4034e3cbbb6cbfee3e7dd8c509602b2",
+    "viewBox": "0 0 1088.000000 1088.000000"
+  },
+  {
+    "id": "nebular",
+    "name": "Nebular",
+    "src": "/featured/nebular.png",
+    "source": "https://akveo.github.io/nebular/favicon.png",
+    "sourceSha256": "d284a60bda6924337d635e5aafd2b1a5b74a438295c01dd39693a9a4f8172470",
+    "sha256": "fa0948d7e08ac7e58da9f6f11699988b0d958a1fb096a6388fad891f39b23913",
+    "width": 255,
+    "height": 256
+  },
+  {
+    "id": "clarity",
+    "name": "Clarity",
+    "src": "/featured/clarity.png",
+    "source": "https://clarity.design/favicon.ico",
+    "sourceSha256": "cb94492c79b1006b27f1bd5c62cefd53ba39ce05f6a4ecc8de2b13ca7a97e4a0",
+    "sha256": "97b4623ea13dae411d385ea333ed499fe0ba19d7c9518544146659d7fc6677db",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "spartan",
+    "name": "Spartan",
+    "src": "/featured/spartan.svg",
+    "source": "https://www.spartan.ng/assets/spartan.svg",
+    "sourceSha256": "54c3518f43f5584e38e5a0b07590d76cc00cfc5b6c9b8f00e9adf19527057c59",
+    "sha256": "54c3518f43f5584e38e5a0b07590d76cc00cfc5b6c9b8f00e9adf19527057c59",
+    "viewBox": "0 0 873 923"
+  },
+  {
+    "id": "primeng",
+    "name": "PrimeNG",
+    "src": "/featured/primeng.svg",
+    "source": "https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/website.images/favicon/favicon.svg",
+    "sourceSha256": "567973fc4ef87c241deb3107e22f9b94f5b0b993994f0c80d2b969f8d5e0918c",
+    "sha256": "567973fc4ef87c241deb3107e22f9b94f5b0b993994f0c80d2b969f8d5e0918c",
+    "viewBox": "0 0 16 16"
+  },
+  {
+    "id": "ng-alain",
+    "name": "NG Alain",
+    "src": "/featured/ng-alain.png",
+    "source": "https://ng-alain.com/assets/img/logo-color.png",
+    "sourceSha256": "65fe6e59e4d1c3cca0fbbc8eba3e44e90ad4ecd1667df7cee702ba04a31708cf",
+    "sha256": "5bc10759b89a668e484a85c157d7376a558249c54b7a3247ad2769ae4cc431c5",
+    "width": 222,
+    "height": 222
+  },
+  {
+    "id": "shoelace",
+    "name": "Shoelace",
+    "src": "/featured/shoelace.svg",
+    "source": "https://shoelace.style/assets/images/logo.svg",
+    "sourceSha256": "03fb5f6c4a20bac8b57f69024b80d54400eb444ebf642694ae7efd6be41fadee",
+    "sha256": "03fb5f6c4a20bac8b57f69024b80d54400eb444ebf642694ae7efd6be41fadee",
+    "viewBox": "0 0 127 141"
+  },
+  {
+    "id": "web-awesome",
+    "name": "Web Awesome",
+    "src": "/featured/web-awesome.svg",
+    "source": "https://webawesome.com/assets/images/app-icons/icon.svg",
+    "sourceSha256": "512521aa8df8d308152c57c4aa28c3d47c57d6aba7129c96ca41caf1f6a0608c",
+    "sha256": "512521aa8df8d308152c57c4aa28c3d47c57d6aba7129c96ca41caf1f6a0608c",
+    "viewBox": "0 0 32 32"
+  },
+  {
+    "id": "spectrum-web-components",
+    "name": "Spectrum Web Components",
+    "src": "/featured/spectrum-web-components.svg",
+    "source": "https://opensource.adobe.com/spectrum-web-components/favicon.svg",
+    "sourceSha256": "5e8381c4558752107c4dff464de0a408d136538ee4c1910136a975b914aee4fe",
+    "sha256": "5e8381c4558752107c4dff464de0a408d136538ee4c1910136a975b914aee4fe",
+    "viewBox": "0 0 30 26"
+  },
+  {
+    "id": "lion",
+    "name": "Lion",
+    "src": "/featured/lion.svg",
+    "source": "https://lion.js.org/favicon.svg",
+    "sourceSha256": "2d7a310283d6f9cc753210d83224cd6db6348cb82a5536348884e5831d46203f",
+    "sha256": "2d7a310283d6f9cc753210d83224cd6db6348cb82a5536348884e5831d46203f",
+    "viewBox": "0 0 128 128"
+  },
+  {
+    "id": "fast",
+    "name": "FAST",
+    "src": "/featured/fast.png",
+    "source": "https://fast.design/static/favicon.ico",
+    "sourceSha256": "a68125e27db48aa342470024243d6397ed21adb4faac0fd17dd59f7c548ca191",
+    "sha256": "cd9039d14991fb00e41399c716ea2a9bea9abf2c50d0497ff428c7b8f6e93929",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "material-web",
+    "name": "Material Web",
+    "src": "/featured/material-web.svg",
+    "source": "https://material-web.dev/images/favicon.svg",
+    "sourceSha256": "9c37a85f2947305476d93208df44c6634e0fc28eae2e19a49d7f7ce1bd59c23f",
+    "sha256": "9c37a85f2947305476d93208df44c6634e0fc28eae2e19a49d7f7ce1bd59c23f",
+    "viewBox": ""
+  },
+  {
+    "id": "ionic-framework",
+    "name": "Ionic Framework",
+    "src": "/featured/ionic-framework.png",
+    "source": "https://ionicframework.com/apple-icon-76x76.png",
+    "sourceSha256": "7289284a99f81b587de86170a94a7c09766f37433bf438ab35fc30ce9936eda9",
+    "sha256": "37eedb0fe784f4ff0843e33300d8f341ffe059ecc2f7935b8185b93ad4f7486b",
+    "width": 76,
+    "height": 76
+  },
+  {
+    "id": "ui5-web-components",
+    "name": "UI5 Web Components",
+    "src": "/featured/ui5-web-components.png",
+    "source": "https://ui5.github.io/webcomponents/img/favicon.ico",
+    "sourceSha256": "468a879992964f058e96182e38216570b40d53ef62d18a1e284bbe20f615afea",
+    "sha256": "e5ceac018602b6cecf19ba220cc0bfaeb7ac37a4a2f61d5d400542a9b50b17c2",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "wired-elements",
+    "name": "Wired Elements",
+    "src": "/featured/wired-elements.png",
+    "source": "https://wiredjs.com/images/fav.png",
+    "sourceSha256": "7feee3be5c7f331cf8dee7d7f1296aa264033c1cc615ce01ad68d2dbcb4e13e6",
+    "sha256": "12e24bc76aca8b221f531dc48a58f264b82a56399313cb861c9230dfa3705d9a",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "elix",
+    "name": "Elix",
+    "src": "/featured/elix.png",
+    "source": "https://component.kitchen/static/20241020005925/images/favicon.ico",
+    "sourceSha256": "02da08f8651333cf70dd61d22b37ac9e40c4662093152ae67d7a4f706fb846ca",
+    "sha256": "f7619d954807c806715eb1389830b69103698e5cf3e321e77717c949ae46a073",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "duet-date-picker",
+    "name": "Duet Date Picker",
+    "src": "/featured/duet-date-picker.png",
+    "source": "https://www.duetds.com/favicon.ico",
+    "sourceSha256": "ad49861691c8feeecabce7e24798f15126b9a7d717bd593755991f3ceac86c91",
+    "sha256": "385036e20a30f7693646e4a279f10c5d11819e40dfab7bc57c10e27a5b4fca75",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "patternfly-elements",
+    "name": "PatternFly Elements",
+    "src": "/featured/patternfly-elements.png",
+    "source": "https://patternflyelements.org/images/favicon.ico",
+    "sourceSha256": "767c8bb2076f0b221bbcb474b32f70902bd7dfd922b9964db47af92abca62cb3",
+    "sha256": "132521fc6642d7d6f6094da10bc7bf80738064047ff4933f91b8983e966a2046",
+    "width": 64,
+    "height": 64
+  },
+  {
+    "id": "motion",
+    "name": "Motion",
+    "src": "/featured/motion.svg",
+    "source": "https://motion.dev/favicon.svg",
+    "sourceSha256": "01958f3da9eb8e0529fdb561bdd314853f20728fefdddbf4fc2d784160bdfa9d",
+    "sha256": "01958f3da9eb8e0529fdb561bdd314853f20728fefdddbf4fc2d784160bdfa9d",
+    "viewBox": "0 0 64 64"
+  },
+  {
+    "id": "react-spring",
+    "name": "React Spring",
+    "src": "/featured/react-spring.png",
+    "source": "https://www.react-spring.dev/favicon.ico",
+    "sourceSha256": "aa87087d70348bcd7f096e259987ac5024325363d022a6ab19bafd0fc8d3edb9",
+    "sha256": "ef9d012f9c9f7215bf9f403dd367a6c9e12f855eb9346bde777f68b15c0074e1",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "anime-js",
+    "name": "Anime.js",
+    "src": "/featured/anime-js.png",
+    "source": "https://animejs.com/assets/images/favicon.png",
+    "sourceSha256": "f85cb516d39dc05b4bb3c14ea20d66ccc479e825ab05f1ebf79a12bec1df6cda",
+    "sha256": "2e5d19e5f69cba71ae0f1886113604806e7081186ae396e4000a4c58619ca3a2",
+    "width": 64,
+    "height": 64
+  },
+  {
+    "id": "autoanimate",
+    "name": "AutoAnimate",
+    "src": "/featured/autoanimate.svg",
+    "source": "https://auto-animate.formkit.com/assets/favicon-C1f1LLf8.svg",
+    "sourceSha256": "beba5cda791e0fdb9af5fdb35cf488eb94d358ceda66655e740b23cc51f358e5",
+    "sha256": "beba5cda791e0fdb9af5fdb35cf488eb94d358ceda66655e740b23cc51f358e5",
+    "viewBox": "0 0 64 64"
+  },
+  {
+    "id": "react-transition-group",
+    "name": "React Transition Group",
+    "src": "/featured/react-transition-group.png",
+    "source": "https://reactcommunity.org/favicon.ico",
+    "sourceSha256": "abe7613ba4c5f41c988a462c1658a1762cc47fd65a8ba2c937cedfad2c066d27",
+    "sha256": "64474b8c268a33f03395c8559244d8f7e2d9c745f3bb251997d6ea69e9bf1c63",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "react-flip-toolkit",
+    "name": "React Flip Toolkit",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  },
+  {
+    "id": "vueuse-motion",
+    "name": "VueUse Motion",
+    "src": "/featured/vueuse-motion.svg",
+    "source": "https://raw.githubusercontent.com/vueuse/motion/HEAD/docs/public/logo.svg",
+    "sourceSha256": "8210ae80c6e265c13289910c84c7a09ef12d885d9ce6b72e3518ab23f6bc41ab",
+    "sha256": "8210ae80c6e265c13289910c84c7a09ef12d885d9ce6b72e3518ab23f6bc41ab",
+    "viewBox": "0 0 48 48"
+  },
+  {
+    "id": "react-scroll-parallax",
+    "name": "React Scroll Parallax",
+    "src": "/featured/react-scroll-parallax.png",
+    "source": "https://react-scroll-parallax.damnthat.tv/img/favicon.ico",
+    "sourceSha256": "ce8b27c56d948d4b81f97887dec5448200ec728f71d3f362d989a883bd9aed18",
+    "sha256": "9f3a78c3cdf701da1217a8b034453ffec8dbb9a9e8abacd2dfe011dcadb52533",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "parallax-js",
+    "name": "Parallax.js",
+    "src": "/featured/parallax-js.png",
+    "source": "https://matthew.wagerfield.com/parallax/apple-touch-icon-72x72-precomposed.png",
+    "sourceSha256": "6027ad3b4cd4d6e69abae5635ef9a586cf8eee713b64394447c709bdfaadfb1e",
+    "sha256": "a380782205e67c7f56fc73016afd080e894f670f2e28ac0bf34797d50f8fc643",
+    "width": 72,
+    "height": 72
+  },
+  {
+    "id": "rellax",
+    "name": "Rellax",
+    "error": [
+      "HTTPSConnectionPool(host='dixonandmoe.com', port=443): Max retries exceeded with url: /favicon.svg (Caused by SSLError(SSLEOFError",
+      "404 Client Error: Not Found for url: https://dixonandmoe.com/favicon.ico",
+      "404 Client Error: Not Found for url: https://dixonandmoe.com/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "aos",
+    "name": "AOS",
+    "error": [
+      "404 Client Error: Not Found for url: https://michalsnik.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://michalsnik.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://michalsnik.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "sal-js",
+    "name": "Sal.js",
+    "src": "/featured/sal-js.png",
+    "source": "https://mciastek.github.io/sal/website/images/apple-touch-icon.png",
+    "sourceSha256": "01fca8dfefb3905e9a088c8334a245a54a0da481154e7b8c6897bc187c1bf24a",
+    "sha256": "ef38832876fd888e6f9d24ca6ed5e86920665707a4775829944541781b20522c",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "locomotive-scroll",
+    "name": "Locomotive Scroll",
+    "src": "/featured/locomotive-scroll.svg",
+    "source": "https://scroll.locomotive.ca/assets/images/favicons/safari-pinned-tab.svg",
+    "sourceSha256": "21f3efb20067ec3d3206be8648061ec82f1b7e0d53f3b8107ac8bedf7112c570",
+    "sha256": "21f3efb20067ec3d3206be8648061ec82f1b7e0d53f3b8107ac8bedf7112c570",
+    "viewBox": "0 0 260.000000 260.000000"
+  },
+  {
+    "id": "lenis",
+    "name": "Lenis",
+    "src": "/featured/lenis.png",
+    "source": "https://lenis.dev/apple-touch-icon.png",
+    "sourceSha256": "8ec61b33398e04fa1627f006ef60ff6d3170feaadff7c4e6140f597565a67fee",
+    "sha256": "06278fafcbfba81c88b4d2f47a44fd1e56756937d993090ba675147017a12692",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "tsparticles",
+    "name": "tsParticles",
+    "src": "/featured/tsparticles.svg",
+    "source": "https://raw.githubusercontent.com/tsparticles/tsparticles/HEAD/demo/astro/public/favicon.svg",
+    "sourceSha256": "dddac3870e66889496da35eed0f2ae5c3393efb45edf6ac349c8e08a4f617918",
+    "sha256": "dddac3870e66889496da35eed0f2ae5c3393efb45edf6ac349c8e08a4f617918",
+    "viewBox": "0 0 36 36"
+  },
+  {
+    "id": "vanta-js",
+    "name": "Vanta.js",
+    "src": "/featured/vanta-js.png",
+    "source": "https://www.vantajs.com/favicon.ico",
+    "sourceSha256": "10111d2f9eae5fa1a34648733fc45714e95cf8425a65c99893ec34ff213add23",
+    "sha256": "1650dab39edcaa1a9a8ae1e3b6415edf5b32420441635245448e85a2fa367c90",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "granim-js",
+    "name": "Granim.js",
+    "src": "/featured/granim-js.png",
+    "source": "https://sarcadass.github.io/granim.js/favicon.ico",
+    "sourceSha256": "dc42c643ced2993aa6ad12230dd13592f7755a0d321934bc2332e9aa2f6c191d",
+    "sha256": "31f9f51c83877b7101e4a4e966bdaa26f5c0e090ef7b125ee1525f24e4db7c09",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "vivus",
+    "name": "Vivus",
+    "error": [
+      "404 Client Error: Not Found for url: https://maxwellito.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://maxwellito.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://maxwellito.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "kute-js",
+    "name": "KUTE.js",
+    "src": "/featured/kute-js.png",
+    "source": "https://thednp.github.io/kute.js/assets/img/apple-touch-icon.png",
+    "sourceSha256": "c4daf2cf724a0d12c291657ea299ed28a8fdc1521ab8fad45a4a1e886a6c4347",
+    "sha256": "130fe6fd5f56937f0cf1e4f3d85a7663ea226dc15f8c74254a2b011f724fd042",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "lottie-web",
+    "name": "Lottie Web",
+    "error": [
+      "404 Client Error: Not Found for url: https://lottie.airbnb.tech/favicon.svg",
+      "404 Client Error: Not Found for url: https://lottie.airbnb.tech/favicon.ico",
+      "404 Client Error: Not Found for url: https://lottie.airbnb.tech/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "lottie-react",
+    "name": "Lottie React",
+    "src": "/featured/lottie-react.svg",
+    "source": "https://lottiereact.com/lottie-logo.svg",
+    "sourceSha256": "107c0db896edc217c9acbdfff7739fee18a27a65cbe956d26307bd07766e5a4a",
+    "sha256": "107c0db896edc217c9acbdfff7739fee18a27a65cbe956d26307bd07766e5a4a",
+    "viewBox": "0 0 160 160"
+  },
+  {
+    "id": "dotlottie-web",
+    "name": "DotLottie Web",
+    "src": "/featured/dotlottie-web.png",
+    "source": "https://docs.lottiefiles.com/favicon.ico",
+    "sourceSha256": "ed8ff9b56a3982530968d1ee639b965b46a4ca1e97da6eb14926fec67f359d50",
+    "sha256": "bc76712999ce0a118be3d55f90b30d8504597432dcac7060713e4d744de7654e",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "react-awesome-reveal",
+    "name": "React Awesome Reveal",
+    "error": [
+      "HTTPSConnectionPool(host='awesome-reveal.dev', port=443): Max retries exceeded with url: /v4/favicon.svg (Caused by SSLError(SSLCe",
+      "HTTPSConnectionPool(host='awesome-reveal.dev', port=443): Max retries exceeded with url: /v4/favicon.ico (Caused by SSLError(SSLCe",
+      "HTTPSConnectionPool(host='awesome-reveal.dev', port=443): Max retries exceeded with url: /v4/apple-touch-icon.png (Caused by SSLEr"
+    ]
+  },
+  {
+    "id": "react-type-animation",
+    "name": "React Type Animation",
+    "error": [
+      "HTTPSConnectionPool(host='react-type-animation.netlify.app', port=443): Max retries exceeded with url: /favicon.svg (Caused by SSL",
+      "HTTPSConnectionPool(host='react-type-animation.netlify.app', port=443): Max retries exceeded with url: /favicon.ico (Caused by SSL",
+      "HTTPSConnectionPool(host='react-type-animation.netlify.app', port=443): Max retries exceeded with url: /apple-touch-icon.png (Caus"
+    ]
+  },
+  {
+    "id": "react-countup",
+    "name": "React CountUp",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  },
+  {
+    "id": "countup-js",
+    "name": "CountUp.js",
+    "error": [
+      "404 Client Error: Not Found for url: https://inorganik.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://inorganik.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://inorganik.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "number-flow",
+    "name": "Number Flow",
+    "src": "/featured/number-flow.png",
+    "source": "https://number-flow.barvian.me/favicon.ico",
+    "sourceSha256": "bf0134826b0216a8ab0d2255cb6982dcaf6d3985dbec2a4215709f1a4a0a57e8",
+    "sha256": "fa2a9da0bc3da565445c4ecdced55898573aa8265de091117cd764516cebb4ea",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "hamburgers",
+    "name": "Hamburgers",
+    "src": "/featured/hamburgers.png",
+    "source": "https://jonsuh.com/favicon.ico",
+    "sourceSha256": "bde8f1519dae91cbfa3c33f35804457396cc0565c275ebee115db4a8cba56705",
+    "sha256": "3037af49a85f470ccf9444b2a810350b67e047d3c08ee38639abdb8911e2f872",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "headroom-js",
+    "name": "Headroom.js",
+    "error": [
+      "404 Client Error: Not Found for url: https://wicky.nillia.ms/favicon.svg",
+      "404 Client Error: Not Found for url: https://wicky.nillia.ms/favicon.ico",
+      "404 Client Error: Not Found for url: https://wicky.nillia.ms/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "react-intersection-observer",
+    "name": "React Intersection Observer",
+    "src": "/featured/react-intersection-observer.svg",
+    "source": "https://react-intersection-observer.thebuilder.dk/favicon.svg",
+    "sourceSha256": "9f00248eb9ce3c82beda3538991fb9ce88264cc432c6fb3d59beff959990f984",
+    "sha256": "9f00248eb9ce3c82beda3538991fb9ce88264cc432c6fb3d59beff959990f984",
+    "viewBox": "0 0 64 64"
+  },
+  {
+    "id": "react-zoom-pan-pinch",
+    "name": "React Zoom Pan Pinch",
+    "src": "/featured/react-zoom-pan-pinch.svg",
+    "source": "https://bettertyped.github.io/react-zoom-pan-pinch/favicon.svg",
+    "sourceSha256": "64a8563ca9880107c0aec0f37818dfcaae3315c76ee80c54fa20966c01b7308a",
+    "sha256": "64a8563ca9880107c0aec0f37818dfcaae3315c76ee80c54fa20966c01b7308a",
+    "viewBox": ""
+  },
+  {
+    "id": "d3",
+    "name": "D3",
+    "src": "/featured/d3.png",
+    "source": "https://d3js.org/logo.png",
+    "sourceSha256": "d80f45f72a6c3d7d2966ad4d22ed609af25a64ee87d0d5df02a88f29135329aa",
+    "sha256": "e2a51d2609eb5ff6e7cb7d765b1b9c9cb06e130a23abc89c5fe58e5cf255b80d",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "chart-js",
+    "name": "Chart.js",
+    "src": "/featured/chart-js.png",
+    "source": "https://www.chartjs.org/favicon.ico",
+    "sourceSha256": "39181fe2035dc81451c638ec1063c120f937953e2f1b63f759d2c58261a3626f",
+    "sha256": "f35bd6e684f0c974433785166042a3eff703ded9376ab546673f906a9cf9d0f9",
+    "width": 64,
+    "height": 64
+  },
+  {
+    "id": "apache-echarts",
+    "name": "Apache ECharts",
+    "src": "/featured/apache-echarts.png",
+    "source": "https://echarts.apache.org/en/images/favicon.png?_v_=20240226",
+    "sourceSha256": "3a6f31de9387417ffb3e59be02426a5a7651b1862f400b55bb4040a77ed50f93",
+    "sha256": "f3d37c63a5d4f1a6cecf0483556ab4ae8807ae533bc1ccc3940e647f2d42b312",
+    "width": 147,
+    "height": 147
+  },
+  {
+    "id": "recharts",
+    "name": "Recharts",
+    "src": "/featured/recharts.svg",
+    "source": "https://raw.githubusercontent.com/recharts/recharts/HEAD/www/public/logo.svg",
+    "sourceSha256": "cb20fca01ca84fbe51e8b7495894c8d06256468d788378f1452b5dab30b5d9fc",
+    "sha256": "cb20fca01ca84fbe51e8b7495894c8d06256468d788378f1452b5dab30b5d9fc",
+    "viewBox": "0 0 200 60"
+  },
+  {
+    "id": "nivo",
+    "name": "Nivo",
+    "src": "/featured/nivo.png",
+    "source": "https://nivo.rocks/icons/icon-96x96.png?v=2c40177db7a1031e6d0f8e313d17ad0f",
+    "sourceSha256": "1214e12f5baccc5d27bcab66c5b4267b0eb913daa825528f6e33b408ef07fec7",
+    "sha256": "feae31a9b3df096187ba2a484523bfd35ce536e3f0a4aba7a5cfc0346d358660",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "visx",
+    "name": "Visx",
+    "src": "/featured/visx.png",
+    "source": "https://raw.githubusercontent.com/airbnb/visx/HEAD/packages/visx-demo/public/static/logo-dark.png",
+    "sourceSha256": "b08c69208c496e2524e45ffef96b07259ccfb080f2985c838fe9c440ba9e0712",
+    "sha256": "09e536d68d2f06d01df2d785ff67816bcc9d515998793a30d8e4608786beb230",
+    "width": 256,
+    "height": 182
+  },
+  {
+    "id": "victory",
+    "name": "Victory",
+    "src": "/featured/victory.png",
+    "source": "https://nearform.com/open-source/victory/favicon.ico",
+    "sourceSha256": "f0e0f00012b7eef213da47faaffa299bb545a6471fb40631b53d6ecb8dc9c9a8",
+    "sha256": "5101e248582f2f314397043d239bfbbaedbca23c259947f085f3f62d2aa0de3d",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "plotly-js",
+    "name": "Plotly.js",
+    "src": "/featured/plotly-js.png",
+    "source": "https://dash.plotly.com/assets/favicon.ico",
+    "sourceSha256": "7407c32c9e4e0dd9220dbf814d1d84bf2fd7faf1e98105cadb58f075a54f9605",
+    "sha256": "431e777e69ebc754199ddda7059be45704d399671895dbe15cced782a3c4047d",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "uplot",
+    "name": "uPlot",
+    "src": "/featured/uplot.svg",
+    "source": "https://raw.githubusercontent.com/leeoniya/uPlot/HEAD/uPlot.svg",
+    "sourceSha256": "a939817ca62bd6b67b65363d6e962e73871a032e42fb5e004d04e8d9d29c3439",
+    "sha256": "a939817ca62bd6b67b65363d6e962e73871a032e42fb5e004d04e8d9d29c3439",
+    "viewBox": "0 0 100 100"
+  },
+  {
+    "id": "chartist",
+    "name": "Chartist",
+    "src": "/featured/chartist.svg",
+    "source": "https://chartist.dev/favicon.svg",
+    "sourceSha256": "ba4139e56c7970f6148c9dab57a9ab5061fc3653ef996b39bbcc59d75331c531",
+    "sha256": "ba4139e56c7970f6148c9dab57a9ab5061fc3653ef996b39bbcc59d75331c531",
+    "viewBox": "300 62 128 128"
+  },
+  {
+    "id": "billboard-js",
+    "name": "Billboard.js",
+    "src": "/featured/billboard-js.png",
+    "source": "https://naver.github.io/billboard.js/favicon.ico",
+    "sourceSha256": "981ce9b0d467246601cab271275e5ea5fe3ccb558cee697de62c58311352bcff",
+    "sha256": "f2e63d6326a9c538a8a93eb558aeb245a74d0aa7cd2285c47d58f04ad3e8ddd6",
+    "width": 120,
+    "height": 120
+  },
+  {
+    "id": "c3-js",
+    "name": "C3.js",
+    "src": "/featured/c3-js.png",
+    "source": "https://c3js.org/img/favicon-74acff28.png",
+    "sourceSha256": "95c46ea5393aeb39c83e5d0828c8d7f208f95b66bf26a4136d77a57dcffb577c",
+    "sha256": "291474173b2e2b0f212361b4c151fcd5a77aad6c6a18dc5783959e0ef50aaebc",
+    "width": 200,
+    "height": 200
+  },
+  {
+    "id": "vega",
+    "name": "Vega",
+    "src": "/featured/vega.png",
+    "source": "https://vega.github.io/favicon.ico",
+    "sourceSha256": "a214be3cb6ddc5c8ef495291a34e272131e5b29197e257c89ee0ca56cb59a119",
+    "sha256": "26061c1215c98f6005ecf37613f98447c8af9baf0bd07e5b6d8eb28681b4cfc9",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "vega-lite",
+    "name": "Vega-Lite",
+    "src": "/featured/vega-lite.png",
+    "source": "https://vega.github.io/favicon.ico",
+    "sourceSha256": "a214be3cb6ddc5c8ef495291a34e272131e5b29197e257c89ee0ca56cb59a119",
+    "sha256": "26061c1215c98f6005ecf37613f98447c8af9baf0bd07e5b6d8eb28681b4cfc9",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "observable-plot",
+    "name": "Observable Plot",
+    "error": [
+      "429 Client Error: Too Many Requests for url: https://observablehq.com/favicon.svg",
+      "429 Client Error: Too Many Requests for url: https://observablehq.com/favicon.ico",
+      "429 Client Error: Too Many Requests for url: https://observablehq.com/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "unovis",
+    "name": "Unovis",
+    "src": "/featured/unovis.svg",
+    "source": "https://unovis.dev/img/unovis-pictogram-square.svg",
+    "sourceSha256": "ccf4aeef2251da7efff0add390ef8de673b946f50b8c5f218081a19c592752ea",
+    "sha256": "ccf4aeef2251da7efff0add390ef8de673b946f50b8c5f218081a19c592752ea",
+    "viewBox": "0 0 32 32"
+  },
+  {
+    "id": "antv-g2",
+    "name": "AntV G2",
+    "src": "/featured/antv-g2.png",
+    "source": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*7svFR6wkPMoAAAAAAAAAAAAADmJ7AQ/original",
+    "sourceSha256": "5184e70a52d7dd12090e47fa05663107744c96de2a381b9de883e69848d72d26",
+    "sha256": "d0e03a169965f5cd0c00430ef79060249a445cc4d292b1e999dcba9a8b838864",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "antv-g6",
+    "name": "AntV G6",
+    "src": "/featured/antv-g6.png",
+    "source": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*7svFR6wkPMoAAAAAAAAAAAAADmJ7AQ/original",
+    "sourceSha256": "5184e70a52d7dd12090e47fa05663107744c96de2a381b9de883e69848d72d26",
+    "sha256": "d0e03a169965f5cd0c00430ef79060249a445cc4d292b1e999dcba9a8b838864",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "antv-f2",
+    "name": "AntV F2",
+    "src": "/featured/antv-f2.png",
+    "source": "https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*7svFR6wkPMoAAAAAAAAAAAAADmJ7AQ/original",
+    "sourceSha256": "5184e70a52d7dd12090e47fa05663107744c96de2a381b9de883e69848d72d26",
+    "sha256": "d0e03a169965f5cd0c00430ef79060249a445cc4d292b1e999dcba9a8b838864",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "semiotic",
+    "name": "Semiotic",
+    "src": "/featured/semiotic.png",
+    "source": "https://semiotic.nteract.io/assets/favicon-CFfDzPKl.png",
+    "sourceSha256": "9a5bcd9f1cc32e8165f40bdce1c64e0d77325569aaaafd796e897479301ed025",
+    "sha256": "72750fba417c61bb7f167ff52ba09f62b0ebc03a7c78f1651e8e92b9c1050562",
+    "width": 127,
+    "height": 127
+  },
+  {
+    "id": "roughviz",
+    "name": "RoughViz",
+    "src": "/featured/roughviz.png",
+    "source": "https://raw.githubusercontent.com/jwilber/random_data/master/roughViz_Title.png",
+    "sourceSha256": "e43dd4d8dcee68b5472e0b7bc505a05230bede7fc74b3c6ca3c59f87dda595ac",
+    "sha256": "083a0303539dc48bf774bd257630584acc298b1ddbe3376970e3f54e5f24fe38",
+    "width": 256,
+    "height": 66
+  },
+  {
+    "id": "vchart",
+    "name": "VChart",
+    "src": "/featured/vchart.png",
+    "source": "https://lf-dp.bytetos.com/obj/dp-open-internet-cn/visactor-site/bytedance/client/img/favicon.png",
+    "sourceSha256": "78f92deec8c47c57a7715a52486ac0198203646f8c1b8d0ba1eb77bb7cf2b149",
+    "sha256": "9f303815d293138923df971a1857c279fbfed947307bcf89899c6e7b4e72ad73",
+    "width": 26,
+    "height": 26
+  },
+  {
+    "id": "tanstack-table",
+    "name": "TanStack Table",
+    "src": "/featured/tanstack-table.svg",
+    "source": "https://tanstack.com/favicon-light.svg",
+    "sourceSha256": "2b301b3958e0013798fbbfe971238b80b351f4c6b34e03c786c56648da1b7737",
+    "sha256": "2b301b3958e0013798fbbfe971238b80b351f4c6b34e03c786c56648da1b7737",
+    "viewBox": "0 0 18 18"
+  },
+  {
+    "id": "react-data-grid",
+    "name": "React Data Grid",
+    "error": [
+      "404 Client Error: Not Found for url: https://adazzle.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://adazzle.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://adazzle.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "glide-data-grid",
+    "name": "Glide Data Grid",
+    "src": "/featured/glide-data-grid.png",
+    "source": "https://grid.glideapps.com/favicon.ico",
+    "sourceSha256": "a0e0471bbb81f3f0bdd92cbf99eca44008c53a927a986aa1173c221d04e8f016",
+    "sha256": "456ab02938644282cc18fca4fbc6194b47ed516feddcd084580c04b4d21ac03c",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "material-react-table",
+    "name": "Material React Table",
+    "src": "/featured/material-react-table.png",
+    "source": "https://www.material-react-table.com/mrt_logo.png",
+    "sourceSha256": "2a2f42cb2080ae4575ba197b78a0f0097ad1229f5ce13285685a5eb8474eae56",
+    "sha256": "17eb2a6a6861a68bdf99a6fa56bd912220ae044ca9360328ad44f7f29b83b03d",
+    "width": 218,
+    "height": 182
+  },
+  {
+    "id": "mantine-react-table",
+    "name": "Mantine React Table",
+    "src": "/featured/mantine-react-table.png",
+    "source": "https://www.mantine-react-table.com/mrt_logo.png",
+    "sourceSha256": "fba2ddd59a4f15d1d6f5a88a09c47abc48d1982b515c0f6b23f390140100b77f",
+    "sha256": "2c55bc02e6c42dc5d0c5d5e9862977389e86ccf2403a63fee6bd5d9c72f99b08",
+    "width": 218,
+    "height": 182
+  },
+  {
+    "id": "mantine-datatable",
+    "name": "Mantine DataTable",
+    "src": "/featured/mantine-datatable.svg",
+    "source": "https://icflorescu.github.io/mantine-datatable/icon.svg?icon.2zcotpmu66-1-.svg",
+    "sourceSha256": "2bc6edf9d8d89c243b860c358ce40d99ebb9d18921cb787509d41f0dac31e27c",
+    "sha256": "2bc6edf9d8d89c243b860c358ce40d99ebb9d18921cb787509d41f0dac31e27c",
+    "viewBox": ""
+  },
+  {
+    "id": "tabulator",
+    "name": "Tabulator",
+    "src": "/featured/tabulator.png",
+    "source": "https://www.tabulator.info/images/logos/t_square_outline.png",
+    "sourceSha256": "232a2f667b4ae3e0dc57f9768c24b992a463d2ec4ae5bc69db1677c715778d38",
+    "sha256": "e240d8af817bd7e3c49faa1f28e987860770123512b6911de375e2f9449ef593",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "grid-js",
+    "name": "Grid.js",
+    "src": "/featured/grid-js.png",
+    "source": "https://gridjs.io/img/favicon.ico",
+    "sourceSha256": "834a2a6c511a5a7e07fcbc090c375227e270793be6b7682c3f8cb9963d50ec01",
+    "sha256": "a3f349ab9e9d34d3129defdbfad5ab997d12a66500458c0c0de418df8dbe6aff",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "vtable",
+    "name": "VTable",
+    "src": "/featured/vtable.png",
+    "source": "https://lf-dp.bytetos.com/obj/dp-open-internet-cn/visactor-site/bytedance/client/img/favicon.png",
+    "sourceSha256": "78f92deec8c47c57a7715a52486ac0198203646f8c1b8d0ba1eb77bb7cf2b149",
+    "sha256": "9f303815d293138923df971a1857c279fbfed947307bcf89899c6e7b4e72ad73",
+    "width": 26,
+    "height": 26
+  },
+  {
+    "id": "react-data-table-component",
+    "name": "React Data Table Component",
+    "src": "/featured/react-data-table-component.svg",
+    "source": "https://raw.githubusercontent.com/jbetancur/react-data-table-component/HEAD/apps/docs/public/favicon.svg",
+    "sourceSha256": "2fcb56bc2e911f76c12a1cf03163cafa1f8ffc45bc6981a879f0d3be4488a077",
+    "sha256": "2fcb56bc2e911f76c12a1cf03163cafa1f8ffc45bc6981a879f0d3be4488a077",
+    "viewBox": "0 0 22 22"
+  },
+  {
+    "id": "react-virtualized",
+    "name": "React Virtualized",
+    "src": "/featured/react-virtualized.svg",
+    "source": "https://raw.githubusercontent.com/bvaughn/react-virtualized/HEAD/public/favicon.svg",
+    "sourceSha256": "f09a94b761720f2a000476198a228de97f9b47f02e6a8ea784317bc8de44f096",
+    "sha256": "f09a94b761720f2a000476198a228de97f9b47f02e6a8ea784317bc8de44f096",
+    "viewBox": "0 0 20 20"
+  },
+  {
+    "id": "react-window",
+    "name": "React Window",
+    "src": "/featured/react-window.svg",
+    "source": "https://react-window.vercel.app/favicon.svg",
+    "sourceSha256": "dcade207e6a48597a94e8e05891da8e249b656ffebd7636c400391e50c803303",
+    "sha256": "dcade207e6a48597a94e8e05891da8e249b656ffebd7636c400391e50c803303",
+    "viewBox": "0 0 20 20"
+  },
+  {
+    "id": "tanstack-virtual",
+    "name": "TanStack Virtual",
+    "src": "/featured/tanstack-virtual.svg",
+    "source": "https://tanstack.com/favicon-light.svg",
+    "sourceSha256": "2b301b3958e0013798fbbfe971238b80b351f4c6b34e03c786c56648da1b7737",
+    "sha256": "2b301b3958e0013798fbbfe971238b80b351f4c6b34e03c786c56648da1b7737",
+    "viewBox": "0 0 18 18"
+  },
+  {
+    "id": "react-hook-form",
+    "name": "React Hook Form",
+    "src": "/featured/react-hook-form.png",
+    "source": "https://react-hook-form.com/images/logo/react-hook-form-logo-only.png",
+    "sourceSha256": "9a5ccb2902233b0404540e7fbdb9426626c92fcbeefd1f107bda5c10f91cd985",
+    "sha256": "66eeec4fc5a449b275909921774025a260d95d5b7594a80da3f7686c9e60bf27",
+    "width": 203,
+    "height": 202
+  },
+  {
+    "id": "formik",
+    "name": "Formik",
+    "src": "/featured/formik.png",
+    "source": "https://formik.org/images/favicon.png",
+    "sourceSha256": "e9a5ba43ccd3485f84923167f2f91fc274dd1e294beddb4705c52414e267b4fa",
+    "sha256": "ac2f35f184462979f38c499fa4970c5c651cad86fdd0b5e5dcb3247178252a38",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "tanstack-form",
+    "name": "TanStack Form",
+    "src": "/featured/tanstack-form.svg",
+    "source": "https://tanstack.com/favicon-light.svg",
+    "sourceSha256": "2b301b3958e0013798fbbfe971238b80b351f4c6b34e03c786c56648da1b7737",
+    "sha256": "2b301b3958e0013798fbbfe971238b80b351f4c6b34e03c786c56648da1b7737",
+    "viewBox": "0 0 18 18"
+  },
+  {
+    "id": "final-form",
+    "name": "Final Form",
+    "src": "/featured/final-form.png",
+    "source": "https://final-form.org/favicon/apple-icon-76x76.png",
+    "sourceSha256": "80a0269ffd7ef6985f58a72f54ce8ad6c13119560e8968656bac8d0388cc2f0a",
+    "sha256": "09181395f52140c7682648d5c4ade4206a038665654724b3f5c1dadb645e0de6",
+    "width": 76,
+    "height": 76
+  },
+  {
+    "id": "formkit",
+    "name": "FormKit",
+    "src": "/featured/formkit.png",
+    "source": "https://formkit.com/favicon.ico",
+    "sourceSha256": "625cd5618a57421416e7fe384af22b0d825d369d2fac3afdc8df7e60f195f9b6",
+    "sha256": "7cb381914f9b7e6a11f7bcc31ae20a99a74b2b1a99c39cbc53af107fea145aa0",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "formily",
+    "name": "Formily",
+    "src": "/featured/formily.svg",
+    "source": "https://img.alicdn.com/imgextra/i3/O1CN01XtT3Tv1Wd1b5hNVKy_!!6000000002810-55-tps-360-360.svg",
+    "sourceSha256": "eeaebea21b886ef7446186e808e8f2425986ea3edb9d401bacd778526642a6f0",
+    "sha256": "eeaebea21b886ef7446186e808e8f2425986ea3edb9d401bacd778526642a6f0",
+    "viewBox": "0 0 360 360"
+  },
+  {
+    "id": "json-forms",
+    "name": "JSON Forms",
+    "error": [
+      "HTTPSConnectionPool(host='jsonforms.io', port=443): Max retries exceeded with url: /favicon.svg (Caused by SSLError(SSLEOFError(8,",
+      "HTTPSConnectionPool(host='jsonforms.io', port=443): Max retries exceeded with url: /favicon.ico (Caused by SSLError(SSLEOFError(8,",
+      "404 Client Error: Not Found for url: https://jsonforms.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "react-json-schema-form",
+    "name": "React JSON Schema Form",
+    "src": "/featured/react-json-schema-form.png",
+    "source": "https://raw.githubusercontent.com/rjsf-team/react-jsonschema-form/59a8206e148474bea854bbb004f624143fbcbac8/packages/core/logo.png",
+    "sourceSha256": "4514ff00fecf3ae8751750c3d6881bddc695e4b193f6efb01267b8fb8fe46511",
+    "sha256": "9f725cc7e68be0b2f90eef201bea8d9c581455db7f62f4c46a7f97c56278a4b2",
+    "width": 256,
+    "height": 166
+  },
+  {
+    "id": "uniforms",
+    "name": "Uniforms",
+    "src": "/featured/uniforms.png",
+    "source": "https://uniforms.tools/img/favicon.ico",
+    "sourceSha256": "e9545b55a977d847225572ba0f1b420c0e1eb1533a21f1aaab1b579c953d143d",
+    "sha256": "f84d53b15174a7571f98bd80ccc8e38ef1dafafc4d88bad6fac5aecb0e3300f6",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "veevalidate",
+    "name": "VeeValidate",
+    "src": "/featured/veevalidate.png",
+    "source": "https://raw.githubusercontent.com/logaretm/vee-validate/main/logo.png",
+    "sourceSha256": "58cbbc28cabca36a5a1cc93403b30037019f99ef9d273423bec91e7dae2821f2",
+    "sha256": "ab37b7f99a151a7d73482226764cc800950b6a0f91766f0f4e87a6448a55f8d2",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "vuelidate",
+    "name": "Vuelidate",
+    "src": "/featured/vuelidate.png",
+    "source": "https://vuelidate-next.netlify.app/favicon.ico",
+    "sourceSha256": "d029ee2f8b418ee988836acac9bb63b82be5e23d285c52d1f1afdfe3e546f4fe",
+    "sha256": "82383e4cbc59322c2bb5685edb26d9d28762694b8b3268fa808575bd155a1984",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "svelte-superforms",
+    "name": "Svelte Superforms",
+    "src": "/featured/svelte-superforms.svg",
+    "source": "https://superforms.rocks/safari-pinned-tab.svg?v=2",
+    "sourceSha256": "56b65b7871ba6c81ef931d4d8b835dbe4a20698d09eadd5904cf6c477aecafc7",
+    "sha256": "56b65b7871ba6c81ef931d4d8b835dbe4a20698d09eadd5904cf6c477aecafc7",
+    "viewBox": "0 0 700.000000 700.000000"
+  },
+  {
+    "id": "felte",
+    "name": "Felte",
+    "src": "/featured/felte.png",
+    "source": "https://felte.dev/apple-touch-icon.png",
+    "sourceSha256": "386a5b82991bcf8810cbf4efd8d37a25abd351c8f42f0aeafa039a2ed7c03d52",
+    "sha256": "f2894270c79124b94b5ae08997c7444003320de0ef495a39282ad409bae88de5",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "modular-forms",
+    "name": "Modular Forms",
+    "src": "/featured/modular-forms.png",
+    "source": "https://raw.githubusercontent.com/fabian-hiller/modular-forms/HEAD/website/public/favicon-32x32.png",
+    "sourceSha256": "2dcc8a00c18e2f3b27efd0f4266f44a24d6cb8a2d34cf393d5c593fc5768601a",
+    "sha256": "bac7029127abac2a2ecc891c2b3c8df9399e76b9891c866fdfca1b7a7445edff",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "react-select",
+    "name": "React Select",
+    "src": "/featured/react-select.png",
+    "source": "https://react-select.com/favicon.ico",
+    "sourceSha256": "6cce26309cf4e3703ca33b2c9ac44ebd394cbc34c535eceb827876f383845eaa",
+    "sha256": "191e438069d3f49034e54895933e2e9f82f456355d332a32b2554a8e15272dc1",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "downshift",
+    "name": "Downshift",
+    "src": "/featured/downshift.svg",
+    "source": "https://raw.githubusercontent.com/downshift-js/downshift/master/other/public/logo/downshift.svg",
+    "sourceSha256": "44271adcb94374d6dcd78b2463452a88ee7b7cfa19f40bdb2436226a8fa293ff",
+    "sha256": "44271adcb94374d6dcd78b2463452a88ee7b7cfa19f40bdb2436226a8fa293ff",
+    "viewBox": "0 0 119 48"
+  },
+  {
+    "id": "tom-select",
+    "name": "Tom Select",
+    "error": [
+      "404 Client Error: Not Found for url: https://tom-select.js.org/favicon.svg",
+      "404 Client Error: Not Found for url: https://tom-select.js.org/favicon.ico",
+      "404 Client Error: Not Found for url: https://tom-select.js.org/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "choices-js",
+    "name": "Choices.js",
+    "src": "/featured/choices-js.svg",
+    "source": "https://choices-js.github.io/Choices/assets/images/safari-pinned-tab.svg",
+    "sourceSha256": "879d25bcaacd382b9c8427b8915a4ed03e2aba126542f809f93b657361c45fea",
+    "sha256": "879d25bcaacd382b9c8427b8915a4ed03e2aba126542f809f93b657361c45fea",
+    "viewBox": "0 0 280.000000 280.000000"
+  },
+  {
+    "id": "tagify",
+    "name": "Tagify",
+    "src": "/featured/tagify.svg",
+    "source": "https://raw.githubusercontent.com/yairEO/tagify/HEAD/docs/logo.svg",
+    "sourceSha256": "6eacdcf707aaa6e9241e00ce2f0c4526235c66593a053603eb2bfcd43ad1731e",
+    "sha256": "6eacdcf707aaa6e9241e00ce2f0c4526235c66593a053603eb2bfcd43ad1731e",
+    "viewBox": "0 0 280 150"
+  },
+  {
+    "id": "imask",
+    "name": "IMask",
+    "error": [
+      "404 Client Error: Not Found for url: https://imask.js.org/favicon.svg",
+      "404 Client Error: Not Found for url: https://imask.js.org/favicon.ico",
+      "404 Client Error: Not Found for url: https://imask.js.org/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "tiptap",
+    "name": "Tiptap",
+    "src": "/featured/tiptap.png",
+    "source": "https://cdn.prod.website-files.com/645a9acecda2e0594fac6126/657b06d9fe0642a8d7efeabc_tiptap_webclip.png",
+    "sourceSha256": "5c1a9b66cf41da58434cc97862aa568413a9fdd3a1af882339775e4b0157be92",
+    "sha256": "d5678a6fba1089c167225881e59fa42f20402820316aed70fafd2243e088d084",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "lexical",
+    "name": "Lexical",
+    "src": "/featured/lexical.png",
+    "source": "https://lexical.dev/img/favicon.ico",
+    "sourceSha256": "00d76c782bf2e184759b9e1a4d0efab31afe4cc903e39395603620d744c0a7b2",
+    "sha256": "4e5ff749908d7afcc477def8392a6c0320810245cd65bdfe2d0c39f3f8eda9dc",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "quill",
+    "name": "Quill",
+    "src": "/featured/quill.png",
+    "source": "https://quilljs.com/assets/images/favicon.ico",
+    "sourceSha256": "477a66645c4a287e28437286cf9b38832abd681e0e1152e584de59bba24b089e",
+    "sha256": "277958830f1a2ecd677c80271268142577f6269f0b19653eb4ebdb2b025a43b9",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "prosemirror",
+    "name": "ProseMirror",
+    "src": "/featured/prosemirror.png",
+    "source": "https://prosemirror.net/favicon.ico",
+    "sourceSha256": "3c03c1ce9ae229482543a026861f206844d5ecd969759186bad3a01e4e5a9dd7",
+    "sha256": "6685579dbe71005b6b7dc0ccb1d8abe6095cf575893c10db7fd4c5f578db254e",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "codemirror",
+    "name": "CodeMirror",
+    "src": "/featured/codemirror.svg",
+    "source": "https://codemirror.net/style/logo.svg",
+    "sourceSha256": "e283efdd1f70cba56a6189f2c8beb0900f9e4551a6cd692c40d07c2032813c96",
+    "sha256": "e283efdd1f70cba56a6189f2c8beb0900f9e4551a6cd692c40d07c2032813c96",
+    "viewBox": ""
+  },
+  {
+    "id": "monaco-editor",
+    "name": "Monaco Editor",
+    "error": [
+      "404 Client Error: Not Found for url: https://microsoft.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://microsoft.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://microsoft.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "ace",
+    "name": "Ace",
+    "src": "/featured/ace.png",
+    "source": "https://ace.c9.io/doc/site/images/favicon.ico",
+    "sourceSha256": "4910ef95f49bb74fb92a6a4105622a3407ecb21bbdd31e0679de590446b2db19",
+    "sha256": "77448635e057a4583c59fe55f1f02f25fb014c22385930688aac77f211f70b55",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "editor-js",
+    "name": "Editor.js",
+    "src": "/featured/editor-js.png",
+    "source": "https://editorjs.io/favicon.png",
+    "sourceSha256": "62ff91b5dca3a266463552338cfa4b6731d7205a4b8650f87f56e3e3ad7db98f",
+    "sha256": "c9ddfa81cf59a7947ced661b589bd7a0d5f254c8bf0361c4d5c7f73b19e23dda",
+    "width": 23,
+    "height": 23
+  },
+  {
+    "id": "blocknote",
+    "name": "BlockNote",
+    "src": "/featured/blocknote.svg",
+    "source": "https://www.blocknotejs.org/favicon.svg",
+    "sourceSha256": "ae74a08948e15f8f64293c6f9a3a17361b11d0e1dd9eb40df62f94e86c567382",
+    "sha256": "ae74a08948e15f8f64293c6f9a3a17361b11d0e1dd9eb40df62f94e86c567382",
+    "viewBox": "0 0 500 500"
+  },
+  {
+    "id": "plate",
+    "name": "Plate",
+    "src": "/featured/plate.png",
+    "source": "https://platejs.org/apple-touch-icon.png",
+    "sourceSha256": "f9dc3fb1599daf9c8244f7e0d8414b214d6d058aef9ed7f3ee3e6010893bb6c3",
+    "sha256": "c2ba332885e6ff5f119a6ab4a93bc887cfcd75c924ba64af58e0e301e7c0ab04",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "milkdown",
+    "name": "Milkdown",
+    "src": "/featured/milkdown.svg",
+    "source": "https://milkdown.dev/favicon.svg",
+    "sourceSha256": "26eaf662276cd2195602bd2dd7061bb5fec840c09c07f0cd987182e15a5425a4",
+    "sha256": "26eaf662276cd2195602bd2dd7061bb5fec840c09c07f0cd987182e15a5425a4",
+    "viewBox": "0 0 200 200"
+  },
+  {
+    "id": "mdxeditor",
+    "name": "MDXEditor",
+    "src": "/featured/mdxeditor.png",
+    "source": "https://mdxeditor.dev/favicon.ico",
+    "sourceSha256": "cfa39f757301a1c521b4f577554506f42535f718bc18c40043e8f8ee94b95325",
+    "sha256": "4e7ed5da5d826ec0ae052ae2905faf5518dcecae9c2a8d8f4793bfd952cc4edb",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "toast-ui-editor",
+    "name": "TOAST UI Editor",
+    "src": "/featured/toast-ui-editor.png",
+    "source": "https://ui.toast.com/icons-afac2d19e8aa82377b3f18a704d4acf5/favicon-48x48.png",
+    "sourceSha256": "61e4091875fb21597dc8f522ac980c1dd03f69362d2d05c68b38dece501c5e38",
+    "sha256": "8e2c591891964a96f8385cd31a34b799d9f6d3f55e331cc95d96f85746b075a6",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "wangeditor",
+    "name": "wangEditor",
+    "src": "/featured/wangeditor.png",
+    "source": "https://www.wangeditor.com/favicon.ico",
+    "sourceSha256": "ce891c6651f77f921ed921e07fd05dc8360ec30a178ec15a89c1687334f1adf4",
+    "sha256": "cbabc380ed40a5bee421610bc9b94b90e69bb51c46d70ee92b4df81620053ffe",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "jodit",
+    "name": "Jodit",
+    "src": "/featured/jodit.png",
+    "source": "https://xdsoft.net/images/logo192.png",
+    "sourceSha256": "ed66514e85697470ef0d358a7c443f3872b45fcec3f45c9cd66d918f19f8cd03",
+    "sha256": "63ca7881210d81da8dc6482a2b369519c7dfbdf42108bf9467b72bea11f9409f",
+    "width": 192,
+    "height": 192
+  },
+  {
+    "id": "craft-js",
+    "name": "Craft.js",
+    "src": "/featured/craft-js.png",
+    "source": "https://craft.js.org/img/favicon.ico",
+    "sourceSha256": "36a6f4ba02692dd0d4f25aa288e598a8f36d5e1a18513f0bdbbc0ada9f5b729d",
+    "sha256": "c897bce754c82f1d43803b5a2c0dcc3ffc51f684272226a6ef8c6bc7f3c48bf3",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "puck",
+    "name": "Puck",
+    "src": "/featured/puck.svg",
+    "source": "https://puckeditor.com/favicon.svg",
+    "sourceSha256": "75f788b4388ff5d86236655b114aa62627752e2c256eb534f13ce0ffda48ccf3",
+    "sha256": "75f788b4388ff5d86236655b114aa62627752e2c256eb534f13ce0ffda48ccf3",
+    "viewBox": "0 0 824 824"
+  },
+  {
+    "id": "react-page",
+    "name": "React Page",
+    "error": [
+      "404 Client Error: Not Found for url: https://react-page.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://react-page.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://react-page.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "swiper",
+    "name": "Swiper",
+    "src": "/featured/swiper.svg",
+    "source": "https://swiperjs.com/images/favicon.svg",
+    "sourceSha256": "5fb53cc105a556b404f55d2341f5ad08a33a70e50b7e8224a2101e0cd95def36",
+    "sha256": "5fb53cc105a556b404f55d2341f5ad08a33a70e50b7e8224a2101e0cd95def36",
+    "viewBox": "0 0 128 128"
+  },
+  {
+    "id": "embla-carousel",
+    "name": "Embla Carousel",
+    "src": "/featured/embla-carousel.svg",
+    "source": "https://www.embla-carousel.com/icon.svg?icon.1kwdz7fok430k.svg",
+    "sourceSha256": "f50e10b4206197fc715c5bc7a9e3d706137c6b1094f1e9c8c5d9523d327c0efa",
+    "sha256": "f50e10b4206197fc715c5bc7a9e3d706137c6b1094f1e9c8c5d9523d327c0efa",
+    "viewBox": "0 0 32 32"
+  },
+  {
+    "id": "keen-slider",
+    "name": "Keen Slider",
+    "src": "/featured/keen-slider.svg",
+    "source": "https://keen-slider.io/safari-pinned-tab.svg",
+    "sourceSha256": "a1aeca4428722f495b1ed95db415d72f884454eaae09e44b95fdb2ecf0a70c21",
+    "sha256": "a1aeca4428722f495b1ed95db415d72f884454eaae09e44b95fdb2ecf0a70c21",
+    "viewBox": "0 0 700.000000 700.000000"
+  },
+  {
+    "id": "splide",
+    "name": "Splide",
+    "src": "/featured/splide.png",
+    "source": "https://splidejs.com/images/site/apple-touch-icon.png",
+    "sourceSha256": "71d871de8b5ab30e4329fb3b9bf3d35f500d184bfa12195ed1d2538010661186",
+    "sha256": "e213555268830ee366963505677915d5556f13dc5ba6f7aa9c7909558781719e",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "glide-js",
+    "name": "Glide.js",
+    "src": "/featured/glide-js.png",
+    "source": "https://glidejs.com/favicon.ico",
+    "sourceSha256": "a2158cfd162f263200151427f448564f4254b4935f3a31effbcb564763ff26b8",
+    "sha256": "a56f36493beb815248bb58a85aa5324e2ecdcaacd11d753f7db0b9d5470b2b20",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "flicking",
+    "name": "Flicking",
+    "src": "/featured/flicking.png",
+    "source": "https://naver.github.io/egjs-flicking/img/favicon.ico",
+    "sourceSha256": "3699794c80a1d5951b246c5c477ed3ef9339a296ba90ebb035328411d909e860",
+    "sha256": "3510076b47a01769cba889e33e54b2f979571c727cfb8065414af1a050b0fa26",
+    "width": 208,
+    "height": 256
+  },
+  {
+    "id": "photoswipe",
+    "name": "PhotoSwipe",
+    "src": "/featured/photoswipe.png",
+    "source": "https://photoswipe.com/img/favicon-16x16.png",
+    "sourceSha256": "1ef50387ac20ee2ab02aa9e7279597e9aa4cf12d7ef7bd12a99c84c48ba418ac",
+    "sha256": "b8e369c2c86948d43344be3f8afe39d73801f9ce4e1a56b7e08abfc3f3bcded8",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "glightbox",
+    "name": "GLightbox",
+    "error": [
+      "404 Client Error: Not Found for url: https://biati-digital.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://biati-digital.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://biati-digital.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "yet-another-react-lightbox",
+    "name": "Yet Another React Lightbox",
+    "src": "/featured/yet-another-react-lightbox.svg",
+    "source": "https://yet-another-react-lightbox.com/safari-pinned-tab.svg",
+    "sourceSha256": "f77e66b17248d2bddb29552ec70a74384ba683b3dca912bb40cb3b77367dc2e7",
+    "sha256": "f77e66b17248d2bddb29552ec70a74384ba683b3dca912bb40cb3b77367dc2e7",
+    "viewBox": "0 0 600.000000 600.000000"
+  },
+  {
+    "id": "react-photo-album",
+    "name": "React Photo Album",
+    "src": "/featured/react-photo-album.svg",
+    "source": "https://react-photo-album.com/safari-pinned-tab.svg",
+    "sourceSha256": "5f7c5656490630bdc08b8715defed3b245355c78e8f06020f94c9e8234fa8fcf",
+    "sha256": "5f7c5656490630bdc08b8715defed3b245355c78e8f06020f94c9e8234fa8fcf",
+    "viewBox": "0 0 600.000000 600.000000"
+  },
+  {
+    "id": "video-js",
+    "name": "Video.js",
+    "src": "/featured/video-js.svg",
+    "source": "https://raw.githubusercontent.com/videojs/video.js/HEAD/site/public/favicon.svg",
+    "sourceSha256": "b2bff1d74065acbf6417ab80c9b65b574dc82cc489405083822b6c779cc011d5",
+    "sha256": "b2bff1d74065acbf6417ab80c9b65b574dc82cc489405083822b6c779cc011d5",
+    "viewBox": "0 0 209 209"
+  },
+  {
+    "id": "plyr",
+    "name": "Plyr",
+    "src": "/featured/plyr.svg",
+    "source": "https://plyr.io/favicon.svg",
+    "sourceSha256": "b2bff1d74065acbf6417ab80c9b65b574dc82cc489405083822b6c779cc011d5",
+    "sha256": "b2bff1d74065acbf6417ab80c9b65b574dc82cc489405083822b6c779cc011d5",
+    "viewBox": "0 0 209 209"
+  },
+  {
+    "id": "media-chrome",
+    "name": "Media Chrome",
+    "src": "/featured/media-chrome.png",
+    "source": "https://www.media-chrome.org/favicon/favicon-256x256.png",
+    "sourceSha256": "62ad546444688718b0be7e9c59f6a5d6a13cb8f707fe5c03a0cdeefbc1d5540e",
+    "sha256": "3d266fe0283844ae585ca87cf864c4f7091ac5e78c15cc8f080911b6dd8fe459",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "react-player",
+    "name": "React Player",
+    "error": [
+      "404 Client Error: Not Found for url: https://cookpete.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://cookpete.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://cookpete.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "wavesurfer-js",
+    "name": "Wavesurfer.js",
+    "src": "/featured/wavesurfer-js.png",
+    "source": "https://wavesurfer.xyz/favicons/apple-touch-icon.png",
+    "sourceSha256": "ea41b73063af81c0b646f0e3e1cdc98de4266f56bf4dac33c159a7e055903734",
+    "sha256": "3aa3e2438310fa0b0734d6312c6ce45cdb15004cb7d3441a660a106203cee6b6",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "uppy",
+    "name": "Uppy",
+    "src": "/featured/uppy.svg",
+    "source": "https://uppy.io/img/logo.svg",
+    "sourceSha256": "d9b767a862d9c9d51642223fc66a45498554e7edfdc10825873e482d2a6daa3d",
+    "sha256": "d9b767a862d9c9d51642223fc66a45498554e7edfdc10825873e482d2a6daa3d",
+    "viewBox": "0 0 111 112"
+  },
+  {
+    "id": "filepond",
+    "name": "FilePond",
+    "src": "/featured/filepond.png",
+    "source": "https://pqina.nl/filepond/apple-touch-icon.png",
+    "sourceSha256": "356090047e19a13067dbb51c5b75d1b817e572c584752a256f2d1a3c04374c2e",
+    "sha256": "aa7cb88e6633a753001dfb69edf6aadcea2e5c644c90628876b22f9c09da3ed3",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "react-dropzone",
+    "name": "React Dropzone",
+    "src": "/featured/react-dropzone.svg",
+    "source": "https://react-dropzone.js.org/favicon.svg",
+    "sourceSha256": "eb0bf05bc7a7aa9caa47b083eafdd9616dfa99cfa293f68960c513d0d7ff3b3b",
+    "sha256": "eb0bf05bc7a7aa9caa47b083eafdd9616dfa99cfa293f68960c513d0d7ff3b3b",
+    "viewBox": "3 3 90 90"
+  },
+  {
+    "id": "lucide",
+    "name": "Lucide",
+    "src": "/featured/lucide.svg",
+    "source": "https://lucide.dev/favicon.svg",
+    "sourceSha256": "03c68e61352a7c0781f3b36b555d7f2bc6d9331091b828d29df256c2d5d8686f",
+    "sha256": "03c68e61352a7c0781f3b36b555d7f2bc6d9331091b828d29df256c2d5d8686f",
+    "viewBox": "0 0 24 24"
+  },
+  {
+    "id": "tabler-icons",
+    "name": "Tabler Icons",
+    "src": "/featured/tabler-icons.png",
+    "source": "https://tabler.io/favicon.ico?favicon.1wwitlnk8ws_k.ico",
+    "sourceSha256": "de251586640eab7cbd975e3f1c8155f281efe0b922903c38899546efb270366e",
+    "sha256": "cc671c14ec47acbfe3c79715eac644d239a811c6820174cc238cee785dc9a1c9",
+    "width": 64,
+    "height": 64
+  },
+  {
+    "id": "heroicons",
+    "name": "Heroicons",
+    "src": "/featured/heroicons.png",
+    "source": "https://heroicons.com/_next/static/media/apple-touch-icon.822687be.png",
+    "sourceSha256": "17adb54999b9087bb54ccc5e1f6e6ce3129fa3ff03011ff8a60e70759ed8f612",
+    "sha256": "f4c3078ed11740df86a7d6a78741114c504cda2485f220553e460eec709a84fb",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "phosphor-icons",
+    "name": "Phosphor Icons",
+    "src": "/featured/phosphor-icons.png",
+    "source": "https://phosphoricons.com/favicon-192.png",
+    "sourceSha256": "799c99b7fff037943173048ee80e0c93160dc4f1d6bcae08f38f7c7e0e2f76ec",
+    "sha256": "6207974b05029c428fb60743761101f1db1640f0bbe46de1a6c7a5dc28a667f0",
+    "width": 192,
+    "height": 192
+  },
+  {
+    "id": "feather",
+    "name": "Feather",
+    "error": [
+      "HTTPSConnectionPool(host='feathericons.com', port=443): Max retries exceeded with url: /favicon.svg (Caused by SSLError(SSLEOFErro",
+      "HTTPSConnectionPool(host='feathericons.com', port=443): Max retries exceeded with url: /favicon.ico (Caused by SSLError(SSLEOFErro",
+      "HTTPSConnectionPool(host='feathericons.com', port=443): Max retries exceeded with url: /apple-touch-icon.png (Caused by SSLError(S"
+    ]
+  },
+  {
+    "id": "bootstrap-icons",
+    "name": "Bootstrap Icons",
+    "src": "/featured/bootstrap-icons.svg",
+    "source": "https://icons.getbootstrap.com/assets/img/favicons/safari-pinned-tab.svg",
+    "sourceSha256": "03b4de77db0f741ff46efc34ea950a960b16a3c4cff1d74728789a60e35b34da",
+    "sha256": "03b4de77db0f741ff46efc34ea950a960b16a3c4cff1d74728789a60e35b34da",
+    "viewBox": ""
+  },
+  {
+    "id": "octicons",
+    "name": "Octicons",
+    "src": "/featured/octicons.svg",
+    "source": "https://primer.style/icon.svg?icon.1ohssj3nq107e.svg",
+    "sourceSha256": "763d33b88a5a619417d137687520cb7a3d8c044c546e3d5678ccf650c3e236ce",
+    "sha256": "763d33b88a5a619417d137687520cb7a3d8c044c546e3d5678ccf650c3e236ce",
+    "viewBox": "0 0 32 32"
+  },
+  {
+    "id": "ionicons",
+    "name": "Ionicons",
+    "src": "/featured/ionicons.png",
+    "source": "https://ionic.io/ionicons/assets/img/meta/apple-icon-76x76.png",
+    "sourceSha256": "d46d010722432015f7ff87f7a45fc2f5d1faf3ff76f0d55f97d260b7af5cdb7a",
+    "sha256": "450e3c6cf0db328f3089ed0c0f5ae5db4f5362125f56b9b783b82eaffdd6a3c6",
+    "width": 76,
+    "height": 76
+  },
+  {
+    "id": "iconoir",
+    "name": "Iconoir",
+    "src": "/featured/iconoir.png",
+    "source": "https://iconoir.com/favicon.png",
+    "sourceSha256": "61ef3528a0aea7f0fe6005233213afd9ec7024a00f709714a9cc7b2cc820622a",
+    "sha256": "61ef3528a0aea7f0fe6005233213afd9ec7024a00f709714a9cc7b2cc820622a",
+    "width": 120,
+    "height": 120
+  },
+  {
+    "id": "radix-icons",
+    "name": "Radix Icons",
+    "src": "/featured/radix-icons.svg",
+    "source": "https://www.radix-ui.com/favicon-black.svg",
+    "sourceSha256": "3668c9b8c3326e57de33eccd00366d935c132351e63d927ca77cfdfd80a88c05",
+    "sha256": "3668c9b8c3326e57de33eccd00366d935c132351e63d927ca77cfdfd80a88c05",
+    "viewBox": "0 0 35 35"
+  },
+  {
+    "id": "flag-icons",
+    "name": "Flag Icons",
+    "src": "/featured/flag-icons.png",
+    "source": "https://flagicons.lipis.dev/favicon.ico",
+    "sourceSha256": "f932a5020d938470ab4369eaf12f2cffcdd846356a9a5589b884c92d1caedbb6",
+    "sha256": "6bdc9bf1f43b1464298ae52219436eed4347c654618c90a4d99e9cb078278c43",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "dicebear",
+    "name": "DiceBear",
+    "src": "/featured/dicebear.svg",
+    "source": "https://www.dicebear.com/favicon.svg",
+    "sourceSha256": "f4b6823e7c79154e2fb3b2090345187a78775640f718e401a26da174865e8de2",
+    "sha256": "f4b6823e7c79154e2fb3b2090345187a78775640f718e401a26da174865e8de2",
+    "viewBox": "0 0 512 512"
+  },
+  {
+    "id": "dnd-kit",
+    "name": "dnd-kit",
+    "src": "/featured/dnd-kit.png",
+    "source": "https://dndkit.com/favicon.png",
+    "sourceSha256": "82c2e31956ccd1d594396a9ce6f9d41d30de2047d6edc68462f81f02da070020",
+    "sha256": "60a1105d5a53cba2108bae3969476289cc37a447aef9d109a31a18254502a310",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "pragmatic-drag-and-drop",
+    "name": "Pragmatic Drag and Drop",
+    "src": "/featured/pragmatic-drag-and-drop.svg",
+    "source": "https://raw.githubusercontent.com/atlassian/pragmatic-drag-and-drop/HEAD/packages/documentation/examples/pieces/pdnd-logo.svg",
+    "sourceSha256": "94c582a43f7812d1a89f70ed73de6bf6383b618a01a30451ccbf29635b8dd124",
+    "sha256": "94c582a43f7812d1a89f70ed73de6bf6383b618a01a30451ccbf29635b8dd124",
+    "viewBox": "0 0 204 274"
+  },
+  {
+    "id": "sortablejs",
+    "name": "SortableJS",
+    "src": "/featured/sortablejs.png",
+    "source": "https://sortablejs.github.io/Sortable/st/og-image.png",
+    "sourceSha256": "ca8e9087fbc57f269dfa9532b03201113abcdf2de882d38fc117e292bb2e29a2",
+    "sha256": "04f0b5e6273cfb0e0c82d54eaa67570c3c0cdc2a08b3242237e81f538e3e84f8",
+    "width": 245,
+    "height": 256
+  },
+  {
+    "id": "react-dnd",
+    "name": "React DnD",
+    "src": "/featured/react-dnd.png",
+    "source": "https://react-dnd.github.io/react-dnd/icons/icon-96x96.png?v=b4e3a877490f33e678d9e30b115e75c3",
+    "sourceSha256": "21678772640f5cbdb8bb7c8ee2fbf7a82f6cf03249301e71c0bc6f54a65aabf0",
+    "sha256": "b378810daa500b41f0a229259af251d46718e32a572663ec18cc0bd90df41b7f",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "react-grid-layout",
+    "name": "React Grid Layout",
+    "error": [
+      "404 Client Error: Not Found for url: https://react-grid-layout.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://react-grid-layout.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://react-grid-layout.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "gridstack",
+    "name": "GridStack",
+    "src": "/featured/gridstack.png",
+    "source": "https://gridstackjs.com/favicon.ico",
+    "sourceSha256": "c4f565fe6aead4e3c1104c926d30c29ad6b09c6b66e3e183bb43e9ca9e9248fc",
+    "sha256": "7e86476ceffa869fcf9e53979eeb95f73473e6ff3cac6372e277c661d4c21045",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "moveable",
+    "name": "Moveable",
+    "src": "/featured/moveable.png",
+    "source": "https://raw.githubusercontent.com/daybrush/moveable/master/demo/images/logo.png",
+    "sourceSha256": "a21d6c8dba04b5dda85678139ad1654780cacdb058f9435344ed479f6ab09f28",
+    "sha256": "4b5ad48a3dc8aabf71744eb3dcf3ac70d2ac77842e1d4bfdd7ab241be381a5a7",
+    "width": 256,
+    "height": 171
+  },
+  {
+    "id": "interact-js",
+    "name": "Interact.js",
+    "src": "/featured/interact-js.png",
+    "source": "https://interactjs.io/favicon.ico",
+    "sourceSha256": "06d21eea1103f82b35c6b7c248aac2dc1907cd63caae79bce3e9bbe121866d0b",
+    "sha256": "7b13afbccdc20d7291f61e146b8b3127340bcb7629db1b3bc97d8c0216756a03",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "react-rnd",
+    "name": "React Rnd",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  },
+  {
+    "id": "react-resizable-panels",
+    "name": "React Resizable Panels",
+    "src": "/featured/react-resizable-panels.svg",
+    "source": "https://react-resizable-panels.vercel.app/favicon.svg",
+    "sourceSha256": "39910634a0addd64d93f6c7349ca68ca4390add2201cb28401a4337fefd26a80",
+    "sha256": "39910634a0addd64d93f6c7349ca68ca4390add2201cb28401a4337fefd26a80",
+    "viewBox": "0 0 16 16"
+  },
+  {
+    "id": "split-js",
+    "name": "Split.js",
+    "src": "/featured/split-js.svg",
+    "source": "https://raw.githubusercontent.com/nathancahill/split/HEAD/packages/splitjs/logo.svg",
+    "sourceSha256": "6703cfabdd715a6e00397a9d09a3e14357561b3315a5354a835b4a3580cb4a0a",
+    "sha256": "6703cfabdd715a6e00397a9d09a3e14357561b3315a5354a835b4a3580cb4a0a",
+    "viewBox": "0 0 416 139"
+  },
+  {
+    "id": "allotment",
+    "name": "Allotment",
+    "src": "/featured/allotment.svg",
+    "source": "https://raw.githubusercontent.com/johnwalley/allotment/HEAD/assets/logo.svg",
+    "sourceSha256": "2641477a5bb398ff2b9ea09cae4a5419935397abf50f9da33b21a3cebf34154d",
+    "sha256": "2641477a5bb398ff2b9ea09cae4a5419935397abf50f9da33b21a3cebf34154d",
+    "viewBox": "0 0 865.71 586.55"
+  },
+  {
+    "id": "react-flow",
+    "name": "React Flow",
+    "src": "/featured/react-flow.svg",
+    "source": "https://reactflow.dev/icon.svg?icon.09l0-uedd1wof.svg",
+    "sourceSha256": "d79f8198b2d2ccdc01264a6f253db2b9d6a62be37bf0a0f3bff4e1d70aae8712",
+    "sha256": "d79f8198b2d2ccdc01264a6f253db2b9d6a62be37bf0a0f3bff4e1d70aae8712",
+    "viewBox": "0 0 157 157"
+  },
+  {
+    "id": "svelte-flow",
+    "name": "Svelte Flow",
+    "src": "/featured/svelte-flow.svg",
+    "source": "https://svelteflow.dev/icon.svg?icon.0b8srxfuvot1y.svg",
+    "sourceSha256": "f5819ab58890b770028f5524fbb8f7ec39427857da4bb4ad34060dd1bfa4059d",
+    "sha256": "f5819ab58890b770028f5524fbb8f7ec39427857da4bb4ad34060dd1bfa4059d",
+    "viewBox": "0 0 157 157"
+  },
+  {
+    "id": "rete-js",
+    "name": "Rete.js",
+    "src": "/featured/rete-js.png",
+    "source": "https://retejs.org/favicon.ico",
+    "sourceSha256": "13f9416ad72a822de1f2d289fd274481e64d8472889afd0770f24a55e8b92402",
+    "sha256": "04d0b97d659bc1fc2cac9973ec0acca3c344251480f5ff3f3d4ab479154b8066",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "fullcalendar",
+    "name": "FullCalendar",
+    "src": "/featured/fullcalendar.svg",
+    "source": "https://fullcalendar.io/favicon.svg",
+    "sourceSha256": "25e4d591a3cef63903140277697bf0b4128cbb559f91c7d3dd143ec2b8309840",
+    "sha256": "25e4d591a3cef63903140277697bf0b4128cbb559f91c7d3dd143ec2b8309840",
+    "viewBox": "12 12 56 56"
+  },
+  {
+    "id": "react-big-calendar",
+    "name": "React Big Calendar",
+    "error": [
+      "404 Client Error: Not Found for url: https://jquense.github.io/favicon.svg",
+      "404 Client Error: Not Found for url: https://jquense.github.io/favicon.ico",
+      "404 Client Error: Not Found for url: https://jquense.github.io/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "daypicker",
+    "name": "DayPicker",
+    "src": "/featured/daypicker.png",
+    "source": "https://daypicker.dev/img/favicon.ico",
+    "sourceSha256": "1a2f1013ecf1a33730d7b258c8f47de75257f118565f0e1660843327408802f2",
+    "sha256": "f07bad0038800ffb08064fb5cb6b94319a5630e8dc546f8e198f69f7a26244ee",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "react-datepicker",
+    "name": "React Datepicker",
+    "src": "/featured/react-datepicker.png",
+    "source": "https://raw.githubusercontent.com/Hacker0x01/react-datepicker/HEAD/docs-site/src/components/App/logo.png",
+    "sourceSha256": "0abdd29a3e54d561d8c799e79a0f0cedc6d74bf9628faa5c1948ad70aaf8a7d1",
+    "sha256": "e062c3ccbce7cd430b8eac518f2617d5414c58ff2895eb11e46ad6cb0897c8e7",
+    "width": 256,
+    "height": 50
+  },
+  {
+    "id": "flatpickr",
+    "name": "Flatpickr",
+    "src": "/featured/flatpickr.png",
+    "source": "https://flatpickr.js.org/images/logo.png",
+    "sourceSha256": "a7b65ff2b13aaf686d0c60285e4b9556c72f66d93eeaba5aefa907ce34bf3fe7",
+    "sha256": "84615264e3f83d6a8f61bb36aad8c3c03cc9402415deaa9c51f748aef916dbe7",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "air-datepicker",
+    "name": "Air Datepicker",
+    "src": "/featured/air-datepicker.png",
+    "source": "https://air-datepicker.com/favicon-32x32.png",
+    "sourceSha256": "5e100ae1d193fb97eecc5df2fdd83364a977e71867280fb66c966193e289368c",
+    "sha256": "e985eb19f11cb84404485bdee8e29e3d9c94ac4ab65a4025f596343f5ef08895",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "vanilla-calendar-pro",
+    "name": "Vanilla Calendar Pro",
+    "src": "/featured/vanilla-calendar-pro.svg",
+    "source": "https://vanilla-calendar.pro/icon.svg?37012f520a7d9983",
+    "sourceSha256": "b1f7e2e9c22637f192db0177404fb4e739cd36ba2535f96ba959f71580236cf0",
+    "sha256": "b1f7e2e9c22637f192db0177404fb4e739cd36ba2535f96ba959f71580236cf0",
+    "viewBox": "0 0 445 445"
+  },
+  {
+    "id": "schedule-x",
+    "name": "Schedule-X",
+    "src": "/featured/schedule-x.png",
+    "source": "https://schedule-x.dev/favicon.png",
+    "sourceSha256": "c0cdafbf3bae6af8898bc1ef95277f7b2bd2f4d0d4d69f28525865e93c0b0f10",
+    "sha256": "747c00f582fde66032b335b20797e30365293a0480978bbf623c8b7eadc2e478",
+    "width": 120,
+    "height": 120
+  },
+  {
+    "id": "toast-ui-calendar",
+    "name": "TOAST UI Calendar",
+    "src": "/featured/toast-ui-calendar.png",
+    "source": "https://ui.toast.com/icons-afac2d19e8aa82377b3f18a704d4acf5/favicon-48x48.png",
+    "sourceSha256": "61e4091875fb21597dc8f522ac980c1dd03f69362d2d05c68b38dece501c5e38",
+    "sha256": "8e2c591891964a96f8385cd31a34b799d9f6d3f55e331cc95d96f85746b075a6",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "vcalendar",
+    "name": "VCalendar",
+    "src": "/featured/vcalendar.png",
+    "source": "https://vcalendar.io/favicon.png",
+    "sourceSha256": "8bd21862f83cdad38a3092f3be5eee1df29ef291af67d7afb4421a8785c7c7aa",
+    "sha256": "1d0824e342ffbdce578dae515db9c343daf4daeaf88cd4ed593f8ab50b83956a",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "vue-datepicker",
+    "name": "Vue Datepicker",
+    "src": "/featured/vue-datepicker.png",
+    "source": "https://vue3datepicker.com/logo.png",
+    "sourceSha256": "c20b4eafcc66f6decf48e1be767b91d37f0ee2f7581f9af6e118782a36ea8f80",
+    "sha256": "e85b5b0ab450429c90050317b336c5e5f722d5d2c790e60ac3000efba9efd676",
+    "width": 256,
+    "height": 222
+  },
+  {
+    "id": "react-multi-date-picker",
+    "name": "React Multi Date Picker",
+    "src": "/featured/react-multi-date-picker.png",
+    "source": "https://shahabyazdi.github.io/react-multi-date-picker/icons/icon-96x96.png?v=53aa06cf17e4239d0dba6ffd09854e02",
+    "sourceSha256": "6cf3318517367871ecb205af9a606726bfc061775df4fae702ee00eb78237c11",
+    "sha256": "43ac537c74fb39c38be18fcfcda19547ec496382bd9f285538efb4d70175946b",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "leaflet",
+    "name": "Leaflet",
+    "src": "/featured/leaflet.svg",
+    "source": "https://raw.githubusercontent.com/Leaflet/Leaflet/HEAD/src/images/logo.svg",
+    "sourceSha256": "cfd8ad32fee8913aa600bcfed300af8949ff01e7503c9386deea6f24de4f69a2",
+    "sha256": "cfd8ad32fee8913aa600bcfed300af8949ff01e7503c9386deea6f24de4f69a2",
+    "viewBox": ""
+  },
+  {
+    "id": "maplibre-gl-js",
+    "name": "MapLibre GL JS",
+    "src": "/featured/maplibre-gl-js.png",
+    "source": "https://maplibre.org/favicon.ico",
+    "sourceSha256": "efd7298ae85bc3148a602e21705faff76f016bbfade2a1fdc2bec9dcda25eaf9",
+    "sha256": "4d8b11673c8a771fa40a7c82a104d3ac728029039652bd3096032b5588e0affd",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "openlayers",
+    "name": "OpenLayers",
+    "src": "/featured/openlayers.svg",
+    "source": "https://openlayers.org/theme/img/logo-light.svg",
+    "sourceSha256": "89942ffc8014451dbfcc606b3316d6be89dad85108f72beb693976939ad62e4e",
+    "sha256": "89942ffc8014451dbfcc606b3316d6be89dad85108f72beb693976939ad62e4e",
+    "viewBox": "0 0 100 100"
+  },
+  {
+    "id": "react-map-gl",
+    "name": "React Map GL",
+    "src": "/featured/react-map-gl.png",
+    "source": "https://visgl.github.io/react-map-gl/favicon.png",
+    "sourceSha256": "5861f95543e8becf3d69b9c1090033765ff6ce0bf79351ba3fc1884fb241c1e2",
+    "sha256": "a120a9211e0c89751298b6bf6478a7d6b7207d7cc5d19a45f91c6b95a94c222c",
+    "width": 32,
+    "height": 26
+  },
+  {
+    "id": "deck-gl",
+    "name": "deck.gl",
+    "src": "/featured/deck-gl.png",
+    "source": "https://deck.gl/favicon.png",
+    "sourceSha256": "498c51b0ca68926b959e2cb71de4c705a90c703ebb4f99d61fbffc91f6ed3393",
+    "sha256": "59da033dac65cf624a1958694165fd5b4619403381eddaad079b992388a28786",
+    "width": 32,
+    "height": 27
+  },
+  {
+    "id": "cesiumjs",
+    "name": "CesiumJS",
+    "src": "/featured/cesiumjs.svg",
+    "source": "https://cesium.com/cesium-logomark.svg",
+    "sourceSha256": "60494a2b4fa4fecc2792ecf4f6d76cbd2d1a961c4f1d052313f85e090d190163",
+    "sha256": "60494a2b4fa4fecc2792ecf4f6d76cbd2d1a961c4f1d052313f85e090d190163",
+    "viewBox": "0 0 512 512"
+  },
+  {
+    "id": "react-simple-maps",
+    "name": "React Simple Maps",
+    "src": "/featured/react-simple-maps.png",
+    "source": "https://www.react-simple-maps.io/favicon.ico?favicon.2vob68tjqpejf.ico",
+    "sourceSha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "sha256": "d3a012026d317c00e0a8607ef80ce84be3fee770a7e64302afd12b34b5a4d21e",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "pigeon-maps",
+    "name": "Pigeon Maps",
+    "src": "/featured/pigeon-maps.png",
+    "source": "https://pigeon-maps.js.org/img/favicon.ico",
+    "sourceSha256": "4163c182fbf9dc4bacfed421aad04fbb54652a4ecd00bbc4ff8c81c270baaafe",
+    "sha256": "c315850e62578160d8712dc0af2a41429011ae834d943d1152c08d55e6f2948c",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "three-js",
+    "name": "Three.js",
+    "src": "/featured/three-js.png",
+    "source": "https://threejs.org/files/favicon_white.ico",
+    "sourceSha256": "e90fe31c5ae32b5eadb6eec049b44874b2902d23f7fa130f4cc0e20866904811",
+    "sha256": "c0c6ba7386ad72b93d936aa1839443aafe1cb0d030b5c051bc9649cb13676a59",
+    "width": 64,
+    "height": 64
+  },
+  {
+    "id": "react-three-fiber",
+    "name": "React Three Fiber",
+    "src": "/featured/react-three-fiber.png",
+    "source": "https://r3f.docs.pmnd.rs/favicon.ico",
+    "sourceSha256": "faaea488c1d5cfab19840a19b9f781085795d1a7e9def04aed7f1a49f994eaa1",
+    "sha256": "df9c9dbb9ae37683093613cebc59b7aa9857e3c6354196e71b833dc9f4458d68",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "drei",
+    "name": "Drei",
+    "src": "/featured/drei.png",
+    "source": "https://drei.docs.pmnd.rs/favicon.ico",
+    "sourceSha256": "faaea488c1d5cfab19840a19b9f781085795d1a7e9def04aed7f1a49f994eaa1",
+    "sha256": "df9c9dbb9ae37683093613cebc59b7aa9857e3c6354196e71b833dc9f4458d68",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "babylon-js",
+    "name": "Babylon.js",
+    "src": "/featured/babylon-js.png",
+    "source": "https://www.babylonjs.com/assets/favicon.ico",
+    "sourceSha256": "d7df0f527d5f6743a9cbdb7742fa522b1fc3a4f9ac7a3858ed66ba96279a2d78",
+    "sha256": "aa87c77a4ec2cea38183505f56d1425b866c403fb03d76e3d0149beb736f01cd",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "pixijs",
+    "name": "PixiJS",
+    "src": "/featured/pixijs.png",
+    "source": "https://pixijs.com/images/favicon.png",
+    "sourceSha256": "504f9110a484f0ed7a554a166c6ef8f32c03b9df4555d81100b9c722ea41b7f5",
+    "sha256": "67e96b355d925fc060381893abafee9452ae4d75f92dcf4c547f7077daf8ed61",
+    "width": 32,
+    "height": 33
+  },
+  {
+    "id": "konva",
+    "name": "Konva",
+    "src": "/featured/konva.png",
+    "source": "https://konvajs.org/img/icon.png",
+    "sourceSha256": "9ae45b82e4e7a4c2d1e1b86677e36555bfa8253193d13bfbba54880f94c79b09",
+    "sha256": "a85ee18b1a36f6ea9241011873be00c21e131ac95e787e5c669d37c59cc2d951",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "fabric-js",
+    "name": "Fabric.js",
+    "src": "/featured/fabric-js.png",
+    "source": "https://www.fabricjs.com/favicon.ico",
+    "sourceSha256": "7346d5e10ceb02e6ac35d90e9849a6d32248495857bc50435d93fc448aabfd91",
+    "sha256": "b7ce9b4386237d8403c70b4d6698717650bf521679fde33d035023d2f001c539",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "paper-js",
+    "name": "Paper.js",
+    "src": "/featured/paper-js.png",
+    "source": "https://paperjs.org/assets/favicon.ico",
+    "sourceSha256": "c54b0134c8871978dda6e0310594b2f5c3224a2c9f344482b973bb7196739d69",
+    "sha256": "4f8a34bf094f4fc9f15d5306b3f1f751ddcccf149ae801629b89198c5e5d36c8",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "two-js",
+    "name": "Two.js",
+    "src": "/featured/two-js.png",
+    "source": "https://two.js.org/images/favicon.gif",
+    "sourceSha256": "771a9ea4725d1341194fc53cddc71bdd68ec57fb07e96c2bed6e655985573b52",
+    "sha256": "ef642bb4f47165fcd39668362fb5e1585a456cf33b3996750fbd19b1917bc066",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "tresjs",
+    "name": "TresJS",
+    "src": "/featured/tresjs.svg",
+    "source": "https://tresjs.org/favicon.svg",
+    "sourceSha256": "ccbf4c56877702c031fbb90d98f411c0c9a732a1f4a3cf072a2de9bd8e09590f",
+    "sha256": "ccbf4c56877702c031fbb90d98f411c0c9a732a1f4a3cf072a2de9bd8e09590f",
+    "viewBox": "0 0 32 32"
+  },
+  {
+    "id": "threlte",
+    "name": "Threlte",
+    "src": "/featured/threlte.svg",
+    "source": "https://threlte.xyz/icons/safari-pinned-tab.svg",
+    "sourceSha256": "5b37ad9eb191e1e479101ec949b1c6a1cd372886e3c82e96e01b6e5139210dfd",
+    "sha256": "5b37ad9eb191e1e479101ec949b1c6a1cd372886e3c82e96e01b6e5139210dfd",
+    "viewBox": "0 0 256.000000 256.000000"
+  },
+  {
+    "id": "model-viewer",
+    "name": "model-viewer",
+    "src": "/featured/model-viewer.png",
+    "source": "https://modelviewer.dev/assets/favicon.png",
+    "sourceSha256": "1fc75627af57c15df1e6ec8d1da1382378a203f0325f2474e0f5979b16c607ac",
+    "sha256": "847d70fe60930dfc5fc40e6b114dd76e917bddc894e4492e65cdce9edbf0c81b",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "excalidraw",
+    "name": "Excalidraw",
+    "src": "/featured/excalidraw.png",
+    "source": "https://docs.excalidraw.com/img/favicon.png",
+    "sourceSha256": "1c2e746dd98c8d3ee9b8d6aa1fe724f9d5452234a7c553e570145ca72062af12",
+    "sha256": "ac5e0f142b6732982bbaa3016102979a8c10add5654e8fdb9ac70dceadb31e11",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "react-native-paper",
+    "name": "React Native Paper",
+    "src": "/featured/react-native-paper.png",
+    "source": "https://reactnativepaper.com/static/apple-touch-icon-804424d277894ff97fe3f7346c39fc9d.png",
+    "sourceSha256": "bf3d0325e25d16c94da2b9c8c010c979a21672e1cd406694f5a339988bbe8ed5",
+    "sha256": "e0825a842abc5ff96884abb21dc792345c64f3a4d261a734af859f8edc609c15",
+    "width": 144,
+    "height": 144
+  },
+  {
+    "id": "react-native-elements",
+    "name": "React Native Elements",
+    "src": "/featured/react-native-elements.png",
+    "source": "https://reactnativeelements.com/img/website/logo.png",
+    "sourceSha256": "f1b81598b64ba0ad8e28e86973b30860e08f4a7d0b31238a86aef6a5dbcc1ce0",
+    "sha256": "5844f5119d72dac2f14cefd2085031399dc27f63caa485bcd9e205ac47c24eb6",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "ui-kitten",
+    "name": "UI Kitten",
+    "src": "/featured/ui-kitten.png",
+    "source": "https://akveo.github.io/react-native-ui-kitten/img/favicon.ico",
+    "sourceSha256": "5f95b36656e78365a1bd0745e87cec79e7a7856fafae1bac1950c35cc6bba943",
+    "sha256": "30329e1439ac21a84abf8e6ebbbf4ad7eba024b3594112dec5bc2406440ec034",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "id": "react-native-ui-lib",
+    "name": "React Native UI Lib",
+    "src": "/featured/react-native-ui-lib.png",
+    "source": "https://wix.github.io/react-native-ui-lib/img/favicon.ico",
+    "sourceSha256": "295c5ea7b53651ac5a114bbb4d2a0b95fcc6e4286e9e0b718e6c3188b4a2e14b",
+    "sha256": "d45137f0badb7f223857f2ebdc3002495400aa69bfe96209d62393f4a38e50c9",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "magnus-ui",
+    "name": "Magnus UI",
+    "src": "/featured/magnus-ui.png",
+    "source": "https://raw.githubusercontent.com/jsartisan/react-native-magnus/HEAD/docs/public/images/favicon/android-chrome-192x192.png",
+    "sourceSha256": "c7b8edd325d5c7119b87c86658afd41d3a788b414f8417d275ae7fe2bde5c4c7",
+    "sha256": "d6f743f2d732e5caf34c111d10fd859e0f2b54e2aa123dd0f46568fb8a999cc6",
+    "width": 192,
+    "height": 192
+  },
+  {
+    "id": "nativewind",
+    "name": "NativeWind",
+    "src": "/featured/nativewind.svg",
+    "source": "https://www.nativewind.dev/favicon.svg",
+    "sourceSha256": "771e1b8d213ef3b5d5e936fa0763df102096c0b81b45d285dbd3db46b4c445e5",
+    "sha256": "771e1b8d213ef3b5d5e936fa0763df102096c0b81b45d285dbd3db46b4c445e5",
+    "viewBox": "0 0 100 100"
+  },
+  {
+    "id": "restyle",
+    "name": "Restyle",
+    "src": "/featured/restyle.png",
+    "source": "https://raw.githubusercontent.com/Shopify/restyle/HEAD/Restyle.png",
+    "sourceSha256": "1d823bd106277f26d03ecb3be6876d3ea1e315d63c4f5e0ea8a04a79c785078a",
+    "sha256": "0309800978aa4d24b69ac23ef71d905ddb5c5240b59943b04299c67e070e18a4",
+    "width": 256,
+    "height": 58
+  },
+  {
+    "id": "dripsy",
+    "name": "Dripsy",
+    "src": "/featured/dripsy.png",
+    "source": "https://raw.githubusercontent.com/nandorojo/dripsy/HEAD/docs/public/favicon.png",
+    "sourceSha256": "0b171a472a786adfdd787be10c991240affc28781fdf19b827c8d06e02059b25",
+    "sha256": "040eb94844f5846d263396e55f809d87d78572907814a3c5e3d2b609f485958b",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "moti",
+    "name": "Moti",
+    "src": "/featured/moti.svg",
+    "source": "https://moti.fyi/img/favicon.svg",
+    "sourceSha256": "15714e13086ac526f53fe688dae17c0fb49857d72bf34051daa21df9c5e4b3c3",
+    "sha256": "15714e13086ac526f53fe688dae17c0fb49857d72bf34051daa21df9c5e4b3c3",
+    "viewBox": "0 0 1274 1274"
+  },
+  {
+    "id": "react-native-reanimated",
+    "name": "React Native Reanimated",
+    "src": "/featured/react-native-reanimated.png",
+    "source": "https://docs.swmansion.com/react-native-reanimated/img/favicon.ico",
+    "sourceSha256": "f7a41742ba7735842d3283877b60bd2a692376a555bc414b22a831b12f30a9cc",
+    "sha256": "be08664cde1adc8c5d273b43412c3aeb6a927b54d26bb85888e58a32d86bec65",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "react-native-gesture-handler",
+    "name": "React Native Gesture Handler",
+    "src": "/featured/react-native-gesture-handler.png",
+    "source": "https://docs.swmansion.com/react-native-gesture-handler/img/favicon.ico",
+    "sourceSha256": "9d76fa19a7834ebad9f6c7294a8e2f42988d92b5a421f9a9853111f76779f848",
+    "sha256": "0a749661cd48c9086f74fef78895ae72be8db9650f33603c71125e1b63a94463",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "react-native-bottom-sheet",
+    "name": "React Native Bottom Sheet",
+    "src": "/featured/react-native-bottom-sheet.png",
+    "source": "https://gorhom.dev/react-native-bottom-sheet/img/favicon.ico",
+    "sourceSha256": "1c7c33fdf92de6898e9f2551ee1fb40ff878afaee603a6fe6ab77f9f7ab02f17",
+    "sha256": "012016686fb697286a8d1f289591ccd5b439223704c6403a829f93937e9c618b",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "react-native-calendars",
+    "name": "React Native Calendars",
+    "src": "/featured/react-native-calendars.png",
+    "source": "https://wix.github.io/react-native-calendars/img/logo.png",
+    "sourceSha256": "49dedf01f4991baecc9b4e90fcc8eaa634ea8c462e66ece1a0cbb25981bac05d",
+    "sha256": "50051f2826a75c2959d6b5881647e10538faa17470ea6f562cb9bfd48d224f38",
+    "width": 40,
+    "height": 40
+  },
+  {
+    "id": "react-native-gifted-chat",
+    "name": "React Native Gifted Chat",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  },
+  {
+    "id": "react-native-gifted-charts",
+    "name": "React Native Gifted Charts",
+    "src": "/featured/react-native-gifted-charts.png",
+    "source": "https://gifted-charts.web.app/favicon.ico",
+    "sourceSha256": "000f124b43690621ef621ff527c467d61e5c88342c0c11aea645bdf01fd60bb4",
+    "sha256": "e75a3a7e5315484653f101cbd3bd235fac876176f97ac0922163d92c7dd1161f",
+    "width": 64,
+    "height": 64
+  },
+  {
+    "id": "react-native-svg",
+    "name": "React Native SVG",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  },
+  {
+    "id": "flashlist",
+    "name": "FlashList",
+    "src": "/featured/flashlist.png",
+    "source": "https://raw.githubusercontent.com/Shopify/flash-list/HEAD/FlashList.png",
+    "sourceSha256": "f497c4faa31a1c818e2b139f3e4f1a93b6415ce8f37b7bb56e05b79e7f357cb9",
+    "sha256": "484c212a14fb33715121b726d762bfb6fbda93a8baf130528f035f91071bd8c4",
+    "width": 256,
+    "height": 58
+  },
+  {
+    "id": "legend-list",
+    "name": "Legend List",
+    "error": [
+      "404 Client Error: Not Found for url: https://legendapp.com/favicon.svg",
+      "404 Client Error: Not Found for url: https://legendapp.com/favicon.ico",
+      "404 Client Error: Not Found for url: https://legendapp.com/apple-touch-icon.png"
+    ]
+  },
+  {
+    "id": "kobalte",
+    "name": "Kobalte",
+    "src": "/featured/kobalte.png",
+    "source": "https://kobalte.dev/apple-touch-icon.png",
+    "sourceSha256": "935e184e27be4aab285445ddc272347ba168eea3c3bba205a61e71f145c8acd6",
+    "sha256": "98ee3074675f708a62b11f958945042e3a6bf77037161c4aff3d606a184bde6e",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "corvu",
+    "name": "Corvu",
+    "src": "/featured/corvu.svg",
+    "source": "https://corvu.dev/favicon.svg",
+    "sourceSha256": "d4e0f30c90e998d3b07140112bce419a7f5c10daaf1657642a25252223dff06c",
+    "sha256": "d4e0f30c90e998d3b07140112bce419a7f5c10daaf1657642a25252223dff06c",
+    "viewBox": ""
+  },
+  {
+    "id": "suid",
+    "name": "SUID",
+    "error": [
+      "HTTPSConnectionPool(host='dbltoto4.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(",
+      "HTTPSConnectionPool(host='dbltoto4.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(",
+      "HTTPSConnectionPool(host='dbltoto4.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError("
+    ]
+  },
+  {
+    "id": "solid-ui",
+    "name": "Solid UI",
+    "src": "/featured/solid-ui.svg",
+    "source": "https://www.solid-ui.com/favicon.svg",
+    "sourceSha256": "9c4830ce698e14dbe5450539a85cd396a380c8b575b447abf622aa6220a9cc1a",
+    "sha256": "9c4830ce698e14dbe5450539a85cd396a380c8b575b447abf622aa6220a9cc1a",
+    "viewBox": ""
+  },
+  {
+    "id": "hope-ui",
+    "name": "Hope UI",
+    "error": [
+      "HTTPSConnectionPool(host='hope-ui.com', port=443): Max retries exceeded with url: /favicon.svg (Caused by SSLError(SSLCertVerifica",
+      "HTTPSConnectionPool(host='hope-ui.com', port=443): Max retries exceeded with url: /favicon.ico (Caused by SSLError(SSLCertVerifica",
+      "HTTPSConnectionPool(host='hope-ui.com', port=443): Max retries exceeded with url: /apple-touch-icon.png (Caused by SSLError(SSLCer"
+    ]
+  },
+  {
+    "id": "solid-bootstrap",
+    "name": "Solid Bootstrap",
+    "src": "/featured/solid-bootstrap.png",
+    "source": "https://solid-libs.github.io/solid-bootstrap/assets/favicon.0e726a38.ico",
+    "sourceSha256": "0e726a381fd5c7ee7e57960f9ea5ff6a354071055dd071bf130052ad5a899e3d",
+    "sha256": "5ce6ecbd35396df504b9beddca8b76b6dac23b8262f0210343b581c213b5d81c",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "solid-toast",
+    "name": "Solid Toast",
+    "src": "/featured/solid-toast.png",
+    "source": "https://www.solid-toast.com/favicon.ico",
+    "sourceSha256": "55f86a51314cf52d8db621a6eb3217c5cdd074b4c10b682669b9cc0dce726730",
+    "sha256": "7269ee687ed94d7c9f344c656c485f803763c599b61337e702ac3170b0432f0b",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "sonner",
+    "name": "Sonner",
+    "src": "/featured/sonner.png",
+    "source": "https://sonner.emilkowal.ski/favicon.ico",
+    "sourceSha256": "5c3849b7069c51a6f4c86f34bef457f07df5589acec9eeb65cae83bbf6f12040",
+    "sha256": "dcbbae008e1f38751e4c346750c7cf0006abad0dd1ed952f5d406ecf50f4d190",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "vaul",
+    "name": "Vaul",
+    "src": "/featured/vaul.png",
+    "source": "https://vaul.emilkowal.ski/favicon.ico",
+    "sourceSha256": "a3117a308c7a80f4693c53324d00d6dfebb12be4011545babb638471930ff35f",
+    "sha256": "455c9e117e3a3940bc99dbcd4eaf072fbbc824a372ffc95fa81a4e86cc2f29b0",
+    "width": 256,
+    "height": 256
+  },
+  {
+    "id": "cmdk",
+    "name": "cmdk",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  },
+  {
+    "id": "react-hot-toast",
+    "name": "React Hot Toast",
+    "src": "/featured/react-hot-toast.png",
+    "source": "https://react-hot-toast.com/favicon.png",
+    "sourceSha256": "2ef6d7268652964f43b3ab9c716f487755736bc4192fa3c48da765b900a5c607",
+    "sha256": "a04842aa2e732810169d8adabefe26956e40efd6850eef63147f5b4917336318",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "notistack",
+    "name": "Notistack",
+    "src": "/featured/notistack.png",
+    "source": "https://notistack.com/apple-touch-icon.png",
+    "sourceSha256": "937c6d66bafa7d4ce8714d1be41875d3a5b1c00a010f864fcdc5ccf12423febf",
+    "sha256": "394a97be63cc847fd734ef1a43fa15daed408cd998c3ebcbd0cfc8522c2dc73a",
+    "width": 180,
+    "height": 180
+  },
+  {
+    "id": "react-toastify",
+    "name": "React Toastify",
+    "src": "/featured/react-toastify.png",
+    "source": "https://fkhadra.github.io/react-toastify/img/favicon.ico",
+    "sourceSha256": "f8b5b04dab3c5f54ce21ea2f2d1d5a208c375bddef718e39d75e3dd7ba4acb44",
+    "sha256": "3ea38c812debdcc3a079e2609c4db5d3b7e58c1f35964823887ec5076a1e5078",
+    "width": 64,
+    "height": 64
+  },
+  {
+    "id": "react-tooltip",
+    "name": "React Tooltip",
+    "src": "/featured/react-tooltip.png",
+    "source": "https://react-tooltip.com/img/favicon.ico",
+    "sourceSha256": "2ae92f46fce095fa1ac44a7eb018a488a12d540be53bc7437b3f507b6bd96299",
+    "sha256": "75c806b35e426e8370eba236c2f111008e248b0543e4b6bf8384eb8bec3887cb",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "floating-ui",
+    "name": "Floating UI",
+    "src": "/featured/floating-ui.png",
+    "source": "https://floating-ui.com/favicon.ico",
+    "sourceSha256": "35bfe680c557e0e265d729decd53cc3fdfd2eb25b45f23dd34df3ffa3a0e646f",
+    "sha256": "6ff03723f74cfc5d758a90966e7be9383cd67a2c6151b80ed2af7088b80e2ebe",
+    "width": 77,
+    "height": 77
+  },
+  {
+    "id": "react-joyride",
+    "name": "React Joyride",
+    "src": "/featured/react-joyride.png",
+    "source": "https://react-joyride.com/favicon.ico",
+    "sourceSha256": "855c7bb0412a09ce140a51ffd55411b5ddcdd8a6e339f6475bc37e457bb51962",
+    "sha256": "27046cf3b650d582ee5a5c0386a1dae2f5e52240d027deab0940dcf28cc13305",
+    "width": 32,
+    "height": 32
+  },
+  {
+    "id": "react-loading-skeleton",
+    "name": "React Loading Skeleton",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  },
+  {
+    "id": "react-spinners",
+    "name": "React Spinners",
+    "src": "/featured/react-spinners.png",
+    "source": "https://www.davidhu.io/favicon.ico",
+    "sourceSha256": "edc0e5a005f589b3ce8dff5f957c2b2667c847db8ce21e83249721c0f5287208",
+    "sha256": "57c63620597fd58d0b1a68e03c245ed7041d4f2e094a51b96aec19b9f3fe0998",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "tippy-js",
+    "name": "Tippy.js",
+    "src": "/featured/tippy-js.png",
+    "source": "https://atomiks.github.io/tippyjs/icons/icon-96x96.png?v=68cd85fe631cbce4dad8be8ef26f93f3",
+    "sourceSha256": "577199fac5ffae0e478afcef6afa1f615b4e9ad47b3d4f98ce9a9551335aacaf",
+    "sha256": "8829ea52c2ca52e7bdf343c55bd7b7e0bb817dc8e5ffa995cdbd7a6a2f76ccc8",
+    "width": 96,
+    "height": 96
+  },
+  {
+    "id": "micromodal",
+    "name": "Micromodal",
+    "src": "/featured/micromodal.svg",
+    "source": "https://raw.githubusercontent.com/ghosh/Micromodal/HEAD/logo.svg",
+    "sourceSha256": "581eaccfffe1f5c6280b60e59b9a9f3c3b754ab295ddbfcd8df9bf2dfa5e9fa6",
+    "sha256": "581eaccfffe1f5c6280b60e59b9a9f3c3b754ab295ddbfcd8df9bf2dfa5e9fa6",
+    "viewBox": "0 0 150 100"
+  },
+  {
+    "id": "sweetalert2",
+    "name": "SweetAlert2",
+    "src": "/featured/sweetalert2.png",
+    "source": "https://sweetalert2.github.io/images/favicon.png",
+    "sourceSha256": "ac53b135ac61764540880357ec292b3aa11b3e158cedc73b3e5880c55dd50584",
+    "sha256": "5c684a2765bdde31b4162c9199180f4295b1e50dba41fcd7c49a4f0b8612c56b",
+    "width": 160,
+    "height": 160
+  },
+  {
+    "id": "react-modal",
+    "name": "React Modal",
+    "src": "/featured/react-modal.png",
+    "source": "https://reactcommunity.org/react-modal/assets/images/favicon.png",
+    "sourceSha256": "023854c43fc4b25b795ee4951c8019e3de0593ffeb6f918b5d1f2a9b47a57cfe",
+    "sha256": "7c22b24c2f68130cbcf60a51897276efd9dcf9eb1e044253d7e82e4abdd844fd",
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "react-accessible-accordion",
+    "name": "React Accessible Accordion",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "sourceSha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60",
+    "viewBox": "0 0 32 32",
+    "error": [
+      "The documentation uses a generic GitHub icon rather than project branding."
+    ]
+  }
+]

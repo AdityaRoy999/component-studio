@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="rw-logo">
+  <style>
+    .rw-logo path, .rw-logo rect {
+      stroke: #1A1A1A;
+    }
+    .rw-logo circle {
+      fill: #1A1A1A;
+    }
+    @media (prefers-color-scheme: dark) {
+      .rw-logo path, .rw-logo rect {
+        stroke: #ffffff;
+      }
+      .rw-logo circle {
+        fill: #ffffff;
+      }
+    }
+  </style>
+  <rect x="2.25" y="4.75" width="15.5" height="10.5" rx="2.75" fill="none" stroke-width="2.5" />
+  <path d="M6 8.25h8M6 11.75h6" fill="none" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M6 1.25h8M6 18.75h5" fill="none" stroke-width="2.5" stroke-linecap="round" opacity="0.45" />
+</svg>

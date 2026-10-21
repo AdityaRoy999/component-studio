@@ -1,0 +1,36 @@
+# Dependencies and generated builds
+/node_modules/
+/.next*/
+/out/
+/build/
+/dist/
+/coverage/
+/next-env.d.ts
+*.tsbuildinfo
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local captures, diagnostics, and caches
+/artifacts/
+*.log
+__pycache__/
+*.py[cod]
+.cache/
+.vercel/
+.turbo/
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo

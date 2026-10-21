@@ -1,0 +1,11 @@
+# Keep source readable across platforms and preserve exact brand-asset hashes.
+* text=auto eol=lf
+*.svg -text
+/public/featured/*.svg -whitespace
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

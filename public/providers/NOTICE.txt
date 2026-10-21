@@ -1,0 +1,5 @@
+NVIDIA, Google Gemini and OpenRouter marks: Simple Icons, CC0.
+Source: https://github.com/simple-icons/simple-icons
+OpenAI and Groq marks: Lobe Icons, MIT (see LICENSE-LobeIcons.txt).
+Source: https://github.com/lobehub/lobe-icons
+Provider trademarks remain the property of their respective owners.
