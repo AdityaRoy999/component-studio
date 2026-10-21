@@ -4,7 +4,8 @@ import { validateImageReferences } from '@/lib/image-references';
 import { revisionContext } from '@/lib/generation-context';
 import { generatedFiles } from '@/lib/generated-files';
 export const runtime = 'nodejs';
-export const maxDuration = 600;
+// Stay within Vercel Hobby's five-minute function limit.
+export const maxDuration = 300;
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
