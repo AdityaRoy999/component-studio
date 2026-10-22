@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from '@/components/ui/icons';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import BuildOrb from './BuildOrb';
 import StreamingText from './StreamingText';

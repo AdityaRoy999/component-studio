@@ -9,7 +9,7 @@ import React, {
   type MouseEvent,
   type PointerEvent
 } from 'react';
-import { ArrowLeft, Mic } from 'lucide-react';
+import { ArrowLeft, Mic } from '@/components/ui/icons';
 import './VoicePill.css';
 
 export type VoicePillShape = 'pill' | 'rounded';

@@ -2,7 +2,7 @@
 import { useImageReferences, ImageReferenceButton, ImageReferenceTray } from './ImageReferences';
 import type { ImageReference } from '@/lib/image-references';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { ArrowUp, Check, Code2, Copy, Eye, Pencil, RotateCcw, Sparkles, Square } from 'lucide-react';
+import { ArrowUp, Check, Code2, Copy, Eye, Pencil, RotateCcw, Sparkles, Square } from '@/components/ui/icons';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import BuildOrb from './BuildOrb';

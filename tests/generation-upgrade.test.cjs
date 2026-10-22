@@ -7,6 +7,46 @@ const ai=load('src/lib/ai.ts');
 const component={name:'ExampleCard',title:'Example',description:'Interactive card',code:"import {useState} from 'react';export default function ExampleCard({label='Ready'}:{label?:string}){const [n,setN]=useState(0);return <button onClick={()=>setN(n+1)}>{label} {n}</button>}",propsSchema:[{name:'label',type:'string',defaultValue:'Ready'}]};
 const output=(value,usage)=>new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(value)}}],usage}));
 
+test('studio glyphs use the exact bundled Solar Linear data',()=>{
+ const selected=require('../src/data/solar-linear-icons.json'),source=require('@iconify-json/solar/icons.json');
+ assert(Object.keys(selected).length>60);
+ for(const glyph of Object.values(selected)){
+   assert(glyph.name.endsWith('-linear'),glyph.name);
+   assert.equal(glyph.body,source.icons[glyph.name].body);
+   assert.equal(glyph.width,24);assert.equal(glyph.height,24);
+   assert(!/\bid=/.test(glyph.body),'shared SVGs must not introduce duplicate document IDs');
+ }
+});
+
+test('Solar icons render on the server with sizing and accessible names',()=>{
+ const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
+ const {Check,Search}=load('src/components/ui/icons.tsx');
+ const decorative=renderToStaticMarkup(React.createElement(Check,{size:18,strokeWidth:1.75,className:'toolbar-check'}));
+ assert(decorative.includes('width="18"'));assert(decorative.includes('height="18"'));
+ assert(decorative.includes('data-icon="solar:check-linear"'));assert(decorative.includes('aria-hidden="true"'));
+ assert(decorative.includes('toolbar-check'));assert(!decorative.includes('stroke-width="1.75"'));
+ const labelled=renderToStaticMarkup(React.createElement(Search,{'aria-label':'Search components',title:'Search'}));
+ assert(labelled.includes('role="img"'));assert(labelled.includes('aria-label="Search components"'));assert(labelled.includes('<title>Search</title>'));
+ assert(!labelled.includes('aria-hidden="true"'));
+});
+
+test('downloadable demos keep Solar glyphs without private studio imports',async()=>{
+ const {exportComponent}=load('src/lib/component-source.ts');
+ const result=await exportComponent({id:'holo-3d-card',name:'Holo3DCard',code:''},'TS','Tailwind');
+ assert(!result.componentCode.includes('@/components/ui/icons'));
+ assert(!result.dependencies.some(name=>name.startsWith('@/')));
+ assert(result.componentCode.includes('solar:bookmark-linear'));
+ assert(result.componentCode.includes('Solar Linear by 480 Design'));
+ assert(result.componentCode.includes('CC BY 4.0'));
+ assert.deepEqual(semanticDiagnostics(result.componentCode),[]);
+ const js=await exportComponent({id:'holo-3d-card',name:'Holo3DCard',code:''},'JS','CSS');
+ assert(!js.componentCode.includes('Record<string,any>'));assert(js.cssCode);
+ const {exportProject}=load('src/lib/project-export.ts');
+ const project=await exportProject({id:'holo-3d-card',name:'Holo3DCard',code:''},{title:'Solar export'},'dark');
+ assert(!Object.hasOwn(JSON.parse(project.files['package.json']).dependencies,'@/components'));
+ assert(project.files['src/Holo3DCard.tsx'].includes('solar:star-linear'));
+});
+
 const skillFile='---\nname: deliberate-frontend\ndescription: |\n  Build deliberate frontend layouts.\n  Use for cards and controls.\nmetadata:\n  version: "1.0"\n---\n\n# Instructions\nUse a distinctive warm-copper accent and editorial rhythm.';
 test('SKILL.md parser supports standard YAML and validates content and resource limits',()=>{
  const {parseGenerationSkill,MAX_SKILL_BYTES}=load('src/lib/generation-skill.ts');

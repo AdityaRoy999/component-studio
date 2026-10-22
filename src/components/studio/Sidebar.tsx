@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { History, Compass, Clock } from 'lucide-react';
+import { History, Compass, Clock } from '@/components/ui/icons';
 import { ComponentPreset } from '@/data/presets';
 
 interface SidebarProps {

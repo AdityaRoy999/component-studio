@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { BookOpen, Braces, Clapperboard, FlaskConical, Gamepad2, Layers3, Palette, Plus, Terminal, TrendingUp, Workflow } from 'lucide-react';
+import { BookOpen, Braces, Clapperboard, FlaskConical, Gamepad2, Layers3, Palette, Plus, Terminal, TrendingUp, Workflow } from '@/components/ui/icons';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { SKILLS, SKILL_CATEGORIES, filterSkills, type AgentSkill } from '@/data/skills';
 import SkillDetails from './SkillDetails';

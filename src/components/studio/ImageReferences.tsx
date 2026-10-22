@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, type ClipboardEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { ImagePlus, X } from 'lucide-react';
+import { ImagePlus, X } from '@/components/ui/icons';
 import { imageCapability, MAX_REFERENCE_BYTES, validateImageReferences, type ImageReference } from '@/lib/image-references';
 import type { Provider } from '@/lib/ai-shared';
 

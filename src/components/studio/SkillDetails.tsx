@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, Check, Copy, Terminal, X } from 'lucide-react';
+import { ArrowUpRight, Check, Copy, Terminal, X } from '@/components/ui/icons';
 import { motion, useReducedMotion } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import type { AgentSkill } from '@/data/skills';

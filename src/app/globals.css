@@ -18,15 +18,8 @@ button, input, textarea, select { font: inherit; }
 button { cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s; }
 button:disabled { cursor: not-allowed; opacity: .45; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
-/* Minimal, monochrome, consistent outline icon style across the entire website */
-svg.lucide, .lucide {
-  stroke-width: 1.5 !important;
-  stroke: currentColor !important;
-  fill: none !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
-  flex-shrink: 0;
-}
+/* Solar's bundled Linear paths retain their original strokes and proportions. */
+.solar-icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 ::selection { background: #496de955; }
 * { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) transparent; }
 @supports selector(::-webkit-scrollbar) { * { scrollbar-width: auto; scrollbar-color: auto; } }

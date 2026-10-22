@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useReducedMotion } from 'motion/react';
-import { Pencil, Star, Trash2, X } from 'lucide-react';
+import { Pencil, Star, Trash2, X } from '@/components/ui/icons';
 import { useLenis } from 'lenis/react';
 import type { HistoryEntry } from '@/lib/generation-history';
 

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw } from '@/components/ui/icons';
 import BuildOrb from './BuildOrb';
 import { isSnapshot } from '@/lib/image-references';
 import { createPreviewDocument } from '@/lib/preview-document';

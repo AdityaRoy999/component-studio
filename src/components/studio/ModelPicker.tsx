@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { Check, ChevronDown, Search } from 'lucide-react';
+import { Check, ChevronDown, Search } from '@/components/ui/icons';
 import type { AvailableModel } from '@/lib/ai';
 
 interface Props { models: AvailableModel[]; value: string; onChange: (value: string) => void; disabled?: boolean; loading?: boolean; }

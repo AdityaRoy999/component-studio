@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { Home, Folder, Image as ImageIcon, Settings, Layers, RotateCcw } from 'lucide-react';
+import { Home, Folder, Image as ImageIcon, Settings, Layers, RotateCcw } from '@/components/ui/icons';
 import SpotlightCard from '@/components/reactbits/library/SpotlightCard';
 import Dock from '@/components/reactbits/library/Dock';
 import ClickSpark from '@/components/reactbits/library/ClickSpark';

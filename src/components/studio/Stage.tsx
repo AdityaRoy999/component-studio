@@ -3,7 +3,7 @@ import { useImageReferences, ImageReferenceButton, ImageReferenceTray } from './
 import type { ImageReference } from '@/lib/image-references';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import dynamic from 'next/dynamic';
-import { ArrowUp, ArrowUpRight, Code2, Download, Eye, History, Loader2, RotateCcw, Magnet, Layers, PanelTop, Sparkles, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Code2, Download, Eye, History, Loader2, RotateCcw, Magnet, Layers, PanelTop, Sparkles, SlidersHorizontal, X } from '@/components/ui/icons';
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/react';
 import BorderGlow from '@/components/reactbits/BorderGlow';
 import type { ComponentPreset } from '@/data/presets';

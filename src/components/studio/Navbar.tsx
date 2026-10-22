@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { KeyRound, Moon, Sun, Command, History, ArrowUpRight, X } from 'lucide-react';
+import { KeyRound, Moon, Sun, Command, History, ArrowUpRight, Menu, X } from '@/components/ui/icons';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useLenis } from 'lenis/react';
 
@@ -127,7 +127,7 @@ export default function Navbar(props: NavbarProps) {
         <button ref={menuTrigger} type="button" className="mobile-menu-trigger"
           aria-label="Open navigation" aria-expanded={menuOpen} aria-controls="mobile-navigation"
           aria-haspopup="dialog" onClick={() => { pendingAction.current = undefined; setMenuOpen(true); }}>
-          <span aria-hidden="true"><i/><i/></span>
+          <Menu size={20}/>
         </button>
       </div>
     </motion.header>

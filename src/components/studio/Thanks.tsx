@@ -1,8 +1,8 @@
 'use client';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from '@/components/ui/icons';
 import { CREDITS } from '@/data/credits';
 import './Thanks.css';
-const themeLogos=new Set(['react-bits','lucide','lenis','gsap','react','nextjs']);
+const themeLogos=new Set(['react-bits','solar','lucide','lenis','gsap','react','nextjs']);
 export default function Thanks(){
  return <section className="thanks-page" aria-labelledby="thanks-heading">
   <header className="thanks-heading"><p className="eyebrow">THANKS</p><h1 id="thanks-heading">Built with<br/><span>good company.</span></h1><p>The libraries, tools, and ideas that helped shape Component Studio.<br className="thanks-desktop-break"/> A little credit to the people behind the details.</p></header>

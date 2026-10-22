@@ -9,7 +9,7 @@
  */
 
 import * as React from "react";
-import { IconColorPicker, IconSelector, IconCheck } from "@tabler/icons-react";
+import { IconColorPicker, IconSelector, IconCheck } from '@/components/ui/icons';
 import { Popover as BasePopover } from "@base-ui/react/popover";
 import { cn } from "@/lib/utils";
 import './color-picker.css';
@@ -729,7 +729,7 @@ export function ColorPickerPanel({
                 focusRing,
               )}
             >
-              <IconColorPicker size={15} stroke={1.7} aria-hidden />
+              <IconColorPicker size={15} strokeWidth={1.7} aria-hidden />
             </button>
           )}
 
@@ -874,7 +874,7 @@ export function ColorPickerPanel({
               focusRing,
             )}
           >
-            <IconSelector size={15} stroke={1.7} aria-hidden />
+            <IconSelector size={15} strokeWidth={1.7} aria-hidden />
           </button>
         </div>
 
@@ -907,7 +907,7 @@ export function ColorPickerPanel({
                 >
                   <IconCheck
                     size={12}
-                    stroke={2.6}
+                    strokeWidth={2.6}
                     aria-hidden
                     className={cn(
                       "mx-auto",

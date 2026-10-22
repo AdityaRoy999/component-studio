@@ -164,7 +164,8 @@ For the request flow, preview boundaries, and endpoint reference, see **[Archite
 - **[Thinking Orbs](https://www.thinkingorbs.com/)** — generation activity indicators.
 - **[Ponytail](third_party/ponytail/README.md)** — prompt guidance, with its original MIT license retained.
 - **[Motion](https://motion.dev/), [GSAP](https://gsap.com/), and [Lenis](https://lenis.darkroom.engineering/)** — animation and scrolling.
-- **[Lucide](https://lucide.dev/), [Tabler](https://tabler.io/icons), and [Hugeicons](https://hugeicons.com/)** — interface icons.
+- **[Solar Linear](https://icon-sets.iconify.design/solar/)** by **480 Design**, via `@iconify-json/solar` — the shared interface icon style, licensed under **CC BY 4.0**. See the [Solar notice](third_party/solar/README.md). Run `npm run icons:generate` to rebuild the local SVG subset.
+- **[Lucide](https://lucide.dev/) and [Hugeicons](https://hugeicons.com/)** — icons available to generated components and original component previews/exports.
 - **[Lobe Icons](https://github.com/lobehub/lobe-icons) and [Simple Icons](https://github.com/simple-icons/simple-icons)** — provider marks; see the [provider asset notice](public/providers/NOTICE.txt).
 
 Third-party code and brand assets retain their respective licenses and trademarks. The repository does not apply a blanket MIT license to all bundled material. Featured links point to independent projects; some also offer paid products alongside their free libraries.

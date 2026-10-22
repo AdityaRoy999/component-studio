@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sliders, RotateCcw } from 'lucide-react';
+import { Sliders, RotateCcw } from '@/components/ui/icons';
 import { PropSchemaItem } from '@/data/presets';
 import StudioColorPicker from './StudioColorPicker';
 

@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { Maximize2, Minimize2 } from 'lucide-react';
+import { Maximize2, Minimize2 } from '@/components/ui/icons';
 
 const FullscreenContext=createContext<{active:boolean;toggle:()=>void}|null>(null);
 export const usePreviewFullscreen=()=>useContext(FullscreenContext);

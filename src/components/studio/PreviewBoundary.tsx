@@ -1,7 +1,7 @@
 'use client';
 
 import { Component, type ReactNode } from 'react';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw } from '@/components/ui/icons';
 
 /** A broken library example must not take down the catalog or the editor. */
 export default class PreviewBoundary extends Component<

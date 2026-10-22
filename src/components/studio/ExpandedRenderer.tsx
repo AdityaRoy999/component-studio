@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Home, Folder as FolderIcon, BookOpen, Heart, Cloud, NotebookPen, ChartNoAxesCombined, Layers, Code2, Command, Sparkles, Minus, Plus, RotateCcw } from 'lucide-react';
+import { Home, Folder as FolderIcon, BookOpen, Heart, Cloud, NotebookPen, ChartNoAxesCombined, Layers, Code2, Command, Sparkles, Minus, Plus, RotateCcw } from '@/components/ui/icons';
 import ShinyText from '../reactbits/library/ShinyText';
 import GradientText from '../reactbits/library/GradientText';
 import CountUp from '../reactbits/library/CountUp';

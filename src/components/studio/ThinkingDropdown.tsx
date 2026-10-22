@@ -1,5 +1,5 @@
 'use client';
-import { BrainCircuit, Brain, Gauge, Zap } from 'lucide-react';
+import { BrainCircuit, Brain, Gauge, Zap } from '@/components/ui/icons';
 import GlideSelect from '@/components/reactbits/GlideSelect';
 import type { ThinkingEffort } from '@/lib/ai-shared';
 const OPTIONS=[

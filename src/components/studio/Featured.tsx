@@ -1,7 +1,7 @@
 'use client';
 
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, ChevronDown } from '@/components/ui/icons';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { FEATURED_CATEGORIES, FEATURED_LIBRARIES, type FeaturedCategory } from '@/data/featured';
 import { FEATURED_LOGOS } from '@/data/featured-logos';

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@/components/ui/icons';
 import { useReducedMotion } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import AppleHandwritingEffect from './AppleHandwritingEffect';

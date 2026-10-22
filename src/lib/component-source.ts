@@ -5,6 +5,21 @@ import postcss from 'postcss';
 import tailwindcss from 'tailwindcss';
 import { PRESETS } from '@/data/presets';
 import { resolveGeneratedImport } from './generated-files';
+import solarIcons from '@/data/solar-linear-icons.json';
+
+// Studio demo exports cannot depend on this app's private @/components alias.
+// Inline only the trusted local glyphs used by an owned demo, with attribution.
+function portableIconSource(code:string){
+  return code.replace(/import\s*\{([^}]+)\}\s*from\s*['"]@\/components\/ui\/icons['"];?/g,(_,imports:string)=>{
+    const declarations=imports.split(',').map(item=>{
+      const [name,alias]=item.trim().split(/\s+as\s+/);
+      const icon=solarIcons[name as keyof typeof solarIcons];
+      if(!icon)throw new Error(`Unregistered Solar icon in component source: ${name}`);
+      return `const ${alias||name} = ({size=24,strokeWidth:_strokeWidth,absoluteStrokeWidth:_absoluteStrokeWidth,...props}:Record<string,any>) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 ${icon.width} ${icon.height}" fill="none" color="currentColor" aria-hidden={props['aria-label']?undefined:true} data-icon="solar:${icon.name}" {...props}><g dangerouslySetInnerHTML={{__html:${JSON.stringify(icon.body)}}}/></svg>;`;
+    });
+    return `/*! Solar Linear by 480 Design, via Iconify. CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ — https://icon-sets.iconify.design/solar/ */\n${declarations.join('\n')}`;
+  });
+}
 
 const sources: Record<string, { name: string; file: string; css?: string }> = {
   'gradient-ascii': { name: 'GradientASCII', file: 'reactbits/GradientASCII.tsx', css: 'reactbits/GradientASCII.css' },
@@ -36,7 +51,7 @@ export async function resolveSource(component: ComponentSource): Promise<Compone
     readFile(path.join(root, source.file), 'utf8'),
     source.css ? readFile(path.join(root, source.css), 'utf8') : undefined,
   ]);
-  return { id: component.id, name: source.name, code, cssCode };
+  return { id: component.id, name: source.name, code:portableIconSource(code), cssCode };
 }
 const exportCache = new Map<string, Awaited<ReturnType<typeof createExport>>>();
 export async function exportComponent(component: ComponentSource, language: 'TS' | 'JS', styling: 'Tailwind' | 'CSS') {

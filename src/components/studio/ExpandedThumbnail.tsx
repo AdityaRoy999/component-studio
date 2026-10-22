@@ -1,4 +1,4 @@
-import { Layers, Folder, ArrowRight, MousePointer2, Volume2, Code2, Sparkles } from 'lucide-react';
+import { Layers, Folder, ArrowRight, MousePointer2, Volume2, Code2, Sparkles } from '@/components/ui/icons';
 export default function ExpandedThumbnail({id,title}:{id:string;title:string}){
  if(['waves','magnet-lines','letter-glitch','noise'].includes(id))return <div className={`rb-thumb-field rb-thumb-${id}`}><svg viewBox="0 0 300 200" aria-hidden="true">{id==='waves'?Array.from({length:13},(_,i)=><path key={i} d={`M-20 ${i*19} Q80 ${i*19-65} 160 ${i*19} T320 ${i*19}`} fill="none" stroke="currentColor" opacity={.2+i*.035}/>):id==='magnet-lines'?Array.from({length:63},(_,i)=>{const x=30+(i%9)*30,y=20+Math.floor(i/9)*27;return <path key={i} d={`M${x-5} ${y+5}l10 -10`} stroke="currentColor" opacity={.25+(i%5)*.1}/>}):Array.from({length:140},(_,i)=><text key={i} x={(i%20)*16} y={14+Math.floor(i/20)*28} fill="currentColor" opacity={.15+(i%7)*.09} fontSize={id==='noise'?7:11}>{id==='noise'?'·':'X01+*'[i%5]}</text>)}</svg></div>;
  if(id==='elastic-slider')return <div className="rb-thumb-slider"><Volume2 size={20}/><span><i/></span><small>64</small></div>;

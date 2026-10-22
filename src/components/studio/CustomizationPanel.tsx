@@ -1,6 +1,6 @@
 'use client';
 
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw } from '@/components/ui/icons';
 import GlideSelect from '@/components/reactbits/GlideSelect';
 import SquishSwitch from '@/components/reactbits/SquishSwitch';
 import DotSlider from './DotSlider';

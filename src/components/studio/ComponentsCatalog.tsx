@@ -1,6 +1,6 @@
 'use client';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Layers, Home, Folder, Image as ImageIcon, Settings, MousePointer2 } from 'lucide-react';
+import { ArrowUpRight, Layers, Home, Folder, Image as ImageIcon, Settings, MousePointer2 } from '@/components/ui/icons';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import SearchField from './SearchField';
 import type { ComponentPreset } from '@/data/presets';

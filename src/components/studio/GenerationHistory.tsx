@@ -1,6 +1,6 @@
 'use client';
 import { useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, ImageIcon, Pencil, Plus, Trash2 } from 'lucide-react';
+import { ArrowUpRight, ImageIcon, Pencil, Plus, Trash2 } from '@/components/ui/icons';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import ModernSelect from '@/components/ui/ModernSelect';
 import ProviderLogo from './ProviderLogo';

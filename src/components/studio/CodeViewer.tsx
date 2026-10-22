@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { Check, Copy, ArrowUp, ArrowUpRight, Code2, Braces, Waves } from 'lucide-react';
+import { Check, Copy, ArrowUp, ArrowUpRight, Code2, Braces, Waves } from '@/components/ui/icons';
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/react';
 import ModernSelect from '@/components/ui/ModernSelect';
 interface CodeViewerProps {

@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
-import { Laptop, Maximize2, Smartphone, Tablet } from 'lucide-react';
+import { Laptop, Maximize2, Smartphone, Tablet } from '@/components/ui/icons';
 import { useReducedMotion } from 'motion/react';
 import { clampPreviewWidth, PREVIEW_WIDTH_PRESETS } from '@/lib/preview-width';
 import './ResizablePreview.css';

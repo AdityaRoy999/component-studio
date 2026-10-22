@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { BookOpenCheck, Check, Download, FileCode2, Upload, X } from 'lucide-react';
+import { BookOpenCheck, Check, Download, FileCode2, Upload, X } from '@/components/ui/icons';
 import { useLenis } from 'lenis/react';
 import { CUSTOM_SKILL_TEMPLATE, FRONTEND_SKILLS } from '@/data/generation-skills';
 import { MAX_SKILL_BYTES, parseGenerationSkill } from '@/lib/generation-skill';

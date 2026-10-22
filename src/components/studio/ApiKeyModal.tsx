@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { Eye, EyeOff, Check, X, Loader2, RefreshCw, Plus, Trash2 } from 'lucide-react';
+import { Eye, EyeOff, Check, X, Loader2, RefreshCw, Plus, Trash2 } from '@/components/ui/icons';
 import { motion, useReducedMotion } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import ModernSelect from '@/components/ui/ModernSelect';

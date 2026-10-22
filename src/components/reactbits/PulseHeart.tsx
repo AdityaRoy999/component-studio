@@ -1,9 +1,9 @@
 'use client';
 
-// React Bits PulseHeart (TS/TW), with a deferred action for confirmation dialogs.
+// React Bits PulseHeart animation, with Solar Linear glyphs and deferred confirmation.
 
 import React, { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { FavouriteIcon, StarIcon, ThumbsUpIcon } from '@hugeicons/core-free-icons';
+import solarIcons from '@/data/solar-linear-icons.json';
 
 export type PulseHeartIcon = 'heart' | 'star' | 'thumb';
 
@@ -33,12 +33,11 @@ export interface PulseHeartProps {
   className?: string;
 }
 
-type IconData = readonly (readonly [string, { readonly [key: string]: string | number }])[];
 type Roll = { a: string; b: string; at: number; up: boolean };
 type Cell = { ch: string } | { top: string; bottom: string };
 
 const OUT = 0.4;
-const ICONS: Record<PulseHeartIcon, IconData> = { heart: FavouriteIcon, star: StarIcon, thumb: ThumbsUpIcon };
+const ICONS = { heart: solarIcons.Heart, star: solarIcons.Star, thumb: solarIcons.ThumbsUp };
 
 const back = (k: number, c: number) => {
   const u = k - 1;
@@ -275,12 +274,8 @@ const PulseHeart: React.FC<PulseHeartProps> = ({
           aria-hidden="true"
         >
           {paths ? (
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <g ref={glyphRef}>
-                {paths.map(([, attrs]) => (
-                  <path key={String(attrs.key)} d={String(attrs.d)} vectorEffect="non-scaling-stroke" />
-                ))}
-              </g>
+            <svg className="solar-icon" data-icon={`solar:${paths.name}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <g ref={glyphRef} dangerouslySetInnerHTML={{__html:paths.body}}/>
             </svg>
           ) : (
             icon
