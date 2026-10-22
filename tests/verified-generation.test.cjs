@@ -86,3 +86,20 @@ test('every generation prompt permits npm libraries without stale dependency res
  assert(COMPONENT_SYSTEM_PROMPT.includes('any browser-compatible npm package'));
  assert(!/allowed installed packages|existing allowed packages|No[^\n]*new dependencies/.test(COMPONENT_SYSTEM_PROMPT));
 });
+
+test('missing standard type libraries are an infrastructure failure and spend no model requests',async()=>{
+ const ts=require('typescript'),read=ts.sys.readFile;
+ const isolated=load('src/lib/ai.ts');let calls=0;
+ ts.sys.readFile=filename=>/[/\\]typescript[/\\]lib[/\\]lib\..*\.d\.ts$/.test(filename)?undefined:read(filename);
+ try{
+  await assert.rejects(isolated.generateComponent({provider:'nvidia',apiKey:'fixture',model:'openai/gpt-oss-120b',prompt:'Animated tabs'},async()=>{calls++;return response(good);}),error=>error.code==='validation_unavailable'&&error.status===503);
+  assert.equal(calls,0);
+  await assert.rejects(isolated.parseComponent(JSON.stringify(good)),/server setup issue/);
+ }finally{ts.sys.readFile=read;}
+});
+
+test('a missing transitive ES declaration is detected even when the main library exists',()=>{
+ const ts=require('typescript'),read=ts.sys.readFile,{assertValidationRuntime}=load('src/lib/validation-runtime.ts');
+ ts.sys.readFile=filename=>filename.replaceAll('\\','/').endsWith('/lib.es2015.iterable.d.ts')?undefined:read(filename);
+ try{assert.throws(assertValidationRuntime,/server setup issue/);}finally{ts.sys.readFile=read;}
+});

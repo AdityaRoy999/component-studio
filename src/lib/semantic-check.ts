@@ -1,10 +1,12 @@
 import ts from 'typescript';
 import path from 'node:path';
 import { npmPackage } from './npm-imports';
+import { assertValidationRuntime } from './validation-runtime';
 const cache=new Map<string,string[]>();
 const declarations=new Map<string,ts.SourceFile>();
 // Type-check source without executing it. Dependencies resolve from the studio's installed packages.
 export function semanticDiagnostics(code:string,files:Record<string,string>={}){
+  assertValidationRuntime();
   const key=JSON.stringify([code,files]);const hit=cache.get(key);if(hit)return hit;
   const normalize=(name:string)=>path.resolve(name).replace(/\\/g,'/');
   const root=normalize(path.join(process.cwd(),'.studio-virtual'));

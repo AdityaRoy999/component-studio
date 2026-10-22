@@ -9,7 +9,11 @@ const previewFiles = [
   './node_modules/tailwindcss/lib/css/preflight.css',
 );
 const declarationFiles = ['@types/react', '@types/react-dom', '@types/prop-types', 'csstype']
-  .map(name => `./node_modules/${name}/**/*`);
+  .map(name => `./node_modules/${name}/**/*`).concat(
+    // TypeScript loads these through its compiler host at runtime. Tracing the
+    // compiler JavaScript does not include the transitive ES/DOM declarations.
+    './node_modules/typescript/lib/lib*.d.ts',
+  );
 
 /** Keep production builds from replacing the chunks of a running dev server. */
 const config = (phase) => ({

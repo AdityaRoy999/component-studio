@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/check-runtime-types.cjs",
     "start": "next start",
     "lint": "next lint",
     "test": "node --test tests/backend.test.cjs tests/generation-upgrade.test.cjs tests/verified-generation.test.cjs",

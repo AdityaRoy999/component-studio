@@ -13,6 +13,11 @@ test('manual source edits receive semantic diagnostics before applying',async()=
  const unused=await post('/api/validate',{name:'Example',code:'export default function Example(){return <div>Hardcoded</div>}',propsSchema:[{name:'label',type:'string',defaultValue:'Label'}]});assert.equal(unused.status,422);assert(unused.data.error.includes('Unused customization'));
  const valid=await post('/api/validate',{name:'Example',code:"import Details from './parts/Details';export default function Example(){return <Details/>}",files:{'parts/Details.tsx':'export default function Details(){return <div>Working files</div>}'},propsSchema:[]});assert.equal(valid.status,200);assert(valid.data.component.files['parts/Details.tsx']);
 });
+
+test('deployed validation accepts React hooks, iterable arrays and standard ES/DOM APIs',async()=>{
+ const code="import {useState,useRef} from 'react';export default function Demo(){const ref=useRef<HTMLDivElement>(null);const [items,setItems]=useState(['Overview','Details']);const sizes=new Map<string,number>(items.map(item=>[item,item.length]));return <div ref={ref}>{Array.from(sizes).map(([item,size])=><button key={item} onClick={()=>{ref.current?.getBoundingClientRect();void Promise.resolve();setItems([...items,'New']);}}>{item} {size}</button>)}</div>}";
+ const result=await post('/api/validate',{name:'Demo',code,propsSchema:[]});assert.equal(result.status,200,JSON.stringify(result.data));assert.equal(result.data.component.code,code);
+});
 test('project download is a ZIP containing selected customization without provider credentials',async()=>{
  const response=await fetch(base+'/api/export',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({format:'zip',component:{id:'gen-http-test',name:'Example',code:"export default function Example({label='Ready'}){return <div>{label}</div>}"},propValues:{label:'Selected label'},apiKey:'NEVER_EXPORT_THIS',theme:'light'})});
  assert.equal(response.status,200);assert(response.headers.get('content-type').includes('application/zip'));const zip=Buffer.from(await response.arrayBuffer());assert.equal(zip.readUInt32LE(),0x04034b50);assert(zip.includes(Buffer.from('Selected label')));assert(!zip.includes(Buffer.from('NEVER_EXPORT_THIS')));
@@ -39,7 +44,7 @@ test('live preview refuses HTML style strings before mounting React',async()=>{
 
 test('custom model HTTP workflow verifies, generates and compiles through a local endpoint',async()=>{
  const http=require('node:http');const requests=[];
- const component={name:'LocalCard',title:'Local card',description:'Generated through a custom endpoint',code:"export default function LocalCard(){return <button>Local model works</button>}",propsSchema:[]};
+ const component={name:'LocalCard',title:'Local card',description:'Generated through a custom endpoint',code:"import {useState} from 'react';export default function LocalCard(){const [items,setItems]=useState(['Ready']);return <div><button onClick={()=>setItems([...items,'Added'])}>Local model works {items.length}</button>{items.map(item=><span key={item}>{item}</span>)}</div>}",propsSchema:[]};
  const endpoint=http.createServer(async(req,res)=>{
   let body='';for await(const chunk of req)body+=chunk;
   requests.push({path:req.url,auth:req.headers.authorization,body:body?JSON.parse(body):null});
@@ -54,6 +59,7 @@ test('custom model HTTP workflow verifies, generates and compiles through a loca
   const discovered=await post('/api/providers',{...settings,model:undefined,action:'models'});assert.equal(discovered.status,200);assert.deepEqual(discovered.data.models,[{id:'local-test-model',label:'local-test-model'}]);
   const connection=await post('/api/providers',settings);assert.equal(connection.status,200);assert.equal(connection.data.success,true);
   const generated=await post('/api/generate',{...settings,prompt:'Build a compact card'});assert.equal(generated.status,200);assert.equal(generated.data.model,'local-test-model');assert.equal(generated.data.component.name,'LocalCard');
+  assert.equal(generated.data.metrics.requests,1);assert.equal(generated.data.metrics.repairs,0);
   const preview=await post('/api/preview',{code:generated.data.component.code});assert.equal(preview.status,200);assert(preview.data.script.includes('Local model works'));assert(!/\bReact\.createElement\(/.test(preview.data.script),'JSX must not depend on an unbound React global');
   assert.deepEqual(requests.map(r=>r.path),['/v1/models','/v1/models','/v1/chat/completions']);assert(requests.every(r=>r.auth===undefined));assert.equal(requests[2].body.model,'local-test-model');
   assert(requests[2].body.messages[0].content.includes('QUALITY CONTRACT'));

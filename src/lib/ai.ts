@@ -15,6 +15,7 @@ import type { GenerationMetrics } from './generation-events';
 import { applyComponentRepair, PATCH_REPAIR_SYSTEM, PATCH_FINAL_CHECK, repairResponseFormat } from './component-repair';
 import { npmPackage, packageImports } from './npm-imports';
 import { isBuiltin } from 'node:module';
+import { assertValidationRuntime, ValidationEnvironmentError } from './validation-runtime';
 
 export * from './ai-shared';
 import { PROVIDERS, type Provider, type ThinkingEffort } from './ai-shared';
@@ -168,6 +169,8 @@ export async function generateComponent(input: GenerationInput, fetcher: typeof 
     return {durationMs:Date.now()-started,firstTokenMs,requests,repairs,inputTokens,outputTokens,status};
   };
   const config = providerConfig(input.provider, input.apiKey, input.model, process.env, input.baseUrl); requireConfig(input.provider, config);
+  // A missing compiler library is a deployment failure, never a model mistake.
+  try{assertValidationRuntime();}catch(error){if(error instanceof ValidationEnvironmentError)throw new ProviderError(error.message,503,'validation_unavailable');throw error;}
   let images:ImageReference[];
   try{images=validateImageReferences(input.images);}catch(error){throw new ProviderError((error as Error).message,400,'invalid_images');}
   const imageMetadata=imageInputs.get(limitKey(input.provider,config.origin,config.model));
@@ -291,6 +294,7 @@ export async function generateComponent(input: GenerationInput, fetcher: typeof 
     emit({type:'status',phase:'validating',message:attempt?'Checking the repaired component…':'Checking TypeScript, imports, and styles…'});
     try { const component=await parseComponent(raw);const unused=customizationBindings(component.code,component.propsSchema.map(item=>item.name));if(unused.length)throw new Error(`Unused customization props: ${unused.join(', ')}. Bind these props to rendered content, styles or meaningful state, or remove them from propsSchema.`);emit({type:'preview',code:component.code,cssCode:component.cssCode});return { component, model: config.model, metrics:metrics('success') }; }
     catch(error){
+      if(error instanceof ValidationEnvironmentError)throw new ProviderError(error.message,503,'validation_unavailable');
       if(signal.aborted)throw new ProviderError('Generation stopped.',499,'cancelled');
       const diagnostic=error instanceof Error?error.message.slice(0,2400):'Invalid component JSON';
       const compilerMessage=(error as {errors?:{text?:string}[]})?.errors?.[0]?.text;
@@ -322,6 +326,7 @@ export async function parseComponent(raw: unknown): Promise<ComponentPreset> {
   if(typeof value.code==='string')value.code=value.code.replace(/^```(?:tsx|jsx|typescript|javascript)?\s*/i,'').replace(/\s*```$/,'');
   if (typeof value.code !== 'string' || !/export\s+default\b/.test(value.code)) throw new Error('Return complete React component source with an export default declaration in the code field.');
   if(value.code.length>1000000||typeof value.cssCode==='string'&&value.cssCode.length>1000000)throw new Error('Component source exceeds the supported file size. Keep each source file under 1 MB.');
+  assertValidationRuntime();
   const files=generatedFiles(value.files);
   const packageCss=packageImports([value.code,...Object.values(files)]).some(specifier=>npmPackage(specifier)&&specifier.endsWith('.css'));
   validateJSX(value.code,typeof value.cssCode==='string'&&value.cssCode?value.cssCode:packageCss?'/* npm stylesheet */':'');
