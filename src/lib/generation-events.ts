@@ -1,4 +1,5 @@
 import type { ComponentPreset } from '@/data/presets';
+import { partialSourceFile } from './component-source-envelope';
 export interface GenerationMetrics { durationMs:number; firstTokenMs?:number; requests:number; repairs:number; inputTokens?:number; outputTokens?:number; status:'success'|'failed'; }
 
 export type GenerationEvent =
@@ -26,6 +27,7 @@ export interface BuildTurn {
 
 // Decode a string field even while its surrounding JSON is still arriving.
 export function partialField(raw: string, field: 'code' | 'cssCode'): string {
+  const source=partialSourceFile(raw,field==='cssCode');if(source!==undefined)return source;
   const match = new RegExp(`"${field}"\\s*:\\s*"`).exec(raw);
   if (!match) return '';
   let result = '';

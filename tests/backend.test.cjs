@@ -324,20 +324,22 @@ test('response parsing preserves escaped source and classifies malformed JSON se
  const code=String.raw`export default function Code(){const path="C:\\source";const pattern=/\s+/;return <pre>{path+"\n"+String(pattern)}</pre>}`;
  for(const raw of [JSON.stringify({code}),JSON.stringify(JSON.stringify({code})),'```json\n'+JSON.stringify({code})+'\n```'])assert.equal(parseComponentResponse(raw).code,code);
  assert.equal(parseComponentResponse('{name:"Card",code:"source",}').code,'source');
- for(const raw of [undefined,'','[]','{"code":"export default function C(){return null}","propsSchema":[{"name" => "label"}]}'])assert.throws(()=>parseComponentResponse(raw),ComponentResponseFormatError);
+ for(const raw of [undefined,'','[]','{"code":"source","propsSchema":[{"name" => "label"}]}'])assert.throws(()=>parseComponentResponse(raw),ComponentResponseFormatError);
+ assert.equal(parseComponentResponse('{"code":"export default function C(){return null}","propsSchema":[{"name" => "label"}]}').code,'export default function C(){return null}');
 });
 
-test('malformed component JSON gets a format repair instead of a TypeScript repair',async()=>{
+test('unreadable component output gets one source-file recovery instead of another JSON rewrite',async()=>{
  const events=[],requests=[];
- const malformed=`{"name":"ExampleCard","code":${JSON.stringify(component.code)},"propsSchema":[{"name" => "label"}]}`;
+ const malformed='No complete component source was returned.';
  const result=await ai.generateComponent({provider:'custom',baseUrl:'http://localhost:11434/v1',model:'format-test',prompt:'Button',onEvent:e=>events.push(e)},async(url,init)=>{
   requests.push(JSON.parse(init.body));
   return new Response(JSON.stringify({choices:[{message:{content:requests.length===1?malformed:JSON.stringify(component)}}]}),{headers:{'Content-Type':'application/json'}});
  });
  assert.equal(requests.length,2);assert.equal(result.component.code,component.code);
- assert(requests[1].messages[1].content.includes('Repair the RESPONSE FORMAT'));
- assert(requests[1].messages[1].content.includes('not a TypeScript colon'));
- assert(events.some(e=>e.type==='status'&&e.message==='Fixing response format (1/2)…'));
+ assert(requests[1].messages[0].content.includes('OUTPUT SOURCE FILES'));
+ assert(!requests[1].messages[0].content.includes('OUTPUT ONLY VALID JSON'));
+ assert(requests[1].messages[1].content.includes('separate source files'));
+ assert(events.some(e=>e.type==='status'&&e.message==='Recovering complete source files…'));
  assert.equal(result.metrics.repairs,1);
 });
 

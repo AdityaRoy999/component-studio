@@ -18,6 +18,15 @@ test('deployed validation accepts React hooks, iterable arrays and standard ES/D
  const code="import {useState,useRef} from 'react';export default function Demo(){const ref=useRef<HTMLDivElement>(null);const [items,setItems]=useState(['Overview','Details']);const sizes=new Map<string,number>(items.map(item=>[item,item.length]));return <div ref={ref}>{Array.from(sizes).map(([item,size])=><button key={item} onClick={()=>{ref.current?.getBoundingClientRect();void Promise.resolve();setItems([...items,'New']);}}>{item} {size}</button>)}</div>}";
  const result=await post('/api/validate',{name:'Demo',code,propsSchema:[]});assert.equal(result.status,200,JSON.stringify(result.data));assert.equal(result.data.component.code,code);
 });
+
+test('response-format recovery validates preserved source instead of rejecting optional broken metadata',async()=>{
+ const code="import {useState} from 'react';export default function SourceCounter(){const [n,setN]=useState(0);return <button onClick={()=>setN(n+1)}>Count {n}</button>}";
+ const malformed='{"name":"SourceCounter","code":'+JSON.stringify(code)+',"propsSchema":[{"name" => "bad"}]}';
+ for(const raw of [malformed,'~~~~tsx Component.tsx\n'+code+'\n~~~~']){
+  const result=await post('/api/validate',raw);assert.equal(result.status,200,JSON.stringify(result.data));assert.equal(result.data.component.code,code);
+ }
+ const invalid=await post('/api/validate','~~~~tsx Component.tsx\nexport default function SourceCounter(){const n:number="wrong";return <div>{n}</div>}\n~~~~');assert.equal(invalid.status,422);assert(invalid.data.error.includes('TS2322'));
+});
 test('project download is a ZIP containing selected customization without provider credentials',async()=>{
  const response=await fetch(base+'/api/export',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({format:'zip',component:{id:'gen-http-test',name:'Example',code:"export default function Example({label='Ready'}){return <div>{label}</div>}"},propValues:{label:'Selected label'},apiKey:'NEVER_EXPORT_THIS',theme:'light'})});
  assert.equal(response.status,200);assert(response.headers.get('content-type').includes('application/zip'));const zip=Buffer.from(await response.arrayBuffer());assert.equal(zip.readUInt32LE(),0x04034b50);assert(zip.includes(Buffer.from('Selected label')));assert(!zip.includes(Buffer.from('NEVER_EXPORT_THIS')));

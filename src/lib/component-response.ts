@@ -1,5 +1,6 @@
 import { jsonrepair } from 'jsonrepair';
 import type { Provider } from './ai-shared';
+import { recoverComponentFields, recoverSourceFiles, recoverBareSource, hasSourceFence } from './component-source-envelope';
 
 export class ComponentResponseFormatError extends Error {
   constructor(){super('The model returned malformed component JSON. Check JSON quotes, escaping, commas, and field separators before changing the component code.');}
@@ -28,19 +29,24 @@ export function componentResponseFormat(provider:Provider,model:string){
   return {};
 }
 
-export function parseComponentResponse(raw:unknown){
+export function parseComponentResponse(raw:unknown,depth=0):Record<string,any>{
   if(typeof raw!=='string'||!raw.trim())throw new ComponentResponseFormatError();
-  const clean=raw.trim().replace(/^\s*<think>[\s\S]*?<\/think>\s*/i,'').replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'');
+  const text=raw.trim().replace(/^\s*<think>[\s\S]*?<\/think>\s*/i,'').replace(/(?:<\|(?:return|im_end|fim_suffix)\|>\s*)+$/,'').trim();
+  const clean=text.replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'');
   let value;
   try{value=JSON.parse(clean);}catch{
+    const source=recoverSourceFiles(text);if(source)return source;
+    if(hasSourceFence(text))throw new ComponentResponseFormatError();
+    const recovered=recoverComponentFields(text)||recoverBareSource(text);
+    if(recovered)return recovered;
     const start=clean.indexOf('{'),end=clean.lastIndexOf('}');
     const candidate=start>=0&&end>start?clean.slice(start,end+1):clean;
     try{value=JSON.parse(candidate);}catch{
       try{value=JSON.parse(jsonrepair(candidate));}catch{throw new ComponentResponseFormatError();}
     }
   }
-  if(typeof value==='string')try{value=JSON.parse(value);}catch{throw new ComponentResponseFormatError();}
-  if(!value||typeof value!=='object'||Array.isArray(value))throw new ComponentResponseFormatError();
+  if(typeof value==='string'){if(depth>=2)throw new ComponentResponseFormatError();return parseComponentResponse(value,depth+1);}
+  if(!value||typeof value!=='object'||Array.isArray(value)||typeof value.code!=='string'&&!Array.isArray(value.edits))throw new ComponentResponseFormatError();
   return value;
 }
 

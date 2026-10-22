@@ -15,7 +15,7 @@ export function repairResponseFormat(provider:Provider,model:string){
 export function applyComponentRepair(previous:Record<string,any>,raw:unknown){
   const patch=parseComponentResponse(raw);
   // Compatible endpoints may still return a complete corrected component.
-  if(typeof patch.code==='string')return patch;
+  if(typeof patch.code==='string')return {...previous,...patch};
   if(!Array.isArray(patch.edits)||patch.edits.length>12)throw new Error('Return at most 12 exact source edits.');
   if(typeof previous.code!=='string')throw new Error('The repair needs the current component source.');
   const next:Record<string,any>={...previous,files:{...(previous.files||{})}};let changed=false;
