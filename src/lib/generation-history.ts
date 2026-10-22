@@ -1,6 +1,7 @@
 import type { ComponentPreset } from '@/data/presets';
 import type { BuildTurn } from './generation-events';
 import type { Provider } from './ai-shared';
+import { parseGenerationSkill } from './generation-skill';
 import { isSnapshot, validateImageReferences } from './image-references';
 import { revisionContext } from './generation-context';
 
@@ -14,7 +15,7 @@ export interface HistoryEntry {
 }
 export function createHistoryEntry(input:Omit<HistoryEntry,'id'|'createdAt'>):HistoryEntry {
   return {id:input.component.id,createdAt:new Date().toISOString(),component:input.component,
-    turns:input.turns.map(turn=>({id:turn.id,prompt:turn.prompt,images:turn.images,status:turn.status,events:turn.events,thinking:turn.thinking,source:turn.source,fileName:turn.fileName,error:turn.error,response:turn.response,metrics:turn.metrics})),
+    turns:input.turns.map(turn=>({id:turn.id,prompt:turn.prompt,skill:turn.skill,images:turn.images,status:turn.status,events:turn.events,thinking:turn.thinking,source:turn.source,fileName:turn.fileName,error:turn.error,response:turn.response,metrics:turn.metrics})),
     provider:input.provider,model:input.model,language:input.language,styling:input.styling,propValues:input.propValues,favorite:input.favorite,label:input.label,...(input.thumbnail?{thumbnail:input.thumbnail}:{})};
 }
 export function mergeHistory(...groups:HistoryEntry[][]):HistoryEntry[] {
@@ -67,7 +68,7 @@ export function parseHistoryBackup(raw:string):HistoryEntry[]{
     if(source.propsSchema.some(field=>!field||typeof field.name!=='string'||!['string','number','boolean','color','select'].includes(field.type)||field.type==='select'&&(!Array.isArray(field.options)||field.options.some(option=>typeof option!=='string'))))throw new Error('This backup contains invalid customization controls.');
     const turns=item.turns.map(turn=>{
       if(!turn||typeof turn.id!=='string'||typeof turn.prompt!=='string'||!Array.isArray(turn.events)||turn.events.some(event=>!event||typeof event.phase!=='string'||typeof event.message!=='string')||!['working','done','stopped','error'].includes(turn.status))throw new Error('This backup contains an invalid conversation.');
-      return {id:turn.id,prompt:turn.prompt.slice(0,12000),status:turn.status,events:turn.events.slice(0,100),images:validateImageReferences(turn.images),thinking:typeof turn.thinking==='string'?turn.thinking:undefined,source:typeof turn.source==='string'?turn.source.slice(0,1000000):undefined,response:typeof turn.response==='string'?turn.response:undefined,error:typeof turn.error==='string'?turn.error:undefined,fileName:typeof turn.fileName==='string'?turn.fileName:undefined,metrics:turn.metrics&&Number.isFinite(turn.metrics.durationMs)&&Number.isFinite(turn.metrics.repairs)&&['success','failed'].includes(turn.metrics.status)?turn.metrics:undefined};
+      return {id:turn.id,prompt:turn.prompt.slice(0,12000),skill:turn.skill==null?null:parseGenerationSkill(turn.skill).markdown,status:turn.status,events:turn.events.slice(0,100),images:validateImageReferences(turn.images),thinking:typeof turn.thinking==='string'?turn.thinking:undefined,source:typeof turn.source==='string'?turn.source.slice(0,1000000):undefined,response:typeof turn.response==='string'?turn.response:undefined,error:typeof turn.error==='string'?turn.error:undefined,fileName:typeof turn.fileName==='string'?turn.fileName:undefined,metrics:turn.metrics&&Number.isFinite(turn.metrics.durationMs)&&Number.isFinite(turn.metrics.repairs)&&['success','failed'].includes(turn.metrics.status)?turn.metrics:undefined};
     });
     const component:ComponentPreset={id:source.id,name:source.name,title:source.title,description:source.description,category:typeof source.category==='string'?source.category:'AI GENERATED',tags:Array.isArray(source.tags)?source.tags.filter(tag=>typeof tag==='string'):[],code:source.code,cssCode:source.cssCode,files:source.files,propsSchema:source.propsSchema,sourceUrl:typeof source.sourceUrl==='string'&&source.sourceUrl.startsWith('https://reactbits.dev/')?source.sourceUrl:undefined};
     return {...createHistoryEntry({...item,component,turns,model:typeof item.model==='string'?item.model:'',favorite:item.favorite===true,label:typeof item.label==='string'?item.label.slice(0,150):undefined,propValues:revisionContext({propValues:item.propValues}).propValues||{},language:item.language==='JS'?'JS':'TS',styling:item.styling==='CSS'?'CSS':'Tailwind',thumbnail:isSnapshot(item.thumbnail)?item.thumbnail:undefined}),id:item.id,createdAt:item.createdAt};

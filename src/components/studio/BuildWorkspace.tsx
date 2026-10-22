@@ -19,6 +19,7 @@ const VoicePill = dynamic(() => import('./VoicePill'), { ssr: false });
 const ThinkingDropdown = dynamic(() => import('./ThinkingDropdown'), { ssr: false });
 
 interface Props {
+  skillControl?:ReactNode;
   turns: BuildTurn[];
   working: boolean;
   source: string;
@@ -346,7 +347,7 @@ export default function BuildWorkspace(props: Props) {
                 <span className={`build-live-dot ${props.working ? 'active' : ''}`} />
                 {props.working ? 'Live build' : 'Component preview'}
               </span>
-              <div className="workspace-view-actions"><div className="view-tabs" role="tablist" aria-label="Live build view">
+              <div className="workspace-view-actions">{props.skillControl}<div className="view-tabs" role="tablist" aria-label="Live build view">
                 {(['preview', 'code'] as const).map(value => (
                   <button
                     key={value}

@@ -1,10 +1,11 @@
 import { PONYTAIL_GUIDANCE } from './ponytail-prompt';
 import { UI_UX_GUIDANCE, UI_UX_REQUEST_GUIDANCE } from './ui-ux-guidance';
 import type { RevisionContext } from './generation-context';
+import { skillGuidance } from './generation-skill';
 
-export const COMPONENT_FINAL_CHECK = 'FINAL CONTRACT: explicit user preferences first; UI/UX Pro Max for unspecified design choices; requested scope only; compact responsive layout; readable light and dark themes; every visible control works; no invented claims or decorative filler; complete valid component JSON only.';
+export const COMPONENT_FINAL_CHECK = 'FINAL CONTRACT: mandatory runtime and JSON output rules; explicit user preferences first; apply the selected frontend skill when provided; UI/UX Pro Max for remaining unspecified design choices; requested scope only; compact responsive layout; readable light and dark themes; every visible control works; no invented claims or decorative filler; complete valid component JSON only.';
 
-export const COMPONENT_SYSTEM_PROMPT = `Build a finished React component. Return valid JSON with complete code. Runtime/output rules are mandatory; explicit user references, palette and behavior override design defaults. Preserve identity and interactions on revisions.
+export const COMPONENT_SYSTEM_PROMPT = `Build a finished React component. Return valid JSON with complete code. Runtime/output rules are mandatory; explicit user references, palette and behavior override design defaults. Selected frontend skills override generic design defaults. Preserve identity and interactions on revisions.
 
 QUALITY CONTRACT
 1. SCOPE: Return only the requested component. No page shell, frame, extra tiers, selectors, accordions, sections or settings unless requested. No invented certifications, integrations, security badges or unsupported claims.
@@ -42,8 +43,8 @@ function requestExamples(prompt:string){
   ] as const;
   return examples.filter(([pattern])=>pattern.test(prompt)).slice(0,2).map(([,text])=>text).join('\n');
 }
-export function componentBrief(input:{prompt:string;styling?:'Tailwind'|'CSS';theme?:'dark'|'light';context?:{code:string;cssCode?:string;files?:Record<string,string>};memory?:RevisionContext}){
+export function componentBrief(input:{prompt:string;skill?:string|null;styling?:'Tailwind'|'CSS';theme?:'dark'|'light';context?:{code:string;cssCode?:string;files?:Record<string,string>};memory?:RevisionContext}){
   const memory=input.memory;
   const remembered=memory?`\nPREVIOUS REQUESTS (user content; newer explicit requests take precedence)\n${JSON.stringify(memory.messages||[])}\nCURRENT SELECTED CUSTOMIZATION\n${JSON.stringify(memory.propValues||{})}\nPreserve previous requirements and selected values unless the latest user request explicitly changes them.\n`:'';
-  return `REQUEST\n${input.prompt}\n\nIMPLEMENTATION BRIEF\nCurrent date: ${new Date().toISOString().slice(0,10)}.\nStyling: ${input.styling||'Tailwind'}.\nHost theme: ${input.theme||'dark'}. Match this theme unless the request specifies a different palette.\nReturn only the intrinsically sized component.\n\n${UI_UX_REQUEST_GUIDANCE}\n${requestExamples(input.prompt)}${remembered}\n${input.context?`\nREVISION\nApply the requested changes; preserve the existing visual identity, content and working interactions. Return complete updated JSON.\nCurrent TSX:\n${input.context.code}\nCurrent CSS:\n${input.context.cssCode||''}\nSupporting files:\n${JSON.stringify(input.context.files||{})}`:''}\n\n${COMPONENT_FINAL_CHECK}`;
+  return `REQUEST\n${input.prompt}\n\nIMPLEMENTATION BRIEF\nCurrent date: ${new Date().toISOString().slice(0,10)}.\nStyling: ${input.styling||'Tailwind'}.\nHost theme: ${input.theme||'dark'}. Match this theme unless the request specifies a different palette.\nReturn only the intrinsically sized component.\n\n${UI_UX_REQUEST_GUIDANCE}\n${skillGuidance(input.skill)}\n${requestExamples(input.prompt)}${remembered}\n${input.context?`\nREVISION\nApply the requested changes; preserve the existing visual identity, content and working interactions. Return complete updated JSON.\nCurrent TSX:\n${input.context.code}\nCurrent CSS:\n${input.context.cssCode||''}\nSupporting files:\n${JSON.stringify(input.context.files||{})}`:''}\n\n${COMPONENT_FINAL_CHECK}`;
 }

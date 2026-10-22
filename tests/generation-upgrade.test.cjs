@@ -6,6 +6,45 @@ const {revisionContext,carryCustomization}=load('src/lib/generation-context.ts')
 const ai=load('src/lib/ai.ts');
 const component={name:'ExampleCard',title:'Example',description:'Interactive card',code:"import {useState} from 'react';export default function ExampleCard({label='Ready'}:{label?:string}){const [n,setN]=useState(0);return <button onClick={()=>setN(n+1)}>{label} {n}</button>}",propsSchema:[{name:'label',type:'string',defaultValue:'Ready'}]};
 const output=(value,usage)=>new Response(JSON.stringify({choices:[{message:{content:JSON.stringify(value)}}],usage}));
+
+const skillFile='---\nname: deliberate-frontend\ndescription: |\n  Build deliberate frontend layouts.\n  Use for cards and controls.\nmetadata:\n  version: "1.0"\n---\n\n# Instructions\nUse a distinctive warm-copper accent and editorial rhythm.';
+test('SKILL.md parser supports standard YAML and validates content and resource limits',()=>{
+ const {parseGenerationSkill,MAX_SKILL_BYTES}=load('src/lib/generation-skill.ts');
+ const skill=parseGenerationSkill('\uFEFF'+skillFile.replaceAll('\n','\r\n'));
+ assert.equal(skill.name,'deliberate-frontend');assert(skill.description.includes('cards and controls'));assert(skill.body.includes('warm-copper'));
+ for(const invalid of [null,{},'No frontmatter',skillFile.replace('deliberate-frontend','Bad--Name'),skillFile.replace('description: |','description: 42\nunused: |'),skillFile.replace('name: deliberate-frontend','name: first\nname: second'),skillFile.split('# Instructions')[0],skillFile+'😀'.repeat(MAX_SKILL_BYTES/2)])assert.throws(()=>parseGenerationSkill(invalid));
+ assert.throws(()=>parseGenerationSkill(skillFile.replace('version: "1.0"','version: 1.0')),/metadata/);
+ const {FRONTEND_SKILLS}=load('src/data/generation-skills.ts');
+ assert.equal(new Set(FRONTEND_SKILLS.map(item=>item.id)).size,FRONTEND_SKILLS.length);
+ for(const item of FRONTEND_SKILLS){const parsed=parseGenerationSkill(item.markdown);assert.equal(parsed.name,item.id);assert(parsed.body.length>600);}
+});
+
+for(const provider of ai.PROVIDERS)test(`selected frontend skill reaches ${provider} generation and repair`,async()=>{
+ const requests=[];
+ await ai.generateComponent({provider,apiKey:'test-key',model:'test-model',baseUrl:provider==='custom'?'http://localhost:11434/v1':undefined,prompt:'Build a button',skill:skillFile},async(url,init)=>{
+   const request=JSON.parse(init.body);requests.push(request);
+   const content=JSON.stringify(request);assert(content.includes('warm-copper'));assert(content.includes('deliberate-frontend'));assert(content.includes('mandatory runtime'));
+   const value=requests.length===1?{code:'invalid'}:component;
+   return provider==='gemini'?new Response(JSON.stringify({candidates:[{content:{parts:[{text:JSON.stringify(value)}]}}]})):output(value);
+ });
+ assert.equal(requests.length,2);
+});
+
+test('generation API rejects malformed skills before contacting any provider',async()=>{
+ const {POST}=load('src/app/api/generate/route.ts');
+ for(const skill of ['bad',{},'---\nname: broken\n---\nInstructions']){
+   const result=await POST(new Request('http://localhost/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({provider:'openai',prompt:'Button',skill,stream:true})}));
+   assert.equal(result.status,400);assert.equal((await result.json()).code,'invalid_skill');
+ }
+});
+
+test('history backups retain selected skills and reject invalid imported skill files',()=>{
+ const {createHistoryEntry,parseHistoryBackup}=load('src/lib/generation-history.ts');
+ const entry=createHistoryEntry({component:{...component,id:'gen-skill',category:'AI GENERATED',tags:[]},turns:[{id:'turn',prompt:'Button',skill:skillFile,status:'done',events:[]}],propValues:{},provider:'custom',model:'test',language:'TS',styling:'Tailwind'});
+ const restored=parseHistoryBackup(JSON.stringify({version:1,entries:[entry]}));
+ assert.equal(restored[0].turns[0].skill,skillFile);
+ entry.turns[0].skill='invalid';assert.throws(()=>parseHistoryBackup(JSON.stringify({version:1,entries:[entry]})));
+});
 test('restoring a historical revision does not load newer editor drafts or update its screenshot',()=>{
  const {findHistoryRevision,editorDraftMatches}=load('src/lib/generation-history.ts');
  const original={...component,id:'gen-original',category:'AI GENERATED',tags:[]};const edited={...original,code:original.code+'\n// edited',files:{'parts/value.ts':'export const value=1'}};

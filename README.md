@@ -50,6 +50,7 @@ Start with a prompt, an image reference, or a component from the built-in librar
 | | What you can do |
 | :--- | :--- |
 | **Build with AI** | Stream component generation, attach image references, choose thinking effort, and follow up with changes. |
+| **Guide the AI** | Choose one of six frontend skills or upload your own standard `SKILL.md`. The selected instructions follow generation, revisions, retries, and repairs. [Skill format and usage →](docs/generation-skills.md) |
 | **Preview live** | Run components in an isolated iframe, switch themes and viewport sizes, and adjust properties without losing preview state. |
 | **Own the source** | Read or edit source in separate views, move between local versions, copy TypeScript or JavaScript, and download a component project as a ZIP. |
 | **Keep your work** | Reopen browser-saved builds, favorite and rename them, or export and import a history backup. |

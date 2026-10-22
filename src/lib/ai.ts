@@ -155,7 +155,7 @@ export async function verifyProvider(provider: Provider, key?: string, model?: s
 }
 const instructions = COMPONENT_SYSTEM_PROMPT;
 
-export interface GenerationInput { images?:ImageReference[]; prompt: string; provider: Provider; apiKey?: string; model?: string; baseUrl?: string; styling?: 'Tailwind' | 'CSS'; context?: {code:string;cssCode?:string;files?:Record<string,string>}; memory?:RevisionContext; signal?: AbortSignal; onEvent?: (event:GenerationEvent)=>void; thinkingEffort?: ThinkingEffort; theme?: 'dark' | 'light'; }
+export interface GenerationInput { images?:ImageReference[]; prompt: string; skill?:string|null; provider: Provider; apiKey?: string; model?: string; baseUrl?: string; styling?: 'Tailwind' | 'CSS'; context?: {code:string;cssCode?:string;files?:Record<string,string>}; memory?:RevisionContext; signal?: AbortSignal; onEvent?: (event:GenerationEvent)=>void; thinkingEffort?: ThinkingEffort; theme?: 'dark' | 'light'; }
 export async function generateComponent(input: GenerationInput, fetcher: typeof fetch = fetch): Promise<{ component: ComponentPreset; model: string; metrics:GenerationMetrics }> {
   const started=Date.now();let requests=0,repairs=0,firstTokenMs:number|undefined;
   const usages=new Map<number,{input:number;output:number}>();

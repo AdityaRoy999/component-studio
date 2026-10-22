@@ -1,7 +1,7 @@
 'use client';
 import { useImageReferences, ImageReferenceButton, ImageReferenceTray } from './ImageReferences';
 import type { ImageReference } from '@/lib/image-references';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import { ArrowUp, ArrowUpRight, Code2, Download, Eye, History, Loader2, RotateCcw, Magnet, Layers, PanelTop, Sparkles, SlidersHorizontal, X } from 'lucide-react';
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/react';
@@ -22,6 +22,7 @@ const VoicePill=dynamic(()=>import('./VoicePill'),{ssr:false});
 const ThinkingDropdown=dynamic(()=>import('./ThinkingDropdown'),{ssr:false});
 
 interface StageProps {
+  skillControl?:ReactNode;
   component:ComponentPreset|null; componentCode:string; cssCode?:string; sourceName:string; sourceLoading:boolean; sourceError?:string; dependencies:string[];
   propValues:Record<string,any>; onChangeProp:(name:string,value:any)=>void;
   language:'TS'|'JS'; onLanguageChange:(v:'TS'|'JS')=>void; styling:'Tailwind'|'CSS'; onStylingChange:(v:'Tailwind'|'CSS')=>void;
@@ -77,7 +78,7 @@ export default function Stage(props:StageProps) {
             <ImageReferenceTray references={references}/>
             <textarea data-lenis-prevent id="component-prompt" onPaste={references.onPaste} ref={textarea} onFocus={()=>setFocused(true)} onBlur={()=>setFocused(false)} rows={2} value={prompt} onChange={e=>setPrompt(e.target.value)} disabled={isGenerating} placeholder="Ask what to create, or dictate with voice…" onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();void submit();}}}/>
             <div className="composer-footer">
-              <div className="composer-left-tools"><ImageReferenceButton references={references} disabled={isGenerating}/>
+              <div className="composer-left-tools">{props.skillControl}<ImageReferenceButton references={references} disabled={isGenerating}/>
                 {supportsThinking(props.provider||'gemini',props.model||'')&&(
                   <ThinkingDropdown allowOff={canDisableThinking(props.provider||'gemini',props.model||'')} effort={props.thinkingEffort||'high'} onChange={effort=>props.onThinkingEffortChange?.(effort)} disabled={isGenerating}/>
                 )}
@@ -104,7 +105,7 @@ export default function Stage(props:StageProps) {
     <div className="workspace-heading"><div><div className="eyebrow">YOUR WORKSPACE<span className="slash">/</span>{isPreset?'LIBRARY COMPONENT':'AI COMPONENT'}</div><h1>{component.title}</h1><p>{component.description}</p></div></div>
     <div className="workspace-toolbar">
       <div className="workspace-preview-actions"><AnimatePresence initial={false}>{tab==='preview'&&<motion.div key="preview-devices" className="toolbar-device-slot" initial={{width:0,opacity:0}} animate={{width:'auto',opacity:1}} exit={{width:0,opacity:0}} transition={{duration:reduce?0:.26,ease:[.22,1,.36,1]}}><div className="toolbar-device-content"><div className="preview-device-controls"><PreviewResizeControls/><button className="icon-button" aria-label="Restart preview" onClick={()=>setRevision(value=>value+1)}><RotateCcw size={17}/></button></div></div></motion.div>}</AnimatePresence><button type="button" className="icon-button workspace-download" aria-label="Download project" title="Download project" aria-busy={exporting} disabled={isGenerating||exporting} onClick={()=>void download()}>{exporting?<Loader2 size={17} className="animate-spin"/>:<Download size={17}/>}</button></div>
-      <div className="workspace-view-actions"><LayoutGroup id="component-view"><div className="view-tabs" role="tablist" aria-label="Component view">{(['preview','code'] as const).map(view=><button id={`tab-${view}`} key={view} role="tab" aria-selected={tab===view} aria-controls={`panel-${view}`} tabIndex={tab===view?0:-1} onClick={()=>setTab(view)} onKeyDown={e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();const next=tab==='preview'?'code':'preview';setTab(next);document.getElementById(`tab-${next}`)?.focus();}}}>{tab===view&&<motion.span className="nav-active-pill" layoutId="active-view" transition={reduce?{duration:0}:{type:'spring',stiffness:420,damping:32}}/>}<span className="nav-tab-label">{view==='preview'?<Eye size={15}/>:<Code2 size={15}/>} {view==='preview'?'Preview':'Code'}</span></button>)}</div></LayoutGroup>
+      <div className="workspace-view-actions">{props.skillControl}<LayoutGroup id="component-view"><div className="view-tabs" role="tablist" aria-label="Component view">{(['preview','code'] as const).map(view=><button id={`tab-${view}`} key={view} role="tab" aria-selected={tab===view} aria-controls={`panel-${view}`} tabIndex={tab===view?0:-1} onClick={()=>setTab(view)} onKeyDown={e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();const next=tab==='preview'?'code':'preview';setTab(next);document.getElementById(`tab-${next}`)?.focus();}}}>{tab===view&&<motion.span className="nav-active-pill" layoutId="active-view" transition={reduce?{duration:0}:{type:'spring',stiffness:420,damping:32}}/>}<span className="nav-tab-label">{view==='preview'?<Eye size={15}/>:<Code2 size={15}/>} {view==='preview'?'Preview':'Code'}</span></button>)}</div></LayoutGroup>
         {!isPreset&&props.onSourceApply&&<button type="button" className={`icon-button source-history-trigger${sourceHistoryOpen&&tab==='code'?' selected':''}`} aria-label="Source history" title="Source history" aria-expanded={sourceHistoryOpen&&tab==='code'} aria-controls="component-source-editor" onClick={()=>{setSourceHistoryOpen(tab==='code'?!sourceHistoryOpen:true);setTab('code');}}><History size={17}/></button>}
         <AnimatePresence initial={false}>{tab==='preview'&&component.propsSchema.length>0&&<motion.div key="customize-tool" className="toolbar-optional-control" initial={{width:0,opacity:0}} animate={{width:'auto',opacity:1}} exit={{width:0,opacity:0}} transition={{duration:reduce?0:.26,ease:[.22,1,.36,1]}}><button className={`icon-button ${customizing?'selected':''}`} aria-label="Customize component" aria-expanded={customizing} aria-controls="component-customization" title="Customize component" onClick={()=>setCustomizing(value=>!value)}><SlidersHorizontal size={17}/></button></motion.div>}</AnimatePresence>
         <PreviewFullscreenButton/>

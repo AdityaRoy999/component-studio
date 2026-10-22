@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import Navbar, { type StudioView } from '@/components/studio/Navbar';
 import StudioIntro from '@/components/studio/StudioIntro';
 import Stage from '@/components/studio/Stage';
+import GenerationSkillPicker, { useGenerationSkill } from '@/components/studio/GenerationSkillPicker';
 import { PRESETS, type ComponentPreset } from '@/data/presets';
 const GradientASCII = dynamic(()=>import('@/components/reactbits/GradientASCII'),{ssr:false});
 const ComponentsCatalog = dynamic(()=>import('@/components/studio/ComponentsCatalog'));
@@ -23,11 +24,13 @@ const Featured=dynamic(()=>import('@/components/studio/Featured'));
 const Skills=dynamic(()=>import('@/components/studio/Skills'));
 import { createHistoryEntry, loadHistory, mergeHistory, saveHistory, findHistoryRevision, deleteHistory, readDraft, writeDraft, type WorkspaceDraft, type HistoryEntry } from '@/lib/generation-history';
 import { carryCustomization } from '@/lib/generation-context';
+import { parseGenerationSkill } from '@/lib/generation-skill';
 interface ExportedSource { name:string; componentCode:string; cssCode?:string; filename:string; cssFilename:string; dependencies:string[]; }
 const emptySource:ExportedSource={name:'Component',componentCode:'',filename:'Component.tsx',cssFilename:'Component.css',dependencies:[]};
 const viewFromPath=(path:string):StudioView=>path==='/skills'?'skills':path==='/featured'?'featured':path==='/history'?'history':path==='/thanks'?'thanks':'studio';
 export default function StudioPage() {
   const pathname=usePathname();const reduce=useReducedMotion();
+  const [generationSkill,setGenerationSkill]=useGenerationSkill();
   const [currentView,setCurrentView]=useState<StudioView>(viewFromPath(pathname));
   const [history,setHistory]=useState<HistoryEntry[]>([]);const [historyLoading,setHistoryLoading]=useState(true);const [historyError,setHistoryError]=useState('');
   const pendingHistory=useRef(new Map<string,HistoryEntry>());
@@ -138,7 +141,7 @@ export default function StudioPage() {
     const controller=new AbortController();generation.current=controller;setGenerating(true);setGenerationError('');
     touched.current=true;
     const id=retry?.id||crypto.randomUUID();
-    let activeTurn:BuildTurn={id,prompt:prompt.trim(),images,events:[],status:'working'};
+    let activeTurn:BuildTurn={id,prompt:prompt.trim(),skill:generationSkill,images,events:[],status:'working'};
     let paintFrame=0;
     const paintTurn=()=>{
       paintFrame=0;if(controller.signal.aborted)return;
@@ -161,7 +164,7 @@ export default function StudioPage() {
       attemptContext.current={id,...base};
       changeView('studio');setTurns(prev=>retry?prev.map(turn=>turn.id===id?activeTurn:turn):[...prev,activeTurn]);setLiveSource('');
       setDraft(component?{code:component.code,cssCode:component.cssCode}:null);
-      const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,images,apiKey:apiKey.trim()||undefined,provider,model:model.trim()||undefined,baseUrl:provider==='custom'?baseUrl.trim()||undefined:undefined,styling,theme,stream:true,thinkingEffort,memory:{messages:priorTurns.map(turn=>({prompt:turn.prompt,response:turn.response})),propValues:base.propValues},context:base.component?{code:base.component.code,cssCode:base.component.cssCode,files:base.component.files}:undefined}),signal:controller.signal});
+      const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,images,skill:generationSkill,apiKey:apiKey.trim()||undefined,provider,model:model.trim()||undefined,baseUrl:provider==='custom'?baseUrl.trim()||undefined:undefined,styling,theme,stream:true,thinkingEffort,memory:{messages:priorTurns.map(turn=>({prompt:turn.prompt,response:turn.response})),propValues:base.propValues},context:base.component?{code:base.component.code,cssCode:base.component.cssCode,files:base.component.files}:undefined}),signal:controller.signal});
       if(!r.ok){const data=await r.json();throw new Error(data.error||'Could not start this build.');}
       if(!r.body)throw new Error('The server returned an empty response. Please retry.');
       const reader=r.body.getReader();const decoder=new TextDecoder();let buffer='';let completed=false;
@@ -186,7 +189,8 @@ export default function StudioPage() {
   const saveSnapshot=useCallback((thumbnail:string)=>{const current=snapshotState.current;if(!isSnapshot(thumbnail)||current.isGenerating)return;const entry=findHistoryRevision(current.history,current.component);if(entry&&entry.thumbnail!==thumbnail)void keepHistory({...entry,thumbnail,propValues:current.propValues});},[]);
   function stop(){generation.current?.abort();generation.current=null;setGenerating(false);setTurns(prev=>prev.map(turn=>turn.status==='working'?{...turn,status:'stopped'}:turn));}
   function home(){stop();touched.current=true;setRecovery(null);void writeDraft(null).catch(()=>{});setComponent(null);setGenerationError('');setTurns([]);setDraft(null);setLiveSource('');changeView('studio');}
-  function openHistory(entry:HistoryEntry){stop();touched.current=true;setRecovery(null);setComponent(entry.component);setTurns(entry.turns);setPropValues(entry.propValues);setLanguage(entry.language);setStyling(entry.styling);setDraft({code:entry.component.code,cssCode:entry.component.cssCode});setLiveSource(entry.component.code);setGenerationError('');changeView('studio');}
+  function restoreSkill(markdown?:string|null){try{setGenerationSkill(markdown?parseGenerationSkill(markdown).markdown:null);}catch{setGenerationSkill(null);}}
+  function openHistory(entry:HistoryEntry){stop();restoreSkill(entry.turns.at(-1)?.skill);touched.current=true;setRecovery(null);setComponent(entry.component);setTurns(entry.turns);setPropValues(entry.propValues);setLanguage(entry.language);setStyling(entry.styling);setDraft({code:entry.component.code,cssCode:entry.component.cssCode});setLiveSource(entry.component.code);setGenerationError('');changeView('studio');}
   useEffect(()=>{
     if(!touched.current)return;
     const timer=setTimeout(()=>{void writeDraft(component||turns.length?{component,turns,propValues,language,styling,liveSource,draft,savedAt:new Date().toISOString()}:null).then(()=>setDraftError('')).catch(error=>setDraftError(error.message));},650);
@@ -197,11 +201,12 @@ export default function StudioPage() {
     const timer=setTimeout(()=>{const entry=findHistoryRevision(history,component);if(entry&&JSON.stringify(entry.propValues)!==JSON.stringify(propValues))void keepHistory({...entry,propValues});},650);
     return()=>clearTimeout(timer);
   },[component,propValues,isGenerating,history]);
-  function restoreDraft(){if(!recovery)return;touched.current=true;setComponent(recovery.component);setTurns(recovery.turns.map(turn=>turn.status==='working'?{...turn,status:'stopped'}:turn));setPropValues(recovery.propValues);setLanguage(recovery.language);setStyling(recovery.styling);setLiveSource(recovery.liveSource);setDraft(recovery.draft);setRecovery(null);changeView('studio');}
+  function restoreDraft(){if(!recovery)return;restoreSkill(recovery.turns.at(-1)?.skill);touched.current=true;setComponent(recovery.component);setTurns(recovery.turns.map(turn=>turn.status==='working'?{...turn,status:'stopped'}:turn));setPropValues(recovery.propValues);setLanguage(recovery.language);setStyling(recovery.styling);setLiveSource(recovery.liveSource);setDraft(recovery.draft);setRecovery(null);changeView('studio');}
   function applySource(source:Pick<ComponentPreset,'code'|'cssCode'|'files'>){if(!component)return;touched.current=true;const origin=findHistoryRevision(history,component);const updated={...component,...source};setComponent(updated);setDraft(source);setLiveSource(source.code);void keepHistory({...createHistoryEntry({component:updated,turns,propValues,language,styling,provider:origin?.provider||provider,model:origin?.model||model}),id:'edit-'+crypto.randomUUID()});}
   async function removeSaved(id:string){try{await deleteHistory(id);pendingHistory.current.delete(id);setHistory(prev=>prev.filter(item=>item.id!==id));}catch(error){setHistoryError((error as Error).message);}}
   async function importSaved(entries:HistoryEntry[]){for(const entry of entries)await saveHistory(entry);setHistory(prev=>mergeHistory(prev,entries));}
-  const stageExtras={onSourceApply:applySource};
+  const skillControl=<GenerationSkillPicker value={generationSkill} onChange={setGenerationSkill} disabled={isGenerating}/>;
+  const stageExtras={onSourceApply:applySource,skillControl};
   const activeChatTitle = (currentView === 'studio' && turns.length > 0)
     ? (component?.title?.trim() || (() => {
         const clean = (turns[0]?.prompt || '')
@@ -228,7 +233,7 @@ export default function StudioPage() {
             exit={{opacity:0,filter:reduce?'none':'blur(3px)',y:reduce?0:-3,transition:{duration:reduce?0:.14,ease:[.22,1,.36,1]}}}
             transition={{duration:reduce?0:.3,ease:[.22,1,.36,1]}}>
           <AnimatePresence mode="wait" initial={false}><motion.div key={currentView==='studio'?(turns.length?'conversation':component?'component':'home'):currentView} className="flex flex-1 flex-col min-w-0 min-h-0 studio-content" initial={reduce?false:{opacity:0,filter:'blur(6px)',y:6}} animate={{opacity:1,filter:'blur(0px)',y:0,transitionEnd:{filter:'none'}}} exit={{opacity:0,filter:reduce?'none':'blur(4px)',y:reduce?0:-4,transition:{duration:reduce?0:.18}}} transition={{duration:reduce?0:.3,ease:[.22,1,.36,1]}}>
-          {currentView==='skills'?<Skills/>:currentView==='featured'?<Featured/>:currentView==='thanks'?<Thanks/>:currentView==='history'?<GenerationHistory onUpdate={entry=>void keepHistory(entry)} onDelete={id=>void removeSaved(id)} onImport={importSaved} entries={history} loading={historyLoading} error={historyError} onOpen={openHistory} onCreate={home} onRetry={()=>void refreshHistory()}/>:currentView==='catalog'?<ComponentsCatalog presets={PRESETS} onSelectComponent={selectComponent} theme={theme}/>:(turns.length?<BuildWorkspace turns={turns} working={isGenerating} source={liveSource} draft={draft} theme={theme} hasComponent={Boolean(component)} onSend={generate} onRetry={(id,prompt)=>generate(prompt,turns.at(-1)?.images||[],id)} onStop={stop} model={model} provider={provider} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort} componentTitle={component?.title} componentDescription={component?.description}>{<Stage {...stageExtras} onSnapshot={saveSnapshot} component={component} componentCode={exported.componentCode} cssCode={exported.cssCode} sourceName={exported.name} sourceLoading={sourceLoading} sourceError={sourceError} dependencies={exported.dependencies} propValues={propValues} onChangeProp={(name,value)=>setPropValues(prev=>({...prev,[name]:value}))} language={language} onLanguageChange={setLanguage} styling={styling} onStylingChange={setStyling} isGenerating={isGenerating} generationError={generationError} onGeneratePrompt={generate} presets={PRESETS} onSelectPreset={selectComponent} theme={theme} provider={provider} model={model} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort}/>}</BuildWorkspace>:<Stage {...stageExtras} onSnapshot={saveSnapshot} component={component} componentCode={exported.componentCode} cssCode={exported.cssCode} sourceName={exported.name} sourceLoading={sourceLoading} sourceError={sourceError} dependencies={exported.dependencies} propValues={propValues} onChangeProp={(name,value)=>setPropValues(prev=>({...prev,[name]:value}))} language={language} onLanguageChange={setLanguage} styling={styling} onStylingChange={setStyling} isGenerating={isGenerating} generationError={generationError} onGeneratePrompt={generate} presets={PRESETS} onSelectPreset={selectComponent} theme={theme} provider={provider} model={model} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort}/>)}
+          {currentView==='skills'?<Skills/>:currentView==='featured'?<Featured/>:currentView==='thanks'?<Thanks/>:currentView==='history'?<GenerationHistory onUpdate={entry=>void keepHistory(entry)} onDelete={id=>void removeSaved(id)} onImport={importSaved} entries={history} loading={historyLoading} error={historyError} onOpen={openHistory} onCreate={home} onRetry={()=>void refreshHistory()}/>:currentView==='catalog'?<ComponentsCatalog presets={PRESETS} onSelectComponent={selectComponent} theme={theme}/>:(turns.length?<BuildWorkspace skillControl={skillControl} turns={turns} working={isGenerating} source={liveSource} draft={draft} theme={theme} hasComponent={Boolean(component)} onSend={generate} onRetry={(id,prompt)=>generate(prompt,turns.at(-1)?.images||[],id)} onStop={stop} model={model} provider={provider} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort} componentTitle={component?.title} componentDescription={component?.description}>{<Stage {...stageExtras} onSnapshot={saveSnapshot} component={component} componentCode={exported.componentCode} cssCode={exported.cssCode} sourceName={exported.name} sourceLoading={sourceLoading} sourceError={sourceError} dependencies={exported.dependencies} propValues={propValues} onChangeProp={(name,value)=>setPropValues(prev=>({...prev,[name]:value}))} language={language} onLanguageChange={setLanguage} styling={styling} onStylingChange={setStyling} isGenerating={isGenerating} generationError={generationError} onGeneratePrompt={generate} presets={PRESETS} onSelectPreset={selectComponent} theme={theme} provider={provider} model={model} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort}/>}</BuildWorkspace>:<Stage {...stageExtras} onSnapshot={saveSnapshot} component={component} componentCode={exported.componentCode} cssCode={exported.cssCode} sourceName={exported.name} sourceLoading={sourceLoading} sourceError={sourceError} dependencies={exported.dependencies} propValues={propValues} onChangeProp={(name,value)=>setPropValues(prev=>({...prev,[name]:value}))} language={language} onLanguageChange={setLanguage} styling={styling} onStylingChange={setStyling} isGenerating={isGenerating} generationError={generationError} onGeneratePrompt={generate} presets={PRESETS} onSelectPreset={selectComponent} theme={theme} provider={provider} model={model} thinkingEffort={thinkingEffort} onThinkingEffortChange={setThinkingEffort}/>)}
           </motion.div></AnimatePresence>
           </motion.div>
         </AnimatePresence>

@@ -12,6 +12,7 @@ export type GenerationEvent =
 export interface BuildTurn {
   id: string;
   prompt: string;
+  skill?:string|null;
   images?:import('./image-references').ImageReference[];
   events: { phase: string; message: string }[];
   thinking?: string;

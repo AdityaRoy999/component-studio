@@ -3,6 +3,7 @@ import { generateComponent, isProvider, ProviderError } from '@/lib/ai';
 import { validateImageReferences } from '@/lib/image-references';
 import { revisionContext } from '@/lib/generation-context';
 import { generatedFiles } from '@/lib/generated-files';
+import { parseGenerationSkill } from '@/lib/generation-skill';
 export const runtime = 'nodejs';
 // Stay within Vercel Hobby's five-minute function limit.
 export const maxDuration = 300;
@@ -17,9 +18,11 @@ export async function POST(request: NextRequest) {
     if(body.apiKey != null && typeof body.apiKey !== 'string' || body.model != null && typeof body.model !== 'string' || body.baseUrl != null && typeof body.baseUrl !== 'string') return NextResponse.json({error:'Invalid provider settings.'},{status:400});
     if(body.context != null && (typeof body.context.code!=='string'||body.context.code.length>1000000||body.context.cssCode!=null&&(typeof body.context.cssCode!=='string'||body.context.cssCode.length>1000000)))return NextResponse.json({error:'Invalid component context.'},{status:400});
     let images;try{images=validateImageReferences(body.images);}catch(error){return NextResponse.json({error:(error as Error).message},{status:400});}
+    let skill:string|undefined;
+    if(body.skill!=null)try{skill=parseGenerationSkill(body.skill).markdown;}catch(error){return NextResponse.json({error:(error as Error).message,code:'invalid_skill'},{status:400});}
     const memory=revisionContext(body.memory);
     if(body.context)body.context.files=generatedFiles(body.context.files);
-    const input={images,prompt:body.prompt.trim(),provider:body.provider,apiKey:body.apiKey,model:body.model,baseUrl:body.baseUrl,styling:body.styling==='CSS'?'CSS' as const:'Tailwind' as const,context:body.context,memory,thinkingEffort:body.thinkingEffort,theme:body.theme};
+    const input={images,skill,prompt:body.prompt.trim(),provider:body.provider,apiKey:body.apiKey,model:body.model,baseUrl:body.baseUrl,styling:body.styling==='CSS'?'CSS' as const:'Tailwind' as const,context:body.context,memory,thinkingEffort:body.thinkingEffort,theme:body.theme};
     if(body.stream===true){
       const abort=new AbortController();let closed=false;const encoder=new TextEncoder();
       request.signal.addEventListener('abort',()=>abort.abort(),{once:true});
