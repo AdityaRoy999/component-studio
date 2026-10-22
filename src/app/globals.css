@@ -2134,3 +2134,8 @@ html,body,*{scrollbar-width:none!important;scrollbar-gutter:auto!important}
 .build-message-actions button:focus-visible { outline: 2px solid var(--secondary-ink); outline-offset: 2px; }
 .build-message-actions button:disabled { opacity: .35; cursor: default; }
 .build-message-editor-actions .button-primary { background: var(--ink); color: var(--page); }
+
+/* Studio controls use surface and text feedback instead of outline rings. */
+body button:focus-visible{outline:none!important;text-decoration:underline;text-underline-offset:4px}
+.button-quiet{border:0;background:var(--surface-raised)}
+.icon-button:focus-visible{background:var(--surface-hover);color:var(--ink)}
