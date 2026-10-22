@@ -319,6 +319,55 @@ streamTest('component parsing accepts fenced JSON and rejects unsupported import
  await assert.rejects(ai.parseComponent(JSON.stringify({...component,code:"import fs from 'node:fs';export default function Demo(){return <div/>}"})),/Unsupported import/);
 });
 
+test('response parsing preserves escaped source and classifies malformed JSON separately',()=>{
+ const {parseComponentResponse,ComponentResponseFormatError}=load('src/lib/component-response.ts');
+ const code=String.raw`export default function Code(){const path="C:\\source";const pattern=/\s+/;return <pre>{path+"\n"+String(pattern)}</pre>}`;
+ for(const raw of [JSON.stringify({code}),JSON.stringify(JSON.stringify({code})),'```json\n'+JSON.stringify({code})+'\n```'])assert.equal(parseComponentResponse(raw).code,code);
+ assert.equal(parseComponentResponse('{name:"Card",code:"source",}').code,'source');
+ for(const raw of [undefined,'','[]','{"code":"export default function C(){return null}","propsSchema":[{"name" => "label"}]}'])assert.throws(()=>parseComponentResponse(raw),ComponentResponseFormatError);
+});
+
+test('malformed component JSON gets a format repair instead of a TypeScript repair',async()=>{
+ const events=[],requests=[];
+ const malformed=`{"name":"ExampleCard","code":${JSON.stringify(component.code)},"propsSchema":[{"name" => "label"}]}`;
+ const result=await ai.generateComponent({provider:'custom',baseUrl:'http://localhost:11434/v1',model:'format-test',prompt:'Button',onEvent:e=>events.push(e)},async(url,init)=>{
+  requests.push(JSON.parse(init.body));
+  return new Response(JSON.stringify({choices:[{message:{content:requests.length===1?malformed:JSON.stringify(component)}}]}),{headers:{'Content-Type':'application/json'}});
+ });
+ assert.equal(requests.length,2);assert.equal(result.component.code,component.code);
+ assert(requests[1].messages[1].content.includes('Repair the RESPONSE FORMAT'));
+ assert(requests[1].messages[1].content.includes('not a TypeScript colon'));
+ assert(events.some(e=>e.type==='status'&&e.message==='Fixing response format (1/2)…'));
+ assert.equal(result.metrics.repairs,1);
+});
+
+test('repeated malformed JSON reports an actionable response-format error without parser offsets',async()=>{
+ let calls=0;
+ await assert.rejects(ai.generateComponent({provider:'custom',baseUrl:'http://localhost:11434/v1',model:'format-failure',prompt:'Button'},async()=>{
+  calls++;return new Response(JSON.stringify({choices:[{message:{content:'{"code":"source","propsSchema":[{"name" => "label"}]}'}}]}));
+ }),error=>error.code==='invalid_component_response'&&error.message.includes('unreadable component data')&&!error.message.includes('Colon expected'));
+ assert.equal(calls,3);
+});
+
+test('documented NVIDIA Super structured output applies to generation and repairs in both modes',async()=>{
+ const {componentResponseFormat}=load('src/lib/component-response.ts');
+ assert.deepEqual(componentResponseFormat('custom','nvidia/nemotron-3.5-super-vl-120b-a12b'),{});
+ assert.deepEqual(componentResponseFormat('nvidia','unknown-model'),{});
+ for(const streamed of [false,true]){
+  const requests=[];
+  await ai.generateComponent({provider:'nvidia',apiKey:'test-key',model:'nvidia/nemotron-3.5-super-vl-120b-a12b',prompt:'Button',...(streamed?{onEvent:()=>{}}:{})},async(url,init)=>{
+   requests.push(JSON.parse(init.body));const response=output('nvidia',requests.length===1?{code:'invalid'}:component);response.headers.set('Content-Type','application/json');return response;
+  });
+  assert.equal(requests.length,2);
+  for(const request of requests){
+   assert.equal(request.response_format.type,'json_schema');
+   const schema=request.response_format.json_schema.schema;
+   assert(schema.required.includes('code'));assert(schema.required.includes('propsSchema'));
+   assert.equal(schema.properties.code.type,'string');assert.equal(schema.properties.files.additionalProperties.type,'string');
+  }
+ }
+});
+
 test('NVIDIA Lightning requests direct response mode for responsive component generation',async()=>{
  let body;
  await ai.generateComponent({provider:'nvidia',apiKey:'test-key',model:'nvidia/nemotron-3.5-lightning-30b-a3b',prompt:'A button',onEvent:()=>{}},async(url,init)=>{body=JSON.parse(init.body);return streamOutput('nvidia');});

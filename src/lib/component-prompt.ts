@@ -31,7 +31,7 @@ Check scope, hierarchy, 320px sizing, both themes, defaults, every interaction, 
 
 OUTPUT ONLY VALID JSON
 {"name":"PascalCaseName","title":"Short title","description":"One factual sentence","message":"Briefly describe the actual result and how to use its interactions. No guarantees or test claims.","code":"complete TSX source","cssCode":"optional scoped CSS","propsSchema":[]}
-Escape strings; no markdown fences or commentary. Expose useful scalar props only, not handlers, refs, callbacks or host-managed theme. TSX owns visible labels and defaults. Schema: {name,type,defaultValue,description?,min?,max?,step?,options?}; type is string, number, boolean, color or select; options are strings.`;
+JSON-escape quotes, backslashes and newlines in source strings; no fences or commentary. Useful scalar props only; no handlers, refs, callbacks or theme. TSX owns labels and defaults. Schema: {name,type,defaultValue,description?,min?,max?,step?,options?}; types:string|number|boolean|color|select; options:string[].`;
 
 function requestExamples(prompt:string){
   const examples=[

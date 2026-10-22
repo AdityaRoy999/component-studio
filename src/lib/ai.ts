@@ -7,7 +7,7 @@ import { generationOptions } from './generation-options';
 import { ThinkingStream } from './thinking-stream';
 import { validateJSX } from './validate-jsx';
 import { imageCapability, validateImageReferences, type ImageReference } from './image-references';
-import { jsonrepair } from 'jsonrepair';
+import { componentResponseFormat, parseComponentResponse, ComponentResponseFormatError, COMPONENT_FORMAT_REPAIR } from './component-response';
 import { generatedFiles, resolveGeneratedImport } from './generated-files';
 import { semanticDiagnostics, customizationBindings } from './semantic-check';
 import { revisionContext, type RevisionContext } from './generation-context';
@@ -190,7 +190,7 @@ export async function generateComponent(input: GenerationInput, fetcher: typeof 
       const url = gemini ? `${config.origin}/models/${encodeURIComponent(config.model)}:streamGenerateContent?alt=sse` : `${config.origin}/chat/completions`;
       const body = gemini
         ? {systemInstruction:{parts:[{text:instructions}]},contents:[{role:'user',parts}],generationConfig:options.gemini}
-        : {model:config.model,messages:[{role:'system',content:instructions},{role:'user',content}],stream:true,...(['openai','groq','openrouter'].includes(input.provider)?{stream_options:{include_usage:true}}:{}),...options.compatible,...(['custom','nvidia'].includes(input.provider)?{}:{response_format:{type:'json_object'}})};
+        : {model:config.model,messages:[{role:'system',content:instructions},{role:'user',content}],stream:true,...(['openai','groq','openrouter'].includes(input.provider)?{stream_options:{include_usage:true}}:{}),...options.compatible,...componentResponseFormat(input.provider,config.model)};
       let response:Response;
       try { response = await fetcher(url,{method:'POST',headers:{'Content-Type':'application/json',...(gemini?{'x-goog-api-key':config.apiKey}:config.apiKey?{Authorization:`Bearer ${config.apiKey}`}:{})},body:JSON.stringify(body),signal:requestSignal,cache:'no-store',redirect:'error'}); }
       catch(error){if(requestSignal.aborted)throw new ProviderError('Generation stopped or timed out. You can retry your message.',504,'timeout');throw new ProviderError('Could not reach your provider. Check the endpoint and try again.',503,'unreachable');}
@@ -244,7 +244,7 @@ export async function generateComponent(input: GenerationInput, fetcher: typeof 
     }
     const data = await requestJson(`${config.origin}/chat/completions`, {
       method: 'POST', signal:requestSignal, headers: { 'Content-Type': 'application/json', ...(config.apiKey ? {Authorization: `Bearer ${config.apiKey}`} : {}) },
-      body: JSON.stringify({ model: config.model, messages: [{ role: 'system', content: instructions }, { role: 'user', content }], ...options.compatible, ...(['custom', 'nvidia'].includes(input.provider) ? {} : {response_format: { type: 'json_object' }}) }),
+      body: JSON.stringify({ model: config.model, messages: [{ role: 'system', content: instructions }, { role: 'user', content }], ...options.compatible, ...componentResponseFormat(input.provider,config.model) }),
     }, fetcher);
     usage(data);return complete(data.choices?.[0]?.message?.content,data.choices?.[0]?.finish_reason==='length');
   }
@@ -273,29 +273,22 @@ export async function generateComponent(input: GenerationInput, fetcher: typeof 
       const diagnostic=error instanceof Error?error.message.slice(0,2400):'Invalid component JSON';
       const compilerMessage=(error as {errors?:{text?:string}[]})?.errors?.[0]?.text;
       const reason=(compilerMessage||diagnostic.split('\n').find(line=>line.trim())||'Invalid component source').slice(0,220);
+      const formatError=error instanceof ComponentResponseFormatError;
       if(attempt===2){
+        if(formatError)throw new ProviderError('The model returned unreadable component data after two repair attempts. Retry this message, or choose another coding model in AI settings.',422,'invalid_component_response');
         throw new ProviderError(`The component still needs a correction after two repair attempts: ${reason}. Retry this message to rebuild it.`,422,'invalid_component');
       }
-      emit({type:'status',phase:'repairing',message:`Correcting source (${attempt+1}/2): ${reason}`});
+      emit({type:'status',phase:'repairing',message:formatError?`Fixing response format (${attempt+1}/2)…`:`Correcting source (${attempt+1}/2): ${reason}`});
       repairs++;
       // Repair the latest source against its actual compiler diagnostic. Never substitute a template.
-      raw=await call(`${componentBrief({...input,context:undefined})}\nThe latest component failed validation: ${diagnostic}\nFix this specific error while preserving the requested design and working interactions. Return complete corrected component JSON with valid TSX and only allowed imports.\nPrevious response:\n${String(raw).slice(0,500000)}\n\n${COMPONENT_FINAL_CHECK}`,true);
+      raw=await call(`${componentBrief({...input,context:undefined})}\nThe latest component failed validation: ${diagnostic}\n${formatError?COMPONENT_FORMAT_REPAIR:'Fix this specific error while preserving the requested design and working interactions. Return complete corrected component JSON with valid TSX and only allowed imports.'}\nPrevious response:\n${String(raw).slice(0,500000)}\n\n${COMPONENT_FINAL_CHECK}`,true);
     }
   }
   throw new ProviderError('The component could not be validated.',422,'invalid_component');
   }catch(error){emit({type:'metrics',metrics:metrics('failed')});throw error;}
 }
 export async function parseComponent(raw: unknown): Promise<ComponentPreset> {
-  if (typeof raw !== 'string') throw new Error('Missing output');
-  const clean = raw.trim().replace(/^\s*<think>[\s\S]*?<\/think>\s*/i,'').replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
-  let value;
-  try { value=JSON.parse(clean); } catch {
-    const start=clean.indexOf('{'),end=clean.lastIndexOf('}');
-    const candidate=start>=0&&end>start?clean.slice(start,end+1):clean;
-    try{value=JSON.parse(candidate);}catch{value=JSON.parse(jsonrepair(candidate));}
-  }
-  if(typeof value==='string')value=JSON.parse(value);
-  if(!value||typeof value!=='object')throw new Error('Expected a component JSON object');
+  const value=parseComponentResponse(raw);
   if(typeof value.code==='string')value.code=value.code.replace(/^```(?:tsx|jsx|typescript|javascript)?\s*/i,'').replace(/\s*```$/,'');
   if (typeof value.code !== 'string' || !/export\s+default\b/.test(value.code)) throw new Error('Return complete React component source with an export default declaration in the code field.');
   if(value.code.length>1000000||typeof value.cssCode==='string'&&value.cssCode.length>1000000)throw new Error('Component source exceeds the supported file size. Keep each source file under 1 MB.');

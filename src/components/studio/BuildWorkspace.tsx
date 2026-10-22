@@ -51,7 +51,7 @@ function getDisplayTitle(componentTitle?: string, initialPrompt?: string): strin
 
 function parseTraceEvent(message: string, phase?: string) {
   if(phase==='validating')return {verb:'Verify',target:message};
-  if(phase==='repairing')return {verb:'Refine',target:message};
+  if(phase==='repairing')return {verb:/response format/i.test(message)?'Format':'Refine',target:message};
   if (/connecting/i.test(message)) {
     const model = message.replace(/connecting to/i, '').replace(/[….]+$/, '').trim();
     return { verb: 'Connect', target: model || 'AI Model' };
