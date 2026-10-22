@@ -22,9 +22,6 @@ export async function exportProject(component:ComponentSource&{files?:Record<str
   const installed=JSON.parse(await readFile(process.cwd()+'/package.json','utf8'));
   const dependencies:Record<string,string>={react:'^18.3.1','react-dom':'^18.3.1'};
   for(const name of result.dependencies)dependencies[name==='framer-motion'?'motion':name]=installed.dependencies[name==='framer-motion'?'motion':name]||'*';
-  for(const code of Object.values(supporting))for(const match of code.matchAll(/from\s+['"]([^.'"][^'"]*)['"]/g)){
-    const name=match[1].startsWith('@')?match[1].split('/').slice(0,2).join('/'):match[1].split('/')[0];if(name!=='react')dependencies[name==='framer-motion'?'motion':name]=installed.dependencies[name==='framer-motion'?'motion':name]||'*';
-  }
   const json=(value:unknown)=>JSON.stringify(value,null,2);
   const files:Record<string,string>={
     'package.json':json({name:'component-studio-export',version:'1.0.0',private:true,type:'module',scripts:{dev:'vite',build:'tsc --noEmit && vite build',preview:'vite preview'},dependencies,overrides:{rollup:'4.52.5'},devDependencies:{vite:'^5.4.0',typescript:'^5.7.3','@types/react':'^18.3.18','@types/react-dom':'^18.3.5'}}),

@@ -21,7 +21,7 @@ ${PONYTAIL_GUIDANCE}
 
 RUNTIME
 - React 18 + TypeScript/TSX, one default export in code. Import every hook, namespace and icon used. Configurable props need useful defaults. For complex requests you may supply files:{"parts/Details.tsx":"source"} and import these relative files; keep simple requests in one file.
-- Imports only: react, lucide-react, motion/react or framer-motion; relative supporting files from files, one relative CSS file if cssCode is supplied. No Next.js/shadcn, other packages, remote assets, network requests, eval, popup windows or storage initialization.
+- Use any browser-compatible npm package and its CSS. Preview resolves dependencies; exports install them. Supply local files in files. Node-only code needs a server runtime.
 - Use className, htmlFor and object-valued style; never HTML style strings or raw objects as children. Use inline state or an accessible local dialog instead of alert/confirm/prompt.
 - Tailwind 3 standard theme only. bg-background, text-muted-foreground, font-display, perspective-1000, backface-hidden, transform-3d and rotate-y-180 are not built in. Use real complete utilities, arbitrary properties, inline styles or scoped cssCode. No interpolated partial class names. CSS mode must supply all styles. Keyframes belong in cssCode; no global body/html/* rules. Host variables have fallbacks: --preview-bg, --preview-surface, --preview-ink, --preview-muted, --preview-border.
 - 3D flip: outer perspective:'1000px'; inner transformStyle:'preserve-3d'; BOTH faces backfaceVisibility:'hidden'; back rotateY(180deg). Clip faces. Keep the flip control outside them.

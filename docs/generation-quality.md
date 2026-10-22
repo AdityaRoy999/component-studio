@@ -21,4 +21,8 @@ Review each at desktop width and a 375px phone preview. Check:
 - A follow-up edit preserves unrelated styling and functionality.
 - Exported TSX/CSS match the preview, and compilation succeeds.
 
-Build validation verifies syntax, imports and CSS. It cannot certify visual quality or guarantee that a model follows every design instruction. The visual review above is still necessary. Reasoning depth affects model behavior and latency; use only settings supported by the selected adapter/model.
+Build validation verifies syntax, imports, available type declarations, customization bindings and CSS. Candidate builds then render in an isolated browser frame with default props and selected customization in dark and light themes. Rendering errors and rejected promises are sent back with the exact candidate source for targeted edits. A build is saved as complete only after these checks pass. This checks startup rendering, not every possible interaction or visual quality; the review above is still necessary.
+
+Generation, transport recovery, static repairs and browser repairs share a maximum of three provider requests per message. Identical failures stop early. Automated corrections ask for minimal exact edits and disable optional reasoning (NVIDIA Nemotron Super uses `reasoning_effort: "none"`). Requests and browser checks have deadlines, and Stop cancels subsequent work. Provider speed and availability still affect latency.
+
+There is no fixed npm package whitelist. Browser-compatible packages and their transitive imports resolve through esm.sh, sharing the preview's React 18 instance. Package CSS and assets are included, and exported projects list imports as npm dependencies. Node-only packages need a server runtime; missing packages, unsupported exports and CDN failures produce a repair diagnostic. New remote packages are bundled as data on the server, then execute only inside the isolated preview; package install scripts never run on the host.

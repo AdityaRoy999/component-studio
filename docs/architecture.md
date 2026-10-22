@@ -6,9 +6,9 @@ Component Studio is a Next.js App Router application. The browser owns the works
 
 1. The composer sends a prompt, optional image references, model configuration, and existing component context to `/api/generate`.
 2. A provider adapter starts the request. With `stream: true`, the server emits newline-delimited JSON events: `status`, `thinking`, `source`, `preview`, `done`, and `error`.
-3. Partial source appears in Code. Renderable checkpoints are compiled with esbuild and Tailwind, then forwarded to the preview.
-4. Completed output is parsed, checked for supported imports, and validated. Failed output can receive up to two targeted repair attempts using the compiler diagnostic.
-5. The finished component and conversation are saved in browser-local IndexedDB. Follow-up requests include the current component as context.
+3. Partial source appears in Code. Completed candidates compile with esbuild and Tailwind; npm dependencies and package styles resolve through esm.sh.
+4. Source validation checks syntax, imports, available types, styles and customization bindings. The browser then checks default and selected props in both themes in an isolated frame. Errors return with the exact candidate source for small edits. All transport recoveries and repairs share a three-request budget, with timeouts and early termination for repeated failures.
+5. Only a verified component and its conversation are saved in browser-local IndexedDB. Follow-up requests include the current component as context.
 
 Stopping a request propagates cancellation upstream. Failed or stopped revisions retain the last completed component. The server does not substitute a demo component for failed AI output.
 
@@ -25,9 +25,9 @@ Stopping a request propagates cancellation upstream. Failed or stopped revisions
 
 ## Preview boundaries
 
-Generated code runs in a scripts-only sandboxed iframe with an opaque origin and a restrictive content policy. The compiler accepts React, supported motion and icon imports, and companion source files; it rejects unsupported modules and server imports.
+Generated code runs in a scripts-only sandboxed iframe with an opaque origin. Browser-compatible npm packages, package CSS and companion source files are supported without a package whitelist. Core React and motion imports share the local runtime; other dependencies resolve through the npm CDN and are bundled without executing package scripts on the server. The iframe allows HTTPS assets and requests needed by libraries. Node builtins still require a separate server runtime.
 
-Property and theme changes are sent to the frame with messages, preserving the mounted component's React state. The preview forwards a host-managed `theme` prop and sets matching document classes and semantic CSS variables.
+Property and theme changes are sent to the frame with messages. Theme changes preserve mounted state; customization changes reinitialize it with the new values. The preview forwards a host-managed `theme` prop and sets matching document classes and semantic CSS variables. Verification messages are accepted only from the current frame and matching candidate identifier.
 
 The read-only Code display is separate from source editing. Manual source changes are validated before application and retained as local versions. Usage snippets reflect selected property values.
 

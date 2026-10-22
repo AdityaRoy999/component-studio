@@ -125,7 +125,7 @@ test('unused schema props trigger provider repair and actual usage aggregates ac
 test('unknown usage stays unknown and failed validation produces failure metrics',async()=>{
  const result=await ai.generateComponent({provider:'custom',baseUrl:'http://localhost:11434/v1',model:'test',prompt:'Button'},async()=>output(component));assert.equal(result.metrics.inputTokens,undefined);assert.equal(result.metrics.costUsd,undefined);
  const events=[];await assert.rejects(ai.generateComponent({provider:'custom',baseUrl:'http://localhost:11434/v1',model:'test',prompt:'Button',onEvent:e=>events.push(e)},async()=>output({code:'invalid'})));
- assert(events.some(e=>e.type==='metrics'&&e.metrics.status==='failed'&&e.metrics.requests===3));
+ assert(events.some(e=>e.type==='metrics'&&e.metrics.status==='failed'&&e.metrics.requests===2));
 });
 test('standalone project ZIP includes selected defaults, dependencies and working entry points',async()=>{
  const {exportProject,zipFiles}=load('src/lib/project-export.ts');
@@ -143,13 +143,17 @@ test('history backups roundtrip build metadata without importing provider creden
  assert.throws(()=>parseHistoryBackup('{"version":1,"entries":[{}]}'),/invalid build/);
  fs.writeFileSync('artifacts/generation-history-fixture.json',JSON.stringify({version:1,entries:[entry]},null,2));
 });
-test('preview errors stay visible without background review checks or automatic repair messages',()=>{
- const {createPreviewDocument}=load('src/lib/preview-document.ts');const listeners={},posted=[];let alert;
+test('preview reports authenticated render readiness and errors, including crashes before the handshake',()=>{
+ const {createPreviewDocument}=load('src/lib/preview-document.ts');const listeners={},posted=[],timers=new Map();let alert,ticket=0;
  const html=createPreviewDocument({script:'',css:''},'dark');
- const context={parent:{postMessage:data=>posted.push(data)},window:{addEventListener:(type,fn)=>listeners[type]=fn},document:{createElement:()=>({style:{},setAttribute(){}}),body:{replaceChildren:node=>{alert=node;}}}};
+ const context={setTimeout:fn=>{timers.set(++ticket,fn);return ticket;},clearTimeout:id=>timers.delete(id),parent:{postMessage:data=>posted.push(data)},window:{addEventListener:(type,fn)=>listeners[type]=fn},document:{documentElement:{dataset:{},classList:{toggle(){}}},createElement:()=>({style:{},setAttribute(){}}),body:{replaceChildren:node=>{alert=node;}}}};
  require('node:vm').runInNewContext(html.match(/<script>([\s\S]*)<\/script>/)[1],context);
- listeners.error({message:'Broken component'});assert.equal(alert.textContent,'Preview error: Broken component');
+ listeners.message({source:{},data:{type:'studio:props',verificationId:'forged'}});assert.equal(context.verificationId,'');
+ context.window.__PREVIEW_READY__();listeners.error({message:'Broken component'});assert.equal(alert.textContent,'Preview error: Broken component');assert.equal(timers.size,0);assert.equal(posted.length,0);
+ listeners.message({source:context.parent,data:{type:'studio:props',verificationId:'candidate:dark'}});assert.equal(posted[0].id,'candidate:dark');assert.equal(posted[0].status,'error');assert.equal(posted[0].error,'Broken component');
  listeners.unhandledrejection({reason:new Error('Failed interaction')});assert.equal(alert.textContent,'Preview error: Failed interaction');
- listeners.message({source:context.parent,data:{type:'studio:audit'}});assert.equal(posted.length,0);
- assert(!html.includes('studio:audit'));assert(!html.includes('studio:runtime-error'));
+ assert.equal(posted.at(-1).error,'Failed interaction');
+ context.previewFailure='';listeners.message({source:context.parent,data:{type:'studio:props',verificationId:'candidate:light'}});context.window.__PREVIEW_READY__();assert.equal(timers.size,1);for(const fn of timers.values())fn();assert.equal(posted.at(-1).status,'ready');assert.equal(posted.at(-1).id,'candidate:light');
+ const before=posted.length;listeners.error({target:{tagName:'IMG'}});assert.equal(posted.length,before);
+ assert(html.includes('studio:verification'));
 });

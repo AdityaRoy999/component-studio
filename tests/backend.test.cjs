@@ -204,7 +204,7 @@ test('invented Tailwind palettes are rejected while explicit colors and companio
 test('blocked browser dialogs trigger a repair diagnostic instead of a dead preview action',async()=>{
  for(const call of ['alert("Reserved")','window.confirm("Reserve?")'])await assert.rejects(ai.parseComponent(JSON.stringify({...component,code:`export default function Card(){return <button onClick={()=>${call}}>Reserve</button>}`})),/browser dialogs are blocked/);
 });
-test('invalid output after two repairs reports a useful diagnostic',async()=>{let calls=0;await assert.rejects(ai.generateComponent({provider:'openai',apiKey:'unit-test-key',prompt:'Button'},async()=>{calls++;return output('openai',{code:'invalid'});}),e=>e.code==='invalid_component'&&e.message.includes('export default'));assert.equal(calls,3);});
+test('unchanged invalid output stops early with a useful diagnostic',async()=>{let calls=0;await assert.rejects(ai.generateComponent({provider:'openai',apiKey:'unit-test-key',prompt:'Button'},async()=>{calls++;return output('openai',{code:'invalid'});}),e=>e.code==='repair_no_progress'&&e.message.includes('export default'));assert.equal(calls,2);});
 
 test('unsupported Tailwind 3D classes trigger a precise repair instead of a mirrored flip',async()=>{
  let calls=0,repair='';
@@ -345,8 +345,8 @@ test('repeated malformed JSON reports an actionable response-format error withou
  let calls=0;
  await assert.rejects(ai.generateComponent({provider:'custom',baseUrl:'http://localhost:11434/v1',model:'format-failure',prompt:'Button'},async()=>{
   calls++;return new Response(JSON.stringify({choices:[{message:{content:'{"code":"source","propsSchema":[{"name" => "label"}]}'}}]}));
- }),error=>error.code==='invalid_component_response'&&error.message.includes('unreadable component data')&&!error.message.includes('Colon expected'));
- assert.equal(calls,3);
+ }),error=>error.code==='repair_no_progress'&&error.message.includes('validation error repeated')&&!error.message.includes('Colon expected'));
+ assert.equal(calls,2);
 });
 
 test('documented NVIDIA Super structured output applies to generation and repairs in both modes',async()=>{
@@ -359,11 +359,11 @@ test('documented NVIDIA Super structured output applies to generation and repair
    requests.push(JSON.parse(init.body));const response=output('nvidia',requests.length===1?{code:'invalid'}:component);response.headers.set('Content-Type','application/json');return response;
   });
   assert.equal(requests.length,2);
-  for(const request of requests){
+  for(const [index,request] of requests.entries()){
    assert.equal(request.response_format.type,'json_schema');
    const schema=request.response_format.json_schema.schema;
-   assert(schema.required.includes('code'));assert(schema.required.includes('propsSchema'));
-   assert.equal(schema.properties.code.type,'string');assert.equal(schema.properties.files.additionalProperties.type,'string');
+   if(index===0){assert(schema.required.includes('code'));assert(schema.required.includes('propsSchema'));assert.equal(schema.properties.code.type,'string');assert.equal(schema.properties.files.additionalProperties.type,'string');}
+   else {assert(schema.required.includes('edits'));assert.equal(schema.properties.edits.items.properties.find.type,'string');}
   }
  }
 });
@@ -429,7 +429,8 @@ test('a second repair uses the latest source and diagnostic',async()=>{
 });
 test('NVIDIA thinking selection is honored and unsupported models get no template flags',()=>{
  assert.equal(options.generationOptions('nvidia','nvidia/nemotron-3.5-super-vl-120b-a12b','low').compatible.reasoning_effort,'low');
- assert.equal(options.generationOptions('nvidia','nvidia/nemotron-3.5-super-vl-120b-a12b','off').compatible.reasoning_effort,undefined);
+ assert.equal(options.generationOptions('nvidia','nvidia/nemotron-3.5-super-vl-120b-a12b','off').compatible.reasoning_effort,'none');
+ assert.equal(options.generationOptions('nvidia','nvidia/nemotron-3.5-super-vl-120b-a12b','medium').compatible.reasoning_effort,'low');
  assert.deepEqual(options.generationOptions('nvidia','nvidia/nemotron-3.5-lightning-30b-a3b','high').compatible.chat_template_kwargs,{enable_thinking:true});
  assert.deepEqual(options.generationOptions('nvidia','nvidia/nemotron-3.5-lightning-30b-a3b','off').compatible.chat_template_kwargs,{enable_thinking:false});
  assert.equal(options.generationOptions('nvidia','meta/llama-3.3-70b-instruct','high').compatible.chat_template_kwargs,undefined);
@@ -507,7 +508,7 @@ test('an interrupted provider stream retries once with shorter NVIDIA reasoning'
   if(calls===1)return new Response(new ReadableStream({pull(controller){controller.error(new Error('private transport detail'));}}),{headers:{'Content-Type':'text/event-stream'}});
   const response=output('nvidia');response.headers.set('Content-Type','application/json');return response;
  });
- assert.equal(calls,2);assert.equal(result.component.name,'ExampleCard');assert.equal(bodies[0].reasoning_effort,effort);assert.equal(bodies[1].reasoning_effort,effort==='high'?'low':undefined);assert.equal(bodies[1].chat_template_kwargs.enable_thinking,effort==='high');assert(events.some(event=>event.type==='status'&&event.message.includes('Retrying once')));
+ assert.equal(calls,2);assert.equal(result.component.name,'ExampleCard');assert.equal(bodies[0].reasoning_effort,effort);assert.equal(bodies[1].reasoning_effort,'none');assert.equal(bodies[1].chat_template_kwargs.enable_thinking,false);assert(events.some(event=>event.type==='status'&&event.message.includes('Retrying once')));
  }
 });
 
@@ -545,15 +546,15 @@ test('every provider receives the same quality contract in streamed and regular 
  }
 });
 
-test('repair requests retain the quality contract after the failed source',async()=>{
- const {COMPONENT_SYSTEM_PROMPT,COMPONENT_FINAL_CHECK}=load('src/lib/component-prompt.ts');
+test('targeted repair requests retain user guidance with a compact edit contract',async()=>{
+ const {PATCH_REPAIR_SYSTEM,PATCH_FINAL_CHECK}=load('src/lib/component-repair.ts');
  const bodies=[];
  await ai.generateComponent({provider:'custom',model:'small-test-model',baseUrl:'http://localhost:11434/v1',prompt:'A compact pricing card'},async(url,init)=>{bodies.push(JSON.parse(init.body));return output('custom',bodies.length===1?{code:'invalid'}:component);});
  assert.equal(bodies.length,2);
- assert.equal(bodies[1].messages[0].content,COMPONENT_SYSTEM_PROMPT);
+ assert.equal(bodies[1].messages[0].content,PATCH_REPAIR_SYSTEM);
  const {UI_UX_GUIDANCE,UI_UX_REQUEST_GUIDANCE}=load('src/lib/ui-ux-guidance.ts');
- assert(bodies[1].messages[0].content.includes(UI_UX_GUIDANCE));
- const repair=bodies[1].messages[1].content;assert(repair.includes(UI_UX_REQUEST_GUIDANCE));assert(repair.includes('Previous response:'));assert(repair.endsWith(COMPONENT_FINAL_CHECK));
+ assert(bodies[1].messages[0].content.length<1200);
+ const repair=bodies[1].messages[1].content;assert(repair.includes(UI_UX_REQUEST_GUIDANCE));assert(repair.includes('Previous response:'));assert(repair.endsWith(PATCH_FINAL_CHECK));assert(repair.includes('A compact pricing card'));
 });
 
 test('UI/UX defaults accompany vague and explicit requests without rewriting preferences or revision source',async()=>{

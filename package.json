@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --test tests/backend.test.cjs tests/generation-upgrade.test.cjs",
+    "test": "node --test tests/backend.test.cjs tests/generation-upgrade.test.cjs tests/verified-generation.test.cjs",
     "test:integration": "node --test tests/http.test.cjs",
     "icons:generate": "node scripts/generate-solar-icons.cjs"
   },

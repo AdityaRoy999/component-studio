@@ -40,7 +40,7 @@ function database():Promise<IDBDatabase> {
 export async function deleteHistory(id:string){
   const db=await database();return new Promise<void>((resolve,reject)=>{const tx=db.transaction('generations','readwrite');tx.objectStore('generations').delete(id);tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(new Error('Could not delete this build.'));};});
 }
-export interface WorkspaceDraft {component:ComponentPreset|null;turns:BuildTurn[];propValues:Record<string,unknown>;language:'TS'|'JS';styling:'Tailwind'|'CSS';liveSource:string;draft:{code:string;cssCode?:string}|null;savedAt:string;}
+export interface WorkspaceDraft {component:ComponentPreset|null;turns:BuildTurn[];propValues:Record<string,unknown>;language:'TS'|'JS';styling:'Tailwind'|'CSS';liveSource:string;draft:{code:string;cssCode?:string;files?:Record<string,string>}|null;savedAt:string;}
 export async function writeDraft(value:WorkspaceDraft|null){
   const db=await database();return new Promise<void>((resolve,reject)=>{const tx=db.transaction('drafts','readwrite');const store=tx.objectStore('drafts');if(value)store.put(value,'workspace');else store.delete('workspace');tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(new Error('Draft recovery is unavailable. Check browser storage.'));};});
 }

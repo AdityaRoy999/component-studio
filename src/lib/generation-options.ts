@@ -18,7 +18,7 @@ export function generationOptions(provider:Provider,model:string,effort?:Thinkin
   if(provider==='groq'&&supportsThinking(provider,model)&&effort)compatible.reasoning_effort=effort==='off'?'low':effort;
   if(provider==='nvidia'&&supportsThinking(provider,model)){
     compatible.chat_template_kwargs={enable_thinking:effort?effort!=='off':false};
-    if(/^nvidia\/nemotron-3\.5-super-vl-/i.test(model)&&effort&&effort!=='off')compatible.reasoning_effort=effort;
+    if(/^nvidia\/nemotron-3\.5-super-vl-/i.test(model)&&effort)compatible.reasoning_effort=effort==='off'?'none':effort==='medium'?'low':effort;
   }
   if(provider==='gemini'&&supportsThinking(provider,model)&&effort){
     gemini.thinkingConfig=/^gemini-2\.5/i.test(model)

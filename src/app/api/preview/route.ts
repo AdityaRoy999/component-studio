@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { compilePreview } from '@/lib/compile-preview';
 
 export const runtime = 'nodejs';
+export const maxDuration = 120;
 const cache = new Map<string, { script: string; css: string }>();
 export async function POST(request: NextRequest) {
   try {

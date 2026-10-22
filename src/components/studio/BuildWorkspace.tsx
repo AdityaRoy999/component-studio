@@ -23,7 +23,7 @@ interface Props {
   turns: BuildTurn[];
   working: boolean;
   source: string;
-  draft: { code: string; cssCode?: string } | null;
+  draft: { code: string; cssCode?: string;files?:Record<string,string> } | null;
   theme: 'dark' | 'light';
   hasComponent: boolean;
   children: ReactNode;
@@ -404,6 +404,7 @@ export default function BuildWorkspace(props: Props) {
                   <GeneratedPreview
                     code={props.draft.code}
                     cssCode={props.draft.cssCode}
+                    files={props.draft.files}
                     propValues={{}}
                     theme={props.theme}
                     quiet

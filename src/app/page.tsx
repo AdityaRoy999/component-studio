@@ -25,6 +25,9 @@ const Skills=dynamic(()=>import('@/components/studio/Skills'));
 import { createHistoryEntry, loadHistory, mergeHistory, saveHistory, findHistoryRevision, deleteHistory, readDraft, writeDraft, type WorkspaceDraft, type HistoryEntry } from '@/lib/generation-history';
 import { carryCustomization } from '@/lib/generation-context';
 import { parseGenerationSkill } from '@/lib/generation-skill';
+import { runVerifiedGeneration, type GenerationResult, type VerificationResult } from '@/lib/verified-generation';
+import type { PreviewCheck } from '@/components/studio/RuntimeVerification';
+const RuntimeVerification=dynamic(()=>import('@/components/studio/RuntimeVerification'),{ssr:false});
 interface ExportedSource { name:string; componentCode:string; cssCode?:string; filename:string; cssFilename:string; dependencies:string[]; }
 const emptySource:ExportedSource={name:'Component',componentCode:'',filename:'Component.tsx',cssFilename:'Component.css',dependencies:[]};
 const viewFromPath=(path:string):StudioView=>path==='/skills'?'skills':path==='/featured'?'featured':path==='/history'?'history':path==='/thanks'?'thanks':'studio';
@@ -51,7 +54,21 @@ export default function StudioPage() {
   const generation=useRef<AbortController|null>(null);
   const [turns,setTurns]=useState<BuildTurn[]>([]);const [liveSource,setLiveSource]=useState('');
   const attemptContext=useRef<{id:string;component:ComponentPreset|null;propValues:Record<string,any>}|null>(null);
-  const [draft,setDraft]=useState<{code:string;cssCode?:string}|null>(null);
+  const [draft,setDraft]=useState<{code:string;cssCode?:string;files?:Record<string,string>}|null>(null);
+  const [previewCheck,setPreviewCheck]=useState<PreviewCheck|null>(null);
+  const verification=useRef<{id:string;finish:(result:VerificationResult)=>void}|null>(null);
+  const finishVerification=useCallback((id:string,result:VerificationResult)=>{if(verification.current?.id===id)verification.current.finish(result);},[]);
+  function verifyCandidate(candidate:ComponentPreset,values:Record<string,any>,signal:AbortSignal){
+    signal.throwIfAborted();
+    return new Promise<VerificationResult>((resolve,reject)=>{
+      const id=crypto.randomUUID();
+      const cleanup=()=>{clearTimeout(timer);signal.removeEventListener('abort',abort);if(verification.current?.id===id){verification.current=null;setPreviewCheck(null);}};
+      const abort=()=>{cleanup();reject(signal.reason||new Error('Generation stopped.'));};
+      const timer=setTimeout(()=>{cleanup();resolve({ok:false,kind:'timeout',error:'The browser preview did not respond to verification. Automatic repair stopped. Retry the message.'});},45000);
+      verification.current={id,finish:result=>{cleanup();resolve(result);}};
+      signal.addEventListener('abort',abort,{once:true});setPreviewCheck({id,component:candidate,propValues:values});
+    });
+  }
   const [recovery,setRecovery]=useState<WorkspaceDraft|null>(null);const touched=useRef(false);const [draftError,setDraftError]=useState('');
   function changeView(view:StudioView){
     setCurrentView(view);if(view==='history')void refreshHistory();const path=view==='skills'?'/skills':view==='featured'?'/featured':view==='history'?'/history':view==='thanks'?'/thanks':'/';if(window.location.pathname!==path)window.history.pushState({},'',path);
@@ -139,6 +156,7 @@ export default function StudioPage() {
     const base=retry&&attemptContext.current?.id===retry.id?attemptContext.current:
       retry?.status==='done'?{component:previousRevision?.component||null,propValues:previousRevision?.propValues||{}}:{component,propValues};
     const controller=new AbortController();generation.current=controller;setGenerating(true);setGenerationError('');
+    const runSignal=AbortSignal.any([controller.signal,AbortSignal.timeout(240000)]);
     touched.current=true;
     const id=retry?.id||crypto.randomUUID();
     let activeTurn:BuildTurn={id,prompt:prompt.trim(),skill:generationSkill,images,events:[],status:'working'};
@@ -163,34 +181,48 @@ export default function StudioPage() {
       if(provider==='custom'?(!configured.custom&&(!baseUrl.trim()||!model.trim())):(!apiKey.trim()&&!configured[provider])){setSettingsOpen(true);return false;}
       attemptContext.current={id,...base};
       changeView('studio');setTurns(prev=>retry?prev.map(turn=>turn.id===id?activeTurn:turn):[...prev,activeTurn]);setLiveSource('');
-      setDraft(component?{code:component.code,cssCode:component.cssCode}:null);
-      const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,images,skill:generationSkill,apiKey:apiKey.trim()||undefined,provider,model:model.trim()||undefined,baseUrl:provider==='custom'?baseUrl.trim()||undefined:undefined,styling,theme,stream:true,thinkingEffort,memory:{messages:priorTurns.map(turn=>({prompt:turn.prompt,response:turn.response})),propValues:base.propValues},context:base.component?{code:base.component.code,cssCode:base.component.cssCode,files:base.component.files}:undefined}),signal:controller.signal});
+      setDraft(component?{code:component.code,cssCode:component.cssCode,files:component.files}:null);
+      const result=await runVerifiedGeneration({signal:runSignal,
+        checking:()=>updateTurn({events:[...activeTurn.events,{phase:'validating',message:'Verifying browser rendering in dark and light themes…'}]},true),
+        repairing:(error,attempt)=>{setDraft(base.component?{code:base.component.code,cssCode:base.component.cssCode,files:base.component.files}:null);updateTurn({events:[...activeTurn.events,{phase:'repairing',message:`Fixing preview (${attempt}/3): ${error.split('\n')[0]}`}]},true);},
+        verify:candidate=>verifyCandidate(candidate,carryCustomization(candidate,base.component?base.propValues:{},base.component?.propsSchema),runSignal),
+        request:async(requestBudget,repair)=>{
+      const context=repair?{code:repair.component.code,cssCode:repair.component.cssCode,files:repair.component.files,name:repair.component.name,title:repair.component.title,description:repair.component.description,propsSchema:repair.component.propsSchema}:base.component?{code:base.component.code,cssCode:base.component.cssCode,files:base.component.files}:undefined;
+      const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,images,skill:generationSkill,apiKey:apiKey.trim()||undefined,provider,model:model.trim()||undefined,baseUrl:provider==='custom'?baseUrl.trim()||undefined:undefined,styling,theme,stream:true,thinkingEffort,requestBudget,runtimeError:repair?.error,memory:{messages:priorTurns.map(turn=>({prompt:turn.prompt,response:turn.response})),propValues:base.propValues},context}),signal:runSignal});
       if(!r.ok){const data=await r.json();throw new Error(data.error||'Could not start this build.');}
       if(!r.body)throw new Error('The server returned an empty response. Please retry.');
-      const reader=r.body.getReader();const decoder=new TextDecoder();let buffer='';let completed=false;
+      const reader=r.body.getReader();const decoder=new TextDecoder();let buffer='';let candidate:GenerationResult|null=null;
       function event(value:GenerationEvent){
         if(controller.signal.aborted)return;
         if(value.type==='status')updateTurn({events:[...activeTurn.events,{phase:value.phase,message:value.message}]});
         else if(value.type==='thinking')updateTurn({thinking:(activeTurn.thinking||'')+value.text});
         else if(value.type==='source')updateTurn({source:value.code});
-        else if(value.type==='preview')setDraft({code:value.code,cssCode:value.cssCode});
+        // Stream source immediately, but mount only browser-verified candidates.
         else if(value.type==='metrics')updateTurn({metrics:value.metrics});
         else if(value.type==='error')throw new Error(value.message);
-        else if(value.type==='done'){completed=true;setComponent(value.component);const defaults=carryCustomization(value.component,base.component?base.propValues:{},base.component?.propsSchema);setPropValues(defaults);setDraft({code:value.component.code,cssCode:value.component.cssCode});updateTurn({metrics:value.metrics,status:'done',source:value.component.code,fileName:`${value.component.name}.tsx`,response:value.component.completionMessage||value.component.description},true);void keepHistory(createHistoryEntry({component:value.component,turns:[...priorTurns,activeTurn],provider,model:value.model,language,styling,propValues:defaults}));}
+        else if(value.type==='done'){candidate=value;updateTurn({source:value.component.code,fileName:`${value.component.name}.tsx`},true);}
       }
       try{while(true){const {value,done}=await reader.read();buffer+=done?decoder.decode():decoder.decode(value,{stream:true});let end;while((end=buffer.indexOf('\n'))>=0){const line=buffer.slice(0,end);buffer=buffer.slice(end+1);if(line.trim())event(JSON.parse(line));}if(done)break;}if(buffer.trim())event(JSON.parse(buffer));}
       finally{await reader.cancel().catch(()=>{});reader.releaseLock();}
-      if(!completed&&!controller.signal.aborted)throw new Error('The connection ended before this build finished. Please retry your message.');
-      return completed;
-    }catch(error){if(!controller.signal.aborted){const message=error instanceof Error?error.message:'Could not reach the server. Please try again.';setGenerationError(message);updateTurn({status:'error',error:message},true);}return false;}
-    finally{cancelAnimationFrame(paintFrame);if(generation.current===controller){generation.current=null;setGenerating(false);}}
+      if(!candidate)throw new Error('The connection ended before this build finished. Please retry your message.');
+      return candidate as GenerationResult;
+        },
+      });
+      runSignal.throwIfAborted();
+      const defaults=carryCustomization(result.component,base.component?base.propValues:{},base.component?.propsSchema);
+      setComponent(result.component);setPropValues(defaults);setDraft({code:result.component.code,cssCode:result.component.cssCode,files:result.component.files});
+      updateTurn({metrics:result.metrics,status:'done',source:result.component.code,fileName:`${result.component.name}.tsx`,response:result.component.completionMessage||result.component.description},true);
+      void keepHistory(createHistoryEntry({component:result.component,turns:[...priorTurns,activeTurn],provider,model:result.model,language,styling,propValues:defaults}));
+      return true;
+    }catch(error){if(!controller.signal.aborted){const message=runSignal.aborted?'This build took too long. Automatic repair stopped. Retry or choose a faster model.':error instanceof Error?error.message:'Could not reach the server. Please try again.';setGenerationError(message);updateTurn({status:'error',error:message},true);}return false;}
+    finally{cancelAnimationFrame(paintFrame);if(generation.current===controller){generation.current=null;setPreviewCheck(null);setGenerating(false);}}
   }
   const snapshotState=useRef({component,history,propValues,isGenerating});snapshotState.current={component,history,propValues,isGenerating};
   const saveSnapshot=useCallback((thumbnail:string)=>{const current=snapshotState.current;if(!isSnapshot(thumbnail)||current.isGenerating)return;const entry=findHistoryRevision(current.history,current.component);if(entry&&entry.thumbnail!==thumbnail)void keepHistory({...entry,thumbnail,propValues:current.propValues});},[]);
   function stop(){generation.current?.abort();generation.current=null;setGenerating(false);setTurns(prev=>prev.map(turn=>turn.status==='working'?{...turn,status:'stopped'}:turn));}
   function home(){stop();touched.current=true;setRecovery(null);void writeDraft(null).catch(()=>{});setComponent(null);setGenerationError('');setTurns([]);setDraft(null);setLiveSource('');changeView('studio');}
   function restoreSkill(markdown?:string|null){try{setGenerationSkill(markdown?parseGenerationSkill(markdown).markdown:null);}catch{setGenerationSkill(null);}}
-  function openHistory(entry:HistoryEntry){stop();restoreSkill(entry.turns.at(-1)?.skill);touched.current=true;setRecovery(null);setComponent(entry.component);setTurns(entry.turns);setPropValues(entry.propValues);setLanguage(entry.language);setStyling(entry.styling);setDraft({code:entry.component.code,cssCode:entry.component.cssCode});setLiveSource(entry.component.code);setGenerationError('');changeView('studio');}
+  function openHistory(entry:HistoryEntry){stop();restoreSkill(entry.turns.at(-1)?.skill);touched.current=true;setRecovery(null);setComponent(entry.component);setTurns(entry.turns);setPropValues(entry.propValues);setLanguage(entry.language);setStyling(entry.styling);setDraft({code:entry.component.code,cssCode:entry.component.cssCode,files:entry.component.files});setLiveSource(entry.component.code);setGenerationError('');changeView('studio');}
   useEffect(()=>{
     if(!touched.current)return;
     const timer=setTimeout(()=>{void writeDraft(component||turns.length?{component,turns,propValues,language,styling,liveSource,draft,savedAt:new Date().toISOString()}:null).then(()=>setDraftError('')).catch(error=>setDraftError(error.message));},650);
@@ -239,6 +271,7 @@ export default function StudioPage() {
         </AnimatePresence>
       </LayoutGroup>
     </main>
+    {previewCheck&&<RuntimeVerification key={previewCheck.id} check={previewCheck} onResult={finishVerification}/>}
     <AnimatePresence>{settingsOpen&&<ApiKeyModal profiles={modelProfiles} activeProfileId={activeProfileId} isOpen={settingsOpen} onClose={()=>setSettingsOpen(false)} apiKey={apiKey} provider={provider} model={model} baseUrl={baseUrl} onSave={saveConfig} serverConfigured={Boolean(serverProviders[provider])}/>}</AnimatePresence>
   </div></StudioIntro>;
 }

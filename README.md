@@ -52,6 +52,8 @@ Start with a prompt, an image reference, or a component from the built-in librar
 | **Build with AI** | Stream component generation, attach image references, choose thinking effort, and follow up with changes. |
 | **Guide the AI** | Choose one of six frontend skills or upload your own standard `SKILL.md`. The selected instructions follow generation, revisions, retries, and repairs. [Skill format and usage →](docs/generation-skills.md) |
 | **Preview live** | Run components in an isolated iframe, switch themes and viewport sizes, and adjust properties without losing preview state. |
+| **Use npm libraries** | Import browser-compatible npm packages and their styles without a fixed whitelist. Dependencies resolve automatically in previews and are included in downloaded projects for `npm install`. |
+| **Repair automatically** | Validate source and browser rendering in both themes before saving a completed build. Small source edits repair failures within one shared three-request budget; repeated failures stop clearly. |
 | **Own the source** | Read or edit source in separate views, move between local versions, copy TypeScript or JavaScript, and download a component project as a ZIP. |
 | **Keep your work** | Reopen browser-saved builds, favorite and rename them, or export and import a history backup. |
 | **Explore the ecosystem** | Search 320 libraries across 21 categories, with local logo assets, animated filters, and incremental loading. |

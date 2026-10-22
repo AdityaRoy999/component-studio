@@ -1,5 +1,6 @@
 import ts from 'typescript';
 import path from 'node:path';
+import { npmPackage } from './npm-imports';
 const cache=new Map<string,string[]>();
 const declarations=new Map<string,ts.SourceFile>();
 // Type-check source without executing it. Dependencies resolve from the studio's installed packages.
@@ -21,7 +22,13 @@ export function semanticDiagnostics(code:string,files:Record<string,string>={}){
     if(file?.isDeclarationFile){if(declarations.size>=500)declarations.delete(declarations.keys().next().value!);declarations.set(key,file);}return file;
   };
   const program=ts.createProgram([...sources.keys()],options,host);
-  const result=ts.getPreEmitDiagnostics(program).filter(d=>d.category===ts.DiagnosticCategory.Error&&d.file&&sources.has(normalize(d.file.fileName))).slice(0,12).map(d=>{
+  const result=ts.getPreEmitDiagnostics(program).filter(d=>{
+    if(d.category!==ts.DiagnosticCategory.Error||!d.file||!sources.has(normalize(d.file.fileName)))return false;
+    // On-demand npm dependencies need not be installed in the host project.
+    // The bundler verifies their real exports; retain all other source/type errors.
+    if(d.code===2307){const message=ts.flattenDiagnosticMessageText(d.messageText,' '),specifier=message.match(/Cannot find module '([^']+)'/)?.[1];if(specifier&&npmPackage(specifier))return false;}
+    return true;
+  }).slice(0,12).map(d=>{
     const pos=d.file!.getLineAndCharacterOfPosition(d.start||0);
     return `${path.relative(root,d.file!.fileName)}:${pos.line+1}:${pos.character+1} TS${d.code}: ${ts.flattenDiagnosticMessageText(d.messageText,' ')}`;
   });

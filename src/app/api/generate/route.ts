@@ -17,12 +17,18 @@ export async function POST(request: NextRequest) {
     if(!isProvider(body.provider)) return NextResponse.json({error:'Choose a supported AI provider.'},{status:400});
     if(body.apiKey != null && typeof body.apiKey !== 'string' || body.model != null && typeof body.model !== 'string' || body.baseUrl != null && typeof body.baseUrl !== 'string') return NextResponse.json({error:'Invalid provider settings.'},{status:400});
     if(body.context != null && (typeof body.context.code!=='string'||body.context.code.length>1000000||body.context.cssCode!=null&&(typeof body.context.cssCode!=='string'||body.context.cssCode.length>1000000)))return NextResponse.json({error:'Invalid component context.'},{status:400});
+    if(body.runtimeError!=null&&(typeof body.runtimeError!=='string'||!body.runtimeError.trim()||body.runtimeError.length>2400||!body.context))return NextResponse.json({error:'A runtime repair needs source and a concise browser diagnostic.'},{status:400});
+    if(body.requestBudget!=null&&(!Number.isInteger(body.requestBudget)||body.requestBudget<1||body.requestBudget>3))return NextResponse.json({error:'Choose one to three model attempts.'},{status:400});
     let images;try{images=validateImageReferences(body.images);}catch(error){return NextResponse.json({error:(error as Error).message},{status:400});}
     let skill:string|undefined;
     if(body.skill!=null)try{skill=parseGenerationSkill(body.skill).markdown;}catch(error){return NextResponse.json({error:(error as Error).message,code:'invalid_skill'},{status:400});}
     const memory=revisionContext(body.memory);
-    if(body.context)body.context.files=generatedFiles(body.context.files);
-    const input={images,skill,prompt:body.prompt.trim(),provider:body.provider,apiKey:body.apiKey,model:body.model,baseUrl:body.baseUrl,styling:body.styling==='CSS'?'CSS' as const:'Tailwind' as const,context:body.context,memory,thinkingEffort:body.thinkingEffort,theme:body.theme};
+    if(body.context){
+      const source=body.context;
+      if(['name','title','description'].some(key=>source[key]!=null&&(typeof source[key]!=='string'||source[key].length>2400))||source.propsSchema!=null&&(!Array.isArray(source.propsSchema)||source.propsSchema.length>30))return NextResponse.json({error:'Invalid component metadata.'},{status:400});
+      body.context={code:source.code,cssCode:source.cssCode,files:generatedFiles(source.files),name:source.name,title:source.title,description:source.description,propsSchema:source.propsSchema};
+    }
+    const input={images,skill,prompt:body.prompt.trim(),provider:body.provider,apiKey:body.apiKey,model:body.model,baseUrl:body.baseUrl,styling:body.styling==='CSS'?'CSS' as const:'Tailwind' as const,context:body.context,runtimeError:body.runtimeError,requestBudget:body.requestBudget,memory,thinkingEffort:body.thinkingEffort,theme:body.theme};
     if(body.stream===true){
       const abort=new AbortController();let closed=false;const encoder=new TextEncoder();
       request.signal.addEventListener('abort',()=>abort.abort(),{once:true});
