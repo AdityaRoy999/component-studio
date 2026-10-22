@@ -82,7 +82,9 @@ export default function BuildWorkspace(props: Props) {
   const [tab, setTab] = useState<'preview' | 'code'>('preview');
   const reduce = useReducedMotion();
   const log = useRef<HTMLDivElement>(null);
+  const transcriptContent = useRef<HTMLDivElement>(null);
   const follow = useRef(true);
+  const scrollPosition=useRef(0);
   const autoScrollUntil=useRef(0);
   const latest = props.turns.at(-1);
   function cancelRetry() {
@@ -109,18 +111,26 @@ export default function BuildWorkspace(props: Props) {
   const displayTitle = getDisplayTitle(props.componentTitle, props.turns[0]?.prompt);
 
   useEffect(() => {
-    let frame=0;
-    const scroll=()=>{
+    const el=log.current,content=transcriptContent.current;if(!el||!content)return;
+    let frame=0,last=0,target=0;
+    const scroll=(time:number)=>{
+      frame=0;
       const el=log.current;if(!el||!follow.current)return;
-      const distance=el.scrollHeight-el.clientHeight-el.scrollTop;
-      if(distance<.5)return;
+      const elapsed=last?Math.min(64,time-last):16;last=time;
+      const distance=target-scrollPosition.current;
+      if(Math.abs(distance)<.5){last=0;return;}
       autoScrollUntil.current=performance.now()+100;
-      el.scrollTop+=reduce?distance:Math.max(.6,distance*.24);
-      if(distance>1)frame=requestAnimationFrame(scroll);
+      scrollPosition.current+=reduce?distance:distance*(1-Math.exp(-elapsed/65));
+      el.scrollTop=scrollPosition.current;
+      if(!reduce)frame=requestAnimationFrame(scroll);
     };
-    frame=requestAnimationFrame(scroll);
-    return()=>cancelAnimationFrame(frame);
-  }, [props.turns,reduce]);
+    const observer=new ResizeObserver(()=>{
+      target=Math.max(0,el.scrollHeight-el.clientHeight);
+      if(follow.current&&!frame)frame=requestAnimationFrame(scroll);
+    });
+    observer.observe(el);observer.observe(content);
+    return()=>{observer.disconnect();cancelAnimationFrame(frame);};
+  }, [reduce]);
 
   async function send(event: React.FormEvent) {
     event.preventDefault();
@@ -149,10 +159,10 @@ export default function BuildWorkspace(props: Props) {
           onTouchMove={()=>{follow.current=false;autoScrollUntil.current=0;}}
           onScroll={event => {
             const el = event.currentTarget;
-            if(performance.now()>autoScrollUntil.current)follow.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+            if(performance.now()>autoScrollUntil.current){scrollPosition.current=el.scrollTop;follow.current = el.scrollHeight - el.scrollTop - el.clientHeight < 80;}
           }}
         >
-          {props.turns.map(turn => {
+          <div ref={transcriptContent} className="build-transcript-content">{props.turns.map(turn => {
             const turnPhase=turn.events.at(-1)?.phase;
             const turnSource=turn.source||(turn.id===latest?.id?props.source:'');
             return (
@@ -272,7 +282,7 @@ export default function BuildWorkspace(props: Props) {
                 )}
               </div>
             </motion.div>
-          );})}
+          );})}</div>
         </motion.div>
 
         {/* Anchored Chat Composer with shared motion layoutId */}

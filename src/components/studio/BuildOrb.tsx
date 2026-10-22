@@ -13,4 +13,4 @@ export function orbPurpose(phase?:string,message='',source='',status='working'):
 export default memo(function BuildOrb({phase,message,source,status='working',size=18}:{phase?:string;message?:string;source?:string;status?:string;size?:number}){
   const reduce=useReducedMotion();const purpose=orbPurpose(phase,message,source,status);
   return <span className="build-purpose-orb" data-purpose={purpose.look.state} title={purpose.label}><Orb {...purpose.look} size={size} paused={Boolean(reduce)||status!=='working'} label={purpose.label}/></span>;
-});
+},(previous,next)=>previous.phase===next.phase&&previous.message===next.message&&Boolean(previous.source)===Boolean(next.source)&&previous.status===next.status&&previous.size===next.size);

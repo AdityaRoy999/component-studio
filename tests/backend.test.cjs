@@ -115,6 +115,32 @@ test('live source catches up smoothly without losing bytes or splitting Unicode'
  assert.equal(advanceSource('anything','',16),'');
 });
 
+test('live source tail stays bounded through long streams and preserves logical row positions',()=>{
+ const {appendSourceTail,emptySourceTail,advanceSourceLength}=load('src/lib/source-stream.ts');
+ const target=Array.from({length:1800},(_,i)=>`const row${i} = "Smooth ✨ source";\n`).join('');
+ let state=emptySourceTail(),length=0;
+ while(length<target.length){
+   const next=advanceSourceLength(length,target,1000/60);
+   state=appendSourceTail(state,target.slice(length,next));length=next;
+   assert(state.text.length<=8192);assert(state.text.split('\n').length<=24);
+   assert(target.slice(0,length).endsWith(state.text));
+   assert.equal(state.firstLine+state.text.split('\n').length,state.lineCount);
+   assert(!/[\uD800-\uDBFF]$/.test(state.text));
+ }
+ assert.equal(state.lineCount,1801);assert.equal(state.firstLine,1777);
+ const longLine=appendSourceTail(emptySourceTail(),'🙂'.repeat(12000));
+ assert(longLine.text.length<=8192);assert(!/^[\uDC00-\uDFFF]/.test(longLine.text));
+ assert.equal(longLine.lineCount,1);
+});
+
+test('source reveal uses elapsed time consistently on 60Hz and 120Hz displays',()=>{
+ const {advanceSourceLength}=load('src/lib/source-stream.ts');
+ const target='a'.repeat(50000);
+ const progress=hz=>{let length=0;for(let frame=0;frame<hz*.2;frame++)length=advanceSourceLength(length,target,1000/hz);return length;};
+ assert(Math.abs(progress(60)-progress(120))<30);
+ assert.equal(advanceSourceLength(10,'short',16),5);
+});
+
 test('preview customization resets initializer state while themes and reordered props preserve it',()=>{
  const {createPreviewDocument}=load('src/lib/preview-document.ts');
  const html=createPreviewDocument({script:'',css:''},'dark');

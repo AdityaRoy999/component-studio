@@ -715,7 +715,7 @@ html.light .build-generating-dot {
   overscroll-behavior: contain;
   flex: 1;
   min-height: 0;
-  padding: 14px 4px 14px;
+  padding: 0 4px 14px;
   scrollbar-width: thin;
 }
 
@@ -2008,6 +2008,10 @@ html.theme-switching::view-transition-new(root){animation:theme-arrive 380ms cub
 .build-waiting{overflow:auto}
 .build-waiting .build-waiting-code{height:clamp(80px,16vh,156px);min-height:clamp(80px,16vh,156px);width:min(100%,520px);flex-shrink:0;font-size:11px;line-height:1.85;overflow:hidden;overflow-anchor:none}
 .build-live-code{overflow-anchor:none}
+.build-transcript-content{display:flow-root}
+.build-waiting .build-waiting-code{white-space:pre;contain:strict}
+.build-waiting-code>code{display:block;white-space:pre;will-change:transform}
+.build-live-code>code{display:block}
 .source-editor{border:1px solid var(--border-color,#80808030);border-radius:20px;padding:16px;margin:12px 0;background:var(--surface,#151515);color:inherit;min-width:0}
 .source-editor-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;min-width:0}
 .source-editor-toolbar .button{min-height:44px}
