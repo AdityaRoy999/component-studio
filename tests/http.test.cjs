@@ -106,6 +106,7 @@ test('streaming HTTP generation sends real activity, source, preview and complet
  try{
   const response=await fetch(base+'/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({provider:'custom',baseUrl:`http://127.0.0.1:${endpoint.address().port}/v1`,model:'stream-test',prompt:'Build a compact button',stream:true})});
   assert.equal(response.status,200);assert.match(response.headers.get('content-type'),/ndjson/);
+  assert.match(response.headers.get('x-generation-request-id'),/^[a-f0-9-]{36}$/i);
   const reader=response.body.getReader();const first=await reader.read();assert.equal(finished,false);let content=new TextDecoder().decode(first.value);
   while(true){const part=await reader.read();if(part.done)break;content+=new TextDecoder().decode(part.value);}
   assert(content.includes('\n\n'),'The server must keep a quiet provider connection active');

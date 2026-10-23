@@ -4,6 +4,7 @@ import { validateImageReferences } from '@/lib/image-references';
 import { revisionContext } from '@/lib/generation-context';
 import { generatedFiles } from '@/lib/generated-files';
 import { parseGenerationSkill } from '@/lib/generation-skill';
+import { generationStream } from '@/lib/generation-stream';
 export const runtime = 'nodejs';
 // Stay within Vercel Hobby's five-minute function limit.
 export const maxDuration = 300;
@@ -30,20 +31,14 @@ export async function POST(request: NextRequest) {
     }
     const input={images,skill,prompt:body.prompt.trim(),provider:body.provider,apiKey:body.apiKey,model:body.model,baseUrl:body.baseUrl,styling:body.styling==='CSS'?'CSS' as const:'Tailwind' as const,context:body.context,runtimeError:body.runtimeError,requestBudget:body.requestBudget,memory,thinkingEffort:body.thinkingEffort,theme:body.theme};
     if(body.stream===true){
-      const abort=new AbortController();let closed=false;let heartbeat:ReturnType<typeof setInterval>|undefined;const encoder=new TextEncoder();
-      request.signal.addEventListener('abort',()=>abort.abort(),{once:true});
-      const stream=new ReadableStream({
-        async start(controller){
-          const send=(event?:unknown)=>{if(!closed)try{controller.enqueue(encoder.encode(event===undefined?'\n':JSON.stringify(event)+'\n'));}catch{closed=true;abort.abort();}};
-          // Blank NDJSON lines keep idle proxy connections active without UI updates.
-          heartbeat=setInterval(()=>send(),10000);
-          try{const result=await generateComponent({...input,signal:abort.signal,onEvent:send});send({type:'done',...result});}
-          catch(error){if(!abort.signal.aborted)send({type:'error',message:error instanceof ProviderError?error.message:'Generation could not finish. Please retry your message.',code:error instanceof ProviderError?error.code:'generation_failed'});}
-          finally{clearInterval(heartbeat);if(!closed){closed=true;controller.close();}}
-        },
-        cancel(){closed=true;clearInterval(heartbeat);abort.abort();},
+      const requestId=crypto.randomUUID();
+      const stream=generationStream({
+        signal:request.signal,
+        generate:(signal,onEvent)=>generateComponent({...input,signal,onEvent}),
+        error:error=>({message:error instanceof ProviderError?error.message:'Generation could not finish. Please retry your message.',code:error instanceof ProviderError?error.code:'generation_failed'}),
+        report:diagnostic=>console.info('[generation]',JSON.stringify({requestId,provider:input.provider,...diagnostic})),
       });
-      return new Response(stream,{headers:{'Content-Type':'application/x-ndjson','Cache-Control':'no-cache, no-transform','X-Accel-Buffering':'no'}});
+      return new Response(stream,{headers:{'Content-Type':'application/x-ndjson','Cache-Control':'no-cache, no-transform','X-Accel-Buffering':'no','X-Generation-Request-Id':requestId}});
     }
     const result = await generateComponent({...input,signal:request.signal});
     return NextResponse.json({success:true,source:'ai',...result},{headers:{'Cache-Control':'no-store'}});
