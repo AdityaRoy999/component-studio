@@ -11,20 +11,21 @@ export function createPreviewDocument(bundle:{script:string;css:string},theme:'l
   body{margin:0;min-height:100svh;background:var(--preview-bg);color:var(--preview-ink);font-family:system-ui,sans-serif;overscroll-behavior:contain}
   #root{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:clamp(12px,2vw,16px);box-sizing:border-box}
   </style></head><body><div id="root"></div><script>
-  var captureTimer,captureTicket=0,verificationId='',previewFailure='',readyTimer,renderTicket=0;
-  function reportVerification(status,error){if(verificationId)parent.postMessage({type:'studio:verification',id:verificationId,status:status,error:error},'*');}
+  var captureTimer,captureTicket=0,verificationId='',previewFailure='',readyTimer,renderTicket=0,renderedProps={};
+  function reportVerification(status,error){if(verificationId)parent.postMessage({type:'studio:verification',id:verificationId,status:status,error:error,props:renderedProps},'*');}
   window.__PREVIEW_ERROR__=function(error){previewFailure=String(error||'Unknown preview error').slice(0,2400);clearTimeout(readyTimer);reportVerification('error',previewFailure);};
   window.__PREVIEW_READY__=function(){var ticket=renderTicket;clearTimeout(readyTimer);readyTimer=setTimeout(function(){if(ticket===renderTicket&&!previewFailure)reportVerification('ready');},200);};
   window.addEventListener('message',function(event){
     if(event.source!==parent||event.data?.type!=='studio:props')return;
     var data=event.data;verificationId=typeof data.verificationId==='string'?data.verificationId:'';renderTicket++;
-    if(verificationId&&previewFailure){reportVerification('error',previewFailure);return;}
     var theme=data.theme==='light'?'light':'dark';var root=document.documentElement;
     root.dataset.theme=theme;root.classList.toggle('dark',theme==='dark');root.classList.toggle('light',theme==='light');
     var values=data.propValues||{};
+    renderedProps={...values,theme:theme};
+    if(verificationId&&previewFailure){reportVerification('error',previewFailure);return;}
     // Reset initializer props on customization, preserving state on theme changes.
     var customizationKey=String(data.resetKey||0)+':'+JSON.stringify(Object.keys(values).sort().map(function(key){return [key,values[key]];}));
-    window.__RENDER__?.({...values,theme:theme},customizationKey);
+    window.__RENDER__?.(renderedProps,customizationKey);
     clearTimeout(captureTimer);var ticket=++captureTicket;
     if(data.snapshotId&&window.__CAPTURE__)captureTimer=setTimeout(async function(){try{var image=await window.__CAPTURE__();if(ticket===captureTicket&&image.length<350000)parent.postMessage({type:'studio:snapshot',snapshotId:data.snapshotId,dataUrl:image},'*');}catch{}},500);
   });

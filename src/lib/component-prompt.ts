@@ -12,7 +12,7 @@ QUALITY CONTRACT
 2. SIZE: Render with {}. A simple card usually needs only 360–440px maximum width and compact natural height. No h-screen/min-h-screen or tall mini landing page. Larger requested content may scroll naturally.
 3. THEMES: Support BOTH themes via theme?:'light'|'dark', defaulting to the host theme. Derive colors together; the host changes theme live. Or use light base utilities with class-based dark: variants. Never read parent DOM or OS theme.
 4. BEHAVIOR: Every visible control must change useful React state: billing updates real totals/units, tabs change content, filters change results, forms validate, actions confirm inline. No no-op handlers, dead links, placeholder actions, perpetual loading or browser dialogs. Use Intl.NumberFormat for money and consistent calculations. No external service claims for a local interaction.
-5. CUSTOMIZATION: Every propsSchema name must match a consumed component prop. Render editable labels/colors from that prop, never hardcode them. The preview reinitializes local state on customization edits, including default/initial props; theme-only changes preserve state. Do not expose unused or decorative schema fields.
+5. CUSTOMIZATION: Expose consumed scalar props only; control types must match the props. Keep arrays/objects (features, plans, items) in TSX defaults, never string/select controls. Bind editable labels/colors to rendered output. Customization edits reinitialize local state, including initializer props; theme changes preserve it. No unused or decorative controls.
 6. SIMPLICITY: Complete the requested behavior and skill review. No TODOs or stubs.
 
 ${UI_UX_GUIDANCE}

@@ -18,7 +18,7 @@ export default function GeneratedPreview({code,cssCode='',files,propValues,theme
     if(!code.trim())return;
     const controller=new AbortController();if(!quiet)setBundle(null);setError('');
     const timer=setTimeout(()=>{
-      fetch('/api/preview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code,cssCode,files,snapshot:capture}),signal:controller.signal}).then(async r=>{const data=await r.json();if(!r.ok)throw new Error(data.error);return data;}).then(data=>{if(!controller.signal.aborted)setBundle(data);}).catch(error=>{if(!controller.signal.aborted)setError(error.message||'Preview could not load.');});
+      fetch('/api/preview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code,cssCode,files,snapshot:capture,diagnostics:Boolean(current.current.verificationId)}),signal:controller.signal}).then(async r=>{const data=await r.json();if(!r.ok)throw new Error(data.error);return data;}).then(data=>{if(!controller.signal.aborted)setBundle(data);}).catch(error=>{if(!controller.signal.aborted)setError(error.message||'Preview could not load.');});
     },quiet&&!verificationId?350:0);
     return()=>{clearTimeout(timer);controller.abort();};
   },[code,cssCode,files,retry,capture,quiet]);

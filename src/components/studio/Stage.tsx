@@ -30,7 +30,7 @@ interface StageProps {
   presets?:ComponentPreset[]; onSelectPreset?:(preset:ComponentPreset)=>void; theme?:'dark'|'light';
   onSnapshot?:(dataUrl:string)=>void;
   provider?:Provider; model?:string; thinkingEffort?:ThinkingEffort; onThinkingEffortChange?:(effort:ThinkingEffort)=>void;
-  onSourceApply?:(source:Pick<ComponentPreset,'code'|'cssCode'|'files'>)=>void;
+  onSourceApply?:(source:Pick<ComponentPreset,'code'|'cssCode'|'files'>&Partial<Pick<ComponentPreset,'propsSchema'>>)=>void;
 }
 
 export default function Stage(props:StageProps) {

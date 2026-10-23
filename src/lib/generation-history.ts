@@ -47,7 +47,7 @@ export async function writeDraft(value:WorkspaceDraft|null){
 export async function readDraft():Promise<WorkspaceDraft|null>{
   const db=await database();return new Promise((resolve,reject)=>{const tx=db.transaction('drafts','readonly');const req=tx.objectStore('drafts').get('workspace');tx.oncomplete=()=>{db.close();resolve(req.result||null);};tx.onerror=()=>{db.close();reject(new Error('Draft could not load.'));};});
 }
-export interface EditorDraft {sources:Record<string,string>;versions:Pick<ComponentPreset,'code'|'cssCode'|'files'>[];cursor:number;}
+export interface EditorDraft {sources:Record<string,string>;versions:(Pick<ComponentPreset,'code'|'cssCode'|'files'>&Partial<Pick<ComponentPreset,'propsSchema'>>)[];cursor:number;}
 export function editorDraftMatches(draft:EditorDraft,component:ComponentPreset){
   const base=draft.versions?.[draft.cursor];return Boolean(base&&sameSource(base,component));
 }

@@ -6,13 +6,13 @@ export const maxDuration = 120;
 const cache = new Map<string, { script: string; css: string }>();
 export async function POST(request: NextRequest) {
   try {
-    const { code, cssCode = '', snapshot = false, files = {} } = await request.json();
+    const { code, cssCode = '', snapshot = false, diagnostics = false, files = {} } = await request.json();
     if (typeof code !== 'string' || !code.trim() || code.length > 1000000) return NextResponse.json({error:'A valid component source is required.'}, {status:400});
     if (typeof cssCode !== 'string' || cssCode.length > 1000000) return NextResponse.json({error:'Invalid component CSS.'},{status:400});
-    const cacheKey = JSON.stringify([snapshot===true,code,cssCode,files]);
+    const cacheKey = JSON.stringify([snapshot===true,diagnostics===true,code,cssCode,files]);
     const cached = cache.get(cacheKey);
     if (cached) return NextResponse.json(cached);
-    const payload = await compilePreview(code,cssCode,snapshot===true,files);
+    const payload = await compilePreview(code,cssCode,snapshot===true,files,fetch,diagnostics===true);
     if(cache.size >= 12) cache.delete(cache.keys().next().value!);
     cache.set(cacheKey,payload);
     return NextResponse.json(payload);

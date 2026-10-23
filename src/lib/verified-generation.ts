@@ -6,6 +6,12 @@ export type VerificationResult={ok:true}|{ok:false;error:string;kind?:'runtime'|
 export type RuntimeRepair={component:ComponentPreset;error:string};
 export type GenerationResult={component:ComponentPreset;model:string;metrics?:GenerationMetrics};
 
+export function runtimeDiagnostic(error:string,props:Record<string,unknown>,theme:'dark'|'light'){
+  const values=JSON.stringify({...props,theme});
+  const types=Object.fromEntries(Object.entries(props).map(([name,value])=>[name,Array.isArray(value)?'array':value===null?'null':typeof value]));
+  return `${error.slice(0,1100)}\nRendered props (exact host values): ${values.length<=900?values:values.slice(0,900)+'…'}\nProp types: ${JSON.stringify(types).slice(0,300)}`;
+}
+
 export async function runVerifiedGeneration(options:{
   request:(remaining:number,repair?:RuntimeRepair)=>Promise<GenerationResult>;
   verify:(component:ComponentPreset)=>Promise<VerificationResult>;
@@ -27,7 +33,7 @@ export async function runVerifiedGeneration(options:{
     }
     if(validation.kind==='timeout')throw new Error(validation.error);
     const message=validation.error.split('\n')[0].slice(0,500);
-    const signature=JSON.stringify([result.component.code,result.component.cssCode,result.component.files,validation.error]);
+    const signature=JSON.stringify([result.component.code,result.component.cssCode,result.component.files,result.component.propsSchema,validation.error]);
     if(seen.has(signature))throw new Error(`The same preview error repeated without progress: ${message}. Automatic repair stopped. Retry or choose another model.`);
     seen.add(signature);
     if(used>=MAX_GENERATION_REQUESTS)throw new Error(`The preview still failed after ${used} model attempts: ${message}. Automatic repair stopped. Retry or choose another model.`);

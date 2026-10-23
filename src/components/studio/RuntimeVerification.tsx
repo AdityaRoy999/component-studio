@@ -2,7 +2,7 @@
 import { useRef, useState } from 'react';
 import GeneratedPreview from './GeneratedPreview';
 import type { ComponentPreset } from '@/data/presets';
-import type { VerificationResult } from '@/lib/verified-generation';
+import { runtimeDiagnostic, type VerificationResult } from '@/lib/verified-generation';
 
 export interface PreviewCheck {id:string;component:ComponentPreset;propValues:Record<string,any>;}
 export default function RuntimeVerification({check,onResult}:{check:PreviewCheck;onResult:(id:string,result:VerificationResult)=>void}){
@@ -11,7 +11,7 @@ export default function RuntimeVerification({check,onResult}:{check:PreviewCheck
     <GeneratedPreview code={check.component.code} cssCode={check.component.cssCode} files={check.component.files} propValues={check.propValues} theme={theme} quiet
       verificationId={`${check.id}:${theme}`} onVerification={result=>{
         if(done.current)return;
-        if(!result.ok){done.current=true;onResult(check.id,{ok:false,error:result.error||'The component failed in the browser.',kind:'runtime'});}
+        if(!result.ok){done.current=true;onResult(check.id,{ok:false,error:runtimeDiagnostic(result.error||'The component failed in the browser.',check.propValues,theme),kind:'runtime'});}
         else if(theme==='dark'){if(!darkDone.current){darkDone.current=true;setTheme('light');}}
         else {done.current=true;onResult(check.id,{ok:true});}
       }}/>

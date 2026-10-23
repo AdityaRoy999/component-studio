@@ -13,7 +13,7 @@ function localModule(specifier:string){
   return specifier==='lucide-react'?localRequire.resolve('lucide-react/package.json').replace(/package\.json$/,'dist/esm/lucide-react.js'):localRequire.resolve(specifier==='framer-motion'?'motion/react':specifier);
 }
 
-export async function compilePreview(code:string,cssCode='',snapshot=false,extraFiles:Record<string,string>={},fetcher:typeof fetch=fetch){
+export async function compilePreview(code:string,cssCode='',snapshot=false,extraFiles:Record<string,string>={},fetcher:typeof fetch=fetch,diagnostics=false){
     const files:Record<string,string>={'Component.tsx':code,...generatedFiles(extraFiles)};
     const hasPackageCss=packageImports(Object.values(files)).some(specifier=>npmPackage(specifier)&&specifier.endsWith('.css'));
     validateJSX(code,cssCode||(hasPackageCss?'/* npm package stylesheet */':''));
@@ -24,8 +24,8 @@ window.__CAPTURE__=async()=>{const node=document.getElementById('root');const wi
 import React from 'react'; import {createRoot} from 'react-dom/client'; import Component from 'user-component';
         class Boundary extends React.Component { constructor(p){super(p);this.state={error:null};} static getDerivedStateFromError(error){return {error:String(error?.message||error)};} componentDidCatch(error,info){window.__PREVIEW_ERROR__?.(String(error?.message||error)+'\\n'+String(info?.componentStack||''));} render(){return this.state.error ? React.createElement('div',{role:'alert',style:{padding:24,color:'#e6828e',fontFamily:'system-ui'}},'Preview error: '+this.state.error) : this.props.children;} }
         function ReadyProbe({revision}){React.useEffect(()=>{window.__PREVIEW_READY__?.();},[revision]);return null;}
-        let revision=0;const root=createRoot(document.getElementById('root'));window.__RENDER__=(props,customizationKey='initial')=>root.render(React.createElement(Boundary,{key:customizationKey},React.createElement(React.Fragment,null,React.createElement(Component,props),React.createElement(ReadyProbe,{revision:++revision}))));window.__RENDER__({});`, loader:'jsx', resolveDir:process.cwd() },
-      bundle:true, write:false, outfile:'preview.js',minify:true, platform:'browser', format:'iife', jsx:'automatic', tsconfigRaw:{compilerOptions:{verbatimModuleSyntax:true}}, define:{'process.env.NODE_ENV':'"production"'}, logLevel:'silent',
+        let revision=0;const root=createRoot(document.getElementById('root'));window.__RENDER__=(props,customizationKey='initial')=>root.render(React.createElement(Boundary,{key:customizationKey},React.createElement(React.Fragment,null,React.createElement(Component,props),React.createElement(ReadyProbe,{revision:++revision}))));`, loader:'jsx', resolveDir:process.cwd() },
+      bundle:true, write:false, outfile:'preview.js',minifyWhitespace:true,minifySyntax:true,minifyIdentifiers:!diagnostics,keepNames:diagnostics, platform:'browser', format:'iife', jsx:'automatic', tsconfigRaw:{compilerOptions:{verbatimModuleSyntax:true}}, define:{'process.env.NODE_ENV':'"production"'}, logLevel:'silent',
       plugins:[{name:'component-source',setup(builder){
         builder.onResolve({filter:/.*/}, args => {
           if(args.path === 'user-component') return {path:'Component.tsx',namespace:'component'};

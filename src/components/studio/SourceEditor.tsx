@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import ModernSelect from '@/components/ui/ModernSelect';
 import type { ComponentPreset } from '@/data/presets';
 import { loadEditorDraft,saveEditorDraft,editorDraftMatches } from '@/lib/generation-history';
-type Snapshot=Pick<ComponentPreset,'code'|'cssCode'|'files'>;
+type Snapshot=Pick<ComponentPreset,'code'|'cssCode'|'files'>&Partial<Pick<ComponentPreset,'propsSchema'>>;
 export default function SourceEditor({component,disabled,onApply,host}:{component:ComponentPreset;disabled:boolean;onApply:(source:Snapshot)=>void;host:HTMLElement|null}){
   const [open,setOpen]=useState(true);const [file,setFile]=useState('Component.tsx');
   const [sources,setSources]=useState<Record<string,string>>({});const [error,setError]=useState('');const [busy,setBusy]=useState(false);
@@ -15,13 +15,13 @@ export default function SourceEditor({component,disabled,onApply,host}:{componen
   const reduce=useReducedMotion();
   useEffect(()=>{setOpen(true);setFile('Component.tsx');},[component.id]);
   const canonical=()=>({'Component.tsx':component.code,'Component.css':component.cssCode||'',...component.files});
-  useEffect(()=>{let active=true;setReady(false);setSources(canonical());setVersions([{code:component.code,cssCode:component.cssCode,files:component.files}]);setCursor(0);setError('');void loadEditorDraft(component.id).then(saved=>{if(active&&saved?.versions?.length&&saved.sources&&editorDraftMatches(saved,component)){setSources(saved.sources);setVersions(saved.versions);setCursor(saved.cursor);}}).catch(()=>{}).finally(()=>{if(active)setReady(true);});return()=>{active=false;};},[component.id]);
+  useEffect(()=>{let active=true;setReady(false);setSources(canonical());setVersions([{code:component.code,cssCode:component.cssCode,files:component.files,propsSchema:component.propsSchema}]);setCursor(0);setError('');void loadEditorDraft(component.id).then(saved=>{if(active&&saved?.versions?.length&&saved.sources&&editorDraftMatches(saved,component)){setSources(saved.sources);setVersions(saved.versions);setCursor(saved.cursor);}}).catch(()=>{}).finally(()=>{if(active)setReady(true);});return()=>{active=false;};},[component.id]);
   useEffect(()=>{setSources(canonical());},[component.code,component.cssCode,component.files]);
   useEffect(()=>{if(!ready)return;const timer=setTimeout(()=>void saveEditorDraft(component.id,{sources,versions,cursor}).catch(error=>setError(error.message)),600);return()=>clearTimeout(timer);},[component.id,sources,versions,cursor,ready]);
   const split=():Snapshot=>({code:sources['Component.tsx'],cssCode:sources['Component.css'],files:Object.fromEntries(Object.entries(sources).filter(([name])=>!['Component.tsx','Component.css'].includes(name)))});
   async function apply(){setBusy(true);setError('');try{
     const source=split();const response=await fetch('/api/validate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...component,...source})});const result=await response.json();if(!response.ok)throw Error(result.error);
-    const validated:Snapshot={code:result.component.code,cssCode:result.component.cssCode,files:result.component.files};
+    const validated:Snapshot={code:result.component.code,cssCode:result.component.cssCode,files:result.component.files,propsSchema:result.component.propsSchema};
     setVersions(prev=>[...prev.slice(0,cursor+1),validated].slice(-50));setCursor(Math.min(cursor+1,49));onApply(validated);
   }catch(error){setError(error instanceof Error?error.message:'Could not validate changes.');}finally{setBusy(false);}}
   function restore(index:number){const source=versions[index];setCursor(index);onApply(source);setSources({'Component.tsx':source.code,'Component.css':source.cssCode||'',...source.files});setError('');}

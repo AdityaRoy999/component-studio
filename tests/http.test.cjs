@@ -14,6 +14,16 @@ test('manual source edits receive semantic diagnostics before applying',async()=
  const valid=await post('/api/validate',{name:'Example',code:"import Details from './parts/Details';export default function Example(){return <Details/>}",files:{'parts/Details.tsx':'export default function Details(){return <div>Working files</div>}'},propsSchema:[]});assert.equal(valid.status,200);assert(valid.data.component.files['parts/Details.tsx']);
 });
 
+test('scalar customization cannot replace the pricing component list defaults',async()=>{
+ const code='export default function GlassPricingCard({features=["Fast builds","Live previews"],title="Studio"}:any){return <section><h2>{title}</h2>{features.map((feature:string)=><p key={feature}>{feature}</p>)}</section>}';
+ for(const defaultValue of [['Fast builds','Live previews'],'Fast builds,Live previews']){
+  const result=await post('/api/validate',{name:'GlassPricingCard',code,propsSchema:[{name:'features',type:'string',defaultValue},{name:'title',type:'string',defaultValue:'Studio'}]});
+  assert.equal(result.status,200);assert.equal(result.data.component.code,code);assert.deepEqual(result.data.component.propsSchema.map(f=>f.name),['title']);
+ }
+ const diagnostic=await post('/api/preview',{code,diagnostics:true});assert.equal(diagnostic.status,200);assert(diagnostic.data.script.includes('features.map'));
+ const normal=await post('/api/preview',{code});assert.equal(normal.status,200);assert.notEqual(diagnostic.data.script,normal.data.script);
+});
+
 test('deployed validation accepts React hooks, iterable arrays and standard ES/DOM APIs',async()=>{
  const code="import {useState,useRef} from 'react';export default function Demo(){const ref=useRef<HTMLDivElement>(null);const [items,setItems]=useState(['Overview','Details']);const sizes=new Map<string,number>(items.map(item=>[item,item.length]));return <div ref={ref}>{Array.from(sizes).map(([item,size])=><button key={item} onClick={()=>{ref.current?.getBoundingClientRect();void Promise.resolve();setItems([...items,'New']);}}>{item} {size}</button>)}</div>}";
  const result=await post('/api/validate',{name:'Demo',code,propsSchema:[]});assert.equal(result.status,200,JSON.stringify(result.data));assert.equal(result.data.component.code,code);

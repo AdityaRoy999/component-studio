@@ -9,7 +9,7 @@ import { validateJSX } from './validate-jsx';
 import { imageCapability, validateImageReferences, type ImageReference } from './image-references';
 import { componentResponseFormat, parseComponentResponse, ComponentResponseFormatError } from './component-response';
 import { generatedFiles, resolveGeneratedImport } from './generated-files';
-import { semanticDiagnostics, customizationBindings } from './semantic-check';
+import { componentTypeAnalysis, customizationBindings } from './semantic-check';
 import { revisionContext, type RevisionContext } from './generation-context';
 import type { GenerationMetrics } from './generation-events';
 import { applyComponentRepair, PATCH_REPAIR_SYSTEM, PATCH_FINAL_CHECK, repairResponseFormat } from './component-repair';
@@ -276,7 +276,7 @@ export async function generateComponent(input: GenerationInput, fetcher: typeof 
   try {
   let raw:unknown;
   async function patchSource(previous:Record<string,any>,diagnostic:string){
-    const prompt=`${componentBrief({...input,context:undefined}).replace(COMPONENT_FINAL_CHECK,PATCH_FINAL_CHECK)}\nFix only this error: ${diagnostic}\nReturn minimal exact source edits. Default optional data before reading .length, .map or object properties. Do not redesign or regenerate unchanged source.\nPrevious response:\n${JSON.stringify(previous).slice(0,500000)}`;
+    const prompt=`${componentBrief({...input,context:undefined}).replace(COMPONENT_FINAL_CHECK,PATCH_FINAL_CHECK)}\nFix only this error: ${diagnostic}\nReturn minimal exact source edits. Check the actual rendered props and their types. Defaults and ?? [] do not fix a string or object passed to an array prop. Keep lists/objects in TSX defaults and remove scalar customization controls that override them; use Array.isArray when accepting variable external list data. Preserve the requested content. Do not redesign or regenerate unchanged source.\nPrevious response:\n${JSON.stringify(previous).slice(0,500000)}`;
     let correction='';const seen=new Set<string>();
     while(true){
       const response=await call(`${prompt}${correction}\n\n${PATCH_FINAL_CHECK}`,true,true);
@@ -348,7 +348,7 @@ export async function parseComponent(raw: unknown): Promise<ComponentPreset> {
   });}}]});
   const name = typeof value.name === 'string' && /^[A-Z][A-Za-z0-9]*$/.test(value.name) ? value.name : 'Component';
   if(Object.hasOwn(files,`${name}.tsx`))throw new Error('A supporting file cannot use the main component filename.');
-  const propsSchema: PropSchemaItem[] = (Array.isArray(value.propsSchema) ? value.propsSchema : []).filter((item: any) => item && typeof item.name === 'string' && /^[A-Za-z_][A-Za-z0-9_]*$/.test(item.name) && !/^on[A-Z]/.test(item.name) && !['ref','key','dangerouslySetInnerHTML','theme'].includes(item.name) && ['string', 'number', 'boolean', 'color', 'select'].includes(item.type)).slice(0, 30).map((item: any) => {
+  let propsSchema: PropSchemaItem[] = (Array.isArray(value.propsSchema) ? value.propsSchema : []).filter((item: any) => item && typeof item.name === 'string' && /^[A-Za-z_][A-Za-z0-9_]*$/.test(item.name) && !/^on[A-Z]/.test(item.name) && !['ref','key','dangerouslySetInnerHTML','theme'].includes(item.name) && ['string', 'number', 'boolean', 'color', 'select'].includes(item.type) && ['string','number','boolean'].includes(typeof item.defaultValue)).slice(0, 30).map((item: any) => {
     const result = { ...item };
     if (item.type === 'number') result.defaultValue = Number.isFinite(Number(item.defaultValue)) ? Number(item.defaultValue) : 0;
     else if (item.type === 'boolean') result.defaultValue = item.defaultValue === true || item.defaultValue === 'true';
@@ -361,7 +361,8 @@ export async function parseComponent(raw: unknown): Promise<ComponentPreset> {
   if (cssCode) code = code.replace(/(import\s+['"])([^'"]+\.css)(['"];?)/g, (match:string,before:string,specifier:string,after:string)=>!specifier.startsWith('.')||resolveGeneratedImport('Component.tsx',specifier,files)?match:`${before}./${name}.css${after}`);
   // Validate the actual iframe bundle, including named exports and companion CSS.
   await compilePreview(code,cssCode,false,files);
-  const diagnostics=semanticDiagnostics(code,files);
+  const {diagnostics,invalidControls}=componentTypeAnalysis(code,files,propsSchema);
   if(diagnostics.length)throw new Error(`TypeScript validation failed:\n${diagnostics.join('\n')}`);
+  propsSchema=propsSchema.filter(field=>!invalidControls.includes(field.name));
   return { id: `gen-${crypto.randomUUID()}`, name, title: typeof value.title === 'string' ? value.title.slice(0, 150) : name, description: typeof value.description === 'string' ? value.description.slice(0, 600) : 'Created from your description.', completionMessage: typeof value.message==='string'?value.message.trim().slice(0,1200):undefined, category: 'AI GENERATED', tags: ['React', 'AI'], code, cssCode, files, propsSchema };
 }
