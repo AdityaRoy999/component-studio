@@ -267,8 +267,8 @@ export async function generateComponent(input: GenerationInput, fetcher: typeof 
     try{return await requestComponent(prompt,requested,patch,repair,sourceFiles);}
     catch(error){
       if(images.length&&error instanceof ProviderError&&error.code==='provider_error')throw new ProviderError('This image request could not finish. Confirm that the selected model supports images, or try a smaller PNG or JPEG reference.',502,'image_request_failed');
-      if(signal.aborted||input.signal?.aborted||requests>=requestBudget||repair||!(error instanceof ProviderError)||!['timeout','stream_interrupted','output_limit'].includes(error.code))throw error;
-      emit({type:'status',phase:'repairing',message:error.code==='output_limit'?'Finishing the component with more answer space and shorter reasoning…':'The provider stream stopped. Retrying once with shorter reasoning…'});
+      if(signal.aborted||input.signal?.aborted||requests>=requestBudget||!(error instanceof ProviderError)||!(repair?['stream_interrupted','unreachable']:['timeout','stream_interrupted','unreachable','output_limit']).includes(error.code))throw error;
+      emit({type:'status',phase:'repairing',message:error.code==='output_limit'?'Finishing the component with more answer space and shorter reasoning…':repair?'The repair connection stopped. Retrying the same source correction once…':'The provider connection stopped. Retrying once with shorter reasoning…'});
       const priorBudget=Number(requested.compatible.max_completion_tokens||requested.compatible.max_tokens||requested.gemini.maxOutputTokens||8192);
       return requestComponent(prompt,shorterOptions(error.code==='output_limit'?Math.min(32768,priorBudget*2):0,true),patch,true,sourceFiles);
     }

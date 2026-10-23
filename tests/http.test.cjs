@@ -88,7 +88,7 @@ test('streaming HTTP generation sends real activity, source, preview and complet
   res.writeHead(200,{'Content-Type':'text/event-stream'});
   const text=JSON.stringify(component);const midpoint=text.indexOf(',"propsSchema"');
   res.write('data: '+JSON.stringify({choices:[{delta:{content:text.slice(0,midpoint)}}]})+'\n\n');
-  await new Promise(resolve=>setTimeout(resolve,2400));
+  await new Promise(resolve=>setTimeout(resolve,10500));
   res.write('data: '+JSON.stringify({choices:[{delta:{content:text.slice(midpoint)}}]})+'\n\n');
   res.end('data: [DONE]\n\n');finished=true;
  });
@@ -98,7 +98,8 @@ test('streaming HTTP generation sends real activity, source, preview and complet
   assert.equal(response.status,200);assert.match(response.headers.get('content-type'),/ndjson/);
   const reader=response.body.getReader();const first=await reader.read();assert.equal(finished,false);let content=new TextDecoder().decode(first.value);
   while(true){const part=await reader.read();if(part.done)break;content+=new TextDecoder().decode(part.value);}
-  const events=content.trim().split('\n').map(JSON.parse);assert(requestedStream);assert(events.some(e=>e.type==='status'));assert(events.some(e=>e.type==='source'&&e.code.includes('export default')));assert(events.some(e=>e.type==='preview'));assert.equal(events.at(-1).type,'done');
+  assert(content.includes('\n\n'),'The server must keep a quiet provider connection active');
+  const events=content.trim().split('\n').filter(line=>line.trim()).map(JSON.parse);assert(requestedStream);assert(events.some(e=>e.type==='status'));assert(events.some(e=>e.type==='source'&&e.code.includes('export default')));assert(events.some(e=>e.type==='preview'));assert.equal(events.at(-1).type,'done');
   assert(generationRequest.messages[0].content.includes('UI/UX PRO MAX — DEFAULT DESIGN SYSTEM'));
   assert(generationRequest.messages[1].content.includes('DESIGN DIRECTIVE: Use the UI/UX Pro Max default design system'));
   assert.equal(events.at(-1).component.completionMessage,component.message);

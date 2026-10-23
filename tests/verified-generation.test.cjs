@@ -35,6 +35,28 @@ test('transport recovery and static repair cannot exceed the shared request budg
  assert.equal(calls,2);
 });
 
+test('an interrupted NVIDIA source repair retries the same patch within the shared budget',async()=>{
+ const requests=[],events=[];
+ const broken={...component,code:'export default function Tabs(){const n:number="bad";return <div>{n}</div>}'};
+ const result=await ai.generateComponent({provider:'nvidia',apiKey:'test',model:'nvidia/nemotron-3.5-super-vl-120b-a12b',thinkingEffort:'off',prompt:'Create tabs',onEvent:e=>events.push(e)},async(url,init)=>{
+  requests.push(JSON.parse(init.body));
+  if(requests.length===2)return new Response(new ReadableStream({pull(c){c.error(new TypeError('private transport details'));}}),{headers:{'Content-Type':'text/event-stream'}});
+  const out=response(requests.length===1?broken:{edits:[{file:'Component.tsx',find:'n:number="bad"',replace:'n:number=2'}]});out.headers.set('Content-Type','application/json');return out;
+ });
+ assert.equal(requests.length,3);assert.equal(result.metrics.requests,3);assert(result.component.code.includes('n:number=2'));
+ assert.deepEqual(requests[1].messages,requests[2].messages);assert.equal(requests[2].chat_template_kwargs.enable_thinking,false);
+ assert(events.some(e=>e.message?.includes('Retrying the same source correction once')));
+});
+
+test('a second network failure during repair stops at three requests',async()=>{
+ let calls=0;
+ await assert.rejects(ai.generateComponent({provider:'custom',model:'fixture',baseUrl:'http://localhost:11434/v1',prompt:'Tabs',onEvent(){}},async()=>{
+  calls++;if(calls===1){const out=response({...component,code:'export default function Tabs(){const n:number="bad";return <div>{n}</div>}'});out.headers.set('Content-Type','application/json');return out;}
+  throw new TypeError('PRIVATE-NETWORK');
+ }),e=>e.code==='unreachable'&&!e.message.includes('PRIVATE'));
+ assert.equal(calls,3);
+});
+
 test('browser verification gates completion and repairs the same candidate within the remaining budget',async()=>{
  const steps=[],budgets=[];
  const result=await run({request:async(remaining,repair)=>{budgets.push(remaining);steps.push('request');if(repair){assert.equal(repair.component.code,component.code);assert.equal(repair.error,'undefined length');}return {component:repair?good:component,model:'fixture',metrics:{requests:1,repairs:repair?1:0,durationMs:1,status:'success',inputTokens:10,outputTokens:5}};},verify:async value=>{steps.push('verify');return value===component?{ok:false,error:'undefined length'}:{ok:true};},repairing:()=>steps.push('repair')});

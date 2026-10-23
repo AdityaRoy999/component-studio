@@ -25,7 +25,8 @@ const Skills=dynamic(()=>import('@/components/studio/Skills'));
 import { createHistoryEntry, loadHistory, mergeHistory, saveHistory, findHistoryRevision, deleteHistory, readDraft, writeDraft, type WorkspaceDraft, type HistoryEntry } from '@/lib/generation-history';
 import { carryCustomization } from '@/lib/generation-context';
 import { parseGenerationSkill } from '@/lib/generation-skill';
-import { runVerifiedGeneration, type GenerationResult, type VerificationResult } from '@/lib/verified-generation';
+import { runVerifiedGeneration, type VerificationResult } from '@/lib/verified-generation';
+import { readGenerationResponse, GenerationTransportError } from '@/lib/generation-transport';
 import type { PreviewCheck } from '@/components/studio/RuntimeVerification';
 const RuntimeVerification=dynamic(()=>import('@/components/studio/RuntimeVerification'),{ssr:false});
 interface ExportedSource { name:string; componentCode:string; cssCode?:string; filename:string; cssFilename:string; dependencies:string[]; }
@@ -188,10 +189,9 @@ export default function StudioPage() {
         verify:candidate=>verifyCandidate(candidate,carryCustomization(candidate,base.component?base.propValues:{},base.component?.propsSchema),runSignal),
         request:async(requestBudget,repair)=>{
       const context=repair?{code:repair.component.code,cssCode:repair.component.cssCode,files:repair.component.files,name:repair.component.name,title:repair.component.title,description:repair.component.description,propsSchema:repair.component.propsSchema}:base.component?{code:base.component.code,cssCode:base.component.cssCode,files:base.component.files}:undefined;
-      const r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,images,skill:generationSkill,apiKey:apiKey.trim()||undefined,provider,model:model.trim()||undefined,baseUrl:provider==='custom'?baseUrl.trim()||undefined:undefined,styling,theme,stream:true,thinkingEffort,requestBudget,runtimeError:repair?.error,memory:{messages:priorTurns.map(turn=>({prompt:turn.prompt,response:turn.response})),propValues:base.propValues},context}),signal:runSignal});
-      if(!r.ok){const data=await r.json();throw new Error(data.error||'Could not start this build.');}
-      if(!r.body)throw new Error('The server returned an empty response. Please retry.');
-      const reader=r.body.getReader();const decoder=new TextDecoder();let buffer='';let candidate:GenerationResult|null=null;
+      let r:Response;
+      try{r=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,images,skill:generationSkill,apiKey:apiKey.trim()||undefined,provider,model:model.trim()||undefined,baseUrl:provider==='custom'?baseUrl.trim()||undefined:undefined,styling,theme,stream:true,thinkingEffort,requestBudget,runtimeError:repair?.error,memory:{messages:priorTurns.map(turn=>({prompt:turn.prompt,response:turn.response})),propValues:base.propValues},context}),signal:runSignal});}
+      catch{runSignal.throwIfAborted();throw new GenerationTransportError();}
       function event(value:GenerationEvent){
         if(controller.signal.aborted)return;
         if(value.type==='status')updateTurn({events:[...activeTurn.events,{phase:value.phase,message:value.message}]});
@@ -199,13 +199,9 @@ export default function StudioPage() {
         else if(value.type==='source')updateTurn({source:value.code});
         // Stream source immediately, but mount only browser-verified candidates.
         else if(value.type==='metrics')updateTurn({metrics:value.metrics});
-        else if(value.type==='error')throw new Error(value.message);
-        else if(value.type==='done'){candidate=value;updateTurn({source:value.component.code,fileName:`${value.component.name}.tsx`},true);}
+        else if(value.type==='done')updateTurn({source:value.component.code,fileName:`${value.component.name}.tsx`},true);
       }
-      try{while(true){const {value,done}=await reader.read();buffer+=done?decoder.decode():decoder.decode(value,{stream:true});let end;while((end=buffer.indexOf('\n'))>=0){const line=buffer.slice(0,end);buffer=buffer.slice(end+1);if(line.trim())event(JSON.parse(line));}if(done)break;}if(buffer.trim())event(JSON.parse(buffer));}
-      finally{await reader.cancel().catch(()=>{});reader.releaseLock();}
-      if(!candidate)throw new Error('The connection ended before this build finished. Please retry your message.');
-      return candidate as GenerationResult;
+      return readGenerationResponse(r,runSignal,event);
         },
       });
       runSignal.throwIfAborted();

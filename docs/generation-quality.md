@@ -25,6 +25,8 @@ Build validation verifies syntax, imports, available type declarations, customiz
 
 Generation, transport recovery, static repairs and browser repairs share a maximum of three provider requests per message. Identical failures stop early. Automated corrections ask for minimal exact edits and disable optional reasoning (NVIDIA Nemotron Super uses `reasoning_effort: "none"`). Requests and browser checks have deadlines, and Stop cancels subsequent work. Provider speed and availability still affect latency.
 
+An interrupted provider repair can retry the same correction once within that shared budget. The browser stream sends quiet keepalives while waiting and finishes as soon as it receives the validated completion event. A dropped connection preserves the message and received source and reports an actionable error; it never silently starts another full build.
+
 The deployed validator must include TypeScript's standard ES and DOM declaration files as well as React's types. `npm run build` checks both function deployment traces for these libraries. A runtime preflight detects missing standard libraries before contacting a model, so infrastructure failures cannot trigger repeated source repairs or false errors about arrays, iterators and hooks.
 
 Response decoding preserves complete source even when optional JSON metadata is malformed. Closed TSX/CSS source fences, supporting files, plain modules and wrapped JSON are accepted, then receive the same compilation, type and browser checks. Incomplete strings and source fences are rejected. If local recovery fails, one format recovery requests unescaped, separately fenced files; it does not repeatedly ask the model to JSON-escape the same large component.
